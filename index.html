@@ -764,10 +764,85 @@ body {
   width: 100px;
   flex-shrink: 0;
   letter-spacing: .04em;
+  position: relative;
+  cursor: help;
 }
+
+/* ══ STAT TOOLTIP ══ */
+.stat-key::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 220px;
+  background: #0a0a1a;
+  border: 1px solid #2a3a60;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--txt-mid);
+  line-height: 1.6;
+  letter-spacing: .02em;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .15s, transform .15s;
+  z-index: 500;
+  white-space: normal;
+  box-shadow: 0 4px 20px rgba(0,0,0,.6);
+}
+/* Arrow */
+.stat-key::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: calc(100% + 2px);
+  border: 5px solid transparent;
+  border-bottom-color: #2a3a60;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
+  z-index: 501;
+}
+.stat-key:hover::after,
+.stat-key:hover::before { opacity: 1; transform: translateY(0); }
+
+/* Role badge on stat rows */
+.stat-role {
+  font-family: var(--font-pixel);
+  font-size: 5px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  border: 1px solid;
+  flex-shrink: 0;
+  letter-spacing: .05em;
+  width: 42px;
+  text-align: center;
+}
+.stat-role.atk  { border-color:#cc6644; color:#cc6644; }
+.stat-role.def  { border-color:#4488cc; color:#4488cc; }
+.stat-role.pool { border-color:#44aa66; color:#44aa66; }
+.stat-role.spd  { border-color:#aaaa44; color:#aaaa44; }
+
 .stat-val { font-size:var(--fs-sm); color:var(--txt-bright); width:30px; text-align:right; flex-shrink:0; }
 .stat-bar { flex:1; height:6px; background:var(--lcd-blue-hi); border-radius:3px; overflow:hidden; }
 .stat-fill { height:100%; border-radius:3px; transition:width .5s; }
+
+/* ══ CONCEPT CATEGORY BADGE ══ */
+.concept-cat {
+  font-family: var(--font-pixel);
+  font-size: 5px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid;
+  display: inline-block;
+  margin-left: 6px;
+  letter-spacing: .05em;
+  vertical-align: middle;
+}
+.concept-cat.immanent   { border-color:#5588ee; color:#5588ee; background:rgba(85,136,238,.08); }
+.concept-cat.transcendant { border-color:#cc7733; color:#cc7733; background:rgba(204,119,51,.08); }
 
 /* Matchups */
 .matchup-section { display:flex; flex-direction:column; gap:14px; }
@@ -1280,94 +1355,134 @@ function computeDefMatchups(types){
 // ══════════════════════════════════════════════════════════════════════════════
 // PHILOSOPHER DATA (bilingual)
 // ══════════════════════════════════════════════════════════════════════════════
+// Stats schema — strict parallel to Pokémon's 6-stat system:
+//   INFLUENCE = HP        — historical staying power, how much the system can absorb before being abandoned
+//   RIGUEUR   = Attack    — damage dealt by immanent moves (internal-field arguments)
+//   ANCRAGE   = Defense   — resistance to immanent moves received (logical coherence within the field)
+//   PORTÉE    = Sp. Atk   — damage dealt by transcendent moves (frame-breaking attacks from outside the field)
+//   CLÔTURE   = Sp. Def   — resistance to transcendent moves received (impermeability to paradigm shifts)
+//   CLARTÉ    = Speed     — who goes first; accessibility and diffusion of the thesis
+const STAT_META = {
+  fr: {
+    INFLUENCE: { role:'pool', tip:"Masse de pensée accumulée. Combien de coups le système peut absorber avant d'être abandonné par l'histoire." },
+    RIGUEUR:   { role:'atk',  tip:"Force des arguments immanents — démonstration formelle, réfutation logique interne au champ de l'adversaire." },
+    ANCRAGE:   { role:'def',  tip:"Résistance aux réfutations immanentes reçues. Cohérence interne du système, imperméabilité à la contradiction dans le champ." },
+    PORTÉE:    { role:'atk',  tip:"Force des arguments transcendants — capacité à invalider le cadre adverse depuis l'extérieur, sans jouer selon ses règles." },
+    CLÔTURE:   { role:'def',  tip:"Résistance aux attaques transcendantes reçues. Le système peut-il survivre à un changement de cadre conceptuel ?" },
+    CLARTÉ:    { role:'spd',  tip:"Qui entre dans le débat en premier. Accessibilité de la thèse, vitesse de diffusion, immédiateté de l'impact public." },
+  },
+  en: {
+    INFLUENCE: { role:'pool', tip:"Accumulated mass of thought. How many hits the system can absorb before being abandoned by history." },
+    RIGUEUR:   { role:'atk',  tip:"Strength of immanent arguments — formal demonstration, logical refutation within the opponent's own field." },
+    ANCRAGE:   { role:'def',  tip:"Resistance to immanent attacks received. Internal coherence of the system, impermeability to contradiction within the field." },
+    PORTÉE:    { role:'atk',  tip:"Strength of transcendent arguments — capacity to invalidate the opposing framework from outside, without playing by its rules." },
+    CLÔTURE:   { role:'def',  tip:"Resistance to transcendent attacks received. Can the system survive a paradigm shift?" },
+    CLARTÉ:    { role:'spd',  tip:"Who enters the debate first. Accessibility of the thesis, speed of diffusion, immediacy of public impact." },
+  },
+};
+
+// concept.categorie: 'immanent'  — stays within the opponent's field, type matchups apply
+//                    'transcendant' — attacks from outside the field, bypasses type matchups, hits CLÔTURE
 const PHILOMON=[
   {id:'001',nom:'DESCARTES',full:'René Descartes',dates:'1596-1650',types:['Rationalisme'],lieu:'France',gen:1,
    imgUrl:'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg',
-   stats:{INFLUENCE:92,CLARTÉ:75,RADICALITÉ:85,LONGÉVITÉ:95,ACCÈS:62},
-   fr:{oeuvre:'Méd. Métaphysiques',entree:"Fondateur du rationalisme moderne, Descartes cherche un point de certitude absolue. En éliminant méthodiquement toute croyance incertaine, il découvre que l'acte même de douter prouve l'existence du sujet pensant.",
-     concepts:[{nom:'LE COGITO',puissance:95,desc:"Je pense donc je suis. Seule certitude résistant au doute radical."},{nom:'DOUTE HYPERBOLIQUE',puissance:80,desc:"Rejeter tout ce qui peut être mis en doute, même le soupçon le plus infime."},{nom:'LE DUALISME',puissance:65,desc:"Distinction entre substance pensante (res cogitans) et étendue (res extensa)."}],
+   // High RIGUEUR: the Cogito is one of the tightest demonstrations in history.
+   // High ANCRAGE: very hard to refute on its own terms.
+   // Low PORTÉE: plays almost exclusively immanent, never attacks the frame itself.
+   // Low CLÔTURE: collapses when Hume shifts the frame to experience-first.
+   stats:{INFLUENCE:92, RIGUEUR:95, ANCRAGE:80, PORTÉE:30, CLÔTURE:40, CLARTÉ:70},
+   fr:{oeuvre:'Méd. Métaphysiques',
+     entree:"Fondateur du rationalisme moderne, Descartes cherche un point de certitude absolue. En éliminant méthodiquement toute croyance incertaine, il découvre que l'acte même de douter prouve l'existence du sujet pensant.",
+     concepts:[
+       {nom:'LE COGITO',           cat:'immanent',     type:'Rationalisme', puissance:95, desc:"Je pense donc je suis. Réfutation depuis l'intérieur même du doute — seule certitude qui résiste à toute tentative de mise en question."},
+       {nom:'DOUTE HYPERBOLIQUE',  cat:'immanent',     type:'Rationalisme', puissance:80, desc:"Procédure interne au champ épistémique : rejeter méthodiquement tout ce qui n'est pas absolument certain."},
+       {nom:'LE DUALISME',         cat:'transcendant',  type:'Idéalisme',    puissance:60, desc:"Pose un cadre ontologique extérieur à l'épistémologie : corps et esprit sont deux substances radicalement distinctes."},
+     ],
      filiation:{maitres:['AUGUSTIN','PLATON'],disciples:['SPINOZA','LEIBNIZ','MALEBRANCHE'],contre:['HUME','LOCKE']}},
-   en:{oeuvre:'Meditations',entree:"Founder of modern rationalism, Descartes seeks an unshakeable point of certainty. By methodically doubting everything that can be doubted, he discovers that the very act of doubting proves the existence of a thinking subject.",
-     concepts:[{nom:'THE COGITO',puissance:95,desc:"I think therefore I am. The sole certainty that survives radical doubt."},{nom:'HYPERBOLIC DOUBT',puissance:80,desc:"Reject everything that can be doubted, down to the slightest suspicion."},{nom:'DUALISM',puissance:65,desc:"Distinction between thinking substance (res cogitans) and extension (res extensa)."}],
+   en:{oeuvre:'Meditations',
+     entree:"Founder of modern rationalism, Descartes seeks an unshakeable point of certainty. By methodically doubting everything that can be doubted, he discovers that the very act of doubting proves the existence of a thinking subject.",
+     concepts:[
+       {nom:'THE COGITO',          cat:'immanent',     type:'Rationalisme', puissance:95, desc:"I think therefore I am. A refutation from within doubt itself — the sole certainty that survives any attempt at questioning."},
+       {nom:'HYPERBOLIC DOUBT',    cat:'immanent',     type:'Rationalisme', puissance:80, desc:"An internal epistemic procedure: methodically reject everything that is not absolutely certain."},
+       {nom:'DUALISM',             cat:'transcendant',  type:'Idéalisme',    puissance:60, desc:"Posits an ontological framework external to epistemology: mind and body are two radically distinct substances."},
+     ],
      filiation:{maitres:['AUGUSTINE','PLATO'],disciples:['SPINOZA','LEIBNIZ','MALEBRANCHE'],contre:['HUME','LOCKE']}},
-   conceptTypes:['Rationalisme','Rationalisme','Idéalisme']},
+  },
 
-  {id:'002',nom:'KANT',full:'Emmanuel Kant',dates:'1724-1804',types:['Rationalisme','Déontologie'],lieu:'Prusse',gen:2,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_%28painted_portrait%29.jpg',
-   stats:{INFLUENCE:98,CLARTÉ:28,RADICALITÉ:90,LONGÉVITÉ:98,ACCÈS:18},
-   fr:{oeuvre:'Critique R. Pure',entree:"Kant opère une révolution copernicienne : les objets se conforment aux structures de notre esprit et non l'inverse. Il délimite ce que la raison peut connaître, ce qu'elle doit faire, et ce qu'elle peut espérer.",
-     concepts:[{nom:'IMPÉRATIF CATÉGORIQUE',puissance:97,desc:"Agis selon la maxime qui peut être érigée en loi universelle — sans exception."},{nom:"CATÉGORIES DE L'ENTENDEMENT",puissance:85,desc:"Structures a priori que l'esprit impose à toute expérience possible."},{nom:'LA CHOSE EN SOI',puissance:78,desc:"La réalité hors de toute perception humaine — éternellement inaccessible."}],
-     filiation:{maitres:['HUME','LEIBNIZ','ROUSSEAU'],disciples:['FICHTE','SCHELLING','HEGEL'],contre:['HEGEL (chose-en-soi)','NIETZSCHE']}},
-   en:{oeuvre:'Critique of Pure Reason',entree:"Kant performs a Copernican revolution: objects conform to the structures of our mind, not the other way around. He maps what reason can know, what it must do, and what it may hope for.",
-     concepts:[{nom:'CATEGORICAL IMPERATIVE',puissance:97,desc:"Act only according to the maxim that could become a universal law — without exception."},{nom:'CATEGORIES OF UNDERSTANDING',puissance:85,desc:"A priori structures that the mind imposes on all possible experience."},{nom:'THING-IN-ITSELF',puissance:78,desc:"Reality beyond all human perception — forever inaccessible."}],
-     filiation:{maitres:['HUME','LEIBNIZ','ROUSSEAU'],disciples:['FICHTE','SCHELLING','HEGEL'],contre:['HEGEL (thing-in-itself)','NIETZSCHE']}},
-   conceptTypes:['Déontologie','Rationalisme','Rationalisme']},
-
-  {id:'003',nom:'HEGEL',full:'G.W.F. Hegel',dates:'1770-1831',types:['Idéalisme'],lieu:'Allemagne',gen:2,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/c/cf/Georg_Wilhelm_Friedrich_Hegel_%28by_Schlesinger_1831%29.jpg',
-   stats:{INFLUENCE:99,CLARTÉ:10,RADICALITÉ:97,LONGÉVITÉ:92,ACCÈS:8},
-   fr:{oeuvre:"Phénomén. de l'Esprit",entree:"La réalité est un processus dialectique : l'Esprit absolu se déploie dans l'histoire, se connaît en se divisant et se réconcilie dans la synthèse. Tout est mouvement, contradiction, dépassement.",
-     concepts:[{nom:'LA DIALECTIQUE',puissance:99,desc:"Thèse→Antithèse→Synthèse. Le réel se développe par la contradiction et son dépassement."},{nom:"L'AUFHEBUNG",puissance:88,desc:"Dépasser en conservant : la négation élève à un niveau supérieur plutôt qu'elle n'abolit."},{nom:"L'ESPRIT ABSOLU",puissance:82,desc:"Le réel est rationnel, le rationnel est réel. L'histoire marche vers l'Esprit."}],
-     filiation:{maitres:['KANT','FICHTE','HÉRACLITE'],disciples:['MARX','ADORNO','KOJÈVE'],contre:['SCHOPENHAUER','KIERKEGAARD']}},
-   en:{oeuvre:'Phenomenology of Spirit',entree:"Reality is a dialectical process: Absolute Spirit unfolds through history, knows itself by dividing, and reconciles itself in synthesis. Everything is movement, contradiction, and sublation.",
-     concepts:[{nom:'DIALECTIC',puissance:99,desc:"Thesis→Antithesis→Synthesis. Reality develops through contradiction and its overcoming."},{nom:'AUFHEBUNG',puissance:88,desc:"To surpass while preserving: negation elevates to a higher level rather than abolishing."},{nom:'ABSOLUTE SPIRIT',puissance:82,desc:"The real is rational, the rational is real. History marches toward Spirit."}],
-     filiation:{maitres:['KANT','FICHTE','HERACLITUS'],disciples:['MARX','ADORNO','KOJÈVE'],contre:['SCHOPENHAUER','KIERKEGAARD']}},
-   conceptTypes:['Idéalisme','Idéalisme','Idéalisme']},
-
-  {id:'004',nom:'HUME',full:'David Hume',dates:'1711-1776',types:['Empirisme','Scepticisme'],lieu:'Écosse',gen:1,
+  {id:'002',nom:'HUME',full:'David Hume',dates:'1711-1776',types:['Empirisme','Scepticisme'],lieu:'Écosse',gen:1,
    imgUrl:'https://upload.wikimedia.org/wikipedia/commons/e/ea/Painting_of_David_Hume.jpg',
-   stats:{INFLUENCE:90,CLARTÉ:72,RADICALITÉ:88,LONGÉVITÉ:88,ACCÈS:55},
-   fr:{oeuvre:'Traité Nature Humaine',entree:"Hume pousse l'empirisme à ses limites radicales. Rien ne vient que de l'expérience — ni la causalité, ni le moi, ni Dieu. Ce scepticisme réveille Kant de son sommeil dogmatique.",
-     concepts:[{nom:'CRITIQUE CAUSALITÉ',puissance:92,desc:"La causalité n'est qu'une habitude psychologique, jamais une nécessité observable."},{nom:'FAISCEAU PERCEPTIONS',puissance:85,desc:"Le moi n'est pas une substance mais un flux de perceptions sans unité fixe."},{nom:'GUILLOTINE DE HUME',puissance:80,desc:"On ne peut dériver un devoir d'un fait — abîme logique entre descriptif et normatif."}],
+   // Solid RIGUEUR: immanent arguments are sharp within the empirical field.
+   // Mid PORTÉE: the Guillotine is semi-transcendent — it shifts the logical frame but stays near the field.
+   // Mid ANCRAGE/CLÔTURE: radical scepticism leaves him vulnerable from both sides — he doubts himself too.
+   stats:{INFLUENCE:90, RIGUEUR:85, ANCRAGE:55, PORTÉE:65, CLÔTURE:50, CLARTÉ:72},
+   fr:{oeuvre:'Traité Nature Humaine',
+     entree:"Hume pousse l'empirisme à ses limites radicales. Rien ne vient que de l'expérience — ni la causalité, ni le moi, ni Dieu. Ce scepticisme réveille Kant de son sommeil dogmatique.",
+     concepts:[
+       {nom:'CRITIQUE DE LA CAUSALITÉ', cat:'immanent',    type:'Scepticisme', puissance:92, desc:"Argument interne au champ épistémique : la causalité n'est qu'une habitude psychologique, jamais une nécessité observable."},
+       {nom:'FAISCEAU DE PERCEPTIONS',  cat:'immanent',    type:'Empirisme',   puissance:78, desc:"Le moi n'est pas une substance mais un flux de perceptions sans unité fixe — démonstration depuis l'expérience directe."},
+       {nom:'GUILLOTINE DE HUME',       cat:'transcendant', type:'Scepticisme', puissance:85, desc:"Change le cadre logique lui-même : on ne peut jamais dériver un devoir d'un fait — abîme entre descriptif et normatif."},
+     ],
      filiation:{maitres:['LOCKE','BERKELEY','BACON'],disciples:['KANT (réaction)','BENTHAM','MILL'],contre:['DESCARTES','LEIBNIZ']}},
-   en:{oeuvre:'Treatise of Human Nature',entree:"Hume pushes empiricism to its radical limits. Nothing comes from anywhere but experience — not causality, not the self, not God. This skepticism awakens Kant from his dogmatic slumber.",
-     concepts:[{nom:'CRITIQUE OF CAUSALITY',puissance:92,desc:"Causality is merely a psychological habit, never an observable necessity."},{nom:'BUNDLE THEORY OF SELF',puissance:85,desc:"The self is not a substance but a stream of perceptions without a fixed unity."},{nom:"HUME'S GUILLOTINE",puissance:80,desc:"You cannot derive an ought from an is — a logical chasm between descriptive and normative."}],
+   en:{oeuvre:'Treatise of Human Nature',
+     entree:"Hume pushes empiricism to its radical limits. Nothing comes from anywhere but experience — not causality, not the self, not God. This skepticism awakens Kant from his dogmatic slumber.",
+     concepts:[
+       {nom:'CRITIQUE OF CAUSALITY',   cat:'immanent',    type:'Scepticisme', puissance:92, desc:"Internal to the epistemic field: causality is merely a psychological habit, never an observable necessity."},
+       {nom:'BUNDLE THEORY OF SELF',   cat:'immanent',    type:'Empirisme',   puissance:78, desc:"The self is not a substance but a stream of perceptions without fixed unity — argued from direct experience."},
+       {nom:"HUME'S GUILLOTINE",       cat:'transcendant', type:'Scepticisme', puissance:85, desc:"Shifts the logical frame itself: you can never derive an ought from an is — a chasm between descriptive and normative."},
+     ],
      filiation:{maitres:['LOCKE','BERKELEY','BACON'],disciples:['KANT (reaction)','BENTHAM','MILL'],contre:['DESCARTES','LEIBNIZ']}},
-   conceptTypes:['Scepticisme','Empirisme','Scepticisme']},
+  },
 
-  {id:'005',nom:'SARTRE',full:'Jean-Paul Sartre',dates:'1905-1980',types:['Existentialisme'],lieu:'France',gen:3,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/0/05/Jean-Paul_Sartre.jpg',
-   stats:{INFLUENCE:88,CLARTÉ:55,RADICALITÉ:90,LONGÉVITÉ:78,ACCÈS:60},
-   fr:{oeuvre:"L'Être et le Néant",entree:"L'existence précède l'essence : l'homme n'est rien d'autre que ce qu'il se fait. Condamné à être libre, sans nature donnée ni Dieu pour le définir, chacun est seul responsable de lui-même.",
-     concepts:[{nom:'EXISTENCE PRÉCÈDE ESSENCE',puissance:95,desc:"Il n'y a pas de nature humaine préétablie : on devient ce qu'on choisit d'être."},{nom:'LA MAUVAISE FOI',puissance:85,desc:"Feindre d'être déterminé comme une chose pour fuir le vertige de la liberté."},{nom:'POUR-SOI / EN-SOI',puissance:75,desc:"L'En-soi est la chose figée ; le Pour-soi est la conscience, néant qui se projette."}],
-     filiation:{maitres:['HEIDEGGER','HUSSERL','HEGEL'],disciples:['BEAUVOIR','FANON','MERLEAU-PONTY'],contre:['LÉVI-STRAUSS','ALTHUSSER']}},
-   en:{oeuvre:'Being and Nothingness',entree:"Existence precedes essence: man is nothing other than what he makes of himself. Condemned to be free, with no given nature and no God to define him, each person bears sole responsibility for themselves.",
-     concepts:[{nom:'EXISTENCE PRECEDES ESSENCE',puissance:95,desc:"There is no pre-given human nature: we become what we choose to be."},{nom:'BAD FAITH',puissance:85,desc:"Pretending to be determined like a thing in order to flee the vertigo of freedom."},{nom:'FOR-ITSELF / IN-ITSELF',puissance:75,desc:"The In-itself is the fixed thing; the For-itself is consciousness, nothingness projecting itself."}],
-     filiation:{maitres:['HEIDEGGER','HUSSERL','HEGEL'],disciples:['BEAUVOIR','FANON','MERLEAU-PONTY'],contre:['LÉVI-STRAUSS','ALTHUSSER']}},
-   conceptTypes:['Existentialisme','Existentialisme','Existentialisme']},
-
-  {id:'006',nom:'NIETZSCHE',full:'Friedrich Nietzsche',dates:'1844-1900',types:['Existentialisme','Nihilisme'],lieu:'Allemagne',gen:3,
+  {id:'003',nom:'NIETZSCHE',full:'Friedrich Nietzsche',dates:'1844-1900',types:['Existentialisme','Nihilisme'],lieu:'Allemagne',gen:3,
    imgUrl:'https://upload.wikimedia.org/wikipedia/commons/1/1b/Nietzsche187a.jpg',
-   stats:{INFLUENCE:96,CLARTÉ:40,RADICALITÉ:99,LONGÉVITÉ:94,ACCÈS:50},
-   fr:{oeuvre:'Zarathoustra',entree:"Dieu est mort — c'est nous qui l'avons tué. Face au nihilisme, Nietzsche appelle à la transmutation de toutes les valeurs. La Volonté de puissance et l'Éternel Retour défient quiconque ose vivre sans illusions.",
-     concepts:[{nom:'LA MORT DE DIEU',puissance:99,desc:"Le fondement absolu s'est effondré — reste à créer de nouvelles valeurs à partir de rien."},{nom:'VOLONTÉ DE PUISSANCE',puissance:90,desc:"Non la domination brutale, mais le débordement créateur qui cherche à se surpasser."},{nom:"L'ÉTERNEL RETOUR",puissance:85,desc:"Vivrais-tu ta vie à l'identique si elle se répétait infiniment ? Pensée-test suprême."}],
+   // Near-zero RIGUEUR: deliberately never plays immanent. That's a feature, not a bug.
+   // Max PORTÉE: attacks exclusively by invalidating the opponent's frame from outside.
+   // Very low ANCRAGE + CLÔTURE: his system is a glass cannon — devastating offensively, fragile defensively.
+   //   (Coherent with his own philosophy: he doesn't seek systematic coherence.)
+   stats:{INFLUENCE:96, RIGUEUR:20, ANCRAGE:30, PORTÉE:99, CLÔTURE:25, CLARTÉ:45},
+   fr:{oeuvre:'Zarathoustra',
+     entree:"Dieu est mort — c'est nous qui l'avons tué. Face au nihilisme, Nietzsche appelle à la transmutation de toutes les valeurs. La Volonté de puissance et l'Éternel Retour défient quiconque ose vivre sans illusions.",
+     concepts:[
+       {nom:'LA MORT DE DIEU',     cat:'transcendant', type:'Nihilisme',       puissance:99, desc:"Invalide le cadre de valeur entier de l'Occident depuis l'extérieur — pas une réfutation morale, une déclaration d'effondrement."},
+       {nom:'VOLONTÉ DE PUISSANCE',cat:'transcendant', type:'Existentialisme', puissance:90, desc:"Méta-éthique qui déborde tous les champs : évaluer les valeurs elles-mêmes selon le critère du dépassement créateur."},
+       {nom:"L'ÉTERNEL RETOUR",    cat:'transcendant', type:'Existentialisme', puissance:82, desc:"Expérience de pensée qui transcende l'éthique et l'ontologie : vivrais-tu ta vie à l'identique si elle se répétait infiniment ?"},
+     ],
      filiation:{maitres:['SCHOPENHAUER','HÉRACLITE'],disciples:['HEIDEGGER','DELEUZE','CAMUS'],contre:['KANT','HEGEL','SOCRATE']}},
-   en:{oeuvre:'Thus Spoke Zarathustra',entree:"God is dead — and we have killed him. Facing nihilism, Nietzsche calls for a revaluation of all values. The Will to Power and Eternal Recurrence challenge anyone who dares to live without illusions.",
-     concepts:[{nom:'DEATH OF GOD',puissance:99,desc:"The absolute foundation has collapsed — what remains is to create new values from nothing."},{nom:'WILL TO POWER',puissance:90,desc:"Not brute domination, but the creative overflow that perpetually seeks to surpass itself."},{nom:'ETERNAL RECURRENCE',puissance:85,desc:"Would you live your life identically if it repeated infinitely? The supreme thought-experiment."}],
+   en:{oeuvre:'Thus Spoke Zarathustra',
+     entree:"God is dead — and we have killed him. Facing nihilism, Nietzsche calls for a revaluation of all values. The Will to Power and Eternal Recurrence challenge anyone who dares to live without illusions.",
+     concepts:[
+       {nom:'DEATH OF GOD',        cat:'transcendant', type:'Nihilisme',       puissance:99, desc:"Invalidates the entire Western value framework from outside — not a moral refutation, a declaration of collapse."},
+       {nom:'WILL TO POWER',       cat:'transcendant', type:'Existentialisme', puissance:90, desc:"A meta-ethics that overflows all fields: evaluate values themselves by the criterion of creative self-overcoming."},
+       {nom:'ETERNAL RECURRENCE',  cat:'transcendant', type:'Existentialisme', puissance:82, desc:"A thought-experiment transcending ethics and ontology: would you live your life identically if it repeated infinitely?"},
+     ],
      filiation:{maitres:['SCHOPENHAUER','HERACLITUS'],disciples:['HEIDEGGER','DELEUZE','CAMUS'],contre:['KANT','HEGEL','SOCRATES']}},
-   conceptTypes:['Nihilisme','Existentialisme','Existentialisme']},
+  },
 
-  {id:'007',nom:'MILL',full:'John Stuart Mill',dates:'1806-1873',types:['Conséquentialisme','Libéralisme'],lieu:'Angleterre',gen:2,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/6/63/John_Stuart_Mill_by_John_Watkins.jpg',
-   stats:{INFLUENCE:85,CLARTÉ:80,RADICALITÉ:70,LONGÉVITÉ:85,ACCÈS:72},
-   fr:{oeuvre:"L'Utilitarisme",entree:"Mill raffine l'utilitarisme en distinguant les plaisirs par qualité. Mieux vaut être Socrate insatisfait qu'un imbécile satisfait. La liberté individuelle est la condition du progrès collectif.",
-     concepts:[{nom:"PRINCIPE D'UTILITÉ",puissance:88,desc:"L'action juste maximise le bonheur du plus grand nombre, en qualité et quantité."},{nom:'PRINCIPE NON-NUISANCE',puissance:85,desc:"La liberté n'a pour limite que le tort causé à autrui — pas la morale collective."},{nom:'HIÉRARCHIE DES PLAISIRS',puissance:72,desc:"Les plaisirs intellectuels valent plus que les plaisirs sensoriels."}],
-     filiation:{maitres:['BENTHAM','RICARDO','TOCQUEVILLE'],disciples:['RAWLS','SINGER'],contre:['KANT','MARX']}},
-   en:{oeuvre:'Utilitarianism',entree:"Mill refines utilitarianism by distinguishing pleasures by quality. Better to be Socrates dissatisfied than a fool satisfied. Individual liberty is the condition for collective progress.",
-     concepts:[{nom:'PRINCIPLE OF UTILITY',puissance:88,desc:"The right action maximizes the happiness of the greatest number, in quality and quantity."},{nom:'HARM PRINCIPLE',puissance:85,desc:"Liberty is only limited by harm caused to others — not by collective morality."},{nom:'HIERARCHY OF PLEASURES',puissance:72,desc:"Intellectual pleasures are worth more than sensory ones."}],
-     filiation:{maitres:['BENTHAM','RICARDO','TOCQUEVILLE'],disciples:['RAWLS','SINGER'],contre:['KANT','MARX']}},
-   conceptTypes:['Conséquentialisme','Libéralisme','Conséquentialisme']},
-
-  {id:'008',nom:'ÉPICTÈTE',full:'Épictète',dates:'50-135 ap. J.-C.',types:['Stoïcisme'],lieu:'Empire Romain',gen:1,
+  {id:'004',nom:'ÉPICTÈTE',full:'Épictète',dates:'50-135 ap. J.-C.',types:['Stoïcisme'],lieu:'Empire Romain',gen:1,
    imgUrl:'https://upload.wikimedia.org/wikipedia/commons/9/90/Epictetus.jpg',
-   stats:{INFLUENCE:82,CLARTÉ:90,RADICALITÉ:78,LONGÉVITÉ:90,ACCÈS:85},
-   fr:{oeuvre:'Manuel (Enchiridion)',entree:"Ancien esclave devenu sage, Épictète enseigne que la liberté est la maîtrise de ce qui dépend de nous. Ce qui n'en dépend pas — maladie, mort, opinion d'autrui — ne mérite ni désir ni crainte.",
-     concepts:[{nom:'DICHOTOMIE DU CONTRÔLE',puissance:90,desc:"Distinguer ce qui dépend de nous de ce qui n'en dépend pas — et n'agir que sur le premier."},{nom:'REPRÉSENTATION (PHANTASIA)',puissance:75,desc:"Ce ne sont pas les événements qui troublent mais nos représentations d'eux."},{nom:'LE RÔLE (PROSÔPON)',puissance:68,desc:"Jouer parfaitement le rôle que le destin nous a assigné, sans s'y identifier."}],
+   // Near-max CLÔTURE: the system is explicitly designed to be impervious to external attacks —
+   //   "what does not depend on me cannot touch me" applies to philosophical challenges too.
+   // High ANCRAGE: coherent internal system, hard to refute from within.
+   // Moderate RIGUEUR: immanent arguments are solid but not formally demonstrative.
+   // Low PORTÉE: almost never attacks the opponent's frame, stays within the existential field.
+   stats:{INFLUENCE:82, RIGUEUR:60, ANCRAGE:70, PORTÉE:35, CLÔTURE:95, CLARTÉ:85},
+   fr:{oeuvre:'Manuel (Enchiridion)',
+     entree:"Ancien esclave devenu sage, Épictète enseigne que la liberté est la maîtrise de ce qui dépend de nous. Ce qui n'en dépend pas — maladie, mort, opinion d'autrui — ne mérite ni désir ni crainte.",
+     concepts:[
+       {nom:'DICHOTOMIE DU CONTRÔLE', cat:'immanent',    type:'Stoïcisme', puissance:90, desc:"Argument interne au champ existentiel : distinguer ce qui dépend de nous de ce qui n'en dépend pas — n'agir que sur le premier."},
+       {nom:'REPRÉSENTATION (PHANTASIA)',cat:'immanent', type:'Stoïcisme', puissance:72, desc:"Ce ne sont pas les événements qui troublent mais nos représentations d'eux — transformation interne à la posture existentielle."},
+       {nom:'LE RÔLE (PROSÔPON)',     cat:'transcendant', type:'Stoïcisme', puissance:60, desc:"Jouer parfaitement le rôle que le destin nous a assigné — sort légèrement du champ en posant un cadre cosmique extérieur."},
+     ],
      filiation:{maitres:['ZÉNON DE CITIUM','CHRYSIPPE','MUSONIUS RUFUS'],disciples:['MARC AURÈLE','ARRIEN'],contre:['ÉPICURE']}},
-   en:{oeuvre:'Enchiridion (Manual)',entree:"A former slave turned sage, Epictetus teaches that freedom is mastery over what depends on us. What does not — illness, death, others' opinions — deserves neither desire nor fear.",
-     concepts:[{nom:'DICHOTOMY OF CONTROL',puissance:90,desc:"Distinguish what depends on us from what does not — and act only on the former."},{nom:'IMPRESSION (PHANTASIA)',puissance:75,desc:"It is not events that disturb us, but our impressions of them."},{nom:'ROLE (PROSÔPON)',puissance:68,desc:"Play perfectly the role fate has assigned us, without identifying with it."}],
+   en:{oeuvre:'Enchiridion (Manual)',
+     entree:"A former slave turned sage, Epictetus teaches that freedom is mastery over what depends on us. What does not — illness, death, others' opinions — deserves neither desire nor fear.",
+     concepts:[
+       {nom:'DICHOTOMY OF CONTROL',   cat:'immanent',    type:'Stoïcisme', puissance:90, desc:"Internal to the existential field: distinguish what depends on us from what does not — act only on the former."},
+       {nom:'IMPRESSION (PHANTASIA)', cat:'immanent',    type:'Stoïcisme', puissance:72, desc:"It is not events that disturb us, but our impressions of them — transformation within the existential stance."},
+       {nom:'ROLE (PROSÔPON)',         cat:'transcendant', type:'Stoïcisme', puissance:60, desc:"Play perfectly the role fate assigned us — steps slightly outside the field by positing an external cosmic framework."},
+     ],
      filiation:{maitres:['ZENO OF CITIUM','CHRYSIPPUS','MUSONIUS RUFUS'],disciples:['MARCUS AURELIUS','ARRIAN'],contre:['EPICURUS']}},
-   conceptTypes:['Stoïcisme','Stoïcisme','Stoïcisme']},
+  },
 ];
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1414,17 +1529,26 @@ function buildEntryHtml(p) {
   return `<p class="entry-text">${d.entree}</p>`;
 }
 
-/** Renders the stats tab with colored bars. */
+/** Renders the stats tab with role badges, colored bars, and hover tooltips. */
 function buildStatsHtml(p) {
+  const meta = STAT_META[lang];
   return `<div class="stat-list">${
-    Object.entries(p.stats).map(([k,v])=>`
+    Object.entries(p.stats).map(([k,v]) => {
+      const m = meta[k] || { role:'pool', tip:'' };
+      // Bar color: ATK stats use the first type color, DEF stats slightly muted
+      const barClass = (m.role === 'atk') ? fillClass(p.types[0]) :
+                       (m.role === 'def') ? fillClass(p.types[p.types.length-1]) :
+                       fillClass(p.types[0]);
+      return `
       <div class="stat-row">
-        <span class="stat-key">${k}</span>
+        <span class="stat-key" data-tip="${m.tip}">${k}</span>
+        <span class="stat-role ${m.role}">${m.role === 'pool' ? 'PV' : m.role === 'atk' ? 'ATK' : m.role === 'def' ? 'DEF' : 'VIT'}</span>
         <span class="stat-val">${v}</span>
         <div class="stat-bar">
-          <div class="stat-fill ${fillClass(p.types[0])}" style="width:${v}%"></div>
+          <div class="stat-fill ${barClass}" style="width:${v}%"></div>
         </div>
-      </div>`).join('')
+      </div>`;
+    }).join('')
   }</div>`;
 }
 
@@ -1440,28 +1564,51 @@ function buildMatchupsHtml(p) {
   return html + '</div>';
 }
 
-/** Renders the concepts (attacks) tab with offensive matchup hints. */
+/** Renders the concepts (attacks) tab.
+ *  Each concept carries its own type and categorie (immanent|transcendant).
+ *  - Immanent moves: type matchups apply normally within the field.
+ *  - Transcendent moves: bypass type matchups, target CLÔTURE instead.
+ */
 function buildConceptsHtml(p) {
   const d = p[lang];
-  return `<div class="concept-list">${d.concepts.map((c,idx)=>{
-    const cType = p.conceptTypes[idx];
+  return `<div class="concept-list">${d.concepts.map(c => {
+    const cType = c.type;
+    const isImmanent = c.cat === 'immanent';
+    const catLabel = lang === 'fr'
+      ? (isImmanent ? 'IMMANENT' : 'TRANSCENDANT')
+      : (isImmanent ? 'IMMANENT' : 'TRANSCENDENT');
+
+    // Offensive matchups only apply to immanent moves (they stay in the field)
     let vsRows = '';
-    for(const[,cd] of Object.entries(CHAMPS)){
-      if(champOf(cType) !== Object.keys(CHAMPS).find(k=>CHAMPS[k]===cd)) continue;
-      for(const dt of cd.types){
-        if(dt===cType)continue;
-        const m=cd.matchups?.[cType]?.[dt];
-        if(m&&m!==1)vsRows+=`<span class="vs-lbl">vs</span><span class="vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span><span class="vs-mult" style="color:${m>=2?'#44ff44':'#ff4444'}">${m>=2?'×2':'×½'}</span>`;
+    if (isImmanent) {
+      for (const [,cd] of Object.entries(CHAMPS)) {
+        if (champOf(cType) !== Object.keys(CHAMPS).find(k => CHAMPS[k] === cd)) continue;
+        for (const dt of cd.types) {
+          if (dt === cType) continue;
+          const m = cd.matchups?.[cType]?.[dt];
+          if (m && m !== 1) vsRows += `
+            <span class="vs-lbl">vs</span>
+            <span class="vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span>
+            <span class="vs-mult" style="color:${m>=2?'#44ff44':'#ff4444'}">${m>=2?'×2':'×½'}</span>`;
+        }
       }
+    } else {
+      // Transcendent: always hits CLÔTURE regardless of type
+      vsRows = `<span class="vs-lbl">${lang==='fr'?'cible':'targets'}</span>
+        <span class="vs-pill" style="border-color:#7799cc;color:#7799cc">CLÔTURE</span>`;
     }
+
     return `<div class="concept-card">
       <div class="concept-top">
-        <span class="concept-name">${c.nom}</span>
+        <span class="concept-name">
+          ${c.nom}
+          <span class="concept-cat ${c.cat}">${catLabel}</span>
+        </span>
         <span class="concept-pwr">PWR ${c.puissance}</span>
       </div>
       <span class="concept-type-tag ${tClass(cType)}">${cType.toUpperCase()}</span>
       <div class="concept-desc">${c.desc}</div>
-      ${vsRows?`<div class="concept-matchup-row">${vsRows}</div>`:''}
+      ${vsRows ? `<div class="concept-matchup-row">${vsRows}</div>` : ''}
     </div>`;
   }).join('')}</div>`;
 }
