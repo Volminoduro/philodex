@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philodex</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ══ RESET & BASE ══ */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* ══ POKÉDEX DEVICE SHELL ══ */
+.pokedex-shell {
+  width: 100%;
+  max-width: 880px;
+  background: #cc2200;
+  border-radius: 16px 16px 60px 16px;
+  padding: 18px 18px 28px;
+  box-shadow:
+    inset 0 2px 0 #ff6644,
+    inset 0 -4px 0 #881100,
+    4px 6px 0 #440000;
+  position: relative;
+}
+
+/* Charnière / ligne déco haut */
+.pokedex-shell::before {
+  content: '';
+  position: absolute;
+  top: 52px; left: 0; right: 0;
+  height: 6px;
+  background: #881100;
+  box-shadow: inset 0 1px 0 #cc2200, inset 0 -1px 0 #550000;
+}
+
+/* ══ TOP BAR : lumières et titre ══ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+}
+
+.light-big {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #aaeeff, #0088cc);
+  border: 3px solid #005588;
+  box-shadow: 0 0 0 3px #003355, inset 0 1px 2px rgba(255,255,255,.5);
+  flex-shrink: 0;
+}
+
+.lights-small {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.light-sm {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,.3);
+}
+.light-sm.red    { background: #ff4444; box-shadow: inset 0 1px 1px rgba(255,200,200,.6); }
+.light-sm.yellow { background: #ffcc00; box-shadow: inset 0 1px 1px rgba(255,255,200,.6); }
+.light-sm.green  { background: #44cc44; box-shadow: inset 0 1px 1px rgba(200,255,200,.6); }
+
+.pokedex-title {
+  font-size: 10px;
+  color: #ffddcc;
+  letter-spacing: .15em;
+  text-shadow: 1px 1px 0 #550000;
+  margin-left: auto;
+}
+
+/* ══ MAIN SCREENS AREA ══ */
+.screens-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+/* Cadre d'écran commun */
+.screen-frame {
+  background: #222;
+  border-radius: 6px;
+  padding: 6px;
+  box-shadow:
+    inset 0 0 0 2px #555,
+    inset 0 0 0 4px #111,
+    2px 3px 0 #550000;
+}
+
+/* Écran gauche — sprite + info de base */
+.screen-left {
+  background: #c8d8a0; /* LCD vert Game Boy */
+  border-radius: 3px;
+  padding: 8px;
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scanlines LCD */
+.screen-left::after, .screen-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,.06) 2px,
+    rgba(0,0,0,.06) 3px
+  );
+  pointer-events: none;
+  border-radius: 3px;
+}
+
+/* Écran droit — infos texte, style GBA bleu foncé */
+.screen-right {
+  background: #001848;
+  border-radius: 3px;
+  padding: 8px;
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══ ÉCRAN GAUCHE CONTENU ══ */
+.left-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.poke-num {
+  font-size: 6px;
+  color: #2a3a00;
+  letter-spacing: .05em;
+}
+
+.poke-name-lcd {
+  font-size: 7px;
+  color: #1a2800;
+  letter-spacing: .1em;
+}
+
+/* Zone sprite */
+.sprite-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d8e8b0;
+  border: 2px solid #8a9a60;
+  margin: 4px 0;
+  min-height: 100px;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.sprite-area canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* HP bar style Pokémon */
+.hp-section {
+  margin-top: 4px;
+}
+
+.hp-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.hp-label-lcd {
+  font-size: 5px;
+  color: #1a2800;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+
+.hp-bar-lcd {
+  flex: 1;
+  height: 5px;
+  background: #8a9a60;
+  border: 1px solid #4a5a20;
+  position: relative;
+}
+
+.hp-fill-lcd {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  background: #44aa00;
+  transition: width .4s;
+}
+
+.hp-fill-lcd.mid  { background: #eeaa00; }
+.hp-fill-lcd.low  { background: #ee2200; }
+
+/* Type badges style LCD */
+.type-row-lcd {
+  display: flex;
+  gap: 3px;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+
+.type-badge-lcd {
+  font-size: 5px;
+  padding: 2px 4px;
+  border: 1px solid #2a3a00;
+  color: #1a2800;
+  background: #b8c880;
+  letter-spacing: .04em;
+}
+
+/* ══ ÉCRAN DROIT CONTENU ══ */
+.right-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.rtab {
+  font-size: 5px;
+  padding: 3px 5px;
+  background: #002878;
+  color: #6688cc;
+  border: 1px solid #003888;
+  cursor: pointer;
+  letter-spacing: .05em;
+  transition: all .1s;
+  text-transform: uppercase;
+}
+
+.rtab.active {
+  background: #2050cc;
+  color: #ffffff;
+  border-color: #4070ff;
+}
+
+.rtab:hover:not(.active) {
+  background: #003080;
+  color: #88aaee;
+}
+
+.right-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2050cc #001848;
+}
+
+/* Entrée Pokédex style */
+.dex-entry {
+  font-size: 6px;
+  color: #c8d8ff;
+  line-height: 2;
+  letter-spacing: .04em;
+}
+
+/* Stats style Pokémon */
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-name-lcd {
+  font-size: 5px;
+  color: #88aaff;
+  width: 80px;
+  flex-shrink: 0;
+  letter-spacing: .03em;
+}
+
+.stat-num-lcd {
+  font-size: 5px;
+  color: #ffffff;
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stat-bar-lcd {
+  flex: 1;
+  height: 4px;
+  background: #002050;
+  border: 1px solid #003080;
+}
+
+.stat-fill-lcd {
+  height: 100%;
+  transition: width .4s;
+}
+
+/* Matchup pills */
+.matchup-section-lcd { display: flex; flex-direction: column; gap: 6px; }
+.matchup-title-lcd { font-size: 5px; color: #88aaff; letter-spacing: .06em; margin-bottom: 3px; }
+.matchup-pills { display: flex; gap: 3px; flex-wrap: wrap; }
+.mpill { font-size: 5px; padding: 2px 4px; border: 1px solid; display: flex; align-items: center; gap: 2px; }
+.mpill .mmult { font-size: 6px; color: #ffffff; }
+.mpill.strong { border-color: #44cc44; color: #88ff88; }
+.mpill.weak   { border-color: #ff4444; color: #ff8888; }
+
+/* Concepts / attaques */
+.atk-list { display: flex; flex-direction: column; gap: 5px; }
+.atk-item {
+  border: 1px solid #003888;
+  padding: 4px 5px;
+  background: #001030;
+}
+.atk-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.atk-nom-lcd { font-size: 5px; color: #ffffff; letter-spacing: .04em; }
+.atk-pwr-lcd { font-size: 5px; color: #ffcc00; }
+.atk-type-lcd { font-size: 4px; padding: 1px 3px; border: 1px solid; margin-bottom: 2px; display: inline-block; }
+.atk-desc-lcd { font-size: 5px; color: #8899cc; line-height: 1.8; letter-spacing: .03em; }
+.atk-matchup-line { display: flex; gap: 3px; margin-top: 2px; align-items: center; }
+.atk-vs-lcd { font-size: 4px; color: #556699; }
+.atk-vs-pill { font-size: 4px; padding: 1px 3px; border: 1px solid; }
+
+/* Filiation */
+.fil-section { display: flex; flex-direction: column; gap: 6px; }
+.fil-label-lcd { font-size: 5px; color: #88aaff; letter-spacing: .06em; margin-bottom: 2px; }
+.fil-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; }
+.fil-tag-lcd { font-size: 5px; padding: 2px 4px; border: 1px solid #224488; color: #88aacc; background: #001030; cursor: pointer; }
+.fil-tag-lcd.self { border-color: #ffcc00; color: #ffcc00; background: #221800; }
+.fil-arrow-lcd { font-size: 6px; color: #334466; }
+.fil-hostile { border-color: #882200 !important; color: #ff6644 !important; background: #200800 !important; }
+
+/* Note champs neutres */
+.neutral-note { font-size: 5px; color: #445577; line-height: 1.8; letter-spacing: .03em; border-top: 1px solid #002050; padding-top: 5px; margin-top: 5px; }
+
+/* ══ LISTE / GRID POKÉDEX ══ */
+.dex-list-screen {
+  background: #001848;
+  border-radius: 3px;
+  padding: 8px;
+  min-height: 300px;
+  position: relative;
+}
+
+.dex-list-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.05) 2px,rgba(0,0,0,.05) 3px);
+  pointer-events: none;
+  border-radius: 3px;
+}
+
+.dex-list-header {
+  font-size: 6px;
+  color: #ffffff;
+  letter-spacing: .1em;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #003080;
+}
+
+/* Search input style LCD */
+.search-lcd {
+  width: 100%;
+  background: #002050;
+  border: 1px solid #003888;
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 5px 7px;
+  outline: none;
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+.search-lcd::placeholder { color: #334466; }
+.search-lcd:focus { border-color: #2050cc; }
+
+/* Filtres type */
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+
+.filter-champ {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.champ-lbl {
+  font-size: 4px;
+  color: #445577;
+  letter-spacing: .06em;
+  min-width: 60px;
+}
+
+.filter-chip {
+  font-size: 4px;
+  padding: 2px 5px;
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: .04em;
+  opacity: .5;
+  transition: opacity .15s;
+}
+.filter-chip.active, .filter-chip:hover { opacity: 1; }
+
+/* Liste d'entrées */
+.dex-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dex-entry-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 5px;
+  background: #001030;
+  border: 1px solid #002050;
+  cursor: pointer;
+  transition: border-color .1s, background .1s;
+}
+
+.dex-entry-row:hover {
+  border-color: #2050cc;
+  background: #001848;
+}
+
+.dex-entry-row.selected {
+  border-color: #ffcc00;
+  background: #181000;
+}
+
+.entry-sprite-thumb {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  background: #001848;
+  border: 1px solid #002878;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-sprite-thumb canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.entry-info { flex: 1; min-width: 0; }
+
+.entry-num-lcd { font-size: 4px; color: #445577; letter-spacing: .06em; }
+.entry-name-lcd { font-size: 6px; color: #ffffff; letter-spacing: .06em; margin: 2px 0; }
+.entry-types { display: flex; gap: 2px; flex-wrap: wrap; }
+.entry-type-lcd { font-size: 4px; padding: 1px 3px; border: 1px solid; }
+
+.entry-gen {
+  font-size: 4px;
+  color: #445577;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+}
+
+/* ══ BOUTONS PHYSIQUES ══ */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16px;
+  padding: 0 8px;
+}
+
+.dpad-wrap {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.dpad-h, .dpad-v {
+  position: absolute;
+  background: #111;
+  border-radius: 2px;
+}
+.dpad-h { width: 60px; height: 20px; top: 20px; left: 0; }
+.dpad-v { width: 20px; height: 60px; top: 0; left: 20px; }
+
+.dpad-center {
+  position: absolute;
+  width: 20px; height: 20px;
+  top: 20px; left: 20px;
+  background: #1a1a1a;
+  border-radius: 1px;
+  z-index: 1;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.btn-row { display: flex; gap: 6px; }
+
+.action-btn {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 0 rgba(0,0,0,.4);
+  transition: transform .05s;
+}
+.action-btn:active { transform: translateY(1px); box-shadow: none; }
+.btn-a { background: #cc2244; color: #fff; }
+.btn-b { background: #cc7700; color: #fff; }
+.btn-start, .btn-select {
+  width: 24px; height: 8px;
+  border-radius: 4px;
+  background: #771111;
+  border: none;
+  box-shadow: 0 1px 0 #440000;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 3px;
+  color: #cc4444;
+  letter-spacing: .04em;
+}
+
+.start-select-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* ══ FULL SCREEN DETAIL overlay ══ */
+.detail-view {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.detail-view.open { display: flex; }
+
+.detail-pokedex {
+  width: 100%;
+  max-width: 860px;
+  background: #cc2200;
+  border-radius: 16px 16px 60px 16px;
+  padding: 18px 18px 28px;
+  box-shadow:
+    inset 0 2px 0 #ff6644,
+    inset 0 -4px 0 #881100,
+    4px 6px 0 #440000;
+  position: relative;
+}
+
+.detail-pokedex::before {
+  content: '';
+  position: absolute;
+  top: 52px; left: 0; right: 0;
+  height: 6px;
+  background: #881100;
+  box-shadow: inset 0 1px 0 #cc2200, inset 0 -1px 0 #550000;
+}
+
+.detail-screens {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.close-btn-lcd {
+  font-size: 5px;
+  color: #ffcc00;
+  background: none;
+  border: 1px solid #ffcc00;
+  padding: 3px 6px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: .06em;
+}
+.close-btn-lcd:hover { background: #ffcc00; color: #000; }
+
+/* ══ TYPE COLORS — LCD adapté ══ */
+.tc-rationalisme   { border-color:#5588ee!important; color:#5588ee!important; }
+.tc-empirisme      { border-color:#44bb88!important; color:#44bb88!important; }
+.tc-scepticisme    { border-color:#8899dd!important; color:#8899dd!important; }
+.tc-idealisme      { border-color:#cc9900!important; color:#cc9900!important; }
+.tc-materialisme   { border-color:#997744!important; color:#997744!important; }
+.tc-deontologie    { border-color:#7799cc!important; color:#7799cc!important; }
+.tc-consequentialisme{ border-color:#66bb66!important; color:#66bb66!important; }
+.tc-vertu          { border-color:#bbbb44!important; color:#bbbb44!important; }
+.tc-liberalisme    { border-color:#44aaaa!important; color:#44aaaa!important; }
+.tc-marxisme       { border-color:#cc4444!important; color:#cc4444!important; }
+.tc-conservatisme  { border-color:#887755!important; color:#887755!important; }
+.tc-existentialisme{ border-color:#cc7733!important; color:#cc7733!important; }
+.tc-nihilisme      { border-color:#666699!important; color:#666699!important; }
+.tc-stoicisme      { border-color:#55aabb!important; color:#55aabb!important; }
+
+.fill-rationalisme   { background:#5588ee; }
+.fill-empirisme      { background:#44bb88; }
+.fill-scepticisme    { background:#8899dd; }
+.fill-idealisme      { background:#cc9900; }
+.fill-materialisme   { background:#997744; }
+.fill-deontologie    { background:#7799cc; }
+.fill-consequentialisme { background:#66bb66; }
+.fill-vertu          { background:#bbbb44; }
+.fill-liberalisme    { background:#44aaaa; }
+.fill-marxisme       { background:#cc4444; }
+.fill-conservatisme  { background:#887755; }
+.fill-existentialisme{ background:#cc7733; }
+.fill-nihilisme      { background:#666699; }
+.fill-stoicisme      { background:#55aabb; }
+
+@media (max-width: 600px) {
+  .detail-screens { grid-template-columns: 1fr; }
+  .screens-row { grid-template-columns: 1fr; }
+  .detail-pokedex { border-radius: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ POKÉDEX PRINCIPAL (liste) ══ -->
+<div class="pokedex-shell">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="light-big"></div>
+    <div class="lights-small">
+      <div class="light-sm red"></div>
+      <div class="light-sm yellow"></div>
+      <div class="light-sm green"></div>
+    </div>
+    <div class="pokedex-title">PHILODEX · v1.0</div>
+  </div>
+
+  <!-- Écran unique liste (pleine largeur) -->
+  <div class="screen-frame">
+    <div class="dex-list-screen" id="listScreen">
+      <div class="dex-list-header">▶ SÉLECTIONNER UN PHILOMON</div>
+
+      <input class="search-lcd" id="searchInput" type="text" placeholder="RECHERCHE...">
+
+      <div class="filter-section" id="champFilters"></div>
+
+      <div class="dex-entries" id="dexEntries"></div>
+    </div>
+  </div>
+
+  <!-- Boutons physiques -->
+  <div class="start-select-row">
+    <button class="btn-select">SELECT</button>
+    <button class="btn-start">START</button>
+  </div>
+  <div class="controls-row">
+    <div class="dpad-wrap">
+      <div class="dpad-h"></div>
+      <div class="dpad-v"></div>
+      <div class="dpad-center"></div>
+    </div>
+    <div class="action-buttons">
+      <div class="btn-row">
+        <div style="font-size:4px;color:#881100;margin-top:10px;letter-spacing:.05em">B</div>
+        <div style="font-size:4px;color:#881100;margin-top:4px;letter-spacing:.05em">A</div>
+      </div>
+      <div class="btn-row">
+        <button class="action-btn btn-b">B</button>
+        <button class="action-btn btn-a">A</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ OVERLAY DÉTAIL (s'ouvre en plein écran) ══ -->
+<div class="detail-view" id="detailView">
+  <div class="detail-pokedex">
+
+    <div class="top-bar">
+      <div class="light-big"></div>
+      <div class="lights-small">
+        <div class="light-sm red"></div>
+        <div class="light-sm yellow"></div>
+        <div class="light-sm green"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+        <span id="dDetailNum" style="font-size:6px;color:#ffddcc;letter-spacing:.1em"></span>
+        <button class="close-btn-lcd" id="closeBtn">✕ FERMER</button>
+      </div>
+    </div>
+
+    <div class="detail-screens">
+
+      <!-- Écran gauche : sprite + stats de base -->
+      <div class="screen-frame">
+        <div class="screen-left" id="detailLeft">
+          <div class="left-header">
+            <span class="poke-num" id="dNum"></span>
+            <span class="poke-name-lcd" id="dName"></span>
+          </div>
+          <div class="sprite-area" id="dSpriteArea"></div>
+          <div class="hp-section">
+            <div class="hp-row">
+              <span class="hp-label-lcd">INFL</span>
+              <div class="hp-bar-lcd"><div class="hp-fill-lcd" id="dHpFill"></div></div>
+              <span class="hp-label-lcd" id="dHpNum"></span>
+            </div>
+            <div class="type-row-lcd" id="dTypeLcd"></div>
+            <div style="margin-top:4px;font-size:5px;color:#3a4a10;letter-spacing:.04em" id="dDates"></div>
+            <div style="margin-top:2px;font-size:5px;color:#3a4a10;font-style:normal;letter-spacing:.03em;line-height:1.6" id="dOeuvre"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Écran droit : onglets -->
+      <div class="screen-frame">
+        <div class="screen-right" id="detailRight">
+          <div class="right-tabs">
+            <button class="rtab active" data-tab="entree">ENTRÉE</button>
+            <button class="rtab" data-tab="stats">STATS</button>
+            <button class="rtab" data-tab="matchups">TYPES</button>
+            <button class="rtab" data-tab="concepts">CONCEPTS</button>
+            <button class="rtab" data-tab="filiation">FILIATION</button>
+          </div>
+          <div class="right-content">
+            <div id="tab-entree" class="tpanel active"></div>
+            <div id="tab-stats" class="tpanel"></div>
+            <div id="tab-matchups" class="tpanel"></div>
+            <div id="tab-concepts" class="tpanel"></div>
+            <div id="tab-filiation" class="tpanel"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="start-select-row">
+      <button class="btn-select">SELECT</button>
+      <button class="btn-start">START</button>
+    </div>
+    <div class="controls-row">
+      <div class="dpad-wrap">
+        <div class="dpad-h"></div><div class="dpad-v"></div><div class="dpad-center"></div>
+      </div>
+      <div class="action-buttons">
+        <div class="btn-row">
+          <div style="font-size:4px;color:#881100;margin-top:10px;letter-spacing:.05em">B</div>
+          <div style="font-size:4px;color:#881100;margin-top:4px;letter-spacing:.05em">A</div>
+        </div>
+        <div class="btn-row">
+          <button class="action-btn btn-b" id="backBtn">B</button>
+          <button class="action-btn btn-a">A</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// PIXEL ENGINE
+// ══════════════════════════════════════════════════════════════════════════════
+const PROXY = 'https://corsproxy.io/?';
+
+const GB_PALETTE  = [[15,56,15],[48,98,48],[139,172,15],[155,188,15]];
+const GBC_PALETTE = [[8,24,32],[52,104,86],[136,192,112],[224,248,208],[200,76,28],[248,176,104],[168,56,16],[104,32,8],[64,64,64],[144,144,144],[216,216,216],[248,248,248],[32,56,144],[120,168,248],[56,144,200],[200,232,248]];
+
+function nearestColor(r,g,b,pal){let bi=0,bd=1e9;pal.forEach(([pr,pg,pb],i)=>{const d=(r-pr)**2+(g-pg)**2+(b-pb)**2;if(d<bd){bd=d;bi=i;}});return pal[bi];}
+
+function medianCut(pixels,depth=5){
+  if(!pixels.length)return[[128,128,128]];
+  let buckets=[pixels];
+  for(let d=0;d<depth;d++){
+    const next=[];
+    buckets.forEach(b=>{
+      if(b.length<2){next.push(b);return;}
+      let rn=255,rx=0,gn=255,gx=0,bn=255,bx=0;
+      b.forEach(([r,g,bv])=>{rn=Math.min(rn,r);rx=Math.max(rx,r);gn=Math.min(gn,g);gx=Math.max(gx,g);bn=Math.min(bn,bv);bx=Math.max(bx,bv);});
+      const ax=(rx-rn)>=(gx-gn)&&(rx-rn)>=(bx-bn)?0:(gx-gn)>=(bx-bn)?1:2;
+      b.sort((a,bv)=>a[ax]-bv[ax]);
+      const m=Math.floor(b.length/2);
+      next.push(b.slice(0,m),b.slice(m));
+    });
+    buckets=next;
+  }
+  return buckets.map(b=>{if(!b.length)return[128,128,128];const s=b.reduce((a,c)=>[a[0]+c[0],a[1]+c[1],a[2]+c[2]],[0,0,0]);return s.map(v=>Math.round(v/b.length));});
+}
+
+function floydSteinberg(data,w,h,pal){
+  const err=new Float32Array(w*h*3);
+  const out=new Uint8ClampedArray(w*h*4);
+  for(let y=0;y<h;y++){
+    for(let x=0;x<w;x++){
+      const i=(y*w+x)*4,ei=(y*w+x)*3;
+      const r=Math.max(0,Math.min(255,data[i]+err[ei]));
+      const g=Math.max(0,Math.min(255,data[i+1]+err[ei+1]));
+      const bv=Math.max(0,Math.min(255,data[i+2]+err[ei+2]));
+      const [nr,ng,nb]=nearestColor(r,g,bv,pal);
+      out[i]=nr;out[i+1]=ng;out[i+2]=nb;out[i+3]=255;
+      const er=r-nr,eg=g-ng,eb=bv-nb;
+      const add=(dx,dy,f)=>{const nx=x+dx,ny=y+dy;if(nx>=0&&nx<w&&ny<h){const e2=(ny*w+nx)*3;err[e2]+=er*f;err[e2+1]+=eg*f;err[e2+2]+=eb*f;}};
+      add(1,0,7/16);add(-1,1,3/16);add(0,1,5/16);add(1,1,1/16);
+    }
+  }
+  return out;
+}
+
+async function pixelizeImage(url,gen){
+  return new Promise(resolve=>{
+    const SZ=gen===3?64:56, SC=2;
+    const tmp=document.createElement('canvas');tmp.width=SZ;tmp.height=SZ;
+    const ctx=tmp.getContext('2d');
+    const img=new Image();img.crossOrigin='anonymous';
+    img.onload=()=>{
+      const s=Math.min(img.width,img.height);
+      ctx.drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,SZ,SZ);
+      const raw=ctx.getImageData(0,0,SZ,SZ);
+      let pal;
+      if(gen===1){
+        pal=GB_PALETTE;
+        for(let i=0;i<raw.data.length;i+=4){const gr=Math.round(raw.data[i]*.299+raw.data[i+1]*.587+raw.data[i+2]*.114);raw.data[i]=gr;raw.data[i+1]=gr;raw.data[i+2]=gr;}
+      } else if(gen===2){
+        pal=GBC_PALETTE;
+      } else {
+        const px=[];for(let i=0;i<raw.data.length;i+=4)if(raw.data[i+3]>128)px.push([raw.data[i],raw.data[i+1],raw.data[i+2]]);
+        pal=medianCut(px,5);
+      }
+      const dith=floydSteinberg(raw.data,SZ,SZ,pal);
+      const out=document.createElement('canvas');out.width=SZ*SC;out.height=SZ*SC;
+      const oc=out.getContext('2d');oc.imageSmoothingEnabled=false;
+      for(let y=0;y<SZ;y++)for(let x=0;x<SZ;x++){const i=(y*SZ+x)*4;oc.fillStyle=`rgb(${dith[i]},${dith[i+1]},${dith[i+2]})`;oc.fillRect(x*SC,y*SC,SC,SC);}
+      if(gen===1){oc.globalCompositeOperation='multiply';oc.fillStyle='rgba(155,188,15,.25)';oc.fillRect(0,0,SZ*SC,SZ*SC);oc.globalCompositeOperation='source-over';}
+      resolve(out);
+    };
+    img.onerror=()=>resolve(null);
+    img.src=PROXY+encodeURIComponent(url);
+  });
+}
+
+function placeholderCanvas(size){
+  const c=document.createElement('canvas');c.width=size;c.height=size;
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='#002050';ctx.fillRect(0,0,size,size);
+  ctx.fillStyle='#334466';ctx.font=`${Math.floor(size*.25)}px monospace`;
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('???',size/2,size/2);
+  return c;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// TYPE SYSTEM
+// ══════════════════════════════════════════════════════════════════════════════
+const CHAMPS={
+  "ÉPISTÉM.":{color:"#5588ee",types:["Rationalisme","Empirisme","Scepticisme"],matchups:{"Rationalisme":{"Rationalisme":1,"Empirisme":.5,"Scepticisme":2},"Empirisme":{"Rationalisme":2,"Empirisme":1,"Scepticisme":.5},"Scepticisme":{"Rationalisme":.5,"Empirisme":2,"Scepticisme":1}}},
+  "MÉTAPHYS.":{color:"#cc9900",types:["Idéalisme","Matérialisme"],matchups:{"Idéalisme":{"Idéalisme":1,"Matérialisme":.5},"Matérialisme":{"Idéalisme":2,"Matérialisme":1}}},
+  "ÉTHIQUE":{color:"#66bb66",types:["Déontologie","Conséquentialisme","Vertu"],matchups:{"Déontologie":{"Déontologie":1,"Conséquentialisme":2,"Vertu":.5},"Conséquentialisme":{"Déontologie":.5,"Conséquentialisme":1,"Vertu":2},"Vertu":{"Déontologie":2,"Conséquentialisme":.5,"Vertu":1}}},
+  "POLITIQUE":{color:"#44aaaa",types:["Libéralisme","Marxisme","Conservatisme"],matchups:{"Libéralisme":{"Libéralisme":1,"Marxisme":.5,"Conservatisme":2},"Marxisme":{"Libéralisme":2,"Marxisme":1,"Conservatisme":.5},"Conservatisme":{"Libéralisme":.5,"Marxisme":2,"Conservatisme":1}}},
+  "EXISTENTL":{color:"#cc7733",types:["Existentialisme","Nihilisme","Stoïcisme"],matchups:{"Existentialisme":{"Existentialisme":1,"Nihilisme":2,"Stoïcisme":.5},"Nihilisme":{"Existentialisme":.5,"Nihilisme":1,"Stoïcisme":2},"Stoïcisme":{"Existentialisme":2,"Nihilisme":.5,"Stoïcisme":1}}},
+};
+function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');}
+function tClass(t){return 'tc-'+normalize(t);}
+function fillClass(t){return 'fill-'+normalize(t);}
+function champOf(t){for(const[c,d]of Object.entries(CHAMPS))if(d.types.includes(t))return c;return null;}
+function computeDefMatchups(types){const r={fort:[],faible:[]};for(const[ch,cd]of Object.entries(CHAMPS))for(const at of cd.types){let m=1,has=false;for(const dt of types){if(champOf(dt)!==ch)continue;const v=cd.matchups?.[at]?.[dt];if(v!==undefined){m*=v;has=true;}}if(!has)continue;if(m>=2)r.fort.push({type:at,champ:ch});else if(m<=.5)r.faible.push({type:at,champ:ch});}return r;}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════════════════════════════
+const PHILOMON=[
+  {id:"001",nom:"DESCARTES",full:"René Descartes",dates:"1596-1650",types:["Rationalisme"],lieu:"France",oeuvre:"Méd. Métaphysiques",gen:1,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
+   stats:{INFLUENCE:92,CLARTÉ:75,RADICALITÉ:85,LONGÉVITÉ:95,ACCÈS:62},
+   entree:"Fondateur du rationalisme moderne, Descartes cherche un point de certitude absolue. En éliminant méthodiquement toute croyance incertaine, il découvre que l'acte même de douter prouve l'existence du sujet pensant.",
+   concepts:[{nom:"LE COGITO",type:"Rationalisme",puissance:95,desc:"Je pense donc je suis. Seule certitude résistant au doute radical."},{nom:"DOUTE HYPERBOLIQUE",type:"Rationalisme",puissance:80,desc:"Rejeter tout ce qui peut être mis en doute, même le soupçon le plus infime."},{nom:"LE DUALISME",type:"Idéalisme",puissance:65,desc:"Distinction entre substance pensante (res cogitans) et étendue (res extensa)."}],
+   filiation:{maitres:["AUGUSTIN","PLATON"],disciples:["SPINOZA","LEIBNIZ","MALEBRANCHE"],contre:["HUME","LOCKE"]}},
+  {id:"002",nom:"KANT",full:"Emmanuel Kant",dates:"1724-1804",types:["Rationalisme","Déontologie"],lieu:"Prusse",oeuvre:"Critique R. Pure",gen:2,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_%28painted_portrait%29.jpg",
+   stats:{INFLUENCE:98,CLARTÉ:28,RADICALITÉ:90,LONGÉVITÉ:98,ACCÈS:18},
+   entree:"Kant opère une révolution copernicienne : les objets se conforment aux structures de notre esprit et non l'inverse. Il délimite ce que la raison peut connaître, ce qu'elle doit faire, et ce qu'elle peut espérer.",
+   concepts:[{nom:"IMPÉRATIF CATÉGORIQUE",type:"Déontologie",puissance:97,desc:"Agis selon la maxime qui peut être érigée en loi universelle — sans exception."},{nom:"CATÉGORIES DE L'ENTENDEMENT",type:"Rationalisme",puissance:85,desc:"Structures a priori que l'esprit impose à toute expérience possible."},{nom:"LA CHOSE EN SOI",type:"Rationalisme",puissance:78,desc:"La réalité hors de toute perception humaine — éternellement inaccessible."}],
+   filiation:{maitres:["HUME","LEIBNIZ","ROUSSEAU"],disciples:["FICHTE","SCHELLING","HEGEL"],contre:["HEGEL (chose-en-soi)","NIETZSCHE"]}},
+  {id:"003",nom:"HEGEL",full:"G.W.F. Hegel",dates:"1770-1831",types:["Idéalisme"],lieu:"Allemagne",oeuvre:"Phénomén. de l'Esprit",gen:2,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/c/cf/Georg_Wilhelm_Friedrich_Hegel_%28by_Schlesinger_1831%29.jpg",
+   stats:{INFLUENCE:99,CLARTÉ:10,RADICALITÉ:97,LONGÉVITÉ:92,ACCÈS:8},
+   entree:"La réalité est un processus dialectique : l'Esprit absolu se déploie dans l'histoire, se connaît en se divisant et se réconcilie dans la synthèse. Tout est mouvement, contradiction, dépassement.",
+   concepts:[{nom:"LA DIALECTIQUE",type:"Idéalisme",puissance:99,desc:"Thèse→Antithèse→Synthèse. Le réel se développe par la contradiction et son dépassement."},{nom:"L'AUFHEBUNG",type:"Idéalisme",puissance:88,desc:"Dépasser en conservant : la négation élève à un niveau supérieur plutôt qu'elle n'abolit."},{nom:"L'ESPRIT ABSOLU",type:"Idéalisme",puissance:82,desc:"Le réel est rationnel, le rationnel est réel. L'histoire marche vers l'Esprit."}],
+   filiation:{maitres:["KANT","FICHTE","HÉRACLITE"],disciples:["MARX","ADORNO","KOJÈVE"],contre:["SCHOPENHAUER","KIERKEGAARD"]}},
+  {id:"004",nom:"HUME",full:"David Hume",dates:"1711-1776",types:["Empirisme","Scepticisme"],lieu:"Écosse",oeuvre:"Traité Nature Humaine",gen:1,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/e/ea/Painting_of_David_Hume.jpg",
+   stats:{INFLUENCE:90,CLARTÉ:72,RADICALITÉ:88,LONGÉVITÉ:88,ACCÈS:55},
+   entree:"Hume pousse l'empirisme à ses limites radicales. Rien ne vient que de l'expérience — ni la causalité, ni le moi, ni Dieu. Ce scepticisme réveille Kant de son sommeil dogmatique.",
+   concepts:[{nom:"CRITIQUE CAUSALITÉ",type:"Scepticisme",puissance:92,desc:"La causalité n'est qu'une habitude psychologique, jamais une nécessité observable."},{nom:"FAISCEAU PERCEPTIONS",type:"Empirisme",puissance:85,desc:"Le moi n'est pas une substance mais un flux de perceptions sans unité fixe."},{nom:"GUILLOTINE DE HUME",type:"Scepticisme",puissance:80,desc:"On ne peut dériver un devoir d'un fait — abîme logique entre descriptif et normatif."}],
+   filiation:{maitres:["LOCKE","BERKELEY","BACON"],disciples:["KANT (réaction)","BENTHAM","MILL"],contre:["DESCARTES","LEIBNIZ"]}},
+  {id:"005",nom:"SARTRE",full:"Jean-Paul Sartre",dates:"1905-1980",types:["Existentialisme"],lieu:"France",oeuvre:"L'Être et le Néant",gen:3,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/0/05/Jean-Paul_Sartre.jpg",
+   stats:{INFLUENCE:88,CLARTÉ:55,RADICALITÉ:90,LONGÉVITÉ:78,ACCÈS:60},
+   entree:"L'existence précède l'essence : l'homme n'est rien d'autre que ce qu'il se fait. Condamné à être libre, sans nature donnée ni Dieu pour le définir, chacun est seul responsable de lui-même.",
+   concepts:[{nom:"EXISTENCE PRÉCÈDE ESSENCE",type:"Existentialisme",puissance:95,desc:"Il n'y a pas de nature humaine préétablie : on devient ce qu'on choisit d'être."},{nom:"LA MAUVAISE FOI",type:"Existentialisme",puissance:85,desc:"Feindre d'être déterminé comme une chose pour fuir le vertige de la liberté."},{nom:"POUR-SOI / EN-SOI",type:"Existentialisme",puissance:75,desc:"L'En-soi est la chose figée ; le Pour-soi est la conscience, néant qui se projette."}],
+   filiation:{maitres:["HEIDEGGER","HUSSERL","HEGEL"],disciples:["BEAUVOIR","FANON","MERLEAU-PONTY"],contre:["LÉVI-STRAUSS","ALTHUSSER"]}},
+  {id:"006",nom:"NIETZSCHE",full:"Friedrich Nietzsche",dates:"1844-1900",types:["Existentialisme","Nihilisme"],lieu:"Allemagne",oeuvre:"Zarathoustra",gen:3,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Nietzsche187a.jpg",
+   stats:{INFLUENCE:96,CLARTÉ:40,RADICALITÉ:99,LONGÉVITÉ:94,ACCÈS:50},
+   entree:"Dieu est mort — c'est nous qui l'avons tué. Face au nihilisme, Nietzsche appelle à la transmutation de toutes les valeurs. La Volonté de puissance et l'Éternel Retour défient quiconque ose vivre sans illusions.",
+   concepts:[{nom:"LA MORT DE DIEU",type:"Nihilisme",puissance:99,desc:"Le fondement absolu s'est effondré — reste à créer de nouvelles valeurs à partir de rien."},{nom:"VOLONTÉ DE PUISSANCE",type:"Existentialisme",puissance:90,desc:"Non la domination brutale, mais le débordement créateur qui cherche à se surpasser."},{nom:"L'ÉTERNEL RETOUR",type:"Existentialisme",puissance:85,desc:"Vivrais-tu ta vie à l'identique si elle se répétait infiniment ? Pensée-test suprême."}],
+   filiation:{maitres:["SCHOPENHAUER","HÉRACLITE"],disciples:["HEIDEGGER","DELEUZE","CAMUS"],contre:["KANT","HEGEL","SOCRATE"]}},
+  {id:"007",nom:"MILL",full:"John Stuart Mill",dates:"1806-1873",types:["Conséquentialisme","Libéralisme"],lieu:"Angleterre",oeuvre:"L'Utilitarisme",gen:2,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/6/63/John_Stuart_Mill_by_John_Watkins.jpg",
+   stats:{INFLUENCE:85,CLARTÉ:80,RADICALITÉ:70,LONGÉVITÉ:85,ACCÈS:72},
+   entree:"Mill raffine l'utilitarisme en distinguant les plaisirs par qualité. Mieux vaut être Socrate insatisfait qu'un imbécile satisfait. La liberté individuelle est la condition du progrès collectif.",
+   concepts:[{nom:"PRINCIPE D'UTILITÉ",type:"Conséquentialisme",puissance:88,desc:"L'action juste maximise le bonheur du plus grand nombre, en qualité et quantité."},{nom:"PRINCIPE NON-NUISANCE",type:"Libéralisme",puissance:85,desc:"La liberté n'a pour limite que le tort causé à autrui — pas la morale collective."},{nom:"HIÉRARCHIE DES PLAISIRS",type:"Conséquentialisme",puissance:72,desc:"Les plaisirs intellectuels valent plus que les plaisirs sensoriels."}],
+   filiation:{maitres:["BENTHAM","RICARDO","TOCQUEVILLE"],disciples:["RAWLS","SINGER"],contre:["KANT","MARX"]}},
+  {id:"008",nom:"ÉPICTÈTE",full:"Épictète",dates:"50-135 ap. J.-C.",types:["Stoïcisme"],lieu:"Empire Romain",oeuvre:"Manuel (Enchiridion)",gen:1,
+   imgUrl:"https://upload.wikimedia.org/wikipedia/commons/9/90/Epictetus.jpg",
+   stats:{INFLUENCE:82,CLARTÉ:90,RADICALITÉ:78,LONGÉVITÉ:90,ACCÈS:85},
+   entree:"Ancien esclave devenu sage, Épictète enseigne que la liberté est la maîtrise de ce qui dépend de nous. Ce qui n'en dépend pas — maladie, mort, opinion d'autrui — ne mérite ni désir ni crainte.",
+   concepts:[{nom:"DICHOTOMIE DU CONTRÔLE",type:"Stoïcisme",puissance:90,desc:"Distinguer ce qui dépend de nous de ce qui n'en dépend pas — et n'agir que sur le premier."},{nom:"REPRÉSENTATION (PHANTASIA)",type:"Stoïcisme",puissance:75,desc:"Ce ne sont pas les événements qui troublent mais nos représentations d'eux."},{nom:"LE RÔLE (PROSÔPON)",type:"Stoïcisme",puissance:68,desc:"Jouer parfaitement le rôle que le destin nous a assigné, sans s'y identifier."}],
+   filiation:{maitres:["ZÉNON DE CITIUM","CHRYSIPPE","MUSONIUS RUFUS"],disciples:["MARC AURÈLE","ARRIEN"],contre:["ÉPICURE"]}},
+];
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SPRITE CACHE
+// ══════════════════════════════════════════════════════════════════════════════
+const spriteCache={};
+const GEN_NAMES={1:"GEN I · GB",2:"GEN II · GBC",3:"GEN III · GBA"};
+const GEN_COLORS={1:"#44aa00",2:"#cc9900",3:"#5588ee"};
+
+async function getSprite(p,size){
+  const key=`${p.id}_${size}`;
+  if(spriteCache[key])return spriteCache[key].cloneNode(true);
+  const c=await pixelizeImage(p.imgUrl,p.gen);
+  if(!c){const ph=placeholderCanvas(size);spriteCache[key]=ph;return ph.cloneNode(true);}
+  const out=document.createElement('canvas');out.width=size;out.height=size;
+  const ctx=out.getContext('2d');ctx.imageSmoothingEnabled=false;
+  ctx.drawImage(c,0,0,size,size);
+  spriteCache[key]=out;
+  return out.cloneNode(true);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// BUILD CHIPS
+// ══════════════════════════════════════════════════════════════════════════════
+const champFiltersEl=document.getElementById('champFilters');
+for(const[champ,cd]of Object.entries(CHAMPS)){
+  const row=document.createElement('div');row.className='filter-champ';
+  const lbl=document.createElement('span');lbl.className='champ-lbl';
+  lbl.style.color=cd.color+'bb';lbl.textContent=champ;row.appendChild(lbl);
+  cd.types.forEach(t=>{
+    const chip=document.createElement('div');chip.className='filter-chip';chip.dataset.type=t;
+    chip.textContent=t.toUpperCase();chip.style.borderColor=cd.color;chip.style.color=cd.color;
+    row.appendChild(chip);
+  });
+  champFiltersEl.appendChild(row);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RENDER LIST
+// ══════════════════════════════════════════════════════════════════════════════
+function renderList(items){
+  const container=document.getElementById('dexEntries');container.innerHTML='';
+  items.forEach(p=>{
+    const row=document.createElement('div');row.className='dex-entry-row';
+
+    const thumb=document.createElement('div');thumb.className='entry-sprite-thumb';
+    const ph=placeholderCanvas(34);thumb.appendChild(ph);
+    getSprite(p,34).then(c=>{thumb.innerHTML='';thumb.appendChild(c);});
+
+    const info=document.createElement('div');info.className='entry-info';
+    info.innerHTML=`<div class="entry-num-lcd">#${p.id}</div><div class="entry-name-lcd">${p.nom}</div><div class="entry-types">${p.types.map(t=>`<span class="entry-type-lcd ${tClass(t)}">${t.substring(0,5).toUpperCase()}</span>`).join('')}</div>`;
+
+    const gen=document.createElement('div');gen.className='entry-gen';
+    gen.textContent=GEN_NAMES[p.gen];gen.style.color=GEN_COLORS[p.gen];
+
+    row.appendChild(thumb);row.appendChild(info);row.appendChild(gen);
+    row.addEventListener('click',()=>openDetail(p));
+    container.appendChild(row);
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// OPEN DETAIL
+// ══════════════════════════════════════════════════════════════════════════════
+async function openDetail(p){
+  // Gauche
+  document.getElementById('dDetailNum').textContent=`#${p.id}`;
+  document.getElementById('dNum').textContent=`#${p.id}`;
+  document.getElementById('dName').textContent=p.nom;
+  document.getElementById('dDates').textContent=p.dates+' · '+p.lieu;
+  document.getElementById('dOeuvre').textContent=p.oeuvre;
+
+  const inf=p.stats.INFLUENCE;
+  document.getElementById('dHpNum').textContent=`${inf}`;
+  const fill=document.getElementById('dHpFill');
+  fill.style.width=inf+'%';
+  fill.className='hp-fill-lcd'+(inf>=50?'':inf>=25?' mid':' low');
+
+  document.getElementById('dTypeLcd').innerHTML=p.types.map(t=>`<span class="type-badge-lcd ${tClass(t)}">${t.toUpperCase()}</span>`).join('');
+
+  const spriteArea=document.getElementById('dSpriteArea');spriteArea.innerHTML='';
+  const ph=placeholderCanvas(100);spriteArea.appendChild(ph);
+  getSprite(p,100).then(c=>{spriteArea.innerHTML='';spriteArea.appendChild(c);});
+
+  // Tab : Entrée
+  document.getElementById('tab-entree').innerHTML=`<p class="dex-entry">${p.entree}</p>`;
+
+  // Tab : Stats
+  document.getElementById('tab-stats').innerHTML=`<div class="stat-block">${Object.entries(p.stats).map(([k,v])=>`<div class="stat-line"><span class="stat-name-lcd">${k}</span><span class="stat-num-lcd">${v}</span><div class="stat-bar-lcd"><div class="stat-fill-lcd ${fillClass(p.types[0])}" style="width:${v}%"></div></div></div>`).join('')}</div>`;
+
+  // Tab : Matchups
+  const dm=computeDefMatchups(p.types);
+  const myChamps=[...new Set(p.types.map(champOf).filter(Boolean))];
+  const other=Object.keys(CHAMPS).filter(c=>!myChamps.includes(c));
+  let mh='<div class="matchup-section-lcd">';
+  if(dm.fort.length)mh+=`<div><div class="matchup-title-lcd">▲ RÉSISTANCES (×½ SUBI)</div><div class="matchup-pills">${dm.fort.map(e=>`<div class="mpill strong"><span class="${tClass(e.type)}">${e.type.toUpperCase()}</span><span class="mmult">×½</span></div>`).join('')}</div></div>`;
+  if(dm.faible.length)mh+=`<div><div class="matchup-title-lcd">▼ FAIBLESSES (×2 SUBI)</div><div class="matchup-pills">${dm.faible.map(e=>`<div class="mpill weak"><span class="${tClass(e.type)}">${e.type.toUpperCase()}</span><span class="mmult">×2</span></div>`).join('')}</div></div>`;
+  if(other.length)mh+=`<div class="neutral-note">INCOMMENSURABLE : ${other.join(', ')}</div>`;
+  mh+='</div>';
+  document.getElementById('tab-matchups').innerHTML=mh;
+
+  // Tab : Concepts
+  const ch=`<div class="atk-list">${p.concepts.map(c=>{
+    const offRows=[];
+    for(const[ch2,cd]of Object.entries(CHAMPS)){if(champOf(c.type)!==ch2)continue;for(const dt of cd.types){if(dt===c.type)continue;const m=cd.matchups?.[c.type]?.[dt];if(m&&m!==1)offRows.push(`<div class="atk-matchup-line"><span class="atk-vs-lcd">VS</span><span class="atk-vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span><span style="font-size:5px;font-weight:bold;color:${m>=2?'#44ff44':'#ff4444'}">${m>=2?'×2':'×½'}</span></div>`);}}
+    return `<div class="atk-item"><div class="atk-top"><span class="atk-nom-lcd">${c.nom}</span><span class="atk-pwr-lcd">PWR ${c.puissance}</span></div><span class="atk-type-lcd ${tClass(c.type)}">${c.type.toUpperCase()}</span><div class="atk-desc-lcd">${c.desc}</div>${offRows.join('')}</div>`;
+  }).join('')}</div>`;
+  document.getElementById('tab-concepts').innerHTML=ch;
+
+  // Tab : Filiation
+  const f=p.filiation;
+  document.getElementById('tab-filiation').innerHTML=`<div class="fil-section"><div class="fil-label-lcd">INFLUENCES REÇUES</div><div class="fil-chain">${f.maitres.map(m=>`<span class="fil-tag-lcd">${m}</span>`).join('')}<span class="fil-arrow-lcd">▶</span><span class="fil-tag-lcd self">${p.nom}</span></div><div class="fil-label-lcd" style="margin-top:8px">DISCIPLES</div><div class="fil-chain"><span class="fil-tag-lcd self">${p.nom}</span><span class="fil-arrow-lcd">▶</span>${f.disciples.map(d=>`<span class="fil-tag-lcd">${d}</span>`).join('')}</div>${f.contre?.length?`<div class="fil-label-lcd" style="margin-top:8px;color:#cc4444">OPPOSITIONS</div><div class="fil-chain">${f.contre.map(c=>`<span class="fil-tag-lcd fil-hostile">${c}</span>`).join('')}</div>`:''}</div>`;
+
+  // Reset tabs
+  document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tpanel').forEach(t=>{t.style.display='none';t.classList.remove('active');});
+  document.querySelector('.rtab[data-tab="entree"]').classList.add('active');
+  const ep=document.getElementById('tab-entree');ep.style.display='block';ep.classList.add('active');
+
+  document.getElementById('detailView').classList.add('open');
+  document.querySelector('.right-content').scrollTop=0;
+}
+
+// Tabs
+document.querySelectorAll('.rtab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tpanel').forEach(t=>{t.style.display='none';t.classList.remove('active');});
+    btn.classList.add('active');
+    const p=document.getElementById(`tab-${btn.dataset.tab}`);
+    p.style.display='block';p.classList.add('active');
+  });
+});
+document.querySelectorAll('.tpanel').forEach(p=>p.style.display='none');
+document.getElementById('tab-entree').style.display='block';
+
+document.getElementById('closeBtn').addEventListener('click',()=>document.getElementById('detailView').classList.remove('open'));
+document.getElementById('backBtn').addEventListener('click',()=>document.getElementById('detailView').classList.remove('open'));
+
+// Filtres
+let activeType=null;
+document.addEventListener('click',e=>{
+  const chip=e.target.closest('.filter-chip');if(!chip)return;
+  const t=chip.dataset.type;
+  if(activeType===t){activeType=null;chip.classList.remove('active');}
+  else{document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));chip.classList.add('active');activeType=t;}
+  applyFilters();
+});
+document.getElementById('searchInput').addEventListener('input',applyFilters);
+
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  const res=PHILOMON.filter(p=>{
+    const mq=!q||p.nom.toLowerCase().includes(q)||p.full.toLowerCase().includes(q)||p.types.some(t=>t.toLowerCase().includes(q))||p.concepts.some(c=>c.nom.toLowerCase().includes(q));
+    const mt=!activeType||p.types.includes(activeType);
+    return mq&&mt;
+  });
+  renderList(res);
+}
+
+renderList(PHILOMON);
+</script>
+</body>
+</html>
