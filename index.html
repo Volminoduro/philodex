@@ -1121,7 +1121,32 @@ function t(k) { return I18N[lang][k]; }
 // ══════════════════════════════════════════════════════════════════════════════
 // PIXEL ART ENGINE
 // ══════════════════════════════════════════════════════════════════════════════
-const PROXY = 'https://corsproxy.io/?';
+// Wikimedia Commons API — CORS-enabled via ?origin=* (no proxy needed).
+// The API returns a thumbnail URL which is then loaded directly into a canvas.
+const WIKIMEDIA_API = 'https://commons.wikimedia.org/w/api.php';
+
+/**
+ * Resolves a Wikimedia Commons file URL to a CORS-accessible thumbnail URL.
+ * Uses the MediaWiki action API with origin=* which Wikimedia explicitly supports.
+ * @param {string} fileUrl - Full commons upload URL
+ * @param {number} width   - Requested thumbnail width in pixels
+ * @returns {Promise<string|null>} - Thumb URL, or null on failure
+ */
+async function resolveWikimediaThumb(fileUrl, width = 300) {
+  // Extract the filename from the URL (last path segment, URL-decoded)
+  const filename = decodeURIComponent(fileUrl.split('/').pop());
+  const title = 'File:' + filename;
+  const apiUrl = `${WIKIMEDIA_API}?action=query&titles=${encodeURIComponent(title)}&prop=imageinfo&iiprop=url&iiurlwidth=${width}&format=json&origin=*`;
+  try {
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+    const pages = json.query.pages;
+    const page = Object.values(pages)[0];
+    return page?.imageinfo?.[0]?.thumburl || null;
+  } catch {
+    return null;
+  }
+}
 const GB_PALETTE  = [[15,56,15],[48,98,48],[139,172,15],[155,188,15]];
 const GBC_PALETTE = [[8,24,32],[52,104,86],[136,192,112],[224,248,208],[200,76,28],[248,176,104],[168,56,16],[104,32,8],[64,64,64],[144,144,144],[216,216,216],[248,248,248],[32,56,144],[120,168,248],[56,144,200],[200,232,248]];
 
@@ -1139,29 +1164,63 @@ function floydSteinberg(data,w,h,pal){
   return out;
 }
 
-/** Fetches and pixelizes a philosopher portrait for the given generation. */
-async function pixelizeImage(url,gen){
-  return new Promise(resolve=>{
-    const SZ=gen===3?64:56,SC=2;
-    const tmp=document.createElement('canvas');tmp.width=SZ;tmp.height=SZ;
-    const ctx=tmp.getContext('2d');
-    const img=new Image();img.crossOrigin='anonymous';
-    img.onload=()=>{
-      const s=Math.min(img.width,img.height);
-      ctx.drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,SZ,SZ);
-      const raw=ctx.getImageData(0,0,SZ,SZ);let pal;
-      if(gen===1){pal=GB_PALETTE;for(let i=0;i<raw.data.length;i+=4){const gr=Math.round(raw.data[i]*.299+raw.data[i+1]*.587+raw.data[i+2]*.114);raw.data[i]=gr;raw.data[i+1]=gr;raw.data[i+2]=gr;}}
-      else if(gen===2){pal=GBC_PALETTE;}
-      else{const px=[];for(let i=0;i<raw.data.length;i+=4)if(raw.data[i+3]>128)px.push([raw.data[i],raw.data[i+1],raw.data[i+2]]);pal=medianCut(px,5);}
-      const dith=floydSteinberg(raw.data,SZ,SZ,pal);
-      const out=document.createElement('canvas');out.width=SZ*SC;out.height=SZ*SC;
-      const oc=out.getContext('2d');oc.imageSmoothingEnabled=false;
-      for(let y=0;y<SZ;y++)for(let x=0;x<SZ;x++){const i=(y*SZ+x)*4;oc.fillStyle=`rgb(${dith[i]},${dith[i+1]},${dith[i+2]})`;oc.fillRect(x*SC,y*SC,SC,SC);}
-      if(gen===1){oc.globalCompositeOperation='multiply';oc.fillStyle='rgba(155,188,15,.25)';oc.fillRect(0,0,SZ*SC,SZ*SC);oc.globalCompositeOperation='source-over';}
+/**
+ * Fetches a philosopher portrait via the Wikimedia Commons API (no proxy),
+ * then applies generation-appropriate pixelization and dithering.
+ * @param {string} url - Original Wikimedia commons upload URL
+ * @param {number} gen - Generation (1=Game Boy, 2=GBC, 3=GBA)
+ * @returns {Promise<HTMLCanvasElement|null>}
+ */
+async function pixelizeImage(url, gen) {
+  const SZ = gen === 3 ? 64 : 56, SC = 2;
+  // Request a thumbnail sized for pixelization (2× the target canvas size)
+  const thumbUrl = await resolveWikimediaThumb(url, SZ * 2);
+  if (!thumbUrl) return null;
+
+  return new Promise(resolve => {
+    const tmp = document.createElement('canvas'); tmp.width = SZ; tmp.height = SZ;
+    const ctx = tmp.getContext('2d');
+    const img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const s = Math.min(img.width, img.height);
+      ctx.drawImage(img, (img.width-s)/2, (img.height-s)/2, s, s, 0, 0, SZ, SZ);
+      const raw = ctx.getImageData(0, 0, SZ, SZ); let pal;
+      if (gen === 1) {
+        pal = GB_PALETTE;
+        // Desaturate to grayscale before applying the 4-shade GB palette
+        for (let i = 0; i < raw.data.length; i += 4) {
+          const gr = Math.round(raw.data[i]*.299 + raw.data[i+1]*.587 + raw.data[i+2]*.114);
+          raw.data[i] = raw.data[i+1] = raw.data[i+2] = gr;
+        }
+      } else if (gen === 2) {
+        pal = GBC_PALETTE;
+      } else {
+        // Gen 3: derive a custom 32-color palette from the image via median cut
+        const px = [];
+        for (let i = 0; i < raw.data.length; i += 4)
+          if (raw.data[i+3] > 128) px.push([raw.data[i], raw.data[i+1], raw.data[i+2]]);
+        pal = medianCut(px, 5);
+      }
+      const dith = floydSteinberg(raw.data, SZ, SZ, pal);
+      const out = document.createElement('canvas'); out.width = SZ*SC; out.height = SZ*SC;
+      const oc = out.getContext('2d'); oc.imageSmoothingEnabled = false;
+      for (let y = 0; y < SZ; y++)
+        for (let x = 0; x < SZ; x++) {
+          const i = (y*SZ+x)*4;
+          oc.fillStyle = `rgb(${dith[i]},${dith[i+1]},${dith[i+2]})`;
+          oc.fillRect(x*SC, y*SC, SC, SC);
+        }
+      // Gen 1: overlay a greenish LCD tint
+      if (gen === 1) {
+        oc.globalCompositeOperation = 'multiply';
+        oc.fillStyle = 'rgba(155,188,15,.25)';
+        oc.fillRect(0, 0, SZ*SC, SZ*SC);
+        oc.globalCompositeOperation = 'source-over';
+      }
       resolve(out);
     };
-    img.onerror=()=>resolve(null);
-    img.src=PROXY+encodeURIComponent(url);
+    img.onerror = () => resolve(null);
+    img.src = thumbUrl;
   });
 }
 
