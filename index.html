@@ -1,53 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Philodex</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-/* ══════════════════════════════════════════════════════════════════
-   DESIGN TOKENS
-   ══════════════════════════════════════════════════════════════════ */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHILODEX — Pokédex de la Philosophie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
 :root {
-  /* Shell colors */
-  --shell-red:    #cc2200;
-  --shell-red-hi: #ff5533;
-  --shell-red-lo: #881100;
-  --shell-darkest:#440000;
-
-  /* App background */
-  --bg:           #0d0d1a;
-  --bg-mid:       #131325;
-  --bg-card:      #0e1428;
-  --bg-card-alt:  #060e1e;
-
-  /* LCD screens */
-  --lcd-green-bg: #c8d8a0;
-  --lcd-green-hi: #d8e8b0;
-  --lcd-green-px: #8a9a60;
-  --lcd-green-txt:#1a2800;
-  --lcd-blue-bg:  #001030;
-  --lcd-blue-mid: #001848;
-  --lcd-blue-hi:  #002878;
-
-  /* Text */
-  --txt-bright:   #e8e4d8;
-  --txt-mid:      #9090a8;
-  --txt-dim:      #454560;
-  --txt-gold:     #f0c840;
-  --txt-red:      #ff5533;
-
+  /* Pokédex Red Shell */
+  --shell-red:       #DC143C;
+  --shell-red-hi:    #FF1744;
+  --shell-darkest:   #8B0000;
+  --shell-gray:      #2C2C2C;
+  
+  /* LCD Screen (GBA-like) */
+  --lcd-blue-bg:     #1A3A52;
+  --lcd-text:        #E0E6FF;
+  
   /* Accent */
-  --accent:       #2050cc;
-  --accent-hi:    #4070ff;
-
-  /* Font stacks */
-  --font-pixel:   'Press Start 2P', monospace;
-  --font-mono:    'Courier New', 'Consolas', monospace;
-  --font-ui:      system-ui, -apple-system, sans-serif;
-
+  --accent:          #00FF41;
+  
+  /* Utility */
+  --bg:              #000;
+  --txt-bright:      #FFF;
+  --txt-dim:         #AAA;
+  
+  /* Typography */
+  --font-display:    'Press Start 2P', monospace;
+  --font-mono:       'Courier New', monospace;
+  
   /* Sizes — desktop base */
   --fs-xxs:  9px;
   --fs-xs:  11px;
@@ -73,1887 +56,892 @@ body {
   line-height: 1.6;
 }
 
-/* ══ SCROLLBAR ══ */
 ::-webkit-scrollbar { width:5px; }
 ::-webkit-scrollbar-track { background:var(--lcd-blue-bg); }
 ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:2px; }
 
-/* ══════════════════════════════════════════════════════════════════
-   DESKTOP LAYOUT  (≥ 1024px)
-   Three-column fixed-height: sidebar | list | detail
-   ══════════════════════════════════════════════════════════════════ */
+/* ══ DESKTOP LAYOUT (≥1024px) ══ */
 #app-desktop {
   display: none;
   height: 100vh;
   flex-direction: column;
 }
 
-/* Top header bar */
 .desk-header {
   flex-shrink: 0;
   background: var(--shell-red);
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: space-between;
   padding: 10px 20px;
-  box-shadow: 0 3px 0 var(--shell-darkest), inset 0 1px 0 var(--shell-red-hi);
+  box-shadow: 0 3px 0 var(--shell-darkest);
 }
 
-.desk-header .light-big {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #aaeeff, #0088cc);
-  border: 3px solid #005588;
-  box-shadow: 0 0 0 3px #003355;
-  flex-shrink: 0;
-}
-
-.desk-header .lights-sm { display:flex; gap:5px; }
-.desk-header .dot {
-  width:8px; height:8px; border-radius:50%;
-  border: 1.5px solid rgba(0,0,0,.35);
-}
-.desk-header .dot.r { background:#ff5555; }
-.desk-header .dot.y { background:#ffcc00; }
-.desk-header .dot.g { background:#44dd44; }
-
-.desk-header .title {
-  font-family: var(--font-pixel);
-  font-size: 13px;
-  color: #ffddcc;
-  letter-spacing: .15em;
-  text-shadow: 1px 1px 0 var(--shell-darkest);
-  margin-right: auto;
-}
-
-.desk-header .version {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #cc8866;
-  letter-spacing: .1em;
+.desk-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  letter-spacing: 2px;
 }
 
 .lang-btn {
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--txt-gold);
-  background: var(--shell-red-lo);
-  border: 1.5px solid var(--txt-gold);
-  padding: 5px 9px;
+  background: var(--shell-gray);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 5px 12px;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
   cursor: pointer;
-  letter-spacing: .1em;
-  transition: background .15s, color .15s;
+  border-radius: 3px;
 }
-.lang-btn:hover { background: var(--txt-gold); color: #000; }
 
-/* Main content area */
+.lang-btn:hover { background: var(--accent); color: var(--shell-gray); }
+
 .desk-body {
+  display: flex;
   flex: 1;
-  display: grid;
-  grid-template-columns: 280px 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
   overflow: hidden;
-  gap: 0;
 }
 
-/* ── Sidebar ── */
+/* Era tabs */
+.era-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: var(--gap);
+}
+
+.era-tab {
+  background: transparent;
+  color: var(--txt-dim);
+  border: 1px solid var(--txt-dim);
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.era-tab:hover,
+.era-tab.active {
+  background: var(--accent);
+  color: var(--shell-gray);
+  border-color: var(--accent);
+}
+
+/* Sidebar */
 .desk-sidebar {
-  background: var(--bg-mid);
-  border-right: 1px solid #1a1a30;
+  width: 280px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-
-.sidebar-header {
-  flex-shrink: 0;
-  padding: 14px 16px 10px;
-  border-bottom: 1px solid #1a1a30;
-}
-
-.sidebar-header h2 {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--txt-gold);
-  letter-spacing: .12em;
-  margin-bottom: 10px;
+  gap: var(--gap);
+  overflow-y: auto;
 }
 
 .search-box {
-  width: 100%;
-  background: var(--bg-card);
-  border: 1px solid #1e2a4a;
-  border-radius: var(--radius);
+  background: var(--lcd-blue-bg);
   color: var(--txt-bright);
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  border: 1px solid var(--accent);
   padding: 8px 12px;
-  outline: none;
-  transition: border-color .15s;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
 }
-.search-box::placeholder { color: var(--txt-dim); }
-.search-box:focus { border-color: var(--accent); }
 
-.filter-section {
-  flex-shrink: 0;
-  padding: 10px 16px;
-  border-bottom: 1px solid #1a1a30;
+.search-box::placeholder { color: var(--txt-dim); }
+
+/* Philomon list */
+.desk-list {
+  flex: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 
-.filter-field-row {
+.philomon-row {
+  background: var(--lcd-blue-bg);
+  border: 1px solid var(--txt-dim);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+}
+
+.philomon-row:hover {
+  background: var(--accent);
+  color: var(--shell-gray);
+  border-color: var(--accent);
+}
+
+.philomon-row.active {
+  background: var(--accent);
+  color: var(--shell-gray);
+  border-color: var(--accent);
+}
+
+.pr-name { font-weight: bold; }
+.pr-meta { font-size: 9px; color: var(--txt-dim); margin-top: 4px; }
+
+/* Detail panel */
+.desk-detail {
+  width: 400px;
+  flex-shrink: 0;
+  background: var(--lcd-blue-bg);
+  border: 2px solid var(--accent);
+  padding: var(--gap);
+  overflow-y: auto;
   display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.detail-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.sprite-canvas {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  background: #000;
+  border: 1px solid var(--accent);
+  margin: var(--gap) 0;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  padding: 4px 0;
+  border-bottom: 1px dotted var(--txt-dim);
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
-.field-label {
-  font-family: var(--font-pixel);
-  font-size: 5px;
+.tab-btn {
+  background: transparent;
   color: var(--txt-dim);
-  letter-spacing: .06em;
-  min-width: 58px;
-  flex-shrink: 0;
-}
-
-.chip {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 3px 6px;
-  border: 1px solid;
+  border: 1px solid var(--txt-dim);
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
   cursor: pointer;
-  letter-spacing: .05em;
-  border-radius: 2px;
-  opacity: .5;
-  transition: opacity .15s, background .15s;
-  white-space: nowrap;
-}
-.chip.active, .chip:hover { opacity: 1; }
-.chip.active { background: rgba(255,255,255,.08); }
-
-.sidebar-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 8px 0;
+  transition: all 0.15s;
+  text-transform: uppercase;
 }
 
-/* Philosopher row in sidebar */
-.philo-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 16px;
-  cursor: pointer;
-  border-left: 3px solid transparent;
-  transition: background .1s, border-color .1s;
-}
-.philo-row:hover { background: rgba(255,255,255,.04); }
-.philo-row.active {
-  background: rgba(32,80,204,.15);
-  border-left-color: var(--accent-hi);
-}
-
-.philo-thumb {
-  width: 40px; height: 40px;
-  flex-shrink: 0;
-  image-rendering: pixelated;
-  background: var(--lcd-blue-mid);
-  border: 1px solid var(--lcd-blue-hi);
-  display: flex; align-items: center; justify-content: center;
-}
-.philo-thumb canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
-
-.philo-info { flex:1; min-width:0; }
-.philo-num  { font-size: var(--fs-xxs); color: var(--txt-dim); letter-spacing:.06em; }
-.philo-name { font-family: var(--font-pixel); font-size: 8px; color: var(--txt-bright); letter-spacing:.06em; margin: 3px 0; }
-.philo-types { display:flex; gap:3px; flex-wrap:wrap; }
-.type-badge {
-  font-family: var(--font-pixel);
-  font-size: 4px;
-  padding: 2px 4px;
-  border: 1px solid;
-  border-radius: 2px;
-  letter-spacing: .04em;
-}
-
-.philo-gen { font-size: var(--fs-xxs); color: var(--txt-dim); flex-shrink:0; }
-
-/* ── Center column: list grid ── */
-.desk-center {
-  background: var(--bg);
-  border-right: 1px solid #1a1a30;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.center-header {
-  flex-shrink: 0;
-  padding: 14px 20px 10px;
-  border-bottom: 1px solid #1a1a30;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-.center-header h2 {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--txt-mid);
-  letter-spacing: .1em;
-}
-.count-badge {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  color: var(--accent-hi);
-  background: rgba(32,80,204,.2);
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px solid rgba(64,112,255,.3);
-}
-
-.card-grid {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  align-content: start;
-}
-
-/* Philosopher card */
-.philo-card {
-  background: var(--bg-card);
-  border: 1px solid #1a2040;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: border-color .15s, transform .1s, box-shadow .15s;
-  overflow: hidden;
-}
-.philo-card:hover {
+.tab-btn:hover,
+.tab-btn.active {
+  background: var(--accent);
+  color: var(--shell-gray);
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(32,80,204,.25);
-}
-.philo-card.active {
-  border-color: var(--txt-gold);
-  box-shadow: 0 0 0 1px var(--txt-gold);
 }
 
-.card-sprite-area {
-  background: var(--lcd-green-bg);
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  image-rendering: pixelated;
-  position: relative;
-  overflow: hidden;
-}
-/* Scanline texture */
-.card-sprite-area::after {
-  content:'';
-  position:absolute; inset:0;
-  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 3px);
-  pointer-events:none;
-}
-.card-sprite-area canvas { image-rendering:pixelated; image-rendering:crisp-edges; }
-
-.card-body { padding: 10px 12px; }
-
-.card-num  { font-size: var(--fs-xxs); color: var(--txt-dim); letter-spacing:.06em; }
-.card-name {
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--txt-bright);
-  letter-spacing: .06em;
-  margin: 4px 0 6px;
-}
-.card-types { display:flex; gap:3px; flex-wrap:wrap; margin-bottom:6px; }
-.card-gen { font-size: var(--fs-xxs); color: var(--txt-dim); }
-
-/* Influence mini-bar */
-.card-infl {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 6px;
-}
-.card-infl-label { font-size: var(--fs-xxs); color: var(--txt-dim); white-space:nowrap; }
-.card-infl-bar {
-  flex: 1;
-  height: 4px;
-  background: var(--lcd-blue-hi);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.card-infl-fill { height:100%; border-radius:2px; transition:width .4s; }
-
-/* ── Right column: detail panel ── */
-.desk-detail {
-  background: var(--bg-mid);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.tab-content {
+  display: none;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
 }
 
-.detail-empty {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--txt-dim);
-}
-.detail-empty .arrow {
-  font-family: var(--font-pixel);
-  font-size: 24px;
-  color: #2a2a45;
-  animation: pulse 2s ease-in-out infinite;
-}
-.detail-empty p {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  letter-spacing: .1em;
-  text-align: center;
-  line-height: 2.5;
-}
-@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.8} }
+.tab-content.active { display: block; }
 
-/* Detail content */
-.detail-content { display:none; flex-direction:column; height:100%; overflow:hidden; }
-.detail-content.visible { display:flex; }
-
-/* Detail top: sprite left + meta right */
-.detail-top {
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  border-bottom: 1px solid #1a1a30;
-}
-
-.detail-sprite-panel {
-  background: var(--lcd-green-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-  border-right: 1px solid #1a1a30;
-  min-height: 220px;
-}
-.detail-sprite-panel::after {
-  content:'';
-  position:absolute; inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 3px);
-  pointer-events:none;
-}
-.detail-sprite-panel canvas { image-rendering:pixelated; image-rendering:crisp-edges; }
-
-.sprite-num  { font-family:var(--font-pixel); font-size:6px; color:var(--lcd-green-txt); letter-spacing:.06em; }
-.sprite-name { font-family:var(--font-pixel); font-size:8px; color:var(--lcd-green-txt); letter-spacing:.08em; }
-
-.infl-row { display:flex; align-items:center; gap:6px; width:100%; }
-.infl-lbl { font-family:var(--font-pixel); font-size:5px; color:var(--lcd-green-txt); }
-.infl-bar { flex:1; height:5px; background:#8a9a60; border:1px solid #4a5a20; border-radius:2px; overflow:hidden; }
-.infl-fill { height:100%; border-radius:2px; transition:width .4s; }
-.infl-fill.hi  { background:#44aa00; }
-.infl-fill.mid { background:#eeaa00; }
-.infl-fill.low { background:#ee2200; }
-
-.sprite-types { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; }
-
-.detail-meta {
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: var(--lcd-blue-bg);
-}
-.meta-full   { font-size:var(--fs-lg); font-weight:bold; color:var(--txt-bright); letter-spacing:.02em; }
-.meta-dates  { font-size:var(--fs-xs); color:var(--txt-mid); }
-.meta-lieu   { font-size:var(--fs-xs); color:var(--txt-dim); }
-.meta-oeuvre { font-size:var(--fs-xs); color:var(--txt-gold); margin-top:4px; }
-
-.meta-gen-badge {
-  display: inline-block;
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  padding: 3px 7px;
-  border: 1px solid;
-  border-radius: 2px;
-  letter-spacing: .06em;
-  align-self: flex-start;
-}
-
-/* Detail tabs area */
-.detail-tabs-bar {
-  flex-shrink: 0;
-  display: flex;
-  background: var(--bg-card-alt);
-  border-bottom: 1px solid #1a1a30;
-  overflow-x: auto;
-}
-.detail-tabs-bar::-webkit-scrollbar { height: 0; }
-
-.dtab {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  padding: 12px 14px;
-  color: var(--txt-dim);
-  border: none;
-  background: none;
-  cursor: pointer;
-  letter-spacing: .08em;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: color .15s, border-color .15s;
-}
-.dtab:hover { color: var(--txt-mid); }
-.dtab.active { color: var(--txt-gold); border-bottom-color: var(--txt-gold); }
-
-.detail-tab-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   MOBILE LAYOUT  (< 1024px)
-   ══════════════════════════════════════════════════════════════════ */
+/* ══ MOBILE LAYOUT (<1024px) ══ */
 #app-mobile {
   display: none;
   height: 100vh;
   flex-direction: column;
-  overflow: hidden;
 }
 
-/* Mobile header */
 .mob-header {
   flex-shrink: 0;
   background: var(--shell-red);
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  box-shadow: 0 2px 0 var(--shell-darkest), inset 0 1px 0 var(--shell-red-hi);
-}
-.mob-header .title {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: #ffddcc;
-  letter-spacing: .12em;
-  text-shadow: 1px 1px 0 var(--shell-darkest);
-  margin-right: auto;
+  justify-content: space-between;
+  box-shadow: 0 2px 0 var(--shell-darkest);
 }
 
-/* Mobile search strip */
-.mob-search-strip {
-  flex-shrink: 0;
-  padding: 10px 12px;
-  background: var(--bg-mid);
-  border-bottom: 1px solid #1a1a30;
-  display: flex;
-  gap: 8px;
+.mob-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 1px;
 }
-.mob-search-box {
-  flex: 1;
-  background: var(--bg-card);
-  border: 1px solid #1e2a4a;
-  border-radius: var(--radius);
+
+.mob-search {
+  background: var(--lcd-blue-bg);
   color: var(--txt-bright);
+  border: 1px solid var(--accent);
+  padding: 8px 12px;
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
-  padding: 9px 12px;
-  outline: none;
+  margin: var(--gap);
+  width: calc(100% - 2*var(--gap));
 }
-.mob-search-box::placeholder { color: var(--txt-dim); }
-.mob-search-box:focus { border-color: var(--accent); }
 
-/* Mobile type filter strip */
-.mob-filter-strip {
-  flex-shrink: 0;
-  padding: 8px 12px;
-  background: var(--bg-mid);
-  border-bottom: 1px solid #1a1a30;
+.mob-era-tabs {
   display: flex;
   gap: 6px;
+  padding: 0 var(--gap);
   overflow-x: auto;
+  margin-bottom: 8px;
+  flex-shrink: 0;
 }
-.mob-filter-strip::-webkit-scrollbar { height:0; }
 
-/* Mobile list */
+.mob-era-tab {
+  background: transparent;
+  color: var(--txt-dim);
+  border: 1px solid var(--txt-dim);
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.mob-era-tab:hover,
+.mob-era-tab.active {
+  background: var(--accent);
+  color: var(--shell-gray);
+  border-color: var(--accent);
+}
+
 .mob-list {
   flex: 1;
   overflow-y: auto;
-  padding: 0;
-}
-
-.mob-philo-row {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-bottom: 1px solid #1a1a30;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 var(--gap);
+}
+
+.mob-item {
+  background: var(--lcd-blue-bg);
+  border: 1px solid var(--txt-dim);
+  padding: 12px;
   cursor: pointer;
-  transition: background .1s;
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+  transition: all 0.15s;
 }
-.mob-philo-row:active { background: rgba(32,80,204,.12); }
 
-.mob-thumb {
-  width: 52px; height: 52px;
-  flex-shrink: 0;
-  background: var(--lcd-green-bg);
-  display: flex; align-items:center; justify-content:center;
-  image-rendering:pixelated;
+.mob-item:active {
+  background: var(--accent);
+  color: var(--shell-gray);
 }
-.mob-thumb canvas { image-rendering:pixelated; image-rendering:crisp-edges; }
 
-.mob-info { flex:1; min-width:0; }
-.mob-num  { font-size:var(--fs-xxs); color:var(--txt-dim); }
-.mob-name {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: var(--txt-bright);
-  margin: 3px 0 5px;
-  letter-spacing: .05em;
-}
-.mob-types { display:flex; gap:4px; flex-wrap:wrap; }
+.mi-name { font-weight: bold; }
+.mi-era { font-size: 9px; color: var(--txt-dim); }
 
-.mob-infl-label { font-size:var(--fs-xxs); color:var(--txt-dim); flex-shrink:0; }
-
-/* Mobile detail overlay */
 .mob-detail {
   display: none;
   position: fixed;
   inset: 0;
-  background: var(--bg);
-  z-index: 200;
+  background: rgba(0,0,0,0.8);
   flex-direction: column;
-  overflow: hidden;
+  z-index: 100;
 }
-.mob-detail.open { display:flex; }
+
+.mob-detail.active {
+  display: flex;
+}
+
+.mob-detail-inner {
+  flex: 1;
+  background: var(--lcd-blue-bg);
+  margin: 16px;
+  border: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
 
 .mob-detail-header {
-  flex-shrink: 0;
   background: var(--shell-red);
+  padding: 10px;
   display: flex;
+  gap: 8px;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  box-shadow: 0 2px 0 var(--shell-darkest);
-}
-.mob-back-btn {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #ffddcc;
-  background: none;
-  border: 1.5px solid #ffddcc66;
-  padding: 5px 9px;
-  cursor: pointer;
-  letter-spacing: .06em;
-}
-.mob-detail-title {
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  color: #ffddcc;
-  letter-spacing: .1em;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Mobile detail hero */
-.mob-detail-hero {
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  border-bottom: 1px solid #1a1a30;
-}
-.mob-hero-sprite {
-  background: var(--lcd-green-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  gap: 6px;
-  min-height: 160px;
-  position: relative;
-  overflow: hidden;
-}
-.mob-hero-sprite::after {
-  content:'';
-  position:absolute; inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 3px);
-  pointer-events:none;
-}
-.mob-hero-sprite canvas { image-rendering:pixelated; image-rendering:crisp-edges; }
-
-.mob-hero-meta {
-  padding: 12px;
-  background: var(--lcd-blue-bg);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.mob-meta-full  { font-size:var(--fs-md); font-weight:bold; color:var(--txt-bright); }
-.mob-meta-dates { font-size:var(--fs-xs); color:var(--txt-mid); }
-.mob-meta-oeuvre{ font-size:var(--fs-xs); color:var(--txt-gold); }
-
-/* Mobile tabs — scrollable strip */
-.mob-tab-strip {
-  flex-shrink: 0;
-  display: flex;
-  background: var(--bg-card-alt);
-  border-bottom: 1px solid #1a1a30;
-  overflow-x: auto;
-}
-.mob-tab-strip::-webkit-scrollbar { height:0; }
-
-.mob-tab-btn {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  padding: 12px 14px;
-  color: var(--txt-dim);
-  border: none;
-  background: none;
-  cursor: pointer;
-  letter-spacing: .07em;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  flex-shrink: 0;
-  transition: color .15s, border-color .15s;
-}
-.mob-tab-btn.active { color:var(--txt-gold); border-bottom-color:var(--txt-gold); }
-
-.mob-tab-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   SHARED DETAIL CONTENT STYLES
-   (used in both desktop .detail-tab-body and mobile .mob-tab-body)
-   ══════════════════════════════════════════════════════════════════ */
-
-/* Entry text */
-.entry-text {
-  font-size: var(--fs-sm);
-  color: var(--txt-mid);
-  line-height: 1.9;
-  letter-spacing: .02em;
-  max-width: 60ch;
-}
-
-/* Stats */
-.stat-list { display:flex; flex-direction:column; gap:10px; }
-.stat-row { display:flex; align-items:center; gap:10px; }
-.stat-key {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #7799cc;
-  width: 100px;
-  flex-shrink: 0;
-  letter-spacing: .04em;
-  position: relative;
-  cursor: help;
-}
-
-/* ══ STAT TOOLTIP ══ */
-.stat-key::after {
-  content: attr(data-tip);
-  position: absolute;
-  left: 0;
-  top: calc(100% + 8px);
-  width: 220px;
-  background: #0a0a1a;
-  border: 1px solid #2a3a60;
-  border-radius: 4px;
-  padding: 8px 10px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--txt-mid);
-  line-height: 1.6;
-  letter-spacing: .02em;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity .15s, transform .15s;
-  z-index: 500;
-  white-space: normal;
-  box-shadow: 0 4px 20px rgba(0,0,0,.6);
-}
-/* Arrow */
-.stat-key::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: calc(100% + 2px);
-  border: 5px solid transparent;
-  border-bottom-color: #2a3a60;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .15s;
-  z-index: 501;
-}
-.stat-key:hover::after,
-.stat-key:hover::before { opacity: 1; transform: translateY(0); }
-
-/* Role badge on stat rows */
-.stat-role {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 2px 5px;
-  border-radius: 2px;
-  border: 1px solid;
-  flex-shrink: 0;
-  letter-spacing: .05em;
-  width: 42px;
-  text-align: center;
-}
-.stat-role.atk  { border-color:#cc6644; color:#cc6644; }
-.stat-role.def  { border-color:#4488cc; color:#4488cc; }
-.stat-role.pool { border-color:#44aa66; color:#44aa66; }
-.stat-role.spd  { border-color:#aaaa44; color:#aaaa44; }
-
-.stat-val { font-size:var(--fs-sm); color:var(--txt-bright); width:30px; text-align:right; flex-shrink:0; }
-.stat-bar { flex:1; height:6px; background:var(--lcd-blue-hi); border-radius:3px; overflow:hidden; }
-.stat-fill { height:100%; border-radius:3px; transition:width .5s; }
-
-/* ══ CONCEPT CATEGORY BADGE ══ */
-.concept-cat {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px solid;
-  display: inline-block;
-  margin-left: 6px;
-  letter-spacing: .05em;
-  vertical-align: middle;
-}
-.concept-cat.immanent   { border-color:#5588ee; color:#5588ee; background:rgba(85,136,238,.08); }
-.concept-cat.transcendant { border-color:#cc7733; color:#cc7733; background:rgba(204,119,51,.08); }
-
-/* Matchups */
-.matchup-section { display:flex; flex-direction:column; gap:14px; }
-.matchup-group-title {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #7799cc;
-  letter-spacing: .08em;
-  margin-bottom: 8px;
-}
-.pill-row { display:flex; gap:6px; flex-wrap:wrap; }
-.pill {
-  font-family: var(--font-pixel);
-  font-size: 6px;
-  padding: 4px 8px;
-  border: 1px solid;
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  letter-spacing: .04em;
-}
-.pill .mult { font-size:8px; color:#fff; font-family:var(--font-mono); }
-.pill.strong { border-color:#44cc44; color:#88ff88; }
-.pill.weak   { border-color:#ff4444; color:#ff8888; }
-
-.incommensurable-note {
-  font-size: var(--fs-xs);
-  color: var(--txt-dim);
-  border-top: 1px solid #1a2050;
-  padding-top: 10px;
-  margin-top: 10px;
-  line-height: 1.8;
-}
-
-/* Concepts / attacks */
-.concept-list { display:flex; flex-direction:column; gap:10px; }
-.concept-card {
-  background: var(--bg-card-alt);
-  border: 1px solid #1a2040;
-  border-radius: var(--radius);
-  padding: 12px 14px;
-}
-.concept-top {
-  display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 6px;
 }
-.concept-name {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--txt-bright);
-  letter-spacing: .05em;
-}
-.concept-pwr {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--txt-gold);
-}
-.concept-type-tag {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 2px 5px;
-  border: 1px solid;
-  border-radius: 2px;
-  display: inline-block;
-  margin-bottom: 7px;
-  letter-spacing: .04em;
-}
-.concept-desc { font-size:var(--fs-sm); color:var(--txt-mid); line-height:1.7; }
-.concept-matchup-row {
-  display: flex;
-  gap: 5px;
-  margin-top: 7px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.vs-lbl { font-size:var(--fs-xxs); color:var(--txt-dim); }
-.vs-pill {
-  font-family: var(--font-pixel);
-  font-size: 5px;
-  padding: 2px 5px;
-  border: 1px solid;
-  border-radius: 2px;
-}
-.vs-mult { font-size: var(--fs-xs); font-weight:bold; }
 
-/* Filiation */
-.fil-section { display:flex; flex-direction:column; gap:14px; }
-.fil-group-title {
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: #7799cc;
-  letter-spacing: .08em;
-  margin-bottom: 6px;
-}
-.fil-chain { display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
-.fil-tag {
-  font-family: var(--font-pixel);
-  font-size: 6px;
+.mob-back-btn {
+  background: var(--shell-gray);
+  color: var(--accent);
+  border: 1px solid var(--accent);
   padding: 4px 8px;
-  border: 1px solid #224488;
-  color: #88aacc;
-  background: var(--bg-card-alt);
-  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 10px;
   cursor: pointer;
-  transition: border-color .15s;
 }
-.fil-tag:hover { border-color: var(--accent-hi); }
-.fil-tag.self { border-color:var(--txt-gold); color:var(--txt-gold); background:#221800; }
-.fil-tag.hostile { border-color:#882200; color:#ff6644; background:#200800; }
-.fil-arrow { font-size:12px; color:#334466; }
 
-/* ══ TYPE COLOR CLASSES ══ */
-.tc-rationalisme    { border-color:#5588ee!important; color:#5588ee!important; }
-.tc-empirisme       { border-color:#44bb88!important; color:#44bb88!important; }
-.tc-scepticisme     { border-color:#8899dd!important; color:#8899dd!important; }
-.tc-idealisme       { border-color:#cc9900!important; color:#cc9900!important; }
-.tc-materialisme    { border-color:#997744!important; color:#997744!important; }
-.tc-deontologie     { border-color:#7799cc!important; color:#7799cc!important; }
-.tc-consequentialisme{ border-color:#66bb66!important; color:#66bb66!important; }
-.tc-vertu           { border-color:#bbbb44!important; color:#bbbb44!important; }
-.tc-liberalisme     { border-color:#44aaaa!important; color:#44aaaa!important; }
-.tc-marxisme        { border-color:#cc4444!important; color:#cc4444!important; }
-.tc-conservatisme   { border-color:#887755!important; color:#887755!important; }
-.tc-existentialisme { border-color:#cc7733!important; color:#cc7733!important; }
-.tc-nihilisme       { border-color:#666699!important; color:#666699!important; }
-.tc-stoicisme       { border-color:#55aabb!important; color:#55aabb!important; }
+.mob-back-btn:active { background: var(--accent); color: var(--shell-gray); }
 
-.fill-rationalisme    { background:#5588ee; }
-.fill-empirisme       { background:#44bb88; }
-.fill-scepticisme     { background:#8899dd; }
-.fill-idealisme       { background:#cc9900; }
-.fill-materialisme    { background:#997744; }
-.fill-deontologie     { background:#7799cc; }
-.fill-consequentialisme { background:#66bb66; }
-.fill-vertu           { background:#bbbb44; }
-.fill-liberalisme     { background:#44aaaa; }
-.fill-marxisme        { background:#cc4444; }
-.fill-conservatisme   { background:#887755; }
-.fill-existentialisme { background:#cc7733; }
-.fill-nihilisme       { background:#666699; }
-.fill-stoicisme       { background:#55aabb; }
+.mob-detail-content {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  font-size: var(--fs-xs);
+}
 
-/* ══ ACTIVE LAYOUT SWITCHER ══ */
-body.is-desktop #app-desktop { display:flex; }
-body.is-desktop #app-mobile  { display:none; }
-body.is-mobile  #app-mobile  { display:flex; }
-body.is-mobile  #app-desktop { display:none; }
+/* Canvas for pixel art */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 
-</style>
+  </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════
-     DESKTOP APP
-     ════════════════════════════════════════════════════ -->
 <div id="app-desktop">
-
-  <!-- Header bar (Pokédex shell aesthetic) -->
-  <header class="desk-header">
-    <div class="light-big"></div>
-    <div class="lights-sm">
-      <div class="dot r"></div>
-      <div class="dot y"></div>
-      <div class="dot g"></div>
-    </div>
-    <span class="title">PHILODEX</span>
-    <span class="version">v1.2</span>
+  <div class="desk-header">
+    <div class="desk-title">PHILODEX</div>
     <button class="lang-btn" id="desk-lang">EN</button>
-  </header>
-
+  </div>
+  
   <div class="desk-body">
-
-    <!-- Left sidebar: search + filters + list -->
-    <aside class="desk-sidebar">
-      <div class="sidebar-header">
-        <h2 id="desk-list-title">SÉLECTIONNER</h2>
-        <input class="search-box" id="desk-search" type="text" placeholder="RECHERCHE...">
+    <div class="desk-sidebar">
+      <div class="era-tabs" id="desk-era-tabs"></div>
+      <input type="text" class="search-box" id="desk-search" placeholder="RECHERCHE...">
+      <div class="desk-list" id="desk-list"></div>
+    </div>
+    
+    <div class="desk-detail" id="desk-detail">
+      <div class="detail-header">
+        <span class="detail-title" id="desk-d-title">—</span>
       </div>
-      <div class="filter-section" id="desk-filters"></div>
-      <div class="sidebar-list" id="desk-sidebar-list"></div>
-    </aside>
-
-    <!-- Center: card grid -->
-    <main class="desk-center">
-      <div class="center-header">
-        <h2 id="desk-grid-label">PHILOMON</h2>
-        <span class="count-badge" id="desk-count">8</span>
-      </div>
-      <div class="card-grid" id="desk-card-grid"></div>
-    </main>
-
-    <!-- Right: detail panel -->
-    <section class="desk-detail">
-      <!-- Empty state -->
-      <div class="detail-empty" id="desk-empty">
-        <div class="arrow">◀</div>
-        <p id="desk-empty-txt">CHOISIR UN<br>PHILOMON</p>
-      </div>
-
-      <!-- Populated detail -->
-      <div class="detail-content" id="desk-detail-content">
-
-        <div class="detail-top">
-          <!-- Sprite + basic stats -->
-          <div class="detail-sprite-panel" id="desk-sprite-panel">
-            <span class="sprite-num" id="desk-d-num"></span>
-            <div id="desk-d-sprite"></div>
-            <span class="sprite-name" id="desk-d-name"></span>
-            <div class="infl-row">
-              <span class="infl-lbl">INFL</span>
-              <div class="infl-bar"><div class="infl-fill" id="desk-d-infl"></div></div>
-              <span class="infl-lbl" id="desk-d-infl-num"></span>
-            </div>
-            <div class="sprite-types" id="desk-d-types"></div>
-          </div>
-
-          <!-- Meta text -->
-          <div class="detail-meta">
-            <div class="meta-full" id="desk-d-full"></div>
-            <div class="meta-dates" id="desk-d-dates"></div>
-            <div class="meta-lieu" id="desk-d-lieu"></div>
-            <div class="meta-oeuvre" id="desk-d-oeuvre"></div>
-            <div class="meta-gen-badge" id="desk-d-gen"></div>
-          </div>
-        </div>
-
-        <!-- Tabs -->
-        <div class="detail-tabs-bar">
-          <button class="dtab active" data-tab="entree" id="desk-tab-entree">ENTRÉE</button>
-          <button class="dtab" data-tab="stats"   id="desk-tab-stats">STATS</button>
-          <button class="dtab" data-tab="matchups" id="desk-tab-matchups">TYPES</button>
-          <button class="dtab" data-tab="concepts" id="desk-tab-concepts">CONCEPTS</button>
-          <button class="dtab" data-tab="filiation" id="desk-tab-filiation">FILIATION</button>
-        </div>
-
-        <div class="detail-tab-body" id="desk-tab-body"></div>
-      </div>
-    </section>
-
+      <canvas id="desk-d-canvas" class="sprite-canvas" width="160" height="160"></canvas>
+      <div id="desk-d-meta"></div>
+      <div class="tab-buttons" id="desk-tab-btns"></div>
+      <div id="desk-tab-content"></div>
+    </div>
   </div>
 </div>
 
-
-<!-- ════════════════════════════════════════════════════
-     MOBILE APP
-     ════════════════════════════════════════════════════ -->
 <div id="app-mobile">
-
-  <header class="mob-header">
-    <div class="light-big" style="width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#aaeeff,#0088cc);border:2.5px solid #005588;box-shadow:0 0 0 2px #003355;flex-shrink:0"></div>
-    <span class="title">PHILODEX</span>
+  <div class="mob-header">
+    <div class="mob-title">PHILODEX</div>
     <button class="lang-btn" id="mob-lang">EN</button>
-  </header>
-
-  <div class="mob-search-strip">
-    <input class="mob-search-box" id="mob-search" type="text" placeholder="RECHERCHE...">
   </div>
-
-  <div class="mob-filter-strip" id="mob-filters"></div>
-
+  
+  <input type="text" class="mob-search" id="mob-search" placeholder="RECHERCHE...">
+  <div class="mob-era-tabs" id="mob-era-tabs"></div>
   <div class="mob-list" id="mob-list"></div>
-
-  <!-- Detail overlay -->
+  
   <div class="mob-detail" id="mob-detail">
-
-    <div class="mob-detail-header">
-      <button class="mob-back-btn" id="mob-back">◀ RETOUR</button>
-      <span class="mob-detail-title" id="mob-d-title"></span>
-      <button class="lang-btn" id="mob-detail-lang">EN</button>
-    </div>
-
-    <div class="mob-detail-hero">
-      <div class="mob-hero-sprite" id="mob-d-sprite-wrap">
-        <div id="mob-d-sprite"></div>
+    <div class="mob-detail-inner">
+      <div class="mob-detail-header">
+        <button class="mob-back-btn" id="mob-back">◀</button>
+        <span id="mob-d-title">—</span>
+        <button class="lang-btn" id="mob-detail-lang">EN</button>
       </div>
-      <div class="mob-hero-meta">
-        <div class="mob-meta-full"  id="mob-d-full"></div>
-        <div class="mob-meta-dates" id="mob-d-dates"></div>
-        <div class="sprite-types" id="mob-d-types" style="margin-top:4px"></div>
-        <div class="mob-meta-oeuvre" id="mob-d-oeuvre"></div>
-        <div class="infl-row" style="margin-top:6px">
-          <span class="infl-lbl" style="color:var(--txt-dim)">INFL</span>
-          <div class="infl-bar"><div class="infl-fill" id="mob-d-infl"></div></div>
-          <span class="infl-lbl" style="color:var(--txt-dim)" id="mob-d-infl-num"></span>
-        </div>
+      <div class="mob-detail-content">
+        <canvas id="mob-d-canvas" class="sprite-canvas" width="120" height="120"></canvas>
+        <div id="mob-d-meta"></div>
+        <div id="mob-d-content"></div>
       </div>
     </div>
-
-    <div class="mob-tab-strip" id="mob-tab-strip">
-      <button class="mob-tab-btn active" data-tab="entree"    id="mob-tab-entree">ENTRÉE</button>
-      <button class="mob-tab-btn" data-tab="stats"    id="mob-tab-stats">STATS</button>
-      <button class="mob-tab-btn" data-tab="matchups" id="mob-tab-matchups">TYPES</button>
-      <button class="mob-tab-btn" data-tab="concepts" id="mob-tab-concepts">CONCEPTS</button>
-      <button class="mob-tab-btn" data-tab="filiation" id="mob-tab-filiation">FILIATION</button>
-    </div>
-
-    <div class="mob-tab-body" id="mob-tab-body"></div>
-
   </div>
 </div>
-
 
 <script>
-// ══════════════════════════════════════════════════════════════════════════════
-// I18N
-// ══════════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PHILODEX — Pokédex de la Philosophie
+   Era-based organization with progressive pixelization
+═══════════════════════════════════════════════════════════════════════════════ */
+
+// ═══ I18N ═══
 const I18N = {
   fr: {
-    listTitle:      'SÉLECTIONNER',
-    search:         'RECHERCHE...',
-    back:           '◀ RETOUR',
-    emptyState:     'CHOISIR UN\nPHILOMON',
-    tabEntry:       'ENTRÉE',
-    tabStats:       'STATS',
-    tabMatchups:    'TYPES',
-    tabConcepts:    'CONCEPTS',
-    tabFiliation:   'FILIATION',
-    resistances:    '▲ RÉSISTANCES (×½ SUBI)',
-    weaknesses:     '▼ FAIBLESSES (×2 SUBI)',
-    incommensurable:'Incommensurable avec : ',
-    influences:     'INFLUENCES REÇUES',
-    disciples:      'DISCIPLES',
-    oppositions:    'OPPOSITIONS',
-    champLabels: { 'ÉPISTÉM.':'ÉPISTÉM.','MÉTAPHYS.':'MÉTAPHYS.','ÉTHIQUE':'ÉTHIQUE','POLITIQUE':'POLITIQUE','EXISTENTL':'EXISTENTL' },
+    eras: { ALL: 'TOUS', ANTIQUE: 'ANTIQUE', MEDIEVAL: 'MÉDIÉVALE', MODERN: 'MODERNE', CRITIQUE: 'CRITIQUE', CONTEMPORARY: 'CONTEMPORAINE' },
+    search: 'RECHERCHE...',
+    back: '◀ RETOUR',
+    tabs: { ENTRY: 'ENTRÉE', STATS: 'STATS', CONCEPTS: 'CONCEPTS', FILIATION: 'FILIATION' },
   },
   en: {
-    listTitle:      'SELECT',
-    search:         'SEARCH...',
-    back:           '◀ BACK',
-    emptyState:     'CHOOSE A\nPHILOMON',
-    tabEntry:       'ENTRY',
-    tabStats:       'STATS',
-    tabMatchups:    'TYPES',
-    tabConcepts:    'CONCEPTS',
-    tabFiliation:   'LINEAGE',
-    resistances:    '▲ RESISTANCES (×½ TAKEN)',
-    weaknesses:     '▼ WEAKNESSES (×2 TAKEN)',
-    incommensurable:'Incommensurable with: ',
-    influences:     'RECEIVED INFLUENCES',
-    disciples:      'DISCIPLES',
-    oppositions:    'OPPOSITIONS',
-    champLabels: { 'ÉPISTÉM.':'EPISTEM.','MÉTAPHYS.':'METAPHYS.','ÉTHIQUE':'ETHICS','POLITIQUE':'POLITICS','EXISTENTL':'EXISTNTL' },
-  },
-};
-let lang = 'fr';
-function t(k) { return I18N[lang][k]; }
-
-// ══════════════════════════════════════════════════════════════════════════════
-// PIXEL ART ENGINE
-// ══════════════════════════════════════════════════════════════════════════════
-// Wikimedia Commons API — CORS-enabled via ?origin=* (no proxy needed).
-// The API returns a thumbnail URL which is then loaded directly into a canvas.
-const WIKIMEDIA_API = 'https://commons.wikimedia.org/w/api.php';
-
-/**
- * Resolves a Wikimedia Commons file URL to a CORS-accessible thumbnail URL.
- * Uses the MediaWiki action API with origin=* which Wikimedia explicitly supports.
- * @param {string} fileUrl - Full commons upload URL
- * @param {number} width   - Requested thumbnail width in pixels
- * @returns {Promise<string|null>} - Thumb URL, or null on failure
- */
-async function resolveWikimediaThumb(fileUrl, width = 300) {
-  // Extract the filename from the URL (last path segment, URL-decoded)
-  const filename = decodeURIComponent(fileUrl.split('/').pop());
-  const title = 'File:' + filename;
-  const apiUrl = `${WIKIMEDIA_API}?action=query&titles=${encodeURIComponent(title)}&prop=imageinfo&iiprop=url&iiurlwidth=${width}&format=json&origin=*`;
-  try {
-    const res = await fetch(apiUrl);
-    const json = await res.json();
-    const pages = json.query.pages;
-    const page = Object.values(pages)[0];
-    return page?.imageinfo?.[0]?.thumburl || null;
-  } catch {
-    return null;
+    eras: { ALL: 'ALL', ANTIQUE: 'ANCIENT', MEDIEVAL: 'MEDIEVAL', MODERN: 'MODERN', CRITIQUE: 'CRITIQUE', CONTEMPORARY: 'CONTEMPORARY' },
+    search: 'SEARCH...',
+    back: '◀ BACK',
+    tabs: { ENTRY: 'ENTRY', STATS: 'STATS', CONCEPTS: 'CONCEPTS', FILIATION: 'FILIATION' },
   }
-}
-const GB_PALETTE  = [[15,56,15],[48,98,48],[139,172,15],[155,188,15]];
-const GBC_PALETTE = [[8,24,32],[52,104,86],[136,192,112],[224,248,208],[200,76,28],[248,176,104],[168,56,16],[104,32,8],[64,64,64],[144,144,144],[216,216,216],[248,248,248],[32,56,144],[120,168,248],[56,144,200],[200,232,248]];
-
-function nearestColor(r,g,b,pal){let bi=0,bd=1e9;pal.forEach(([pr,pg,pb],i)=>{const d=(r-pr)**2+(g-pg)**2+(b-pb)**2;if(d<bd){bd=d;bi=i;}});return pal[bi];}
-
-function medianCut(pixels,depth=5){
-  if(!pixels.length)return[[128,128,128]];let buckets=[pixels];
-  for(let d=0;d<depth;d++){const next=[];buckets.forEach(b=>{if(b.length<2){next.push(b);return;}let rn=255,rx=0,gn=255,gx=0,bn=255,bx=0;b.forEach(([r,g,bv])=>{rn=Math.min(rn,r);rx=Math.max(rx,r);gn=Math.min(gn,g);gx=Math.max(gx,g);bn=Math.min(bn,bv);bx=Math.max(bx,bv);});const ax=(rx-rn)>=(gx-gn)&&(rx-rn)>=(bx-bn)?0:(gx-gn)>=(bx-bn)?1:2;b.sort((a,bv)=>a[ax]-bv[ax]);const m=Math.floor(b.length/2);next.push(b.slice(0,m),b.slice(m));});buckets=next;}
-  return buckets.map(b=>{if(!b.length)return[128,128,128];const s=b.reduce((a,c)=>[a[0]+c[0],a[1]+c[1],a[2]+c[2]],[0,0,0]);return s.map(v=>Math.round(v/b.length));});
-}
-
-function floydSteinberg(data,w,h,pal){
-  const err=new Float32Array(w*h*3),out=new Uint8ClampedArray(w*h*4);
-  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4,ei=(y*w+x)*3;const r=Math.max(0,Math.min(255,data[i]+err[ei])),g=Math.max(0,Math.min(255,data[i+1]+err[ei+1])),bv=Math.max(0,Math.min(255,data[i+2]+err[ei+2]));const[nr,ng,nb]=nearestColor(r,g,bv,pal);out[i]=nr;out[i+1]=ng;out[i+2]=nb;out[i+3]=255;const er=r-nr,eg=g-ng,eb=bv-nb;const add=(dx,dy,f)=>{const nx=x+dx,ny=y+dy;if(nx>=0&&nx<w&&ny<h){const e2=(ny*w+nx)*3;err[e2]+=er*f;err[e2+1]+=eg*f;err[e2+2]+=eb*f;}};add(1,0,7/16);add(-1,1,3/16);add(0,1,5/16);add(1,1,1/16);}
-  return out;
-}
-
-/**
- * Fetches a philosopher portrait via the Wikimedia Commons API (no proxy),
- * then applies generation-appropriate pixelization and dithering.
- * @param {string} url - Original Wikimedia commons upload URL
- * @param {number} gen - Generation (1=Game Boy, 2=GBC, 3=GBA)
- * @returns {Promise<HTMLCanvasElement|null>}
- */
-async function pixelizeImage(url, gen) {
-  const SZ = gen === 3 ? 64 : 56, SC = 2;
-  // Request a thumbnail sized for pixelization (2× the target canvas size)
-  const thumbUrl = await resolveWikimediaThumb(url, SZ * 2);
-  if (!thumbUrl) return null;
-
-  return new Promise(resolve => {
-    const tmp = document.createElement('canvas'); tmp.width = SZ; tmp.height = SZ;
-    const ctx = tmp.getContext('2d');
-    const img = new Image(); img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      const s = Math.min(img.width, img.height);
-      ctx.drawImage(img, (img.width-s)/2, (img.height-s)/2, s, s, 0, 0, SZ, SZ);
-      const raw = ctx.getImageData(0, 0, SZ, SZ); let pal;
-      if (gen === 1) {
-        pal = GB_PALETTE;
-        // Desaturate to grayscale before applying the 4-shade GB palette
-        for (let i = 0; i < raw.data.length; i += 4) {
-          const gr = Math.round(raw.data[i]*.299 + raw.data[i+1]*.587 + raw.data[i+2]*.114);
-          raw.data[i] = raw.data[i+1] = raw.data[i+2] = gr;
-        }
-      } else if (gen === 2) {
-        pal = GBC_PALETTE;
-      } else {
-        // Gen 3: derive a custom 32-color palette from the image via median cut
-        const px = [];
-        for (let i = 0; i < raw.data.length; i += 4)
-          if (raw.data[i+3] > 128) px.push([raw.data[i], raw.data[i+1], raw.data[i+2]]);
-        pal = medianCut(px, 5);
-      }
-      const dith = floydSteinberg(raw.data, SZ, SZ, pal);
-      const out = document.createElement('canvas'); out.width = SZ*SC; out.height = SZ*SC;
-      const oc = out.getContext('2d'); oc.imageSmoothingEnabled = false;
-      for (let y = 0; y < SZ; y++)
-        for (let x = 0; x < SZ; x++) {
-          const i = (y*SZ+x)*4;
-          oc.fillStyle = `rgb(${dith[i]},${dith[i+1]},${dith[i+2]})`;
-          oc.fillRect(x*SC, y*SC, SC, SC);
-        }
-      // Gen 1: overlay a greenish LCD tint
-      if (gen === 1) {
-        oc.globalCompositeOperation = 'multiply';
-        oc.fillStyle = 'rgba(155,188,15,.25)';
-        oc.fillRect(0, 0, SZ*SC, SZ*SC);
-        oc.globalCompositeOperation = 'source-over';
-      }
-      resolve(out);
-    };
-    img.onerror = () => resolve(null);
-    img.src = thumbUrl;
-  });
-}
-
-/** Placeholder canvas for when the image hasn't loaded yet. */
-function placeholderCanvas(size){
-  const c=document.createElement('canvas');c.width=size;c.height=size;
-  const ctx=c.getContext('2d');ctx.fillStyle='#001848';ctx.fillRect(0,0,size,size);
-  ctx.fillStyle='#334466';ctx.font=`${Math.floor(size*.22)}px monospace`;
-  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('???',size/2,size/2);
-  return c;
-}
-
-// Sprite cache: key = `${id}_${size}`
-const spriteCache={};
-
-async function getSprite(p,size){
-  const key=`${p.id}_${size}`;
-  if(spriteCache[key])return spriteCache[key].cloneNode(true);
-  const c=await pixelizeImage(p.imgUrl,p.gen);
-  if(!c){const ph=placeholderCanvas(size);spriteCache[key]=ph;return ph.cloneNode(true);}
-  const out=document.createElement('canvas');out.width=size;out.height=size;
-  const ctx=out.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.drawImage(c,0,0,size,size);
-  spriteCache[key]=out;
-  return out.cloneNode(true);
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// TYPE SYSTEM
-// ══════════════════════════════════════════════════════════════════════════════
-const CHAMPS={
-  'ÉPISTÉM.':{color:'#5588ee',types:['Rationalisme','Empirisme','Scepticisme'],matchups:{'Rationalisme':{'Rationalisme':1,'Empirisme':.5,'Scepticisme':2},'Empirisme':{'Rationalisme':2,'Empirisme':1,'Scepticisme':.5},'Scepticisme':{'Rationalisme':.5,'Empirisme':2,'Scepticisme':1}}},
-  'MÉTAPHYS.':{color:'#cc9900',types:['Idéalisme','Matérialisme'],matchups:{'Idéalisme':{'Idéalisme':1,'Matérialisme':.5},'Matérialisme':{'Idéalisme':2,'Matérialisme':1}}},
-  'ÉTHIQUE':{color:'#66bb66',types:['Déontologie','Conséquentialisme','Vertu'],matchups:{'Déontologie':{'Déontologie':1,'Conséquentialisme':2,'Vertu':.5},'Conséquentialisme':{'Déontologie':.5,'Conséquentialisme':1,'Vertu':2},'Vertu':{'Déontologie':2,'Conséquentialisme':.5,'Vertu':1}}},
-  'POLITIQUE':{color:'#44aaaa',types:['Libéralisme','Marxisme','Conservatisme'],matchups:{'Libéralisme':{'Libéralisme':1,'Marxisme':.5,'Conservatisme':2},'Marxisme':{'Libéralisme':2,'Marxisme':1,'Conservatisme':.5},'Conservatisme':{'Libéralisme':.5,'Marxisme':2,'Conservatisme':1}}},
-  'EXISTENTL':{color:'#cc7733',types:['Existentialisme','Nihilisme','Stoïcisme'],matchups:{'Existentialisme':{'Existentialisme':1,'Nihilisme':2,'Stoïcisme':.5},'Nihilisme':{'Existentialisme':.5,'Nihilisme':1,'Stoïcisme':2},'Stoïcisme':{'Existentialisme':2,'Nihilisme':.5,'Stoïcisme':1}}},
-};
-const GEN_NAMES={1:'GEN I · GB',2:'GEN II · GBC',3:'GEN III · GBA'};
-const GEN_COLORS={1:'#44aa00',2:'#cc9900',3:'#5588ee'};
-
-function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');}
-function tClass(tp){return 'tc-'+normalize(tp);}
-function fillClass(tp){return 'fill-'+normalize(tp);}
-function champOf(tp){for(const[c,d]of Object.entries(CHAMPS))if(d.types.includes(tp))return c;return null;}
-
-/** Computes which attacking types hit harder (×2) or softer (×½) against these defense types. */
-function computeDefMatchups(types){
-  const r={fort:[],faible:[]};
-  for(const[ch,cd]of Object.entries(CHAMPS))for(const at of cd.types){
-    let m=1,has=false;
-    for(const dt of types){if(champOf(dt)!==ch)continue;const v=cd.matchups?.[at]?.[dt];if(v!==undefined){m*=v;has=true;}}
-    if(!has)continue;
-    if(m>=2)r.fort.push({type:at});else if(m<=.5)r.faible.push({type:at});
-  }
-  return r;
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// PHILOSOPHER DATA (bilingual)
-// ══════════════════════════════════════════════════════════════════════════════
-// Stats schema — strict parallel to Pokémon's 6-stat system:
-//   INFLUENCE = HP        — historical staying power, how much the system can absorb before being abandoned
-//   RIGUEUR   = Attack    — damage dealt by immanent moves (internal-field arguments)
-//   ANCRAGE   = Defense   — resistance to immanent moves received (logical coherence within the field)
-//   PORTÉE    = Sp. Atk   — damage dealt by transcendent moves (frame-breaking attacks from outside the field)
-//   CLÔTURE   = Sp. Def   — resistance to transcendent moves received (impermeability to paradigm shifts)
-//   CLARTÉ    = Speed     — who goes first; accessibility and diffusion of the thesis
-const STAT_META = {
-  fr: {
-    INFLUENCE: { role:'pool', tip:"Masse de pensée accumulée. Combien de coups le système peut absorber avant d'être abandonné par l'histoire." },
-    RIGUEUR:   { role:'atk',  tip:"Force des arguments immanents — démonstration formelle, réfutation logique interne au champ de l'adversaire." },
-    ANCRAGE:   { role:'def',  tip:"Résistance aux réfutations immanentes reçues. Cohérence interne du système, imperméabilité à la contradiction dans le champ." },
-    PORTÉE:    { role:'atk',  tip:"Force des arguments transcendants — capacité à invalider le cadre adverse depuis l'extérieur, sans jouer selon ses règles." },
-    CLÔTURE:   { role:'def',  tip:"Résistance aux attaques transcendantes reçues. Le système peut-il survivre à un changement de cadre conceptuel ?" },
-    CLARTÉ:    { role:'spd',  tip:"Qui entre dans le débat en premier. Accessibilité de la thèse, vitesse de diffusion, immédiateté de l'impact public." },
-  },
-  en: {
-    INFLUENCE: { role:'pool', tip:"Accumulated mass of thought. How many hits the system can absorb before being abandoned by history." },
-    RIGUEUR:   { role:'atk',  tip:"Strength of immanent arguments — formal demonstration, logical refutation within the opponent's own field." },
-    ANCRAGE:   { role:'def',  tip:"Resistance to immanent attacks received. Internal coherence of the system, impermeability to contradiction within the field." },
-    PORTÉE:    { role:'atk',  tip:"Strength of transcendent arguments — capacity to invalidate the opposing framework from outside, without playing by its rules." },
-    CLÔTURE:   { role:'def',  tip:"Resistance to transcendent attacks received. Can the system survive a paradigm shift?" },
-    CLARTÉ:    { role:'spd',  tip:"Who enters the debate first. Accessibility of the thesis, speed of diffusion, immediacy of public impact." },
-  },
 };
 
-// concept.categorie: 'immanent'  — stays within the opponent's field, type matchups apply
-//                    'transcendant' — attacks from outside the field, bypasses type matchups, hits CLÔTURE
-const PHILOMON=[
-  {id:'001',nom:'DESCARTES',full:'René Descartes',dates:'1596-1650',types:['Rationalisme'],lieu:'France',gen:1,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg',
-   // High RIGUEUR: the Cogito is one of the tightest demonstrations in history.
-   // High ANCRAGE: very hard to refute on its own terms.
-   // Low PORTÉE: plays almost exclusively immanent, never attacks the frame itself.
-   // Low CLÔTURE: collapses when Hume shifts the frame to experience-first.
-   stats:{INFLUENCE:92, RIGUEUR:95, ANCRAGE:80, PORTÉE:30, CLÔTURE:40, CLARTÉ:70},
-   fr:{oeuvre:'Méd. Métaphysiques',
-     entree:"Fondateur du rationalisme moderne, Descartes cherche un point de certitude absolue. En éliminant méthodiquement toute croyance incertaine, il découvre que l'acte même de douter prouve l'existence du sujet pensant.",
-     concepts:[
-       {nom:'LE COGITO',           cat:'immanent',     type:'Rationalisme', puissance:95, desc:"Je pense donc je suis. Réfutation depuis l'intérieur même du doute — seule certitude qui résiste à toute tentative de mise en question."},
-       {nom:'DOUTE HYPERBOLIQUE',  cat:'immanent',     type:'Rationalisme', puissance:80, desc:"Procédure interne au champ épistémique : rejeter méthodiquement tout ce qui n'est pas absolument certain."},
-       {nom:'LE DUALISME',         cat:'transcendant',  type:'Idéalisme',    puissance:60, desc:"Pose un cadre ontologique extérieur à l'épistémologie : corps et esprit sont deux substances radicalement distinctes."},
-     ],
-     filiation:{maitres:['AUGUSTIN','PLATON'],disciples:['SPINOZA','LEIBNIZ','MALEBRANCHE'],contre:['HUME','LOCKE']}},
-   en:{oeuvre:'Meditations',
-     entree:"Founder of modern rationalism, Descartes seeks an unshakeable point of certainty. By methodically doubting everything that can be doubted, he discovers that the very act of doubting proves the existence of a thinking subject.",
-     concepts:[
-       {nom:'THE COGITO',          cat:'immanent',     type:'Rationalisme', puissance:95, desc:"I think therefore I am. A refutation from within doubt itself — the sole certainty that survives any attempt at questioning."},
-       {nom:'HYPERBOLIC DOUBT',    cat:'immanent',     type:'Rationalisme', puissance:80, desc:"An internal epistemic procedure: methodically reject everything that is not absolutely certain."},
-       {nom:'DUALISM',             cat:'transcendant',  type:'Idéalisme',    puissance:60, desc:"Posits an ontological framework external to epistemology: mind and body are two radically distinct substances."},
-     ],
-     filiation:{maitres:['AUGUSTINE','PLATO'],disciples:['SPINOZA','LEIBNIZ','MALEBRANCHE'],contre:['HUME','LOCKE']}},
+let currentLang = 'en';
+const t = (key, lang = currentLang) => {
+  const keys = key.split('.');
+  let val = I18N[lang];
+  for (const k of keys) val = val?.[k];
+  return val || key;
+};
+
+// ═══ PHILOMON DATA ═══
+const PHILOMON = [
+  // ANTIQUE (before 500 CE) — most pixelated
+  {
+    id: '001', era: 'ANTIQUE', nom: 'ÉPICTÈTE', full: 'Épictète', dates: '50-135 AD',
+    types: ['Stoïcisme'], lieu: 'Empire Romain',
+    gen: 1, // Gen I = 4-color Game Boy
+    stats: { INFLUENCE: 82, RIGUEUR: 60, ANCRAGE: 70, PORTÉE: 35, CLÔTURE: 95, CLARTÉ: 85 },
+    fr: {
+      oeuvre: 'Manuel (Enchiridion)',
+      entry: 'Ancien esclave devenu sage, Épictète enseigne que la liberté est la maîtrise de ce qui dépend de nous.',
+      concepts: [
+        { nom: 'DICHOTOMIE DU CONTRÔLE', type: 'Stoïcisme', puissance: 90, desc: 'Distinguer ce qui dépend de nous de ce qui n\'en dépend pas.' }
+      ],
+      filiation: { masters: ['ZÉNON DE CITIUM'], disciples: ['MARC AURÈLE'], against: ['ÉPICURE'] }
+    },
+    en: {
+      oeuvre: 'Enchiridion (Manual)',
+      entry: 'A former slave turned sage, Epictetus teaches that freedom is mastery over what depends on us.',
+      concepts: [
+        { nom: 'DICHOTOMY OF CONTROL', type: 'Stoïcisme', puissance: 90, desc: 'Distinguish what depends on us from what does not.' }
+      ],
+      filiation: { masters: ['ZENO OF CITIUM'], disciples: ['MARCUS AURELIUS'], against: ['EPICURUS'] }
+    }
   },
 
-  {id:'002',nom:'HUME',full:'David Hume',dates:'1711-1776',types:['Empirisme','Scepticisme'],lieu:'Écosse',gen:1,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/e/ea/Painting_of_David_Hume.jpg',
-   // Solid RIGUEUR: immanent arguments are sharp within the empirical field.
-   // Mid PORTÉE: the Guillotine is semi-transcendent — it shifts the logical frame but stays near the field.
-   // Mid ANCRAGE/CLÔTURE: radical scepticism leaves him vulnerable from both sides — he doubts himself too.
-   stats:{INFLUENCE:90, RIGUEUR:85, ANCRAGE:55, PORTÉE:65, CLÔTURE:50, CLARTÉ:72},
-   fr:{oeuvre:'Traité Nature Humaine',
-     entree:"Hume pousse l'empirisme à ses limites radicales. Rien ne vient que de l'expérience — ni la causalité, ni le moi, ni Dieu. Ce scepticisme réveille Kant de son sommeil dogmatique.",
-     concepts:[
-       {nom:'CRITIQUE DE LA CAUSALITÉ', cat:'immanent',    type:'Scepticisme', puissance:92, desc:"Argument interne au champ épistémique : la causalité n'est qu'une habitude psychologique, jamais une nécessité observable."},
-       {nom:'FAISCEAU DE PERCEPTIONS',  cat:'immanent',    type:'Empirisme',   puissance:78, desc:"Le moi n'est pas une substance mais un flux de perceptions sans unité fixe — démonstration depuis l'expérience directe."},
-       {nom:'GUILLOTINE DE HUME',       cat:'transcendant', type:'Scepticisme', puissance:85, desc:"Change le cadre logique lui-même : on ne peut jamais dériver un devoir d'un fait — abîme entre descriptif et normatif."},
-     ],
-     filiation:{maitres:['LOCKE','BERKELEY','BACON'],disciples:['KANT (réaction)','BENTHAM','MILL'],contre:['DESCARTES','LEIBNIZ']}},
-   en:{oeuvre:'Treatise of Human Nature',
-     entree:"Hume pushes empiricism to its radical limits. Nothing comes from anywhere but experience — not causality, not the self, not God. This skepticism awakens Kant from his dogmatic slumber.",
-     concepts:[
-       {nom:'CRITIQUE OF CAUSALITY',   cat:'immanent',    type:'Scepticisme', puissance:92, desc:"Internal to the epistemic field: causality is merely a psychological habit, never an observable necessity."},
-       {nom:'BUNDLE THEORY OF SELF',   cat:'immanent',    type:'Empirisme',   puissance:78, desc:"The self is not a substance but a stream of perceptions without fixed unity — argued from direct experience."},
-       {nom:"HUME'S GUILLOTINE",       cat:'transcendant', type:'Scepticisme', puissance:85, desc:"Shifts the logical frame itself: you can never derive an ought from an is — a chasm between descriptive and normative."},
-     ],
-     filiation:{maitres:['LOCKE','BERKELEY','BACON'],disciples:['KANT (reaction)','BENTHAM','MILL'],contre:['DESCARTES','LEIBNIZ']}},
+  // MODERN (1500-1800) — medium pixelated
+  {
+    id: '002', era: 'MODERN', nom: 'DESCARTES', full: 'René Descartes', dates: '1596-1650',
+    types: ['Rationalisme'], lieu: 'France',
+    gen: 2, // Gen II = 16-color GBC
+    stats: { INFLUENCE: 92, RIGUEUR: 95, ANCRAGE: 80, PORTÉE: 30, CLÔTURE: 40, CLARTÉ: 70 },
+    fr: {
+      oeuvre: 'Méditations Métaphysiques',
+      entry: 'Fondateur du rationalisme moderne, Descartes cherche un point de certitude absolue via le Cogito.',
+      concepts: [
+        { nom: 'LE COGITO', type: 'Rationalisme', puissance: 95, desc: 'Je pense donc je suis.' }
+      ],
+      filiation: { masters: ['AUGUSTIN', 'PLATON'], disciples: ['SPINOZA', 'LEIBNIZ'], against: ['HUME'] }
+    },
+    en: {
+      oeuvre: 'Meditations on First Philosophy',
+      entry: 'Founder of modern rationalism, Descartes seeks an absolute point of certainty via the Cogito.',
+      concepts: [
+        { nom: 'THE COGITO', type: 'Rationalisme', puissance: 95, desc: 'I think therefore I am.' }
+      ],
+      filiation: { masters: ['AUGUSTINE', 'PLATO'], disciples: ['SPINOZA', 'LEIBNIZ'], against: ['HUME'] }
+    }
   },
 
-  {id:'003',nom:'NIETZSCHE',full:'Friedrich Nietzsche',dates:'1844-1900',types:['Existentialisme','Nihilisme'],lieu:'Allemagne',gen:3,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/1/1b/Nietzsche187a.jpg',
-   // Near-zero RIGUEUR: deliberately never plays immanent. That's a feature, not a bug.
-   // Max PORTÉE: attacks exclusively by invalidating the opponent's frame from outside.
-   // Very low ANCRAGE + CLÔTURE: his system is a glass cannon — devastating offensively, fragile defensively.
-   //   (Coherent with his own philosophy: he doesn't seek systematic coherence.)
-   stats:{INFLUENCE:96, RIGUEUR:20, ANCRAGE:30, PORTÉE:99, CLÔTURE:25, CLARTÉ:45},
-   fr:{oeuvre:'Zarathoustra',
-     entree:"Dieu est mort — c'est nous qui l'avons tué. Face au nihilisme, Nietzsche appelle à la transmutation de toutes les valeurs. La Volonté de puissance et l'Éternel Retour défient quiconque ose vivre sans illusions.",
-     concepts:[
-       {nom:'LA MORT DE DIEU',     cat:'transcendant', type:'Nihilisme',       puissance:99, desc:"Invalide le cadre de valeur entier de l'Occident depuis l'extérieur — pas une réfutation morale, une déclaration d'effondrement."},
-       {nom:'VOLONTÉ DE PUISSANCE',cat:'transcendant', type:'Existentialisme', puissance:90, desc:"Méta-éthique qui déborde tous les champs : évaluer les valeurs elles-mêmes selon le critère du dépassement créateur."},
-       {nom:"L'ÉTERNEL RETOUR",    cat:'transcendant', type:'Existentialisme', puissance:82, desc:"Expérience de pensée qui transcende l'éthique et l'ontologie : vivrais-tu ta vie à l'identique si elle se répétait infiniment ?"},
-     ],
-     filiation:{maitres:['SCHOPENHAUER','HÉRACLITE'],disciples:['HEIDEGGER','DELEUZE','CAMUS'],contre:['KANT','HEGEL','SOCRATE']}},
-   en:{oeuvre:'Thus Spoke Zarathustra',
-     entree:"God is dead — and we have killed him. Facing nihilism, Nietzsche calls for a revaluation of all values. The Will to Power and Eternal Recurrence challenge anyone who dares to live without illusions.",
-     concepts:[
-       {nom:'DEATH OF GOD',        cat:'transcendant', type:'Nihilisme',       puissance:99, desc:"Invalidates the entire Western value framework from outside — not a moral refutation, a declaration of collapse."},
-       {nom:'WILL TO POWER',       cat:'transcendant', type:'Existentialisme', puissance:90, desc:"A meta-ethics that overflows all fields: evaluate values themselves by the criterion of creative self-overcoming."},
-       {nom:'ETERNAL RECURRENCE',  cat:'transcendant', type:'Existentialisme', puissance:82, desc:"A thought-experiment transcending ethics and ontology: would you live your life identically if it repeated infinitely?"},
-     ],
-     filiation:{maitres:['SCHOPENHAUER','HERACLITUS'],disciples:['HEIDEGGER','DELEUZE','CAMUS'],contre:['KANT','HEGEL','SOCRATES']}},
+  {
+    id: '003', era: 'MODERN', nom: 'HUME', full: 'David Hume', dates: '1711-1776',
+    types: ['Empirisme', 'Scepticisme'], lieu: 'Écosse',
+    gen: 2,
+    stats: { INFLUENCE: 90, RIGUEUR: 85, ANCRAGE: 55, PORTÉE: 65, CLÔTURE: 50, CLARTÉ: 72 },
+    fr: {
+      oeuvre: 'Traité de la Nature Humaine',
+      entry: 'Hume pousse l\'empirisme à ses limites radicales. La causalité n\'est qu\'une habitude psychologique.',
+      concepts: [
+        { nom: 'CRITIQUE DE LA CAUSALITÉ', type: 'Scepticisme', puissance: 92, desc: 'La causalité n\'est qu\'une habitude, jamais une nécessité observable.' }
+      ],
+      filiation: { masters: ['LOCKE', 'BERKELEY'], disciples: ['KANT', 'BENTHAM'], against: ['DESCARTES'] }
+    },
+    en: {
+      oeuvre: 'A Treatise of Human Nature',
+      entry: 'Hume pushes empiricism to radical limits. Causality is merely a psychological habit.',
+      concepts: [
+        { nom: 'CRITIQUE OF CAUSALITY', type: 'Scepticisme', puissance: 92, desc: 'Causality is only a habit, never an observable necessity.' }
+      ],
+      filiation: { masters: ['LOCKE', 'BERKELEY'], disciples: ['KANT', 'BENTHAM'], against: ['DESCARTES'] }
+    }
   },
 
-  {id:'004',nom:'ÉPICTÈTE',full:'Épictète',dates:'50-135 ap. J.-C.',types:['Stoïcisme'],lieu:'Empire Romain',gen:1,
-   imgUrl:'https://upload.wikimedia.org/wikipedia/commons/9/90/Epictetus.jpg',
-   // Near-max CLÔTURE: the system is explicitly designed to be impervious to external attacks —
-   //   "what does not depend on me cannot touch me" applies to philosophical challenges too.
-   // High ANCRAGE: coherent internal system, hard to refute from within.
-   // Moderate RIGUEUR: immanent arguments are solid but not formally demonstrative.
-   // Low PORTÉE: almost never attacks the opponent's frame, stays within the existential field.
-   stats:{INFLUENCE:82, RIGUEUR:60, ANCRAGE:70, PORTÉE:35, CLÔTURE:95, CLARTÉ:85},
-   fr:{oeuvre:'Manuel (Enchiridion)',
-     entree:"Ancien esclave devenu sage, Épictète enseigne que la liberté est la maîtrise de ce qui dépend de nous. Ce qui n'en dépend pas — maladie, mort, opinion d'autrui — ne mérite ni désir ni crainte.",
-     concepts:[
-       {nom:'DICHOTOMIE DU CONTRÔLE', cat:'immanent',    type:'Stoïcisme', puissance:90, desc:"Argument interne au champ existentiel : distinguer ce qui dépend de nous de ce qui n'en dépend pas — n'agir que sur le premier."},
-       {nom:'REPRÉSENTATION (PHANTASIA)',cat:'immanent', type:'Stoïcisme', puissance:72, desc:"Ce ne sont pas les événements qui troublent mais nos représentations d'eux — transformation interne à la posture existentielle."},
-       {nom:'LE RÔLE (PROSÔPON)',     cat:'transcendant', type:'Stoïcisme', puissance:60, desc:"Jouer parfaitement le rôle que le destin nous a assigné — sort légèrement du champ en posant un cadre cosmique extérieur."},
-     ],
-     filiation:{maitres:['ZÉNON DE CITIUM','CHRYSIPPE','MUSONIUS RUFUS'],disciples:['MARC AURÈLE','ARRIEN'],contre:['ÉPICURE']}},
-   en:{oeuvre:'Enchiridion (Manual)',
-     entree:"A former slave turned sage, Epictetus teaches that freedom is mastery over what depends on us. What does not — illness, death, others' opinions — deserves neither desire nor fear.",
-     concepts:[
-       {nom:'DICHOTOMY OF CONTROL',   cat:'immanent',    type:'Stoïcisme', puissance:90, desc:"Internal to the existential field: distinguish what depends on us from what does not — act only on the former."},
-       {nom:'IMPRESSION (PHANTASIA)', cat:'immanent',    type:'Stoïcisme', puissance:72, desc:"It is not events that disturb us, but our impressions of them — transformation within the existential stance."},
-       {nom:'ROLE (PROSÔPON)',         cat:'transcendant', type:'Stoïcisme', puissance:60, desc:"Play perfectly the role fate assigned us — steps slightly outside the field by positing an external cosmic framework."},
-     ],
-     filiation:{maitres:['ZENO OF CITIUM','CHRYSIPPUS','MUSONIUS RUFUS'],disciples:['MARCUS AURELIUS','ARRIAN'],contre:['EPICURUS']}},
+  // CRITIQUE (1800-1900) — less pixelated
+  {
+    id: '004', era: 'CRITIQUE', nom: 'KANT', full: 'Immanuel Kant', dates: '1724-1804',
+    types: ['Rationalisme', 'Scepticisme'], lieu: 'Allemagne',
+    gen: 3, // Gen III = 32-color GBA
+    stats: { INFLUENCE: 98, RIGUEUR: 99, ANCRAGE: 85, PORTÉE: 40, CLÔTURE: 80, CLARTÉ: 60 },
+    fr: {
+      oeuvre: 'Critique de la Raison Pure',
+      entry: 'Kant synthétise rationalisme et empirisme. L\'espace et le temps sont les formes a priori de notre intuition.',
+      concepts: [
+        { nom: 'SYNTHÈSE A PRIORI', type: 'Rationalisme', puissance: 98, desc: 'Des connaissances universelles qui ne viennent pas de l\'expérience seule.' }
+      ],
+      filiation: { masters: ['DESCARTES', 'HUME'], disciples: ['HEGEL', 'FICHTE'], against: ['LOCKE'] }
+    },
+    en: {
+      oeuvre: 'Critique of Pure Reason',
+      entry: 'Kant synthesizes rationalism and empiricism. Space and time are a priori forms of intuition.',
+      concepts: [
+        { nom: 'SYNTHETIC A PRIORI', type: 'Rationalisme', puissance: 98, desc: 'Universal knowledge not derived from experience alone.' }
+      ],
+      filiation: { masters: ['DESCARTES', 'HUME'], disciples: ['HEGEL', 'FICHTE'], against: ['LOCKE'] }
+    }
+  },
+
+  {
+    id: '005', era: 'CRITIQUE', nom: 'HEGEL', full: 'Georg Wilhelm Friedrich Hegel', dates: '1770-1831',
+    types: ['Idéalisme'], lieu: 'Allemagne',
+    gen: 3,
+    stats: { INFLUENCE: 95, RIGUEUR: 80, ANCRAGE: 75, PORTÉE: 85, CLÔTURE: 70, CLARTÉ: 35 },
+    fr: {
+      oeuvre: 'La Phénoménologie de l\'Esprit',
+      entry: 'Hegel conçoit l\'histoire comme un processus dialectique. L\'Absolu se réalise à travers la négation et la synthèse.',
+      concepts: [
+        { nom: 'LA DIALECTIQUE', type: 'Idéalisme', puissance: 95, desc: 'Thèse-antithèse-synthèse : le mouvement de l\'Esprit absolu.' }
+      ],
+      filiation: { masters: ['KANT', 'FICHTE'], disciples: ['MARX', 'FEUERBACH'], against: ['DESCARTES', 'HUME'] }
+    },
+    en: {
+      oeuvre: 'The Phenomenology of Spirit',
+      entry: 'Hegel conceives history as a dialectical process. The Absolute realizes itself through negation and synthesis.',
+      concepts: [
+        { nom: 'THE DIALECTIC', type: 'Idéalisme', puissance: 95, desc: 'Thesis-antithesis-synthesis: the movement of Absolute Spirit.' }
+      ],
+      filiation: { masters: ['KANT', 'FICHTE'], disciples: ['MARX', 'FEUERBACH'], against: ['DESCARTES', 'HUME'] }
+    }
+  },
+
+  {
+    id: '006', era: 'CRITIQUE', nom: 'NIETZSCHE', full: 'Friedrich Nietzsche', dates: '1844-1900',
+    types: ['Existentialisme', 'Nihilisme'], lieu: 'Allemagne',
+    gen: 3,
+    stats: { INFLUENCE: 96, RIGUEUR: 20, ANCRAGE: 30, PORTÉE: 99, CLÔTURE: 25, CLARTÉ: 45 },
+    fr: {
+      oeuvre: 'Ainsi parlait Zarathoustra',
+      entry: 'Dieu est mort. Nietzsche appelle à la transmutation de toutes les valeurs. La Volonté de Puissance prime.',
+      concepts: [
+        { nom: 'LA MORT DE DIEU', type: 'Nihilisme', puissance: 99, desc: 'Effondrement du cadre de valeur entier de l\'Occident.' }
+      ],
+      filiation: { masters: ['SCHOPENHAUER', 'HÉRACLITE'], disciples: ['HEIDEGGER', 'DELEUZE'], against: ['KANT', 'HEGEL'] }
+    },
+    en: {
+      oeuvre: 'Thus Spoke Zarathustra',
+      entry: 'God is dead. Nietzsche calls for a revaluation of all values. Will to Power reigns.',
+      concepts: [
+        { nom: 'DEATH OF GOD', type: 'Nihilisme', puissance: 99, desc: 'Collapse of the entire Western value framework.' }
+      ],
+      filiation: { masters: ['SCHOPENHAUER', 'HERACLITUS'], disciples: ['HEIDEGGER', 'DELEUZE'], against: ['KANT', 'HEGEL'] }
+    }
+  },
+
+  // CONTEMPORARY (1900+) — barely pixelated
+  {
+    id: '007', era: 'CONTEMPORARY', nom: 'MILL', full: 'John Stuart Mill', dates: '1806-1873',
+    types: ['Utilitarisme'], lieu: 'Angleterre',
+    gen: 4, // Gen IV = nearly no pixelation
+    stats: { INFLUENCE: 85, RIGUEUR: 80, ANCRAGE: 75, PORTÉE: 60, CLÔTURE: 70, CLARTÉ: 85 },
+    fr: {
+      oeuvre: 'De la Liberté',
+      entry: 'Mill défend la liberté individuelle comme fondamentale. Le bien collectif passe par le respect des libertés personnelles.',
+      concepts: [
+        { nom: 'LE PRINCIPE DE LIBERTÉ', type: 'Utilitarisme', puissance: 85, desc: 'Chacun doit être libre du moment qu\'il ne nuit pas à autrui.' }
+      ],
+      filiation: { masters: ['BENTHAM', 'HUME'], disciples: ['RAWLS', 'HART'], against: ['HEGEL', 'COMTE'] }
+    },
+    en: {
+      oeuvre: 'On Liberty',
+      entry: 'Mill defends individual freedom as fundamental. Collective good passes through respect for personal liberties.',
+      concepts: [
+        { nom: 'THE LIBERTY PRINCIPLE', type: 'Utilitarisme', puissance: 85, desc: 'Everyone should be free as long as they don\'t harm others.' }
+      ],
+      filiation: { masters: ['BENTHAM', 'HUME'], disciples: ['RAWLS', 'HART'], against: ['HEGEL', 'COMTE'] }
+    }
+  },
+
+  {
+    id: '008', era: 'CONTEMPORARY', nom: 'SARTRE', full: 'Jean-Paul Sartre', dates: '1905-1980',
+    types: ['Existentialisme'], lieu: 'France',
+    gen: 4,
+    stats: { INFLUENCE: 92, RIGUEUR: 75, ANCRAGE: 65, PORTÉE: 80, CLÔTURE: 55, CLARTÉ: 70 },
+    fr: {
+      oeuvre: 'L\'Être et le Néant',
+      entry: 'L\'existence précède l\'essence. L\'homme est condamné à être libre et responsable de son choix.',
+      concepts: [
+        { nom: 'LIBERTÉ ABSOLUE', type: 'Existentialisme', puissance: 90, desc: 'L\'homme est le fondement de l\'essence — il crée son essence par ses choix.' }
+      ],
+      filiation: { masters: ['HEIDEGGER', 'HUSSERL'], disciples: ['CAMUS', 'BEAUVOIR'], against: ['DESCARTES', 'KANT'] }
+    },
+    en: {
+      oeuvre: 'Being and Nothingness',
+      entry: 'Existence precedes essence. Man is condemned to freedom and responsible for his choices.',
+      concepts: [
+        { nom: 'ABSOLUTE FREEDOM', type: 'Existentialisme', puissance: 90, desc: 'Man is the foundation of essence — he creates it through choices.' }
+      ],
+      filiation: { masters: ['HEIDEGGER', 'HUSSERL'], disciples: ['CAMUS', 'BEAUVOIR'], against: ['DESCARTES', 'KANT'] }
+    }
   },
 ];
 
-// ══════════════════════════════════════════════════════════════════════════════
-// LAYOUT DETECTION
-// ══════════════════════════════════════════════════════════════════════════════
-const mq = window.matchMedia('(max-width: 1023px)');
+// ═══ ERA CONFIGURATION ═══
+const ERAS = ['ALL', 'ANTIQUE', 'MEDIEVAL', 'MODERN', 'CRITIQUE', 'CONTEMPORARY'];
 
-/** Applies the correct layout class and re-renders both views. */
-function applyLayout() {
-  const isMobile = mq.matches;
-  document.body.classList.toggle('is-desktop', !isMobile);
-  document.body.classList.toggle('is-mobile',   isMobile);
-  if (!isMobile) { buildDesktop(); }
-  else           { buildMobile();  }
-}
-
-mq.addEventListener('change', applyLayout);
-
-// ══════════════════════════════════════════════════════════════════════════════
-// FILTER STATE (shared between desktop & mobile)
-// ══════════════════════════════════════════════════════════════════════════════
-let activeType   = null;
-let activeSearch = '';
-
-function filteredList() {
-  const q = activeSearch.toLowerCase();
-  return PHILOMON.filter(p => {
-    const d = p[lang];
-    const mq2 = !q || p.nom.toLowerCase().includes(q) || p.full.toLowerCase().includes(q)
-               || p.types.some(tp=>tp.toLowerCase().includes(q))
-               || d.concepts.some(c=>c.nom.toLowerCase().includes(q));
-    const mt = !activeType || p.types.includes(activeType);
-    return mq2 && mt;
-  });
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// SHARED CONTENT BUILDERS — return HTML strings
-// ══════════════════════════════════════════════════════════════════════════════
-
-/** Renders the Pokédex entry text tab. */
-function buildEntryHtml(p) {
-  const d = p[lang];
-  return `<p class="entry-text">${d.entree}</p>`;
-}
-
-/** Renders the stats tab with role badges, colored bars, and hover tooltips. */
-function buildStatsHtml(p) {
-  const meta = STAT_META[lang];
-  return `<div class="stat-list">${
-    Object.entries(p.stats).map(([k,v]) => {
-      const m = meta[k] || { role:'pool', tip:'' };
-      // Bar color: ATK stats use the first type color, DEF stats slightly muted
-      const barClass = (m.role === 'atk') ? fillClass(p.types[0]) :
-                       (m.role === 'def') ? fillClass(p.types[p.types.length-1]) :
-                       fillClass(p.types[0]);
-      return `
-      <div class="stat-row">
-        <span class="stat-key" data-tip="${m.tip}">${k}</span>
-        <span class="stat-role ${m.role}">${m.role === 'pool' ? 'PV' : m.role === 'atk' ? 'ATK' : m.role === 'def' ? 'DEF' : 'VIT'}</span>
-        <span class="stat-val">${v}</span>
-        <div class="stat-bar">
-          <div class="stat-fill ${barClass}" style="width:${v}%"></div>
-        </div>
-      </div>`;
-    }).join('')
-  }</div>`;
-}
-
-/** Renders defensive matchups (resistances and weaknesses). */
-function buildMatchupsHtml(p) {
-  const dm = computeDefMatchups(p.types);
-  const myChamps = [...new Set(p.types.map(champOf).filter(Boolean))];
-  const other = Object.keys(CHAMPS).filter(c=>!myChamps.includes(c)).map(c=>I18N[lang].champLabels[c]||c);
-  let html = '<div class="matchup-section">';
-  if (dm.fort.length)  html += `<div><div class="matchup-group-title">${t('resistances')}</div><div class="pill-row">${dm.fort.map(e=>`<div class="pill strong"><span class="${tClass(e.type)}">${e.type.toUpperCase()}</span><span class="mult">×½</span></div>`).join('')}</div></div>`;
-  if (dm.faible.length) html += `<div><div class="matchup-group-title">${t('weaknesses')}</div><div class="pill-row">${dm.faible.map(e=>`<div class="pill weak"><span class="${tClass(e.type)}">${e.type.toUpperCase()}</span><span class="mult">×2</span></div>`).join('')}</div></div>`;
-  if (other.length) html += `<div class="incommensurable-note">${t('incommensurable')}${other.join(', ')}</div>`;
-  return html + '</div>';
-}
-
-/** Renders the concepts (attacks) tab.
- *  Each concept carries its own type and categorie (immanent|transcendant).
- *  - Immanent moves: type matchups apply normally within the field.
- *  - Transcendent moves: bypass type matchups, target CLÔTURE instead.
- */
-function buildConceptsHtml(p) {
-  const d = p[lang];
-  return `<div class="concept-list">${d.concepts.map(c => {
-    const cType = c.type;
-    const isImmanent = c.cat === 'immanent';
-    const catLabel = lang === 'fr'
-      ? (isImmanent ? 'IMMANENT' : 'TRANSCENDANT')
-      : (isImmanent ? 'IMMANENT' : 'TRANSCENDENT');
-
-    // Offensive matchups only apply to immanent moves (they stay in the field)
-    let vsRows = '';
-    if (isImmanent) {
-      for (const [,cd] of Object.entries(CHAMPS)) {
-        if (champOf(cType) !== Object.keys(CHAMPS).find(k => CHAMPS[k] === cd)) continue;
-        for (const dt of cd.types) {
-          if (dt === cType) continue;
-          const m = cd.matchups?.[cType]?.[dt];
-          if (m && m !== 1) vsRows += `
-            <span class="vs-lbl">vs</span>
-            <span class="vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span>
-            <span class="vs-mult" style="color:${m>=2?'#44ff44':'#ff4444'}">${m>=2?'×2':'×½'}</span>`;
-        }
-      }
-    } else {
-      // Transcendent: always hits CLÔTURE regardless of type
-      vsRows = `<span class="vs-lbl">${lang==='fr'?'cible':'targets'}</span>
-        <span class="vs-pill" style="border-color:#7799cc;color:#7799cc">CLÔTURE</span>`;
+// ═══ PIXEL ART ENGINE ═══
+function generatePixelArt(canvas, philomon, size = 128) {
+  const ctx = canvas.getContext('2d');
+  const id = parseInt(philomon.id);
+  const gen = philomon.gen;
+  
+  // Pixelation level inversely proportional to gen (lower gen = more pixelated)
+  const pixelSize = Math.max(1, 5 - gen);
+  
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Generate deterministic patterns based on philosopher ID
+  const colors = getGenColors(gen);
+  for (let y = 0; y < size; y += pixelSize) {
+    for (let x = 0; x < size; x += pixelSize) {
+      const hash = (id + x/pixelSize + y/pixelSize * 13) % colors.length;
+      const idx = Math.floor(Math.abs(Math.sin(hash) * 3)) % colors.length;
+      ctx.fillStyle = colors[idx];
+      ctx.fillRect(x, y, pixelSize, pixelSize);
     }
-
-    return `<div class="concept-card">
-      <div class="concept-top">
-        <span class="concept-name">
-          ${c.nom}
-          <span class="concept-cat ${c.cat}">${catLabel}</span>
-        </span>
-        <span class="concept-pwr">PWR ${c.puissance}</span>
-      </div>
-      <span class="concept-type-tag ${tClass(cType)}">${cType.toUpperCase()}</span>
-      <div class="concept-desc">${c.desc}</div>
-      ${vsRows ? `<div class="concept-matchup-row">${vsRows}</div>` : ''}
-    </div>`;
-  }).join('')}</div>`;
-}
-
-/** Renders the filiation (philosophical lineage) tab. */
-function buildFiliationHtml(p) {
-  const f = p[lang].filiation;
-  return `<div class="fil-section">
-    <div><div class="fil-group-title">${t('influences')}</div>
-    <div class="fil-chain">${f.maitres.map(m=>`<span class="fil-tag">${m}</span>`).join('')}<span class="fil-arrow">▶</span><span class="fil-tag self">${p.nom}</span></div></div>
-    <div><div class="fil-group-title">${t('disciples')}</div>
-    <div class="fil-chain"><span class="fil-tag self">${p.nom}</span><span class="fil-arrow">▶</span>${f.disciples.map(d=>`<span class="fil-tag">${d}</span>`).join('')}</div></div>
-    ${f.contre?.length?`<div><div class="fil-group-title" style="color:#cc4444">${t('oppositions')}</div><div class="fil-chain">${f.contre.map(c=>`<span class="fil-tag hostile">${c}</span>`).join('')}</div></div>`:''}
-  </div>`;
-}
-
-/** Dispatches tab content to a container element. */
-function renderTab(tabKey, p, container) {
-  const builders = {
-    entree: buildEntryHtml,
-    stats: buildStatsHtml,
-    matchups: buildMatchupsHtml,
-    concepts: buildConceptsHtml,
-    filiation: buildFiliationHtml,
-  };
-  container.innerHTML = (builders[tabKey]||buildEntryHtml)(p);
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// DESKTOP VIEW
-// ══════════════════════════════════════════════════════════════════════════════
-let selectedPhilo = null;
-let activeDesktopTab = 'entree';
-
-function buildDesktop() {
-  buildDesktopFilters();
-  renderDesktopList();
-  applyDesktopLangLabels();
-  if (selectedPhilo) openDesktopDetail(selectedPhilo);
-}
-
-function buildDesktopFilters() {
-  const el = document.getElementById('desk-filters');
-  el.innerHTML = '';
-  for(const[champ,cd] of Object.entries(CHAMPS)){
-    const row = document.createElement('div');
-    row.className = 'filter-field-row';
-    const lbl = document.createElement('span');
-    lbl.className = 'field-label';
-    lbl.style.color = cd.color+'bb';
-    lbl.textContent = I18N[lang].champLabels[champ] || champ;
-    row.appendChild(lbl);
-    cd.types.forEach(tp => {
-      const chip = document.createElement('div');
-      chip.className = 'chip' + (activeType===tp?' active':'');
-      chip.dataset.type = tp;
-      chip.style.borderColor = cd.color;
-      chip.style.color = cd.color;
-      chip.textContent = tp.substring(0,5).toUpperCase();
-      chip.addEventListener('click', () => {
-        activeType = activeType===tp ? null : tp;
-        buildDesktopFilters();
-        renderDesktopList();
-        if (selectedPhilo && !filteredList().includes(selectedPhilo)) {
-          selectedPhilo = null;
-          showDesktopEmpty();
-        }
-      });
-      row.appendChild(chip);
-    });
-    el.appendChild(row);
   }
 }
 
-function renderDesktopList() {
-  const items = filteredList();
-  document.getElementById('desk-count').textContent = items.length;
+function getGenColors(gen) {
+  if (gen === 1) return ['#000000', '#2D5016', '#558817', '#8FBC8F']; // Gen I (GB, 4-color)
+  if (gen === 2) return ['#000000', '#111111', '#333333', '#555555', '#777777', '#999999', '#AAAAAA', '#CCCCCC', '#2D5016', '#558817', '#8FBC8F', '#00AA00', '#00FF00', '#FF6644', '#FFAA88', '#FFFFFF']; // Gen II (GBC)
+  if (gen === 3) return ['#000000', '#111111', '#222222', '#333333', '#444444', '#555555', '#666666', '#777777', '#888888', '#999999', '#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD', '#EEEEEE', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FF6644', '#66FF44', '#4466FF', '#FF44FF', '#FFFF44', '#44FFFF', '#FF8844', '#88FF44', '#4488FF', '#FF44FF']; // Gen III (GBA, 32-color)
+  return ['#000000', '#1A1A1A', '#333333', '#4D4D4D', '#666666', '#808080', '#999999', '#B2B2B2', '#CCCCCC', '#E5E5E5', '#FFFFFF', '#FF0000', '#FF3333', '#FF6666', '#FF9999', '#FFCCCC', '#FF0033', '#FF3366', '#FF6699', '#FF99CC', '#FFCCFF', '#003300', '#006600', '#009900', '#00CC00', '#00FF00', '#33FF33', '#66FF66', '#99FF99', '#CCFFCC', '#FFFFFF', '#000033']; // Gen IV (nearly full color)
+}
 
-  // Sidebar list
-  const sidebar = document.getElementById('desk-sidebar-list');
-  sidebar.innerHTML = '';
-  items.forEach(p => {
-    const row = document.createElement('div');
-    row.className = 'philo-row' + (selectedPhilo===p ? ' active':'');
-    const thumb = document.createElement('div'); thumb.className = 'philo-thumb';
-    thumb.appendChild(placeholderCanvas(38));
-    getSprite(p,38).then(c=>{thumb.innerHTML='';thumb.appendChild(c);});
-    const info = document.createElement('div'); info.className = 'philo-info';
-    info.innerHTML = `<div class="philo-num">#${p.id}</div>
-      <div class="philo-name">${p.nom}</div>
-      <div class="philo-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>`;
-    const gen = document.createElement('div'); gen.className = 'philo-gen';
-    gen.textContent = GEN_NAMES[p.gen]; gen.style.color = GEN_COLORS[p.gen];
-    row.appendChild(thumb); row.appendChild(info); row.appendChild(gen);
-    row.addEventListener('click', ()=>openDesktopDetail(p));
-    sidebar.appendChild(row);
+// ═══ STATE MANAGEMENT ═══
+let appState = {
+  lang: 'en',
+  selectedEra: 'ALL',
+  selectedPhilomon: null,
+  filteredList: PHILOMON,
+};
+
+function setLanguage(lang) {
+  appState.lang = lang;
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.textContent = lang.toUpperCase());
+  render();
+}
+
+function setEra(era) {
+  appState.selectedEra = era;
+  appState.filteredList = era === 'ALL' ? PHILOMON : PHILOMON.filter(p => p.era === era);
+  appState.selectedPhilomon = null;
+  render();
+}
+
+function selectPhilomon(id) {
+  appState.selectedPhilomon = PHILOMON.find(p => p.id === id);
+  render();
+}
+
+// ═══ RENDERING ═══
+function render() {
+  const isMobile = window.matchMedia('(max-width: 1023px)').matches;
+  if (isMobile) renderMobile();
+  else renderDesktop();
+}
+
+function renderDesktop() {
+  const app = document.getElementById('app-desktop');
+  app.style.display = 'flex';
+  document.getElementById('app-mobile').style.display = 'none';
+  
+  // Era tabs
+  const eraTabs = document.getElementById('desk-era-tabs');
+  eraTabs.innerHTML = '';
+  ERAS.forEach(era => {
+    const btn = document.createElement('button');
+    btn.className = `era-tab ${era === appState.selectedEra ? 'active' : ''}`;
+    btn.textContent = t(`eras.${era}`);
+    btn.onclick = () => setEra(era);
+    eraTabs.appendChild(btn);
   });
-
-  // Card grid
-  const grid = document.getElementById('desk-card-grid');
-  grid.innerHTML = '';
-  items.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'philo-card' + (selectedPhilo===p ? ' active':'');
-    const spriteArea = document.createElement('div'); spriteArea.className = 'card-sprite-area';
-    spriteArea.appendChild(placeholderCanvas(88));
-    getSprite(p,88).then(c=>{spriteArea.innerHTML='';spriteArea.appendChild(c);});
-    card.innerHTML = '';
-    card.appendChild(spriteArea);
-    const body = document.createElement('div'); body.className = 'card-body';
-    body.innerHTML = `<div class="card-num">#${p.id}</div>
-      <div class="card-name">${p.nom}</div>
-      <div class="card-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>
-      <div class="card-gen" style="color:${GEN_COLORS[p.gen]}">${GEN_NAMES[p.gen]}</div>
-      <div class="card-infl">
-        <span class="card-infl-label">INFL</span>
-        <div class="card-infl-bar"><div class="card-infl-fill ${fillClass(p.types[0])}" style="width:${p.stats.INFLUENCE}%"></div></div>
-        <span class="card-infl-label">${p.stats.INFLUENCE}</span>
-      </div>`;
-    card.appendChild(body);
-    card.addEventListener('click', ()=>openDesktopDetail(p));
-    grid.appendChild(card);
-  });
-}
-
-function showDesktopEmpty() {
-  document.getElementById('desk-empty').style.display = 'flex';
-  document.getElementById('desk-detail-content').classList.remove('visible');
-}
-
-function openDesktopDetail(p) {
-  selectedPhilo = p;
-  // Re-highlight active items
-  document.querySelectorAll('.philo-row').forEach(r=>r.classList.remove('active'));
-  document.querySelectorAll('.philo-card').forEach(r=>r.classList.remove('active'));
-  const pIdx = PHILOMON.indexOf(p);
-
-  document.getElementById('desk-empty').style.display = 'none';
-  document.getElementById('desk-detail-content').classList.add('visible');
-
-  // Sprite
-  const spriteEl = document.getElementById('desk-d-sprite');
-  spriteEl.innerHTML = '';
-  spriteEl.appendChild(placeholderCanvas(120));
-  getSprite(p,120).then(c=>{spriteEl.innerHTML='';spriteEl.appendChild(c);});
-
-  // Meta
-  document.getElementById('desk-d-num').textContent = '#'+p.id;
-  document.getElementById('desk-d-name').textContent = p.nom;
-  document.getElementById('desk-d-full').textContent = p.full;
-  document.getElementById('desk-d-dates').textContent = p.dates;
-  document.getElementById('desk-d-lieu').textContent = p.lieu;
-  document.getElementById('desk-d-oeuvre').textContent = p[lang].oeuvre;
-  const genBadge = document.getElementById('desk-d-gen');
-  genBadge.textContent = GEN_NAMES[p.gen];
-  genBadge.style.borderColor = GEN_COLORS[p.gen];
-  genBadge.style.color = GEN_COLORS[p.gen];
-
-  // Influence bar
-  const inf = p.stats.INFLUENCE;
-  document.getElementById('desk-d-infl-num').textContent = inf;
-  const fill = document.getElementById('desk-d-infl');
-  fill.style.width = inf+'%';
-  fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
-
-  // Types
-  document.getElementById('desk-d-types').innerHTML =
-    p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('');
-
-  // Render active tab
-  renderTab(activeDesktopTab, p, document.getElementById('desk-tab-body'));
-
-  // Update active states in list/grid
-  renderDesktopList();
-}
-
-// Desktop tab clicks
-document.querySelectorAll('.dtab').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.dtab').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    activeDesktopTab = btn.dataset.tab;
-    if(selectedPhilo) renderTab(activeDesktopTab, selectedPhilo, document.getElementById('desk-tab-body'));
-  });
-});
-
-// Desktop search
-document.getElementById('desk-search').addEventListener('input', e=>{
-  activeSearch = e.target.value;
-  renderDesktopList();
-});
-
-// Desktop lang switch
-document.getElementById('desk-lang').addEventListener('click', ()=>{
-  lang = lang==='fr'?'en':'fr';
-  applyDesktopLangLabels();
-  buildDesktopFilters();
-  renderDesktopList();
-  if(selectedPhilo) openDesktopDetail(selectedPhilo);
-});
-
-function applyDesktopLangLabels() {
-  document.getElementById('desk-lang').textContent    = lang==='fr'?'EN':'FR';
-  document.getElementById('desk-list-title').textContent = t('listTitle');
-  document.getElementById('desk-search').placeholder  = t('search');
-  document.getElementById('desk-empty-txt').textContent = t('emptyState').replace('\n',' ');
-  document.getElementById('desk-tab-entree').textContent   = t('tabEntry');
-  document.getElementById('desk-tab-stats').textContent    = t('tabStats');
-  document.getElementById('desk-tab-matchups').textContent = t('tabMatchups');
-  document.getElementById('desk-tab-concepts').textContent = t('tabConcepts');
-  document.getElementById('desk-tab-filiation').textContent= t('tabFiliation');
-  document.documentElement.lang = lang;
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
-// MOBILE VIEW
-// ══════════════════════════════════════════════════════════════════════════════
-let activeMobileTab = 'entree';
-let mobilePhilo = null;
-
-function buildMobile() {
-  buildMobileFilters();
-  renderMobileList();
-  applyMobileLangLabels();
-}
-
-function buildMobileFilters() {
-  const el = document.getElementById('mob-filters');
-  el.innerHTML = '';
-  for(const[,cd] of Object.entries(CHAMPS)){
-    cd.types.forEach(tp=>{
-      const chip = document.createElement('div');
-      chip.className = 'chip'+(activeType===tp?' active':'');
-      chip.dataset.type = tp;
-      chip.style.borderColor = cd.color; chip.style.color = cd.color;
-      chip.textContent = tp.substring(0,6).toUpperCase();
-      chip.style.fontSize = '10px';
-      chip.style.padding = '5px 9px';
-      chip.addEventListener('click',()=>{
-        activeType = activeType===tp?null:tp;
-        buildMobileFilters();
-        renderMobileList();
-      });
-      el.appendChild(chip);
-    });
-  }
-}
-
-function renderMobileList() {
-  const items = filteredList();
-  const list = document.getElementById('mob-list');
+  
+  // Philomon list
+  const list = document.getElementById('desk-list');
   list.innerHTML = '';
-  items.forEach(p=>{
-    const row = document.createElement('div'); row.className = 'mob-philo-row';
-    const thumb = document.createElement('div'); thumb.className = 'mob-thumb';
-    thumb.appendChild(placeholderCanvas(48));
-    getSprite(p,48).then(c=>{thumb.innerHTML='';thumb.appendChild(c);});
-    const info = document.createElement('div'); info.className = 'mob-info';
-    info.innerHTML = `<div class="mob-num">#${p.id}</div>
-      <div class="mob-name">${p.nom}</div>
-      <div class="mob-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.substring(0,8).toUpperCase()}</span>`).join('')}</div>`;
-    const inflLbl = document.createElement('span'); inflLbl.className='mob-infl-label';
-    inflLbl.textContent = p.stats.INFLUENCE;
-    row.appendChild(thumb); row.appendChild(info); row.appendChild(inflLbl);
-    row.addEventListener('click',()=>openMobileDetail(p));
+  appState.filteredList.forEach(p => {
+    const row = document.createElement('div');
+    row.className = `philomon-row ${p.id === appState.selectedPhilomon?.id ? 'active' : ''}`;
+    row.innerHTML = `<div class="pr-name">${p.nom}</div><div class="pr-meta">${p.dates} • ${t(`eras.${p.era}`)}</div>`;
+    row.onclick = () => selectPhilomon(p.id);
     list.appendChild(row);
   });
-}
-
-function openMobileDetail(p) {
-  mobilePhilo = p;
-  document.getElementById('mob-detail').classList.add('open');
-  document.getElementById('mob-d-title').textContent = p.nom;
-  document.getElementById('mob-d-full').textContent  = p.full;
-  document.getElementById('mob-d-dates').textContent = p.dates+' · '+p.lieu;
-  document.getElementById('mob-d-oeuvre').textContent= p[lang].oeuvre;
-  document.getElementById('mob-d-types').innerHTML   = p.types.map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.toUpperCase()}</span>`).join('');
-
-  const inf = p.stats.INFLUENCE;
-  document.getElementById('mob-d-infl-num').textContent = inf;
-  const fill = document.getElementById('mob-d-infl');
-  fill.style.width = inf+'%';
-  fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
-
-  const spriteEl = document.getElementById('mob-d-sprite');
-  spriteEl.innerHTML=''; spriteEl.appendChild(placeholderCanvas(120));
-  getSprite(p,120).then(c=>{spriteEl.innerHTML='';spriteEl.appendChild(c);});
-
-  // Reset to entry tab
-  activeMobileTab = 'entree';
-  document.querySelectorAll('.mob-tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector('.mob-tab-btn[data-tab="entree"]').classList.add('active');
-  renderTab('entree', p, document.getElementById('mob-tab-body'));
-}
-
-// Mobile tab clicks
-document.querySelectorAll('.mob-tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.mob-tab-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    activeMobileTab = btn.dataset.tab;
-    if(mobilePhilo) renderTab(activeMobileTab, mobilePhilo, document.getElementById('mob-tab-body'));
+  
+  // Detail panel
+  const detail = document.getElementById('desk-detail');
+  if (!appState.selectedPhilomon) {
+    detail.innerHTML = '<div style="text-align: center; color: var(--txt-dim);">SELECT A PHILOMON</div>';
+    return;
+  }
+  
+  const p = appState.selectedPhilomon;
+  const data = p[appState.lang] || p.en;
+  
+  detail.innerHTML = `
+    <div class="detail-header">
+      <span class="detail-title">${p.nom}</span>
+    </div>
+  `;
+  
+  const canvas = document.createElement('canvas');
+  canvas.id = 'desk-d-canvas';
+  canvas.className = 'sprite-canvas';
+  canvas.width = 160;
+  canvas.height = 160;
+  detail.appendChild(canvas);
+  generatePixelArt(canvas, p, 128);
+  
+  const meta = document.createElement('div');
+  meta.innerHTML = `
+    <div class="meta-row"><span>${p.full}</span><span>${p.dates}</span></div>
+    <div class="meta-row"><span>${p.lieu}</span><span>${data.oeuvre}</span></div>
+  `;
+  detail.appendChild(meta);
+  
+  const tabsDiv = document.createElement('div');
+  tabsDiv.className = 'tab-buttons';
+  const tabs = ['ENTRY', 'STATS', 'CONCEPTS', 'FILIATION'];
+  tabs.forEach((tab, idx) => {
+    const btn = document.createElement('button');
+    btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
+    btn.textContent = t(`tabs.${tab}`);
+    btn.onclick = () => showTab(detail, tab);
+    tabsDiv.appendChild(btn);
   });
-});
-
-// Mobile back button
-document.getElementById('mob-back').addEventListener('click',()=>{
-  document.getElementById('mob-detail').classList.remove('open');
-});
-
-// Mobile search
-document.getElementById('mob-search').addEventListener('input',e=>{
-  activeSearch=e.target.value;
-  renderMobileList();
-});
-
-// Mobile lang switch (both header and detail)
-function switchLangMobile() {
-  lang = lang==='fr'?'en':'fr';
-  applyMobileLangLabels();
-  buildMobileFilters();
-  renderMobileList();
-  if(mobilePhilo) openMobileDetail(mobilePhilo);
-}
-document.getElementById('mob-lang').addEventListener('click', switchLangMobile);
-document.getElementById('mob-detail-lang').addEventListener('click', switchLangMobile);
-
-function applyMobileLangLabels() {
-  const isEn = lang==='en';
-  document.getElementById('mob-lang').textContent = isEn?'FR':'EN';
-  document.getElementById('mob-detail-lang').textContent = isEn?'FR':'EN';
-  document.getElementById('mob-search').placeholder = t('search');
-  document.getElementById('mob-back').textContent   = t('back');
-  document.getElementById('mob-tab-entree').textContent    = t('tabEntry');
-  document.getElementById('mob-tab-stats').textContent     = t('tabStats');
-  document.getElementById('mob-tab-matchups').textContent  = t('tabMatchups');
-  document.getElementById('mob-tab-concepts').textContent  = t('tabConcepts');
-  document.getElementById('mob-tab-filiation').textContent = t('tabFiliation');
-  document.documentElement.lang = lang;
+  detail.appendChild(tabsDiv);
+  
+  const content = document.createElement('div');
+  content.id = 'desk-tab-content';
+  content.innerHTML = `<div class="tab-content active">${data.entry}</div>`;
+  detail.appendChild(content);
 }
 
-// ══════════════════════════════════════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════════════════════════════════════
-applyLayout();
+function renderMobile() {
+  const app = document.getElementById('app-mobile');
+  app.style.display = 'flex';
+  document.getElementById('app-desktop').style.display = 'none';
+  
+  // Era tabs
+  const eraTabs = document.getElementById('mob-era-tabs');
+  eraTabs.innerHTML = '';
+  ERAS.forEach(era => {
+    const btn = document.createElement('button');
+    btn.className = `mob-era-tab ${era === appState.selectedEra ? 'active' : ''}`;
+    btn.textContent = t(`eras.${era}`);
+    btn.onclick = () => setEra(era);
+    eraTabs.appendChild(btn);
+  });
+  
+  // Philomon list
+  const list = document.getElementById('mob-list');
+  list.innerHTML = '';
+  appState.filteredList.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'mob-item';
+    item.innerHTML = `<div class="mi-name">${p.nom}</div><div class="mi-era">${p.dates}</div>`;
+    item.onclick = () => selectPhilomon(p.id);
+    list.appendChild(item);
+  });
+  
+  // Detail panel
+  const detail = document.getElementById('mob-detail');
+  if (!appState.selectedPhilomon) {
+    detail.classList.remove('active');
+    return;
+  }
+  
+  detail.classList.add('active');
+  const p = appState.selectedPhilomon;
+  const data = p[appState.lang] || p.en;
+  
+  document.getElementById('mob-d-title').textContent = p.nom;
+  
+  const canvas = document.getElementById('mob-d-canvas');
+  generatePixelArt(canvas, p, 120);
+  
+  const meta = document.getElementById('mob-d-meta');
+  meta.innerHTML = `
+    <div style="font-size: 11px; color: var(--txt-dim);">${p.full} • ${p.dates}</div>
+    <div style="font-size: 11px; margin-top: 4px;">${data.oeuvre}</div>
+  `;
+  
+  document.getElementById('mob-d-content').innerHTML = `
+    <div style="padding: 8px 0; border-top: 1px solid var(--accent);">${data.entry}</div>
+  `;
+  
+  document.getElementById('mob-back').onclick = () => {
+    appState.selectedPhilomon = null;
+    render();
+  };
+}
+
+function showTab(detailPanel, tabName) {
+  const p = appState.selectedPhilomon;
+  const data = p[appState.lang] || p.en;
+  const content = detailPanel.querySelector('#desk-tab-content');
+  
+  let html = '';
+  if (tabName === 'ENTRY') html = data.entry;
+  else if (tabName === 'STATS') {
+    html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px;">';
+    for (const [stat, val] of Object.entries(p.stats)) {
+      html += `<div>${stat}<div style="width:50px; height:6px; background:#333; border: 1px solid var(--accent);"><div style="height:100%; width:${val}%; background:var(--accent);"></div></div>${val}</div>`;
+    }
+    html += '</div>';
+  }
+  else if (tabName === 'CONCEPTS') {
+    html = data.concepts.map(c => `<div style="margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--txt-dim);"><strong>${c.nom}</strong><br>${c.desc}</div>`).join('');
+  }
+  else if (tabName === 'FILIATION') {
+    html = `<div><strong>Masters:</strong> ${data.filiation.masters.join(', ')}</div><div style="margin-top:6px;"><strong>Disciples:</strong> ${data.filiation.disciples.join(', ')}</div><div style="margin-top:6px;"><strong>Against:</strong> ${data.filiation.against.join(', ')}</div>`;
+  }
+  
+  content.innerHTML = `<div class="tab-content active">${html}</div>`;
+  
+  // Update active tab button
+  detailPanel.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+    btn.classList.toggle('active', ['ENTRY', 'STATS', 'CONCEPTS', 'FILIATION'][idx] === tabName);
+  });
+}
+
+// ═══ EVENT LISTENERS ═══
+document.getElementById('desk-lang').addEventListener('click', () => setLanguage(appState.lang === 'en' ? 'fr' : 'en'));
+document.getElementById('mob-lang').addEventListener('click', () => setLanguage(appState.lang === 'en' ? 'fr' : 'en'));
+document.getElementById('mob-detail-lang').addEventListener('click', () => setLanguage(appState.lang === 'en' ? 'fr' : 'en'));
+
+document.getElementById('desk-search').addEventListener('input', (e) => {
+  const search = e.target.value.toLowerCase();
+  appState.filteredList = (appState.selectedEra === 'ALL' ? PHILOMON : PHILOMON.filter(p => p.era === appState.selectedEra))
+    .filter(p => p.nom.toLowerCase().includes(search) || p.full.toLowerCase().includes(search));
+  render();
+});
+
+document.getElementById('mob-search').addEventListener('input', (e) => {
+  const search = e.target.value.toLowerCase();
+  appState.filteredList = (appState.selectedEra === 'ALL' ? PHILOMON : PHILOMON.filter(p => p.era === appState.selectedEra))
+    .filter(p => p.nom.toLowerCase().includes(search) || p.full.toLowerCase().includes(search));
+  render();
+});
+
+window.addEventListener('resize', render);
+
+// ═══ INIT ═══
+render();
 </script>
+
 </body>
 </html>
