@@ -2482,15 +2482,18 @@ function computeBreedChildren() {
   if (!breedSlotA || !breedSlotB) return [];
   const nomA = breedSlotA.nom.toUpperCase();
   const nomB = breedSlotB.nom.toUpperCase();
+  // Disciples lists with parentheticals stripped for matching
+  const discA = (breedSlotA.fr.filiation?.disciples || []).map(x => x.replace(/\s*[\(,].*$/, '').trim().toUpperCase());
+  const discB = (breedSlotB.fr.filiation?.disciples || []).map(x => x.replace(/\s*[\(,].*$/, '').trim().toUpperCase());
   return PHILOMON.filter(p => {
     if (p.id === breedSlotA.id || p.id === breedSlotB.id) return false;
-    const maitres = [
-      ...(p.fr.filiation?.maitres || []),
-      ...(p.en.filiation?.maitres || [])
-    ].map(m => m.toUpperCase());
-    const hasA = maitres.some(m => m.includes(nomA));
-    const hasB = maitres.some(m => m.includes(nomB));
-    return hasA && hasB;
+    const nomC = p.nom.toUpperCase();
+    const maitres = (p.fr.filiation?.maitres || []).map(m => m.toUpperCase());
+    // D1: C lists both A and B as maitres
+    const d1 = maitres.some(m => m.includes(nomA)) && maitres.some(m => m.includes(nomB));
+    // D2: both A and B list C as disciple
+    const d2 = discA.includes(nomC) && discB.includes(nomC);
+    return d1 || d2;
   });
 }
 
