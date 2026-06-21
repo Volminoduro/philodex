@@ -1656,7 +1656,11 @@ async function getSprite(p, size) {
   const key = `${p.id}_${size}`;
   if (spriteCache[key]) return copyCanvas(spriteCache[key]);
   const c = await getRawPixel(p);
-  if (!c) { const ph = placeholderCanvas(size); spriteCache[key] = ph; return copyCanvas(ph); }
+  if (!c) {
+    const ph = placeholderCanvas(size);
+    if (!p.imgUrl) spriteCache[key] = ph; // only cache "no image" permanently; URL failures stay retryable
+    return copyCanvas(ph);
+  }
   const out = document.createElement('canvas'); out.width = size; out.height = size;
   const ctx = out.getContext('2d'); ctx.imageSmoothingEnabled = false; ctx.drawImage(c, 0, 0, size, size);
   spriteCache[key] = out;
@@ -2092,7 +2096,20 @@ function openDesktopDetail(p) {
   const spriteEl = document.getElementById('desk-d-sprite');
   spriteEl.innerHTML = '';
   spriteEl.appendChild(placeholderCanvas(120));
-  getSprite(p,120).then(c=>{spriteEl.innerHTML='';spriteEl.appendChild(c);});
+  const hadRaw = !!rawCache[p.id];
+  getSprite(p,120).then(c=>{
+    spriteEl.innerHTML='';spriteEl.appendChild(c);
+    // If detail was the one that fetched the raw image (card grid failed), patch the card too
+    if (!hadRaw && rawCache[p.id]) {
+      delete spriteCache[`${p.id}_106`];
+      delete spriteCache[`${p.id}_50`];
+      const cardEl = document.querySelector(`.philo-card[data-philo-id="${p.id}"]`);
+      if (cardEl) {
+        const sa = cardEl.querySelector('.card-sprite-area');
+        if (sa) getSprite(p,106).then(c2=>{sa.innerHTML='';sa.appendChild(c2);});
+      }
+    }
+  });
 
   // Meta
   document.getElementById('desk-d-num').textContent = '#'+p.id;
