@@ -962,8 +962,11 @@ body {
   transition: border-color .15s;
 }
 .fil-tag:hover { border-color: var(--accent-hi); }
-.fil-tag.self { border-color:var(--txt-gold); color:var(--txt-gold); background:#221800; }
+.fil-tag.self    { border-color:var(--txt-gold); color:var(--txt-gold); background:#221800; }
 .fil-tag.hostile { border-color:#882200; color:#ff6644; background:#200800; }
+.fil-tag.linked  { color:var(--accent-hi); border-color:rgba(64,112,255,.5); }
+.fil-tag.linked:hover { background:rgba(64,112,255,.12); border-color:var(--accent-hi); color:#88ccff; }
+.fil-tag.hostile.linked:hover { background:rgba(200,40,0,.12); border-color:#ff6644; }
 .fil-arrow { font-size:12px; color:#334466; }
 
 /* ══ TYPE COLOR CLASSES ══ — generated dynamically by injectTypeColors() */
@@ -1813,6 +1816,7 @@ function computeDefMatchups(types) {
 // ══════════════════════════════════════════════════════════════════════════════
 let STAT_META = {};
 let PHILOMON  = [];
+let PHILO_BY_NOM = {}; // populated after PHILOMON loads
 
 // ══════════════════════════════════════════════════════════════════════════════
 // LAYOUT DETECTION
@@ -1940,14 +1944,22 @@ function buildConceptsHtml(p) {
   }).join('')}</div>`;
 }
 
+function filTag(name, extraClass = '') {
+  const base = name.replace(/\s*[\(,].*$/, '').trim();
+  const linked = PHILO_BY_NOM[name] || PHILO_BY_NOM[base];
+  const cls = `fil-tag${extraClass ? ' '+extraClass : ''}${linked ? ' linked' : ''}`;
+  const attr = linked ? ` data-philo-id="${linked.id}"` : '';
+  return `<span class="${cls}"${attr}>${name}</span>`;
+}
+
 function buildFiliationHtml(p) {
   const f = p[lang].filiation;
   return `<div class="fil-section">
     <div><div class="fil-group-title">${t('influences')}</div>
-    <div class="fil-chain">${f.maitres.map(m=>`<span class="fil-tag">${m}</span>`).join('')}<span class="fil-arrow">▶</span><span class="fil-tag self">${p.nom}</span></div></div>
+    <div class="fil-chain">${f.maitres.map(m=>filTag(m)).join('')}<span class="fil-arrow">▶</span><span class="fil-tag self">${p.nom}</span></div></div>
     <div><div class="fil-group-title">${t('disciples')}</div>
-    <div class="fil-chain"><span class="fil-tag self">${p.nom}</span><span class="fil-arrow">▶</span>${f.disciples.map(d=>`<span class="fil-tag">${d}</span>`).join('')}</div></div>
-    ${f.contre?.length?`<div><div class="fil-group-title" style="color:#cc4444">${t('oppositions')}</div><div class="fil-chain">${f.contre.map(c=>`<span class="fil-tag hostile">${c}</span>`).join('')}</div></div>`:''}
+    <div class="fil-chain"><span class="fil-tag self">${p.nom}</span><span class="fil-arrow">▶</span>${f.disciples.map(d=>filTag(d)).join('')}</div></div>
+    ${f.contre?.length?`<div><div class="fil-group-title" style="color:#cc4444">${t('oppositions')}</div><div class="fil-chain">${f.contre.map(c=>filTag(c,'hostile')).join('')}</div></div>`:''}
   </div>`;
 }
 
@@ -2457,7 +2469,8 @@ function openBreedingScreen() {
   document.getElementById('typechart-screen').style.display = 'none';
   document.getElementById('breed-screen').style.display = 'flex';
   activeBreedSlot = breedSlotA ? 'b' : 'a';
-  renderBreedingScreen();
+  initBreedingPicker();
+  updateBreedingUI();
 }
 
 function closeBreedingScreen() {
@@ -2481,119 +2494,88 @@ function computeBreedChildren() {
   });
 }
 
-async function setBreedSlotCanvas(slotId, philo) {
+function setBreedSlotCanvas(slotId, philo) {
   const wrap = document.getElementById(`breed-canvas-${slotId}`);
   wrap.innerHTML = '';
-  if (!philo) {
-    wrap.innerHTML = '<span class="breed-slot-empty-glyph">?</span>';
-    return;
-  }
-  const canvas = await getSprite(philo, 80);
-  wrap.appendChild(canvas);
+  if (!philo) { wrap.innerHTML = '<span class="breed-slot-empty-glyph">?</span>'; return; }
+  getSprite(philo, 80).then(c => { wrap.innerHTML = ''; wrap.appendChild(c); });
 }
 
-async function renderBreedingScreen() {
-  // Slots active highlight
+function renderBreedResults() {
+  const children = computeBreedChildren();
+  const area = document.getElementById('breed-results-area');
+  area.innerHTML = '';
+  if (children.length > 0) {
+    children.forEach(child => {
+      const box = document.createElement('div');
+      box.className = 'breed-result-box found';
+      const wrap = document.createElement('div'); wrap.className = 'breed-slot-canvas';
+      getSprite(child, 80).then(c => wrap.appendChild(c));
+      box.innerHTML = `<span class="breed-result-label">ENFANT</span>`;
+      box.appendChild(wrap);
+      const name = document.createElement('span'); name.className = 'breed-result-name'; name.textContent = child.nom;
+      box.appendChild(name);
+      area.appendChild(box);
+    });
+  } else if (breedSlotA && breedSlotB) {
+    area.innerHTML = `<div class="breed-result-box"><span class="breed-result-label">ENFANT</span><div class="breed-slot-canvas"><span class="breed-slot-empty-glyph" style="color:#663333">✕</span></div><span class="breed-result-name breed-sterile">STÉRILE</span></div>`;
+  } else {
+    area.innerHTML = `<div class="breed-result-box"><span class="breed-result-label">ENFANT</span><div class="breed-slot-canvas"><span class="breed-slot-empty-glyph">?</span></div><span class="breed-result-name">???</span></div>`;
+  }
+}
+
+let breedPickerReady = false;
+
+function initBreedingPicker() {
+  if (breedPickerReady) return;
+  breedPickerReady = true;
+  const grid = document.getElementById('breed-pick-grid');
+  PHILOMON.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'breed-pick-card';
+    card.dataset.philoId = p.id;
+    const spriteWrap = document.createElement('div'); spriteWrap.style.cssText = 'width:60px;height:60px;';
+    getSprite(p, 60).then(c => spriteWrap.appendChild(c));
+    card.appendChild(spriteWrap);
+    const nameEl = document.createElement('div'); nameEl.className = 'breed-pick-name'; nameEl.textContent = p.nom;
+    card.appendChild(nameEl);
+    card.addEventListener('click', () => {
+      if (activeBreedSlot === 'a') { breedSlotA = p; if (!breedSlotB) activeBreedSlot = 'b'; }
+      else                          { breedSlotB = p; if (!breedSlotA) activeBreedSlot = 'a'; }
+      updateBreedingUI();
+    });
+    grid.appendChild(card);
+  });
+}
+
+function updateBreedingUI() {
   document.getElementById('breed-slot-a').classList.toggle('active', activeBreedSlot === 'a');
   document.getElementById('breed-slot-b').classList.toggle('active', activeBreedSlot === 'b');
   document.getElementById('breed-slot-a').classList.toggle('filled', !!breedSlotA);
   document.getElementById('breed-slot-b').classList.toggle('filled', !!breedSlotB);
-
-  // Slot names
-  document.getElementById('breed-name-a').textContent = breedSlotA ? breedSlotA.nom : '—';
-  document.getElementById('breed-name-b').textContent = breedSlotB ? breedSlotB.nom : '—';
-
-  // Slot sprites
-  await setBreedSlotCanvas('a', breedSlotA);
-  await setBreedSlotCanvas('b', breedSlotB);
-
-  // Compute children (multiple possible)
-  const children = computeBreedChildren();
-  const resultsArea = document.getElementById('breed-results-area');
-  resultsArea.innerHTML = '';
-
-  if (children.length > 0) {
-    for (const child of children) {
-      const box = document.createElement('div');
-      box.className = 'breed-result-box found';
-      const lbl = document.createElement('span');
-      lbl.className = 'breed-result-label';
-      lbl.textContent = 'ENFANT';
-      box.appendChild(lbl);
-      const canvasWrap = document.createElement('div');
-      canvasWrap.className = 'breed-slot-canvas';
-      const childCanvas = await getSprite(child, 80);
-      canvasWrap.appendChild(childCanvas);
-      box.appendChild(canvasWrap);
-      const nameEl = document.createElement('span');
-      nameEl.className = 'breed-result-name';
-      nameEl.textContent = child.nom;
-      box.appendChild(nameEl);
-      resultsArea.appendChild(box);
-    }
-  } else if (breedSlotA && breedSlotB) {
-    const box = document.createElement('div');
-    box.className = 'breed-result-box';
-    box.innerHTML = `<span class="breed-result-label">ENFANT</span>
-      <div class="breed-slot-canvas"><span class="breed-slot-empty-glyph" style="color:#663333">✕</span></div>
-      <span class="breed-result-name breed-sterile">STÉRILE</span>`;
-    resultsArea.appendChild(box);
-  } else {
-    const box = document.createElement('div');
-    box.className = 'breed-result-box';
-    box.innerHTML = `<span class="breed-result-label">ENFANT</span>
-      <div class="breed-slot-canvas"><span class="breed-slot-empty-glyph">?</span></div>
-      <span class="breed-result-name">???</span>`;
-    resultsArea.appendChild(box);
-  }
-
-  // Selector label
+  document.getElementById('breed-name-a').textContent = breedSlotA?.nom || '—';
+  document.getElementById('breed-name-b').textContent = breedSlotB?.nom || '—';
+  setBreedSlotCanvas('a', breedSlotA);
+  setBreedSlotCanvas('b', breedSlotB);
   document.getElementById('breed-selector-label').textContent =
     activeBreedSlot === 'a' ? 'CHOISIR PARENT A' : 'CHOISIR PARENT B';
-
-  // Picker grid
-  const grid = document.getElementById('breed-pick-grid');
-  grid.innerHTML = '';
-  for (const p of PHILOMON) {
-    const card = document.createElement('div');
-    card.className = 'breed-pick-card';
-    if (breedSlotA?.id === p.id) card.classList.add('selected-a');
-    if (breedSlotB?.id === p.id) card.classList.add('selected-b');
-
-    const spriteWrap = document.createElement('div');
-    spriteWrap.style.cssText = 'width:60px;height:60px;';
-    const canvas = await getSprite(p, 60);
-    spriteWrap.appendChild(canvas);
-    card.appendChild(spriteWrap);
-
-    const nameEl = document.createElement('div');
-    nameEl.className = 'breed-pick-name';
-    nameEl.textContent = p.nom;
-    card.appendChild(nameEl);
-
-    card.addEventListener('click', async () => {
-      if (activeBreedSlot === 'a') {
-        breedSlotA = p;
-        if (!breedSlotB) activeBreedSlot = 'b';
-      } else {
-        breedSlotB = p;
-        if (!breedSlotA) activeBreedSlot = 'a';
-      }
-      await renderBreedingScreen();
-    });
-    grid.appendChild(card);
-  }
+  // Update picker card selection highlights (no DOM rebuild)
+  document.querySelectorAll('#breed-pick-grid .breed-pick-card').forEach(card => {
+    card.classList.toggle('selected-a', breedSlotA?.id === card.dataset.philoId);
+    card.classList.toggle('selected-b', breedSlotB?.id === card.dataset.philoId);
+  });
+  renderBreedResults();
 }
 
 document.getElementById('breed-open').addEventListener('click', openBreedingScreen);
 document.getElementById('breed-back').addEventListener('click', closeBreedingScreen);
 document.getElementById('breed-slot-a').addEventListener('click', () => {
   activeBreedSlot = 'a';
-  renderBreedingScreen();
+  updateBreedingUI();
 });
 document.getElementById('breed-slot-b').addEventListener('click', () => {
   activeBreedSlot = 'b';
-  renderBreedingScreen();
+  updateBreedingUI();
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -2601,8 +2583,19 @@ document.getElementById('breed-slot-b').addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════════════════════════
 STAT_META = PHILOMON_DATA.statMeta;
 PHILOMON  = PHILOMON_DATA.philomon;
+PHILOMON.forEach(p => { PHILO_BY_NOM[p.nom] = p; });
 injectTypeColors();
 applyLayout();
+
+// Delegated filiation link navigation (desktop + mobile)
+document.getElementById('desk-tab-body').addEventListener('click', e => {
+  const tag = e.target.closest('.fil-tag[data-philo-id]');
+  if (tag) { const p = PHILOMON.find(x=>x.id===tag.dataset.philoId); if(p) openDesktopDetail(p); }
+});
+document.getElementById('mob-tab-body').addEventListener('click', e => {
+  const tag = e.target.closest('.fil-tag[data-philo-id]');
+  if (tag) { const p = PHILOMON.find(x=>x.id===tag.dataset.philoId); if(p) openMobileDetail(p); }
+});
 </script>
 </body>
 </html>
