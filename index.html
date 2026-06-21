@@ -1637,18 +1637,31 @@ function canvasFromDataURL(dataURL) {
   });
 }
 
-async function getRawPixel(p) {
-  if (rawCache[p.id]) return copyCanvas(rawCache[p.id]);
+// In-flight fetch promises: prevents duplicate network requests when sidebar
+// and card grid both call getSprite for the same philosopher simultaneously.
+const rawFetching = {};
+
+async function _fetchRaw(p) {
   const stored = localStorage.getItem(LS_RAW + p.id);
   if (stored) {
     const c = await canvasFromDataURL(stored);
-    if (c) { rawCache[p.id] = c; return copyCanvas(c); }
+    if (c) { rawCache[p.id] = c; return c; }
   }
+  if (!p.imgUrl) return null;
   const c = await pixelizeImage(p.imgUrl, ERA_PIX[p.era] || 2);
   if (c) {
     rawCache[p.id] = c;
-    if (p.imgUrl) try { localStorage.setItem(LS_RAW + p.id, c.toDataURL()); } catch(e) {}
+    try { localStorage.setItem(LS_RAW + p.id, c.toDataURL()); } catch(e) {}
   }
+  return c || null;
+}
+
+async function getRawPixel(p) {
+  if (rawCache[p.id]) return copyCanvas(rawCache[p.id]);
+  if (!rawFetching[p.id]) {
+    rawFetching[p.id] = _fetchRaw(p).finally(() => delete rawFetching[p.id]);
+  }
+  const c = await rawFetching[p.id];
   return c ? copyCanvas(c) : null;
 }
 
