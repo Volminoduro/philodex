@@ -235,6 +235,7 @@ body {
 
 .sidebar-list {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 8px 0;
 }
@@ -315,6 +316,7 @@ body {
 
 .card-grid {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 16px;
   display: grid;
@@ -331,6 +333,7 @@ body {
   cursor: pointer;
   transition: border-color .15s, transform .1s, box-shadow .15s;
   overflow: hidden;
+  min-height: 230px;
 }
 .philo-card:hover {
   border-color: var(--accent);
@@ -520,6 +523,7 @@ body {
 
 .detail-tab-body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 20px;
 }
@@ -591,6 +595,7 @@ body {
 /* Mobile list */
 .mob-list {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 0;
 }
@@ -736,6 +741,7 @@ body {
 
 .mob-tab-body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 16px;
 }
@@ -960,36 +966,7 @@ body {
 .fil-tag.hostile { border-color:#882200; color:#ff6644; background:#200800; }
 .fil-arrow { font-size:12px; color:#334466; }
 
-/* ══ TYPE COLOR CLASSES ══ */
-.tc-rationalisme    { border-color:#5588ee!important; color:#5588ee!important; }
-.tc-empirisme       { border-color:#44bb88!important; color:#44bb88!important; }
-.tc-scepticisme     { border-color:#8899dd!important; color:#8899dd!important; }
-.tc-idealisme       { border-color:#cc9900!important; color:#cc9900!important; }
-.tc-materialisme    { border-color:#997744!important; color:#997744!important; }
-.tc-deontologie     { border-color:#7799cc!important; color:#7799cc!important; }
-.tc-consequentialisme{ border-color:#66bb66!important; color:#66bb66!important; }
-.tc-vertu           { border-color:#bbbb44!important; color:#bbbb44!important; }
-.tc-liberalisme     { border-color:#44aaaa!important; color:#44aaaa!important; }
-.tc-marxisme        { border-color:#cc4444!important; color:#cc4444!important; }
-.tc-conservatisme   { border-color:#887755!important; color:#887755!important; }
-.tc-existentialisme { border-color:#cc7733!important; color:#cc7733!important; }
-.tc-nihilisme       { border-color:#666699!important; color:#666699!important; }
-.tc-stoicisme       { border-color:#55aabb!important; color:#55aabb!important; }
-
-.fill-rationalisme    { background:#5588ee; }
-.fill-empirisme       { background:#44bb88; }
-.fill-scepticisme     { background:#8899dd; }
-.fill-idealisme       { background:#cc9900; }
-.fill-materialisme    { background:#997744; }
-.fill-deontologie     { background:#7799cc; }
-.fill-consequentialisme { background:#66bb66; }
-.fill-vertu           { background:#bbbb44; }
-.fill-liberalisme     { background:#44aaaa; }
-.fill-marxisme        { background:#cc4444; }
-.fill-conservatisme   { background:#887755; }
-.fill-existentialisme { background:#cc7733; }
-.fill-nihilisme       { background:#666699; }
-.fill-stoicisme       { background:#55aabb; }
+/* ══ TYPE COLOR CLASSES ══ — generated dynamically by injectTypeColors() */
 
 /* ── Right panel collapsed when nothing selected ── */
 .desk-body.detail-hidden { grid-template-columns: 320px 1fr; }
@@ -1178,7 +1155,117 @@ body.is-mobile  #app-desktop { display:none; }
   align-items: center;
 }
 
+/* ══ TYPE CHART SCREEN ══ */
+.tc-open-btn {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #cceeff;
+  background: #112233;
+  border: 1.5px solid #44aacc;
+  padding: 5px 9px;
+  cursor: pointer;
+  letter-spacing: .1em;
+  transition: background .15s, color .15s;
+  margin-left: 6px;
+}
+.tc-open-btn:hover { background: #44aacc; color: #000; }
+
+#typechart-screen {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+.typechart-main {
+  flex: 1;
+  overflow: auto;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.typechart-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--txt-mid);
+  letter-spacing: .05em;
+}
+.legend-swatch {
+  width: 28px;
+  height: 18px;
+  border: 1px solid;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+}
+.legend-swatch.x2     { background: rgba(240,200,64,.12); border-color: #f0c840; color: #f0c840; }
+.legend-swatch.half   { background: rgba(50,100,200,.12); border-color: #6699dd; color: #6699dd; }
+.legend-swatch.immune { background: rgba(0,0,20,.7);      border-color: #2a2a55; color: #444466; }
+.legend-swatch.normal { background: transparent;          border-color: #1e2a4a; color: var(--txt-dim); }
+
+.typechart-axis-hint {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--txt-dim);
+  letter-spacing: .08em;
+  flex-shrink: 0;
+}
+.typechart-table {
+  border-collapse: collapse;
+  flex-shrink: 0;
+}
+.typechart-table th {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  padding: 6px 4px;
+  background: var(--bg-card-alt);
+  border: 1px solid #1a2040;
+  white-space: nowrap;
+  letter-spacing: .04em;
+}
+.typechart-table th.corner   { min-width: 68px; text-align: right; color: var(--txt-dim); font-size: 7px; padding-right: 8px; }
+.typechart-table th.row-head { text-align: right; padding-right: 10px; min-width: 150px; }
+.typechart-table th.col-head { min-width: 44px; }
+.col-tail { color: var(--txt-dim); }
+.typechart-table td {
+  width: 52px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid #1a2040;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+}
+.tcc-x2     { background: rgba(240,200,64,.12); color: #f0c840; }
+.tcc-half   { background: rgba(50,100,200,.12); color: #5577cc; }
+.tcc-immune { background: rgba(0,0,20,.7);      color: #2a2a44; }
+.tcc-normal { color: #1e2a4a; }
+
+.typechart-table .champ-separator {
+  text-align: left;
+  padding: 5px 10px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: .13em;
+  background: rgba(0,0,0,.35);
+  border: 1px solid #1a2040;
+  border-left-width: 3px;
+}
+
 </style>
+<style id="type-colors">/* filled by injectTypeColors() */</style>
 <script src="philomon.js"></script>
 </head>
 <body>
@@ -1199,6 +1286,7 @@ body.is-mobile  #app-desktop { display:none; }
     <span class="title">PHILODEX</span>
     <span class="version">v1.2</span>
     <button class="breed-open-btn" id="breed-open">♥ ÉLEVAGE</button>
+    <button class="tc-open-btn" id="typechart-open">TABLE DES TYPES</button>
     <button class="lang-btn" id="desk-lang">EN</button>
   </header>
 
@@ -1271,6 +1359,15 @@ body.is-mobile  #app-desktop { display:none; }
       </div>
     </section>
 
+  </div>
+
+  <!-- ═══ TYPE CHART SCREEN ═══ -->
+  <div id="typechart-screen">
+    <div class="breed-header">
+      <button class="breed-back-btn" id="typechart-back">◀ RETOUR</button>
+      <span class="breed-screen-title">⚔ TABLE DES TYPES</span>
+    </div>
+    <div class="typechart-main" id="typechart-main"></div>
   </div>
 
   <!-- ═══ BREEDING SCREEN ═══ -->
@@ -1387,7 +1484,7 @@ const I18N = {
     influences:     'INFLUENCES REÇUES',
     disciples:      'DISCIPLES',
     oppositions:    'OPPOSITIONS',
-    champLabels: { 'ÉPISTÉM.':'ÉPISTÉM.','MÉTAPHYS.':'MÉTAPHYS.','ÉTHIQUE':'ÉTHIQUE','POLITIQUE':'POLITIQUE','EXISTENTL':'EXISTENTL' },
+    champLabels: { 'ÉPISTÉM.':'ÉPISTÉM.','MÉTAPHYS.':'MÉTAPHYS.','LOGIQUE':'LOGIQUE','ÉTHIQUE':'ÉTHIQUE','POLITIQUE':'POLITIQUE','EXISTENTL':'EXISTENTL','LANGAGE':'LANGAGE','BRANCHES':'BRANCHES','NON-OCC.':'NON-OCC.' },
     eraLabel: 'ÈRE',
   },
   en: {
@@ -1406,7 +1503,7 @@ const I18N = {
     influences:     'RECEIVED INFLUENCES',
     disciples:      'DISCIPLES',
     oppositions:    'OPPOSITIONS',
-    champLabels: { 'ÉPISTÉM.':'EPISTEM.','MÉTAPHYS.':'METAPHYS.','ÉTHIQUE':'ETHICS','POLITIQUE':'POLITICS','EXISTENTL':'EXISTNTL' },
+    champLabels: { 'ÉPISTÉM.':'EPISTEM.','MÉTAPHYS.':'METAPHYS.','LOGIQUE':'LOGIC','ÉTHIQUE':'ETHICS','POLITIQUE':'POLITICS','EXISTENTL':'EXISTNTL','LANGAGE':'LANGUAGE','BRANCHES':'BRANCHES','NON-OCC.':'NON-WEST.' },
     eraLabel: 'ERA',
   },
 };
@@ -1513,8 +1610,11 @@ function placeholderCanvas(size){
   return c;
 }
 
-// Sprite cache: key = `${id}_${size}`
-const spriteCache={};
+// Sprite cache: key = `${id}_${size}` (in-memory per session)
+const spriteCache = {};
+// Raw pixelized canvas cache: key = id (size-independent, persisted in localStorage)
+const rawCache = {};
+const LS_RAW = 'pdx_raw_';
 
 // canvas.cloneNode(true) does NOT copy pixel data — use drawImage instead
 function copyCanvas(src){
@@ -1523,26 +1623,138 @@ function copyCanvas(src){
   return dst;
 }
 
-async function getSprite(p,size){
-  const key=`${p.id}_${size}`;
-  if(spriteCache[key])return copyCanvas(spriteCache[key]);
-  const c=await pixelizeImage(p.imgUrl,ERA_PIX[p.era]||2);
-  if(!c){const ph=placeholderCanvas(size);spriteCache[key]=ph;return copyCanvas(ph);}
-  const out=document.createElement('canvas');out.width=size;out.height=size;
-  const ctx=out.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.drawImage(c,0,0,size,size);
-  spriteCache[key]=out;
+function canvasFromDataURL(dataURL) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      c.width = img.width; c.height = img.height;
+      c.getContext('2d').drawImage(img, 0, 0);
+      resolve(c);
+    };
+    img.onerror = () => resolve(null);
+    img.src = dataURL;
+  });
+}
+
+async function getRawPixel(p) {
+  if (rawCache[p.id]) return copyCanvas(rawCache[p.id]);
+  const stored = localStorage.getItem(LS_RAW + p.id);
+  if (stored) {
+    const c = await canvasFromDataURL(stored);
+    if (c) { rawCache[p.id] = c; return copyCanvas(c); }
+  }
+  const c = await pixelizeImage(p.imgUrl, ERA_PIX[p.era] || 2);
+  if (c) {
+    rawCache[p.id] = c;
+    if (p.imgUrl) try { localStorage.setItem(LS_RAW + p.id, c.toDataURL()); } catch(e) {}
+  }
+  return c ? copyCanvas(c) : null;
+}
+
+async function getSprite(p, size) {
+  const key = `${p.id}_${size}`;
+  if (spriteCache[key]) return copyCanvas(spriteCache[key]);
+  const c = await getRawPixel(p);
+  if (!c) { const ph = placeholderCanvas(size); spriteCache[key] = ph; return copyCanvas(ph); }
+  const out = document.createElement('canvas'); out.width = size; out.height = size;
+  const ctx = out.getContext('2d'); ctx.imageSmoothingEnabled = false; ctx.drawImage(c, 0, 0, size, size);
+  spriteCache[key] = out;
   return copyCanvas(out);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
 // TYPE SYSTEM
 // ══════════════════════════════════════════════════════════════════════════════
-const CHAMPS={
-  'ÉPISTÉM.':{color:'#5588ee',types:['Rationalisme','Empirisme','Scepticisme'],matchups:{'Rationalisme':{'Rationalisme':1,'Empirisme':.5,'Scepticisme':2},'Empirisme':{'Rationalisme':2,'Empirisme':1,'Scepticisme':.5},'Scepticisme':{'Rationalisme':.5,'Empirisme':2,'Scepticisme':1}}},
-  'MÉTAPHYS.':{color:'#cc9900',types:['Idéalisme','Matérialisme'],matchups:{'Idéalisme':{'Idéalisme':1,'Matérialisme':.5},'Matérialisme':{'Idéalisme':2,'Matérialisme':1}}},
-  'ÉTHIQUE':{color:'#66bb66',types:['Déontologie','Conséquentialisme','Vertu'],matchups:{'Déontologie':{'Déontologie':1,'Conséquentialisme':2,'Vertu':.5},'Conséquentialisme':{'Déontologie':.5,'Conséquentialisme':1,'Vertu':2},'Vertu':{'Déontologie':2,'Conséquentialisme':.5,'Vertu':1}}},
-  'POLITIQUE':{color:'#44aaaa',types:['Libéralisme','Marxisme','Conservatisme'],matchups:{'Libéralisme':{'Libéralisme':1,'Marxisme':.5,'Conservatisme':2},'Marxisme':{'Libéralisme':2,'Marxisme':1,'Conservatisme':.5},'Conservatisme':{'Libéralisme':.5,'Marxisme':2,'Conservatisme':1}}},
-  'EXISTENTL':{color:'#cc7733',types:['Existentialisme','Nihilisme','Stoïcisme'],matchups:{'Existentialisme':{'Existentialisme':1,'Nihilisme':2,'Stoïcisme':.5},'Nihilisme':{'Existentialisme':.5,'Nihilisme':1,'Stoïcisme':2},'Stoïcisme':{'Existentialisme':2,'Nihilisme':.5,'Stoïcisme':1}}},
+// ── TYPE COLORS: single source of truth ─────────────────────────────────────
+// One hue family per champ; shades/saturations differ within each family.
+const TYPE_COLORS = {
+  // ÉPISTÉMOLOGIE — blues
+  'Rationalisme':       '#4488ee',
+  'Empirisme':          '#5599cc',
+  'Scepticisme':        '#7788dd',
+  'Pragmatisme':        '#3366bb',
+  'Positivisme':        '#2255aa',
+  'Constructivisme':    '#66aadd',
+  // MÉTAPHYSIQUE — ambers/gold
+  'Idéalisme':          '#cc9900',
+  'Matérialisme':       '#aa7722',
+  'Réalisme':           '#bb8811',
+  'Dualisme':           '#dd9933',
+  'Panthéisme':         '#eeaa00',
+  'Mysticisme':         '#9966bb',
+  // LOGIQUE — greens
+  'Logique':            '#22bb44',
+  'Dialectique':        '#44cc66',
+  'Rhétorique':         '#77aa33',
+  // ÉTHIQUE — oranges
+  'Stoïcisme':          '#cc6600',
+  'Épicurisme':         '#ee8811',
+  'Hédonisme':          '#ff5522',
+  'Déontologie':        '#aa5500',
+  'Utilitarisme':       '#dd9900',
+  'Éthique des Vertus': '#cc8833',
+  'Contractualisme':    '#bb7711',
+  'Éthique du Soin':    '#ee9966',
+  'Cynisme':            '#997733',
+  // POLITIQUE — reds
+  'Libéralisme':        '#ee3333',
+  'Marxisme':           '#cc0000',
+  'Anarchisme':         '#ff4400',
+  'Conservatisme':      '#aa2222',
+  'Républicanisme':     '#cc2244',
+  'Utopisme':           '#ff5544',
+  'Philo. Politique':   '#bb2233',
+  'Humanisme':          '#dd4455',
+  // EXISTENTIEL — violets
+  'Existentialisme':    '#8833cc',
+  'Nihilisme':          '#5533aa',
+  'Phénoménologie':     '#aa44ee',
+  // LANGAGE — cyans
+  'Philo. Langage':     '#0099cc',
+  'Herméneutique':      '#007799',
+  'Structuralisme':     '#00bbdd',
+  // BRANCHES — slate/indigo (with thematic exceptions)
+  'Philo. Sciences':    '#5566bb',
+  'Philo. Esprit':      '#7755aa',
+  'Esthétique':         '#9944cc',
+  'Philo. Religion':    '#8855aa',
+  'Philo. Droit':       '#4455aa',
+  'Philo. Histoire':    '#6677bb',
+  'Philo. Technique':   '#5577cc',
+  'Écophilosophie':     '#33aa55',
+  'Féminisme':          '#dd3399',
+  'Postmodernisme':     '#6644bb',
+  'Théorie Critique':   '#881199',
+  // NON-OCCIDENTAL — jade/earth
+  'Confucianisme':      '#99cc00',
+  'Taoïsme':            '#00bb99',
+  'Bouddhisme':         '#ffaa00',
+  'Philo. Islamique':   '#00aa66',
+  'Vedanta':            '#dd6600',
+  'Philo. Africaine':   '#cc7733',
+};
+
+function injectTypeColors() {
+  let css = '';
+  for (const [tp, color] of Object.entries(TYPE_COLORS)) {
+    const key = normalize(tp);
+    css += `.tc-${key}{border-color:${color}!important;color:${color}!important}`;
+    css += `.fill-${key}{background:${color}}`;
+  }
+  document.getElementById('type-colors').textContent = css;
+}
+
+const CHAMPS = {
+  'ÉPISTÉM.':  { color:'#4488ee', types:['Rationalisme','Empirisme','Scepticisme','Pragmatisme','Positivisme','Constructivisme'] },
+  'MÉTAPHYS.': { color:'#cc9900', types:['Idéalisme','Matérialisme','Réalisme','Dualisme','Panthéisme','Mysticisme'] },
+  'LOGIQUE':   { color:'#22bb44', types:['Logique','Dialectique','Rhétorique'] },
+  'ÉTHIQUE':   { color:'#dd8800', types:['Stoïcisme','Épicurisme','Hédonisme','Déontologie','Utilitarisme','Éthique des Vertus','Contractualisme','Éthique du Soin','Cynisme'] },
+  'POLITIQUE': { color:'#cc2222', types:['Libéralisme','Marxisme','Anarchisme','Conservatisme','Républicanisme','Utopisme','Philo. Politique','Humanisme'] },
+  'EXISTENTL': { color:'#8833cc', types:['Existentialisme','Nihilisme','Phénoménologie'] },
+  'LANGAGE':   { color:'#0099cc', types:['Philo. Langage','Herméneutique','Structuralisme'] },
+  'BRANCHES':  { color:'#6655bb', types:['Philo. Sciences','Philo. Esprit','Esthétique','Philo. Religion','Philo. Droit','Philo. Histoire','Philo. Technique','Écophilosophie','Féminisme','Postmodernisme','Théorie Critique'] },
+  'NON-OCC.':  { color:'#44aa66', types:['Confucianisme','Taoïsme','Bouddhisme','Philo. Islamique','Vedanta','Philo. Africaine'] },
 };
 const ERA_COLORS={
   'ANTIQUE':      '#88aa44',
@@ -1558,18 +1770,23 @@ const ERA_PIX={
   'CONTEMPORAINE':3,
 };
 
-function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');}
+function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
 function tClass(tp){return 'tc-'+normalize(tp);}
 function fillClass(tp){return 'fill-'+normalize(tp);}
 function champOf(tp){for(const[c,d]of Object.entries(CHAMPS))if(d.types.includes(tp))return c;return null;}
 
-function computeDefMatchups(types){
-  const r={fort:[],faible:[]};
-  for(const[ch,cd]of Object.entries(CHAMPS))for(const at of cd.types){
-    let m=1,has=false;
-    for(const dt of types){if(champOf(dt)!==ch)continue;const v=cd.matchups?.[at]?.[dt];if(v!==undefined){m*=v;has=true;}}
-    if(!has)continue;
-    if(m>=2)r.fort.push({type:at});else if(m<=.5)r.faible.push({type:at});
+function computeDefMatchups(types) {
+  const tc = PHILOMON_DATA.typechart;
+  const r = { fort: [], faible: [] };
+  for (const attType of Object.keys(tc)) {
+    let m = 1, relevant = false;
+    for (const defType of types) {
+      const v = tc[attType]?.[defType];
+      if (v !== undefined) { m *= v; relevant = true; }
+    }
+    if (!relevant) continue;
+    if (m >= 2)   r.faible.push({ type: attType });
+    else if (m <= 0.5) r.fort.push({ type: attType });
   }
   return r;
 }
@@ -1787,8 +2004,9 @@ function buildDesktopFilters() {
       const chip = document.createElement('div');
       chip.className = 'chip' + (activeType===tp?' active':'');
       chip.dataset.type = tp;
-      chip.style.borderColor = cd.color;
-      chip.style.color = cd.color;
+      const typeColor = TYPE_COLORS[tp] || cd.color;
+      chip.style.borderColor = typeColor;
+      chip.style.color = typeColor;
       chip.textContent = tp.substring(0,5).toUpperCase();
       chip.addEventListener('click', () => {
         activeType = activeType===tp ? null : tp;
@@ -1966,7 +2184,8 @@ function buildMobileFilters() {
       const chip = document.createElement('div');
       chip.className = 'chip'+(activeType===tp?' active':'');
       chip.dataset.type = tp;
-      chip.style.borderColor = cd.color; chip.style.color = cd.color;
+      const typeColor = TYPE_COLORS[tp] || cd.color;
+      chip.style.borderColor = typeColor; chip.style.color = typeColor;
       chip.textContent = tp.substring(0,6).toUpperCase();
       chip.style.fontSize = '10px';
       chip.style.padding = '5px 9px';
@@ -2078,8 +2297,134 @@ let breedSlotA = null;
 let breedSlotB = null;
 let activeBreedSlot = 'a';
 
+// ══════════════════════════════════════════════════════════════════════════════
+// TYPE CHART SCREEN
+// ══════════════════════════════════════════════════════════════════════════════
+const TYPE_ABBR = {
+  // Épistémologie
+  'Rationalisme':'RAT', 'Empirisme':'EMP', 'Scepticisme':'SCE',
+  'Pragmatisme':'PRA',  'Positivisme':'POS', 'Constructivisme':'CST',
+  // Métaphysique / Ontologie
+  'Idéalisme':'IDÉ',   'Matérialisme':'MAT', 'Réalisme':'RÉA',
+  'Dualisme':'DUA',    'Panthéisme':'PAN',   'Mysticisme':'MYS',
+  // Logique / Méthode
+  'Logique':'LOG',     'Dialectique':'DIA',  'Rhétorique':'RHÉ',
+  // Éthique
+  'Stoïcisme':'STO',   'Épicurisme':'ÉPI',   'Hédonisme':'HÉD',
+  'Déontologie':'DÉO', 'Utilitarisme':'UTI', 'Éthique des Vertus':'VER',
+  'Contractualisme':'CTR', 'Éthique du Soin':'SON', 'Cynisme':'CYN',
+  // Politique
+  'Libéralisme':'LIB', 'Marxisme':'MRX',    'Anarchisme':'ANA',
+  'Conservatisme':'CSR','Républicanisme':'RÉP','Utopisme':'UTO',
+  'Philo. Politique':'POL', 'Humanisme':'HUM',
+  // Existentiel
+  'Existentialisme':'EXI', 'Nihilisme':'NIH', 'Phénoménologie':'PHÉ',
+  // Philo. du Langage
+  'Philo. Langage':'LAN', 'Herméneutique':'HER', 'Structuralisme':'STR',
+  // Branches spécialisées
+  'Philo. Sciences':'SCI', 'Philo. Esprit':'ESP', 'Esthétique':'EST',
+  'Philo. Religion':'REL', 'Philo. Droit':'DRT',  'Philo. Histoire':'HIS',
+  'Philo. Technique':'TEC','Écophilosophie':'ÉCO', 'Féminisme':'FÉM',
+  'Postmodernisme':'PST',  'Théorie Critique':'CRI',
+  // Non-occidental
+  'Confucianisme':'CNF',   'Taoïsme':'TAO',   'Bouddhisme':'BOU',
+  'Philo. Islamique':'ISL','Vedanta':'VED',    'Philo. Africaine':'AFR',
+};
+
+function openTypeChartScreen() {
+  document.querySelector('.desk-body').style.display = 'none';
+  document.getElementById('breed-screen').style.display = 'none';
+  document.getElementById('typechart-screen').style.display = 'flex';
+  renderTypeChart();
+}
+
+function closeTypeChartScreen() {
+  document.getElementById('typechart-screen').style.display = 'none';
+  document.querySelector('.desk-body').style.display = '';
+}
+
+function tcRowHead(att) {
+  const abbr = TYPE_ABBR[att] || att.substring(0,3).toUpperCase();
+  const tail = att.slice(abbr.length);
+  return `<span class="${tClass(att)}">${abbr}</span><span class="col-tail">${tail}</span>`;
+}
+
+function renderTypeChart() {
+  const tc = PHILOMON_DATA.typechart;
+  // Column order: all types grouped by champ
+  const inChamps = new Set(Object.values(CHAMPS).flatMap(cd => cd.types));
+  const allTypes = [
+    ...Object.values(CHAMPS).flatMap(cd => cd.types),
+    ...Object.keys(tc).filter(t => !inChamps.has(t)),
+  ];
+
+  // Compute column indices where a champ group ends (for right-border)
+  const champBoundaries = new Set();
+  let ci = 0;
+  for (const cd of Object.values(CHAMPS)) { ci += cd.types.length; champBoundaries.add(ci - 1); }
+
+  const legend = `<div class="typechart-legend">
+    <div class="legend-item"><div class="legend-swatch x2">×2</div>SUPER EFFICACE</div>
+    <div class="legend-item"><div class="legend-swatch half">×½</div>PEU EFFICACE</div>
+    <div class="legend-item"><div class="legend-swatch immune">×0</div>IMMUNITÉ</div>
+    <div class="legend-item"><div class="legend-swatch normal">×1</div>NORMAL</div>
+  </div>`;
+
+  const colHeaders = `<tr>
+    <th class="corner">ATT ↓ / DEF →</th>
+    ${allTypes.map((def, i) => {
+      const abbr = TYPE_ABBR[def] || def.substring(0,3).toUpperCase();
+      const sep = champBoundaries.has(i) ? ' style="border-right:2px solid #2a2a55"' : '';
+      return `<th class="col-head"${sep}><span class="${tClass(def)}">${abbr}</span></th>`;
+    }).join('')}
+  </tr>`;
+
+  let rows = '';
+  // Rows grouped by champ
+  for (const [champ, cd] of Object.entries(CHAMPS)) {
+    rows += `<tr><th class="champ-separator" colspan="${allTypes.length + 1}" style="color:${cd.color};border-left-color:${cd.color}">${champ}</th></tr>`;
+    for (const att of cd.types) {
+      const cells = allTypes.map((def, i) => {
+        const mult = tc[att]?.[def] ?? 1;
+        let cls, label;
+        if (mult === 0)       { cls = 'tcc-immune'; label = '×0'; }
+        else if (mult >= 2)   { cls = 'tcc-x2';     label = '×2'; }
+        else if (mult <= 0.5) { cls = 'tcc-half';   label = '×½'; }
+        else                  { cls = 'tcc-normal';  label = '·';  }
+        const sep = champBoundaries.has(i) ? ';border-right:2px solid #2a2a55' : '';
+        return `<td class="${cls}" style="${sep.slice(1)}">${label}</td>`;
+      }).join('');
+      rows += `<tr><th class="row-head">${tcRowHead(att)}</th>${cells}</tr>`;
+    }
+  }
+  // Orphan types not in any champ
+  for (const att of Object.keys(tc)) {
+    if (inChamps.has(att)) continue;
+    const cells = allTypes.map((def, i) => {
+      const mult = tc[att]?.[def] ?? 1;
+      let cls, label;
+      if (mult === 0)       { cls = 'tcc-immune'; label = '×0'; }
+      else if (mult >= 2)   { cls = 'tcc-x2';     label = '×2'; }
+      else if (mult <= 0.5) { cls = 'tcc-half';   label = '×½'; }
+      else                  { cls = 'tcc-normal';  label = '·';  }
+      const sep = champBoundaries.has(i) ? ';border-right:2px solid #2a2a55' : '';
+      return `<td class="${cls}" style="${sep.slice(1)}">${label}</td>`;
+    }).join('');
+    rows += `<tr><th class="row-head">${tcRowHead(att)}</th>${cells}</tr>`;
+  }
+
+  document.getElementById('typechart-main').innerHTML =
+    legend +
+    `<div class="typechart-axis-hint">ATTAQUE ↓&nbsp;&nbsp;&nbsp;&nbsp;DÉFENSE →</div>
+     <table class="typechart-table"><thead>${colHeaders}</thead><tbody>${rows}</tbody></table>`;
+}
+
+document.getElementById('typechart-open').addEventListener('click', openTypeChartScreen);
+document.getElementById('typechart-back').addEventListener('click', closeTypeChartScreen);
+
 function openBreedingScreen() {
   document.querySelector('.desk-body').style.display = 'none';
+  document.getElementById('typechart-screen').style.display = 'none';
   document.getElementById('breed-screen').style.display = 'flex';
   activeBreedSlot = breedSlotA ? 'b' : 'a';
   renderBreedingScreen();
@@ -2226,6 +2571,7 @@ document.getElementById('breed-slot-b').addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════════════════════════
 STAT_META = PHILOMON_DATA.statMeta;
 PHILOMON  = PHILOMON_DATA.philomon;
+injectTypeColors();
 applyLayout();
 </script>
 </body>
