@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UEJF 2026 — Préjugés antisémites par parti politique</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --border: #d8d4cc;
+    --text: #1c1b18;
+    --muted: #6b6860;
+    --lfi-color: #b84a1e;
+    --lfi-bg: #fdf1ec;
+    --rn-color: #1a5296;
+    --rn-bg: #eef3fb;
+    --high: #1a6e3a;
+    --high-bg: #eaf5ee;
+    --low: #8b1a1a;
+    --low-bg: #fdf0f0;
+    --neutral-bg: #f2f1ed;
+    --header-bg: #1c1b18;
+    --header-text: #f7f6f2;
+    --accent: #c8922a;
+    --section-bar: #1c1b18;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 28px 36px 22px;
+    border-bottom: 3px solid var(--accent);
+  }
+  header .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.25;
+    max-width: 680px;
+  }
+  header .meta {
+    margin-top: 10px;
+    font-size: 11.5px;
+    color: #aaa;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  header .meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* LEGEND */
+  .legend-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 36px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-bar .label { font-size: 10.5px; color: var(--muted); font-weight: 500; margin-right: 4px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+  }
+  .chip-lfi { background: var(--lfi-bg); color: var(--lfi-color); border-color: #e8c3b0; }
+  .chip-rn  { background: var(--rn-bg);  color: var(--rn-color);  border-color: #b8cfe8; }
+  .chip-high { background: var(--high-bg); color: var(--high); border-color: #b0d8be; }
+  .chip-low  { background: var(--low-bg);  color: var(--low);  border-color: #e8b0b0; }
+  .chip-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+  /* MAIN */
+  main { padding: 24px 36px 48px; max-width: 1400px; }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 28px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin-bottom: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  thead tr { background: var(--header-bg); color: var(--header-text); }
+  thead th {
+    padding: 9px 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  thead th.col-prop { text-align: left; min-width: 280px; max-width: 320px; }
+  thead th.col-lfi { background: #2e1008; }
+  thead th.col-rn  { background: #0a1e3a; }
+  thead th.col-high { background: #0a2e18; }
+  thead th.col-low  { background: #2e0a0a; }
+
+  /* Sub-header row (D'accord / Pas d'accord / NSP) */
+  .subhead th {
+    background: #2e2d29;
+    font-size: 9.5px;
+    font-weight: 400;
+    color: #bbb;
+    padding: 4px 10px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    border-bottom: 1px solid #444;
+  }
+  .subhead th.col-prop { text-align: left; }
+  .subhead th.spacer { background: var(--header-bg); }
+
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #f0ede8; }
+  td {
+    padding: 7px 10px;
+    vertical-align: middle;
+  }
+  td.prop {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text);
+    max-width: 320px;
+    line-height: 1.4;
+  }
+  td.num {
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  td.lfi-agree  { background: #fff3ee; color: var(--lfi-color); }
+  td.lfi-dis    { background: #fff3ee; color: #7a7470; }
+  td.lfi-nsp    { background: #fff3ee; color: #aaa; font-size: 11px; }
+  td.rn-agree   { background: #eef3fb; color: var(--rn-color); }
+  td.rn-dis     { background: #eef3fb; color: #7a7470; }
+  td.rn-nsp     { background: #eef3fb; color: #aaa; font-size: 11px; }
+  td.high-agree { background: var(--high-bg); color: var(--high); font-weight: 700; }
+  td.high-dis   { background: var(--high-bg); color: #7a7470; }
+  td.high-nsp   { background: var(--high-bg); color: #aaa; font-size: 11px; }
+  td.low-agree  { background: var(--low-bg); color: var(--low); font-weight: 700; }
+  td.low-dis    { background: var(--low-bg); color: #7a7470; }
+  td.low-nsp    { background: var(--low-bg); color: #aaa; font-size: 11px; }
+  td.party-name {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 90px;
+  }
+  td.ens {
+    background: var(--neutral-bg);
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  /* Column group separator */
+  .col-sep { border-left: 2px solid #ccc; }
+
+  /* INDICATOR TABLE (wider columns) */
+  .indicator-table td.prop { max-width: 220px; font-size: 11.5px; }
+
+  /* FOOTNOTE */
+  .footnote {
+    font-size: 10.5px;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .legend-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Ifop pour l'UEJF · Regards sur les préjugés antisémites · Février 2026</div>
+  <h1>Préjugés antisémites &amp; perception du sionisme<br>par proximité politique</h1>
+  <div class="meta">
+    <span>📊 Echantillon national — 1 533 personnes</span>
+    <span>📅 Terrain : 6–9 février 2026</span>
+    <span>🔢 Scores en % « D'accord » sauf indication contraire</span>
+    <span>👥 Partis : proximité politique déclarée</span>
+  </div>
+</header>
+
+<div class="legend-bar">
+  <span class="label">Lecture :</span>
+  <span class="chip chip-lfi"><span class="chip-dot" style="background:var(--lfi-color)"></span> LFI — La France Insoumise (n=89)</span>
+  <span class="chip chip-rn"><span class="chip-dot" style="background:var(--rn-color)"></span> RN — Rassemblement National (n=375)</span>
+  <span class="chip chip-high"><span class="chip-dot" style="background:var(--high)"></span> Score D'accord le plus élevé (parmi les partis détaillés)</span>
+  <span class="chip chip-low"><span class="chip-dot" style="background:var(--low)"></span> Score D'accord le plus bas (parmi les partis détaillés)</span>
+  <span style="font-size:10.5px;color:var(--muted);margin-left:8px;">Partis comparés : LFI, PS, EÉLV, Renaissance, LR, RN, Sans sympathie</span>
+</div>
+
+<main>
+
+<!-- ================================================================
+     SECTION 1 : PROPOSITIONS CONCERNANT LES JUIFS
+================================================================ -->
+<div class="section-title">Propositions concernant les juifs</div>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="col-prop" rowspan="2">Affirmation</th>
+      <th colspan="3" class="col-lfi">LFI</th>
+      <th colspan="3" class="col-rn">RN</th>
+      <th colspan="4" class="col-high">Score D'accord le + élevé</th>
+      <th colspan="4" class="col-low">Score D'accord le + bas</th>
+      <th colspan="3" style="background:#1a1918;color:#ccc;">Ensemble FR</th>
+    </tr>
+    <tr class="subhead">
+      <th class="col-lfi">D'accord</th><th class="col-lfi">Pas d'acc.</th><th class="col-lfi">NSP</th>
+      <th class="col-rn col-sep">D'accord</th><th class="col-rn">Pas d'acc.</th><th class="col-rn">NSP</th>
+      <th class="col-high col-sep">Parti</th><th class="col-high">D'accord</th><th class="col-high">Pas d'acc.</th><th class="col-high">NSP</th>
+      <th class="col-low col-sep">Parti</th><th class="col-low">D'accord</th><th class="col-low">Pas d'acc.</th><th class="col-low">NSP</th>
+      <th style="background:#1a1918;color:#999;" class="col-sep">D'accord</th><th style="background:#1a1918;color:#999;">Pas d'acc.</th><th style="background:#1a1918;color:#999;">NSP</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- Très unis -->
+    <tr>
+      <td class="prop">Les Juifs sont très unis entre eux</td>
+      <td class="num lfi-agree">52%</td><td class="num lfi-dis">19%</td><td class="num lfi-nsp">29%</td>
+      <td class="num rn-agree col-sep">75%</td><td class="num rn-dis">8%</td><td class="num rn-nsp">17%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">86%</td><td class="num high-dis">7%</td><td class="num high-nsp">7%</td>
+      <td class="party-name low-agree col-sep">Sans sympathie</td><td class="num low-agree">55%</td><td class="num low-dis">8%</td><td class="num low-nsp">37%</td>
+      <td class="num ens col-sep">69%</td><td class="num ens">9%</td><td class="num ens">22%</td>
+    </tr>
+
+    <!-- Injustement attaqués -->
+    <tr>
+      <td class="prop">Les Juifs sont injustement attaqués quand les choses vont mal</td>
+      <td class="num lfi-agree">41%</td><td class="num lfi-dis">37%</td><td class="num lfi-nsp">22%</td>
+      <td class="num rn-agree col-sep">64%</td><td class="num rn-dis">19%</td><td class="num rn-nsp">17%</td>
+      <td class="party-name high-agree col-sep">Renaissance</td><td class="num high-agree">76%</td><td class="num high-dis">11%</td><td class="num high-nsp">13%</td>
+      <td class="party-name low-agree col-sep">Sans sympathie</td><td class="num low-agree">42%</td><td class="num low-dis">20%</td><td class="num low-nsp">38%</td>
+      <td class="num ens col-sep">58%</td><td class="num ens">20%</td><td class="num ens">22%</td>
+    </tr>
+
+    <!-- Plus riches -->
+    <tr>
+      <td class="prop">Les Juifs sont plus riches que la moyenne des Français</td>
+      <td class="num lfi-agree">26%</td><td class="num lfi-dis">44%</td><td class="num lfi-nsp">30%</td>
+      <td class="num rn-agree col-sep">30%</td><td class="num rn-dis">33%</td><td class="num rn-nsp">37%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">45%</td><td class="num high-dis">32%</td><td class="num high-nsp">23%</td>
+      <td class="party-name low-agree col-sep">Sans sympathie</td><td class="num low-agree">20%</td><td class="num low-dis">25%</td><td class="num low-nsp">55%</td>
+      <td class="num ens col-sep">26%</td><td class="num ens">36%</td><td class="num ens">38%</td>
+    </tr>
+
+    <!-- Statut victimes -->
+    <tr>
+      <td class="prop">Les juifs utilisent leur statut de victimes du génocide nazi dans leur propre intérêt</td>
+      <td class="num lfi-agree">29%</td><td class="num lfi-dis">52%</td><td class="num lfi-nsp">19%</td>
+      <td class="num rn-agree col-sep">19%</td><td class="num rn-dis">50%</td><td class="num rn-nsp">31%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">29%</td><td class="num high-dis">52%</td><td class="num high-nsp">19%</td>
+      <td class="party-name low-agree col-sep">Les Écologistes</td><td class="num low-agree">14%</td><td class="num low-dis">59%</td><td class="num low-nsp">27%</td>
+      <td class="num ens col-sep">22%</td><td class="num ens">50%</td><td class="num ens">28%</td>
+    </tr>
+
+    <!-- Trop de pouvoir économie -->
+    <tr>
+      <td class="prop">Les juifs ont trop de pouvoir dans le domaine de l'économie et de la finance</td>
+      <td class="num lfi-agree">31%</td><td class="num lfi-dis">40%</td><td class="num lfi-nsp">29%</td>
+      <td class="num rn-agree col-sep">20%</td><td class="num rn-dis">49%</td><td class="num rn-nsp">31%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">31%</td><td class="num high-dis">40%</td><td class="num high-nsp">29%</td>
+      <td class="party-name low-agree col-sep">Les Écologistes</td><td class="num low-agree">12%</td><td class="num low-dis">65%</td><td class="num low-nsp">23%</td>
+      <td class="num ens col-sep">21%</td><td class="num ens">47%</td><td class="num ens">32%</td>
+    </tr>
+
+    <!-- Trop de pouvoir médias -->
+    <tr>
+      <td class="prop">Les juifs ont trop de pouvoir dans le domaine des médias</td>
+      <td class="num lfi-agree">30%</td><td class="num lfi-dis">48%</td><td class="num lfi-nsp">22%</td>
+      <td class="num rn-agree col-sep">18%</td><td class="num rn-dis">52%</td><td class="num rn-nsp">30%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">30%</td><td class="num high-dis">48%</td><td class="num high-nsp">22%</td>
+      <td class="party-name low-agree col-sep">Renaissance</td><td class="num low-agree">14%</td><td class="num low-dis">64%</td><td class="num low-nsp">22%</td>
+      <td class="num ens col-sep">18%</td><td class="num ens">48%</td><td class="num ens">34%</td>
+    </tr>
+
+    <!-- Trop de pouvoir politique -->
+    <tr>
+      <td class="prop">Les juifs ont trop de pouvoir dans le domaine de la politique</td>
+      <td class="num lfi-agree">30%</td><td class="num lfi-dis">47%</td><td class="num lfi-nsp">23%</td>
+      <td class="num rn-agree col-sep">13%</td><td class="num rn-dis">53%</td><td class="num rn-nsp">34%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">30%</td><td class="num high-dis">47%</td><td class="num high-nsp">23%</td>
+      <td class="party-name low-agree col-sep">Renaissance</td><td class="num low-agree">9%</td><td class="num low-dis">69%</td><td class="num low-nsp">22%</td>
+      <td class="num ens col-sep">14%</td><td class="num ens">51%</td><td class="num ens">35%</td>
+    </tr>
+
+    <!-- Responsables crise -->
+    <tr>
+      <td class="prop">Les juifs sont responsables de la crise économique actuelle</td>
+      <td class="num lfi-agree">8%</td><td class="num lfi-dis">68%</td><td class="num lfi-nsp">24%</td>
+      <td class="num rn-agree col-sep">6%</td><td class="num rn-dis">71%</td><td class="num rn-nsp">23%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">8%</td><td class="num high-dis">68%</td><td class="num high-nsp">24%</td>
+      <td class="party-name low-agree col-sep">Les Républicains</td><td class="num low-agree">4%</td><td class="num low-dis">84%</td><td class="num low-nsp">12%</td>
+      <td class="num ens col-sep">5%</td><td class="num ens">71%</td><td class="num ens">24%</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- ================================================================
+     SECTION 2 : LÉGITIMITÉ DE L'ÉTAT D'ISRAËL
+================================================================ -->
+<div class="section-title">Légitimité de l'existence de l'État d'Israël</div>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="col-prop" rowspan="2">Question</th>
+      <th colspan="3" class="col-lfi">LFI</th>
+      <th colspan="3" class="col-rn">RN</th>
+      <th colspan="4" class="col-high">Score « Justifiée » le + élevé</th>
+      <th colspan="4" class="col-low">Score « Justifiée » le + bas</th>
+      <th colspan="3" style="background:#1a1918;color:#ccc;">Ensemble FR</th>
+    </tr>
+    <tr class="subhead">
+      <th class="col-lfi">Justifiée</th><th class="col-lfi">Pas justif.</th><th class="col-lfi">—</th>
+      <th class="col-rn col-sep">Justifiée</th><th class="col-rn">Pas justif.</th><th class="col-rn">—</th>
+      <th class="col-high col-sep">Parti</th><th class="col-high">Justifiée</th><th class="col-high">Pas justif.</th><th class="col-high">—</th>
+      <th class="col-low col-sep">Parti</th><th class="col-low">Justifiée</th><th class="col-low">Pas justif.</th><th class="col-low">—</th>
+      <th style="background:#1a1918;color:#999;" class="col-sep">Justifiée</th><th style="background:#1a1918;color:#999;">Pas justif.</th><th style="background:#1a1918;color:#999;">—</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="prop">L'existence de l'État d'Israël est-elle justifiée ? (TOTAL Justifiée)</td>
+      <td class="num lfi-agree">46%</td><td class="num lfi-dis">54%</td><td class="num lfi-nsp">—</td>
+      <td class="num rn-agree col-sep">71%</td><td class="num rn-dis">29%</td><td class="num rn-nsp">—</td>
+      <td class="party-name high-agree col-sep">Renaissance</td><td class="num high-agree">93%</td><td class="num high-dis">7%</td><td class="num high-nsp">—</td>
+      <td class="party-name low-agree col-sep">LFI</td><td class="num low-agree">46%</td><td class="num low-dis">54%</td><td class="num low-nsp">—</td>
+      <td class="num ens col-sep">72%</td><td class="num ens">28%</td><td class="num ens">—</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ================================================================
+     SECTION 3 : PERCEPTION DU SIONISME
+================================================================ -->
+<div class="section-title">Perception du sionisme (« Le sionisme est… »)</div>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="col-prop" rowspan="2">Affirmation</th>
+      <th colspan="3" class="col-lfi">LFI</th>
+      <th colspan="3" class="col-rn">RN</th>
+      <th colspan="4" class="col-high">Score D'accord le + élevé</th>
+      <th colspan="4" class="col-low">Score D'accord le + bas</th>
+      <th colspan="3" style="background:#1a1918;color:#ccc;">Ensemble FR</th>
+    </tr>
+    <tr class="subhead">
+      <th class="col-lfi">D'accord</th><th class="col-lfi">Pas d'acc.</th><th class="col-lfi">NSP</th>
+      <th class="col-rn col-sep">D'accord</th><th class="col-rn">Pas d'acc.</th><th class="col-rn">NSP</th>
+      <th class="col-high col-sep">Parti</th><th class="col-high">D'accord</th><th class="col-high">Pas d'acc.</th><th class="col-high">NSP</th>
+      <th class="col-low col-sep">Parti</th><th class="col-low">D'accord</th><th class="col-low">Pas d'acc.</th><th class="col-low">NSP</th>
+      <th style="background:#1a1918;color:#999;" class="col-sep">D'accord</th><th style="background:#1a1918;color:#999;">Pas d'acc.</th><th style="background:#1a1918;color:#999;">NSP</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- Idéologie droit juifs -->
+    <tr>
+      <td class="prop">…une idéologie qui revendique le droit des juifs d'avoir leur propre État sur les terres de leurs ancêtres</td>
+      <td class="num lfi-agree">46%</td><td class="num lfi-dis">31%</td><td class="num lfi-nsp">23%</td>
+      <td class="num rn-agree col-sep">39%</td><td class="num rn-dis">18%</td><td class="num rn-nsp">43%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">50%</td><td class="num high-dis">14%</td><td class="num high-nsp">36%</td>
+      <td class="party-name low-agree col-sep">Sans sympathie</td><td class="num low-agree">30%</td><td class="num low-dis">7%</td><td class="num low-nsp">63%</td>
+      <td class="num ens col-sep">41%</td><td class="num ens">15%</td><td class="num ens">44%</td>
+    </tr>
+
+    <!-- Idéologie occupation -->
+    <tr>
+      <td class="prop">…une idéologie qui sert à Israël à justifier sa politique d'occupation et de colonisation des territoires palestiniens</td>
+      <td class="num lfi-agree">59%</td><td class="num lfi-dis">15%</td><td class="num lfi-nsp">26%</td>
+      <td class="num rn-agree col-sep">25%</td><td class="num rn-dis">31%</td><td class="num rn-nsp">44%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">59%</td><td class="num high-dis">15%</td><td class="num high-nsp">26%</td>
+      <td class="party-name low-agree col-sep">RN</td><td class="num low-agree">25%</td><td class="num low-dis">31%</td><td class="num low-nsp">44%</td>
+      <td class="num ens col-sep">35%</td><td class="num ens">21%</td><td class="num ens">44%</td>
+    </tr>
+
+    <!-- Idéologie raciste -->
+    <tr>
+      <td class="prop">…une idéologie raciste</td>
+      <td class="num lfi-agree">50%</td><td class="num lfi-dis">10%</td><td class="num lfi-nsp">40%</td>
+      <td class="num rn-agree col-sep">23%</td><td class="num rn-dis">31%</td><td class="num rn-nsp">46%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">50%</td><td class="num high-dis">10%</td><td class="num high-nsp">40%</td>
+      <td class="party-name low-agree col-sep">Sans sympathie</td><td class="num low-agree">20%</td><td class="num low-dis">16%</td><td class="num low-nsp">64%</td>
+      <td class="num ens col-sep">27%</td><td class="num ens">28%</td><td class="num ens">45%</td>
+    </tr>
+
+    <!-- Organisation internationale -->
+    <tr>
+      <td class="prop">…une organisation internationale qui vise à influencer le monde et la société au profit des juifs</td>
+      <td class="num lfi-agree">35%</td><td class="num lfi-dis">31%</td><td class="num lfi-nsp">34%</td>
+      <td class="num rn-agree col-sep">21%</td><td class="num rn-dis">32%</td><td class="num rn-nsp">47%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree">35%</td><td class="num high-dis">31%</td><td class="num high-nsp">34%</td>
+      <td class="party-name low-agree col-sep">Renaissance</td><td class="num low-agree">12%</td><td class="num low-dis">53%</td><td class="num low-nsp">35%</td>
+      <td class="num ens col-sep">22%</td><td class="num ens">32%</td><td class="num ens">46%</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- ================================================================
+     SECTION 4 : INDICATEUR D'ANTISÉMITISME (nombre de tropes)
+================================================================ -->
+<div class="section-title">Indicateur d'antisémitisme — adhésion à N tropes (hors NSP)</div>
+<p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Base : hors « Ne sait pas ». Lecture : % de sympathisants ayant adhéré à exactement N des 6 affirmations antisémites testées (pouvoir, richesse, génocide instrumentalisé, crise économique). Ensemble : n=1 331.</p>
+<div class="table-wrap">
+<table class="indicator-table">
+  <thead>
+    <tr>
+      <th class="col-prop" style="min-width:200px;">Nombre de tropes acceptés</th>
+      <th colspan="2" class="col-lfi">LFI (n=80)</th>
+      <th colspan="2" class="col-rn">RN (n=336)</th>
+      <th colspan="3" class="col-high">Le plus élevé</th>
+      <th colspan="3" class="col-low">Le plus bas</th>
+      <th colspan="2" style="background:#1a1918;color:#ccc;">Ensemble (n=1 331)</th>
+    </tr>
+    <tr class="subhead">
+      <th class="col-prop">—</th>
+      <th class="col-lfi">%</th><th class="col-lfi">cumul ≥N</th>
+      <th class="col-rn col-sep">%</th><th class="col-rn">cumul ≥N</th>
+      <th class="col-high col-sep">Parti</th><th class="col-high">%</th><th class="col-high">cumul ≥N</th>
+      <th class="col-low col-sep">Parti</th><th class="col-low">%</th><th class="col-low">cumul ≥N</th>
+      <th style="background:#1a1918;color:#999;" class="col-sep">%</th><th style="background:#1a1918;color:#999;">cumul ≥N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="prop" style="font-weight:600;">Aucune affirmation (0)</td>
+      <td class="num lfi-agree">52%</td><td class="num lfi-dis">—</td>
+      <td class="num rn-agree col-sep">53%</td><td class="num rn-dis">—</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">42%<br><span style="font-size:9px;color:#888;">(→ moins de 0 = moins d'antisémitisme, ici affiché pour le bas)</span></td><td class="num high-dis">—</td>
+      <td class="party-name low-agree col-sep">Chômeurs</td><td class="num low-agree">68%</td><td class="num low-dis">—</td>
+      <td class="num ens col-sep">52%</td><td class="num ens">—</td>
+    </tr>
+    <tr>
+      <td class="prop" style="font-weight:600;">Au moins une affirmation (≥1)</td>
+      <td class="num lfi-agree">48%</td><td class="num lfi-dis">48%</td>
+      <td class="num rn-agree col-sep">47%</td><td class="num rn-dis">47%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">58%</td><td class="num high-dis">58%</td>
+      <td class="party-name low-agree col-sep">Chômeurs</td><td class="num low-agree">32%</td><td class="num low-dis">32%</td>
+      <td class="num ens col-sep">48%</td><td class="num ens">48%</td>
+    </tr>
+    <tr>
+      <td class="prop">Exactement 1 affirmation</td>
+      <td class="num lfi-agree">10%</td><td class="num lfi-dis">48%</td>
+      <td class="num rn-agree col-sep">16%</td><td class="num rn-dis">47%</td>
+      <td class="party-name high-agree col-sep">Renaissance</td><td class="num high-agree">25%</td><td class="num high-dis">49%</td>
+      <td class="party-name low-agree col-sep">LFI</td><td class="num low-agree">10%</td><td class="num low-dis">48%</td>
+      <td class="num ens col-sep">18%</td><td class="num ens">48%</td>
+    </tr>
+    <tr>
+      <td class="prop">Exactement 2 affirmations</td>
+      <td class="num lfi-agree">7%</td><td class="num lfi-dis">38%</td>
+      <td class="num rn-agree col-sep">12%</td><td class="num rn-dis">31%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">16%</td><td class="num high-dis">35%</td>
+      <td class="party-name low-agree col-sep">LFI</td><td class="num low-agree">7%</td><td class="num low-dis">38%</td>
+      <td class="num ens col-sep">11%</td><td class="num ens">29%</td>
+    </tr>
+    <tr>
+      <td class="prop">Exactement 3 affirmations</td>
+      <td class="num lfi-agree">4%</td><td class="num lfi-dis">31%</td>
+      <td class="num rn-agree col-sep">5%</td><td class="num rn-dis">19%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">7%</td><td class="num high-dis">19%</td>
+      <td class="party-name low-agree col-sep">EÉLV / PS</td><td class="num low-agree">2%</td><td class="num low-dis">—</td>
+      <td class="num ens col-sep">5%</td><td class="num ens">18%</td>
+    </tr>
+    <tr>
+      <td class="prop">Exactement 4 affirmations</td>
+      <td class="num lfi-agree">5%</td><td class="num lfi-dis">27%</td>
+      <td class="num rn-agree col-sep">3%</td><td class="num rn-dis">14%</td>
+      <td class="party-name high-agree col-sep">Les Républicains</td><td class="num high-agree">6%</td><td class="num high-dis">12%</td>
+      <td class="party-name low-agree col-sep">EÉLV</td><td class="num low-agree">2%</td><td class="num low-dis">—</td>
+      <td class="num ens col-sep">4%</td><td class="num ens">13%</td>
+    </tr>
+    <tr>
+      <td class="prop">Exactement 5 affirmations</td>
+      <td class="num lfi-agree" style="font-weight:700;color:#b84a1e;">18%</td><td class="num lfi-dis">22%</td>
+      <td class="num rn-agree col-sep">8%</td><td class="num rn-dis">11%</td>
+      <td class="party-name high-agree col-sep">LFI</td><td class="num high-agree" style="font-weight:700;">18%</td><td class="num high-dis">22%</td>
+      <td class="party-name low-agree col-sep">Renaissance / LR</td><td class="num low-agree">3%</td><td class="num low-dis">—</td>
+      <td class="num ens col-sep">6%</td><td class="num ens">9%</td>
+    </tr>
+    <tr>
+      <td class="prop">Les 6 affirmations (adhésion totale)</td>
+      <td class="num lfi-agree">4%</td><td class="num lfi-dis">4%</td>
+      <td class="num rn-agree col-sep">3%</td><td class="num rn-dis">3%</td>
+      <td class="party-name high-agree col-sep">Sans sympathie</td><td class="num high-agree">7%</td><td class="num high-dis">7%</td>
+      <td class="party-name low-agree col-sep">EÉLV</td><td class="num low-agree">0%</td><td class="num low-dis">0%</td>
+      <td class="num ens col-sep">4%</td><td class="num ens">4%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="footnote">
+  <strong>Source :</strong> Ifop pour l'Union des Étudiants Juifs de France (UEJF), <em>Regards sur les préjugés antisémites 20 ans après la mort d'Ilan Halimi</em>, février 2026. Échantillon national représentatif de 1 533 Français de 18 ans et plus (méthode des quotas). Terrain : 6–9 février 2026.<br>
+  <strong>Note méthodologique :</strong> Les scores sont exprimés en % des répondants ayant déclaré être « D'accord » avec l'affirmation. Pour l'indicateur d'antisémitisme, la base est restreinte aux répondants ayant répondu à toutes les affirmations (hors NSP), soit n=1 331. Les colonnes « le plus élevé / le plus bas » sont calculées parmi les partis détaillés dans le rapport : LFI, Parti Socialiste, Les Écologistes (EÉLV), Renaissance, Les Républicains, Rassemblement National, et Sans sympathie partisane. Les tirets (—) indiquent une valeur nulle ou non disponible dans le rapport.
+</div>
+
+</main>
+</body>
+</html>
