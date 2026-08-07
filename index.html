@@ -472,6 +472,64 @@ body {
 
 .sprite-types { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; }
 
+/* ── LIGNES DE VIE / ÉVOLUTION ────────────────────────────────────────────── */
+.stage-label { margin-top:5px; font-size:9px; letter-spacing:.5px; color:#66ddaa;
+  text-align:center; text-transform:uppercase; opacity:.9; }
+
+.concept-card.unlearned { opacity:.42; filter:grayscale(.65); }
+.concept-learn { display:flex; align-items:center; gap:7px; margin:2px 0 5px; flex-wrap:wrap; }
+.learn-lvl { font-size:9px; font-weight:bold; letter-spacing:.5px; color:#001428;
+  background:#66ddaa; padding:2px 6px; border-radius:2px; }
+.learn-year { font-size:9px; color:#66ddaa; letter-spacing:.5px; }
+.learn-locked { font-size:8px; color:#ff8866; border:1px solid #ff886655;
+  padding:1px 5px; letter-spacing:.5px; }
+
+.evo-section { display:flex; flex-direction:column; gap:16px; }
+.evo-head { display:flex; gap:14px; align-items:flex-start; }
+.evo-sprite { width:96px; height:96px; flex-shrink:0; border:2px solid #66ddaa55;
+  background:#001428; display:flex; align-items:center; justify-content:center; }
+.evo-sprite canvas { image-rendering:pixelated; width:96px; height:96px; }
+.evo-head-txt { flex:1; min-width:0; }
+.evo-stage-rn { font-size:9px; color:#66ddaa; letter-spacing:2px; }
+.evo-stage-nom { font-size:14px; font-weight:bold; color:#e8f4ff; letter-spacing:.5px;
+  margin:2px 0 6px; }
+.evo-stage-types { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:6px; }
+.evo-stage-note { font-size:11px; line-height:1.55; color:#a8c4dd; }
+
+.evo-slider-wrap { border:1px solid #224466; padding:11px 13px 9px; background:#00142866; }
+.evo-readout { display:flex; align-items:baseline; gap:10px; margin-bottom:9px; flex-wrap:wrap; }
+.evo-lvl-big { font-size:17px; font-weight:bold; color:#66ddaa; letter-spacing:1px; }
+.evo-year { font-size:12px; color:#e8f4ff; letter-spacing:.5px; }
+.evo-age { font-size:9px; color:#6688aa; letter-spacing:.5px; margin-left:auto; }
+
+.evo-track { position:relative; height:26px; }
+.evo-range { -webkit-appearance:none; appearance:none; width:100%; height:6px; margin:10px 0 0;
+  background:#123; border:1px solid #2a4a6a; outline:none; position:relative; z-index:2; }
+.evo-range::-webkit-slider-thumb { -webkit-appearance:none; width:13px; height:20px;
+  background:#66ddaa; border:2px solid #001428; cursor:pointer; }
+.evo-range::-moz-range-thumb { width:13px; height:20px; background:#66ddaa;
+  border:2px solid #001428; cursor:pointer; border-radius:0; }
+.evo-mark, .evo-learn-mark { position:absolute; width:2px; pointer-events:none; z-index:1; }
+.evo-mark { top:6px; height:14px; background:#66ddaa44; }
+.evo-mark.on { background:#66ddaa; }
+.evo-learn-mark { top:0; height:8px; background:#ffaa0055; }
+.evo-learn-mark.on { background:#ffaa00; }
+.evo-bounds { display:flex; justify-content:space-between; font-size:8px;
+  color:#557799; letter-spacing:.5px; margin-top:5px; }
+
+.evo-chain { display:flex; align-items:stretch; gap:5px; flex-wrap:wrap; }
+.evo-arrow { color:#335577; font-size:10px; align-self:center; }
+.evo-chip { flex:1; min-width:96px; text-align:left; background:#00182f;
+  border:1px solid #224466; padding:6px 8px; cursor:pointer; font-family:inherit;
+  display:flex; flex-direction:column; gap:2px; }
+.evo-chip:hover { border-color:#66ddaa77; }
+.evo-chip.on { border-color:#66ddaa; background:#66ddaa14; }
+.evo-chip-rn { font-size:8px; color:#66ddaa; letter-spacing:1.5px; }
+.evo-chip-nom { font-size:9.5px; color:#e8f4ff; line-height:1.3; letter-spacing:.3px; }
+.evo-chip-lvl { font-size:8px; color:#6688aa; letter-spacing:.4px; }
+
+.age-row .chip.active { background:#66ddaa22; }
+
 .detail-meta {
   padding: 16px 18px;
   display: flex;
@@ -1270,6 +1328,7 @@ body.is-mobile  #app-desktop { display:none; }
 </style>
 <style id="type-colors">/* filled by injectTypeColors() */</style>
 <script src="philomon.js"></script>
+<script src="evolutions.js"></script>
 </head>
 <body>
 
@@ -1337,6 +1396,7 @@ body.is-mobile  #app-desktop { display:none; }
               <span class="infl-lbl" id="desk-d-infl-num"></span>
             </div>
             <div class="sprite-types" id="desk-d-types"></div>
+            <div class="stage-label" id="desk-d-stage"></div>
           </div>
 
           <!-- Meta text -->
@@ -1355,6 +1415,7 @@ body.is-mobile  #app-desktop { display:none; }
           <button class="dtab" data-tab="stats"   id="desk-tab-stats">STATS</button>
           <button class="dtab" data-tab="matchups" id="desk-tab-matchups">TYPES</button>
           <button class="dtab" data-tab="concepts" id="desk-tab-concepts">CONCEPTS</button>
+          <button class="dtab" data-tab="evolution" id="desk-tab-evolution">ÉVOLUTION</button>
           <button class="dtab" data-tab="filiation" id="desk-tab-filiation">FILIATION</button>
         </div>
 
@@ -1443,6 +1504,7 @@ body.is-mobile  #app-desktop { display:none; }
         <div class="mob-meta-full"  id="mob-d-full"></div>
         <div class="mob-meta-dates" id="mob-d-dates"></div>
         <div class="sprite-types" id="mob-d-types" style="margin-top:4px"></div>
+        <div class="stage-label" id="mob-d-stage"></div>
         <div class="mob-meta-oeuvre" id="mob-d-oeuvre"></div>
         <div class="infl-row" style="margin-top:6px">
           <span class="infl-lbl" style="color:var(--txt-dim)">INFL</span>
@@ -1457,6 +1519,7 @@ body.is-mobile  #app-desktop { display:none; }
       <button class="mob-tab-btn" data-tab="stats"    id="mob-tab-stats">STATS</button>
       <button class="mob-tab-btn" data-tab="matchups" id="mob-tab-matchups">TYPES</button>
       <button class="mob-tab-btn" data-tab="concepts" id="mob-tab-concepts">CONCEPTS</button>
+      <button class="mob-tab-btn" data-tab="evolution" id="mob-tab-evolution">ÉVOLUTION</button>
       <button class="mob-tab-btn" data-tab="filiation" id="mob-tab-filiation">FILIATION</button>
     </div>
 
@@ -1480,7 +1543,19 @@ const I18N = {
     tabStats:       'STATS',
     tabMatchups:    'TYPES',
     tabConcepts:    'CONCEPTS',
+    tabEvolution:   'ÉVOLUTION',
     tabFiliation:   'FILIATION',
+    lvlShort:       'NIV.',
+    notYetLearned:  'PAS ENCORE ACQUIS',
+    noEvoData:      'Aucune ligne de vie renseignée pour ce Philomon.',
+    dexAgeLabel:    'ÂGE',
+    ageYoung:       'JEUNE',
+    ageMature:      'MÛR',
+    ageLate:        'ACCOMPLI',
+    philoStart:     'début philosophique',
+    yearsIn:        '% ans de pensée',
+    stillAlive:     ' en activité',
+    approxNote:     'Chronologie reconstruite : les niveaux de ce Philomon sont approximatifs (≈).',
     resistances:    '▲ RÉSISTANCES (×½ SUBI)',
     weaknesses:     '▼ FAIBLESSES (×2 SUBI)',
     incommensurable:'Incommensurable avec : ',
@@ -1499,7 +1574,19 @@ const I18N = {
     tabStats:       'STATS',
     tabMatchups:    'TYPES',
     tabConcepts:    'CONCEPTS',
+    tabEvolution:   'EVOLUTION',
     tabFiliation:   'LINEAGE',
+    lvlShort:       'LV.',
+    notYetLearned:  'NOT YET LEARNED',
+    noEvoData:      'No life-line recorded for this Philomon.',
+    dexAgeLabel:    'AGE',
+    ageYoung:       'YOUNG',
+    ageMature:      'MATURE',
+    ageLate:        'FULL',
+    philoStart:     'philosophical debut',
+    yearsIn:        '% years of thought',
+    stillAlive:     ' still active',
+    approxNote:     'Reconstructed chronology: this Philomon\'s levels are approximate (≈).',
     resistances:    '▲ RESISTANCES (×½ TAKEN)',
     weaknesses:     '▼ WEAKNESSES (×2 TAKEN)',
     incommensurable:'Incommensurable with: ',
@@ -1512,6 +1599,65 @@ const I18N = {
 };
 let lang = 'fr';
 function t(k) { return I18N[lang][k]; }
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LIGNES DE VIE — niveaux, stades, évolution (données dans evolutions.js)
+// ══════════════════════════════════════════════════════════════════════════════
+// Niveau 1 = début de la vie philosophique. 1 niveau = 1 an.
+const NOW_YEAR = new Date().getFullYear();
+
+// Âge auquel le Dex entier est regardé : jeunesse, maturité, ou forme accomplie.
+let dexAge = 'FINAL';   // 'JEUNE' | 'MUR' | 'FINAL'
+
+function evoOf(p)      { return (typeof PHILOMON_EVO !== 'undefined' && PHILOMON_EVO[p.id]) || null; }
+function stageCount(p) { const e = evoOf(p); return e ? e.stages.length : 1; }
+function stageOf(p, si){ const e = evoOf(p); return e ? e.stages[Math.max(0, Math.min(si, e.stages.length - 1))] : null; }
+function endYear(p)    { const e = evoOf(p); return e ? (e.fin === null ? NOW_YEAR : e.fin) : NOW_YEAR; }
+function lvlMaxOf(p)   { const e = evoOf(p); return e ? endYear(p) - e.debut + 1 : 1; }
+function yearAt(p, lvl){ const e = evoOf(p); return e ? e.debut + lvl - 1 : null; }
+function isAlive(p)    { const e = evoOf(p); return !!e && e.fin === null; }
+
+// Les années négatives sont avant J.-C. ; « ≈ » signale une chronologie reconstruite.
+function fmtYear(p, y) {
+  if (y === null || y === undefined) return '';
+  const e = evoOf(p);
+  const pre = e && e.approx ? '≈' : '';
+  return y < 0 ? `${pre}${-y} av. J.-C.` : `${pre}${y}`;
+}
+
+// Dernier stade dont le seuil est atteint.
+function stageIndexAtLevel(p, lvl) {
+  const e = evoOf(p);
+  if (!e) return 0;
+  let si = 0;
+  for (let i = 0; i < e.stages.length; i++) if (lvl >= e.stages[i].lvl) si = i;
+  return si;
+}
+
+// Stade sous lequel la grille et la liste affichent tout le Dex.
+function dexStageIndex(p) {
+  const n = stageCount(p);
+  if (dexAge === 'JEUNE') return 0;
+  if (dexAge === 'MUR')   return Math.floor((n - 1) / 2);
+  return n - 1;
+}
+
+// Typage porté à ce stade ; le dernier stade est le typage canonique du Philomon.
+function typesAt(p, si) {
+  const st = stageOf(p, si);
+  return (st && st.types && st.types.length) ? st.types : p.types;
+}
+function dexTypes(p) { return typesAt(p, dexStageIndex(p)); }
+
+// Concepts appris au niveau donné (indices dans p[lang].concepts).
+function learnLevel(p, i) {
+  const e = evoOf(p);
+  return e && e.learn && e.learn[i] !== undefined ? e.learn[i] : 1;
+}
+function knownAtLevel(p, lvl) {
+  const d = p[lang];
+  return d.concepts.map((_, i) => learnLevel(p, i) <= lvl);
+}
 
 // ══════════════════════════════════════════════════════════════════════════════
 // PIXEL ART ENGINE
@@ -1644,37 +1790,56 @@ function canvasFromDataURL(dataURL) {
 // and card grid both call getSprite for the same philosopher simultaneously.
 const rawFetching = {};
 
-async function _fetchRaw(p) {
-  const stored = localStorage.getItem(LS_RAW + p.id);
+// A stage's picture: its own sourced portrait when one exists, else the base one.
+function stageImgUrl(p, si) {
+  const st = stageOf(p, si);
+  return (st && st.img) || p.imgUrl || null;
+}
+
+// Fidelity climbs with the stage: the youngest form is the coarsest read of the
+// face, the final form keeps the era's canonical generation. Philosophers
+// without a distinct portrait still visibly sharpen as they evolve.
+function stageGen(p, si) {
+  const base = ERA_PIX[p.era] || 2;
+  const n = stageCount(p);
+  return Math.max(1, Math.min(3, base - ((n - 1) - si)));
+}
+
+async function _fetchRaw(p, si) {
+  const k = `${p.id}_${si}`;
+  const stored = localStorage.getItem(LS_RAW + k);
   if (stored) {
     const c = await canvasFromDataURL(stored);
-    if (c) { rawCache[p.id] = c; return c; }
+    if (c) { rawCache[k] = c; return c; }
   }
-  if (!p.imgUrl) return null;
-  const c = await pixelizeImage(p.imgUrl, ERA_PIX[p.era] || 2);
+  const url = stageImgUrl(p, si);
+  if (!url) return null;
+  const c = await pixelizeImage(url, stageGen(p, si));
   if (c) {
-    rawCache[p.id] = c;
-    try { localStorage.setItem(LS_RAW + p.id, c.toDataURL()); } catch(e) {}
+    rawCache[k] = c;
+    try { localStorage.setItem(LS_RAW + k, c.toDataURL()); } catch(e) {}
   }
   return c || null;
 }
 
-async function getRawPixel(p) {
-  if (rawCache[p.id]) return copyCanvas(rawCache[p.id]);
-  if (!rawFetching[p.id]) {
-    rawFetching[p.id] = _fetchRaw(p).finally(() => delete rawFetching[p.id]);
+async function getRawPixel(p, si) {
+  const k = `${p.id}_${si}`;
+  if (rawCache[k]) return copyCanvas(rawCache[k]);
+  if (!rawFetching[k]) {
+    rawFetching[k] = _fetchRaw(p, si).finally(() => delete rawFetching[k]);
   }
-  const c = await rawFetching[p.id];
+  const c = await rawFetching[k];
   return c ? copyCanvas(c) : null;
 }
 
-async function getSprite(p, size) {
-  const key = `${p.id}_${size}`;
+async function getSprite(p, size, si) {
+  if (si === undefined) si = dexStageIndex(p);
+  const key = `${p.id}_${si}_${size}`;
   if (spriteCache[key]) return copyCanvas(spriteCache[key]);
-  const c = await getRawPixel(p);
+  const c = await getRawPixel(p, si);
   if (!c) {
     const ph = placeholderCanvas(size);
-    if (!p.imgUrl) spriteCache[key] = ph; // only cache "no image" permanently; URL failures stay retryable
+    if (!stageImgUrl(p, si)) spriteCache[key] = ph; // only cache "no image" permanently; URL failures stay retryable
     return copyCanvas(ph);
   }
   const out = document.createElement('canvas'); out.width = size; out.height = size;
@@ -1845,9 +2010,9 @@ function filteredList() {
   return PHILOMON.filter(p => {
     const d = p[lang];
     const mq2 = !q || p.nom.toLowerCase().includes(q) || p.full.toLowerCase().includes(q)
-               || p.types.some(tp=>tp.toLowerCase().includes(q))
+               || dexTypes(p).some(tp=>tp.toLowerCase().includes(q))
                || d.concepts.some(c=>c.nom.toLowerCase().includes(q));
-    const mt = !activeType || p.types.includes(activeType);
+    const mt = !activeType || dexTypes(p).includes(activeType);
     const me = activeEra==='ALL' || p.era===activeEra;
     return mq2 && mt && me;
   });
@@ -1868,9 +2033,10 @@ function buildStatsHtml(p) {
   return `<div class="stat-list">${
     Object.entries(p.stats).map(([k,v]) => {
       const m = meta[k] || { role:'pool', tip:'' };
-      const barClass = (m.role === 'atk') ? fillClass(p.types[0]) :
-                       (m.role === 'def') ? fillClass(p.types[p.types.length-1]) :
-                       fillClass(p.types[0]);
+      const tp0 = typesAt(p, stageIndexAtLevel(p, curLevel(p)));
+      const barClass = (m.role === 'atk') ? fillClass(tp0[0]) :
+                       (m.role === 'def') ? fillClass(tp0[tp0.length-1]) :
+                       fillClass(tp0[0]);
       return `
       <div class="stat-row">
         <span class="stat-key" data-tip="${m.tip}">${k}</span>
@@ -1890,8 +2056,9 @@ function buildStatsHtml(p) {
 }
 
 function buildMatchupsHtml(p) {
-  const dm = computeDefMatchups(p.types);
-  const myChamps = [...new Set(p.types.map(champOf).filter(Boolean))];
+  const cur = typesAt(p, stageIndexAtLevel(p, curLevel(p)));
+  const dm = computeDefMatchups(cur);
+  const myChamps = [...new Set(cur.map(champOf).filter(Boolean))];
   const other = Object.keys(CHAMPS).filter(c=>!myChamps.includes(c)).map(c=>I18N[lang].champLabels[c]||c);
   let html = '<div class="matchup-section">';
   if (dm.fort.length)  html += `<div><div class="matchup-group-title">${t('resistances')}</div><div class="pill-row">${dm.fort.map(e=>`<div class="pill strong"><span class="${tClass(e.type)}">${e.type.toUpperCase()}</span><span class="mult">×½</span></div>`).join('')}</div></div>`;
@@ -1902,7 +2069,13 @@ function buildMatchupsHtml(p) {
 
 function buildConceptsHtml(p) {
   const d = p[lang];
-  return `<div class="concept-list">${d.concepts.map(c => {
+  const lvl = curLevel(p);
+  // Ordre d'apprentissage plutôt qu'ordre de saisie : la liste devient une biographie.
+  const order = d.concepts.map((c, i) => i).sort((a, b) => learnLevel(p, a) - learnLevel(p, b));
+  return `<div class="concept-list">${order.map(ci => {
+    const c = d.concepts[ci];
+    const cLvl = learnLevel(p, ci);
+    const known = cLvl <= lvl;
     const cType = c.type;
     const isImmanent = c.cat === 'immanent';
     const catLabel = lang === 'fr'
@@ -1929,7 +2102,7 @@ function buildConceptsHtml(p) {
         <span class="vs-pill" style="border-color:#7799cc;color:#7799cc">CLÔTURE</span>`;
     }
 
-    return `<div class="concept-card">
+    return `<div class="concept-card${known ? '' : ' unlearned'}">
       <div class="concept-top">
         <span class="concept-name">
           ${c.nom}
@@ -1937,11 +2110,75 @@ function buildConceptsHtml(p) {
         </span>
         <span class="concept-pwr">PWR ${c.puissance}</span>
       </div>
+      <div class="concept-learn">
+        <span class="learn-lvl">${t('lvlShort')} ${cLvl}</span>
+        <span class="learn-year">${fmtYear(p, yearAt(p, cLvl))}</span>
+        ${known ? '' : `<span class="learn-locked">${t('notYetLearned')}</span>`}
+      </div>
       <span class="concept-type-tag ${tClass(cType)}">${cType.toUpperCase()}</span>
       <div class="concept-desc">${c.desc}</div>
       ${vsRows ? `<div class="concept-matchup-row">${vsRows}</div>` : ''}
     </div>`;
   }).join('')}</div>`;
+}
+
+// ── ONGLET ÉVOLUTION ────────────────────────────────────────────────────────
+// Le curseur parcourt la vie du philosophe ; sprite, typage et concepts suivent.
+function buildEvolutionHtml(p) {
+  const e = evoOf(p);
+  if (!e) return `<p class="entry-text">${t('noEvoData')}</p>`;
+  const max = lvlMaxOf(p), lvl = curLevel(p), si = stageIndexAtLevel(p, lvl);
+  const st = e.stages[si], sd = st[lang] || st.fr;
+
+  const marks = e.stages.map((s, i) => {
+    const pct = max > 1 ? ((s.lvl - 1) / (max - 1)) * 100 : 0;
+    return `<span class="evo-mark${i === si ? ' on' : ''}" style="left:${pct}%" title="${s[lang] ? s[lang].nom : s.fr.nom}"></span>`;
+  }).join('');
+  const learnMarks = p[lang].concepts.map((c, i) => {
+    const L = learnLevel(p, i);
+    const pct = max > 1 ? ((L - 1) / (max - 1)) * 100 : 0;
+    return `<span class="evo-learn-mark${L <= lvl ? ' on' : ''}" style="left:${pct}%" title="${c.nom} — ${t('lvlShort')} ${L}"></span>`;
+  }).join('');
+
+  const chain = e.stages.map((s, i) => {
+    const nm = (s[lang] || s.fr).nom;
+    return `<button class="evo-chip${i === si ? ' on' : ''}" data-evo-lvl="${s.lvl}">
+        <span class="evo-chip-rn">${['I','II','III','IV','V'][i] || (i + 1)}</span>
+        <span class="evo-chip-nom">${nm}</span>
+        <span class="evo-chip-lvl">${t('lvlShort')} ${s.lvl} · ${fmtYear(p, yearAt(p, s.lvl))}</span>
+      </button>`;
+  }).join('<span class="evo-arrow">▶</span>');
+
+  return `<div class="evo-section">
+    <div class="evo-head">
+      <div class="evo-sprite" id="evo-sprite"></div>
+      <div class="evo-head-txt">
+        <div class="evo-stage-rn">${['I','II','III','IV','V'][si] || (si + 1)}</div>
+        <div class="evo-stage-nom">${sd.nom}</div>
+        <div class="evo-stage-types">${typesAt(p, si).map(tp => `<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('')}</div>
+        <div class="evo-stage-note">${sd.note || ''}</div>
+      </div>
+    </div>
+
+    <div class="evo-slider-wrap">
+      <div class="evo-readout">
+        <span class="evo-lvl-big">${t('lvlShort')} ${lvl}</span>
+        <span class="evo-year">${fmtYear(p, yearAt(p, lvl))}</span>
+        <span class="evo-age">${lvl === 1 ? t('philoStart') : t('yearsIn').replace('%', lvl - 1)}</span>
+      </div>
+      <div class="evo-track">
+        ${marks}${learnMarks}
+        <input type="range" class="evo-range" id="evo-range" min="1" max="${max}" value="${lvl}">
+      </div>
+      <div class="evo-bounds">
+        <span>${t('lvlShort')} 1 · ${fmtYear(p, e.debut)}</span>
+        <span>${t('lvlShort')} ${max} · ${fmtYear(p, endYear(p))}${isAlive(p) ? ' ·' + t('stillAlive') : ''}</span>
+      </div>
+    </div>
+
+    <div class="evo-chain">${chain}</div>
+    ${e.approx ? `<div class="incommensurable-note">${t('approxNote')}</div>` : ''}
+  </div>`;
 }
 
 function filTag(name, extraClass = '') {
@@ -1963,15 +2200,68 @@ function buildFiliationHtml(p) {
   </div>`;
 }
 
+// ── NIVEAU COURANT DU DÉTAIL ────────────────────────────────────────────────
+// null = suivre l'âge global du Dex ; sinon, le curseur a la main.
+let detailLevel = null;
+let detailLevelFor = null;   // id du philosophe auquel detailLevel se rapporte
+
+// Niveau par défaut : la fin de vie en vue « accomplie », sinon le milieu du stade.
+function defaultLevel(p) {
+  const e = evoOf(p);
+  if (!e) return 1;
+  const si = dexStageIndex(p);
+  if (si >= e.stages.length - 1) return lvlMaxOf(p);
+  return Math.round((e.stages[si].lvl + e.stages[si + 1].lvl - 1) / 2);
+}
+function curLevel(p) {
+  if (detailLevelFor !== p.id || detailLevel === null) return defaultLevel(p);
+  return Math.max(1, Math.min(detailLevel, lvlMaxOf(p)));
+}
+function setDetailLevel(p, lvl) { detailLevelFor = p.id; detailLevel = lvl; }
+function resetDetailLevel(p)    { detailLevelFor = p.id; detailLevel = null; }
+
 function renderTab(tabKey, p, container) {
   const builders = {
     entree: buildEntryHtml,
     stats: buildStatsHtml,
     matchups: buildMatchupsHtml,
     concepts: buildConceptsHtml,
+    evolution: buildEvolutionHtml,
     filiation: buildFiliationHtml,
   };
   container.innerHTML = (builders[tabKey]||buildEntryHtml)(p);
+  if (tabKey === 'evolution') wireEvolutionTab(p, container);
+}
+
+// Rebranche le curseur et les pastilles de stade après chaque rendu.
+function wireEvolutionTab(p, container) {
+  const si = stageIndexAtLevel(p, curLevel(p));
+  const holder = container.querySelector('#evo-sprite');
+  if (holder) {
+    holder.innerHTML = ''; holder.appendChild(placeholderCanvas(96));
+    getSprite(p, 96, si).then(c => { holder.innerHTML = ''; holder.appendChild(c); });
+  }
+  const range = container.querySelector('#evo-range');
+  if (range) {
+    const onMove = () => {
+      setDetailLevel(p, parseInt(range.value, 10));
+      refreshDetailForLevel(p, container);
+    };
+    range.addEventListener('input', onMove);
+  }
+  container.querySelectorAll('[data-evo-lvl]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setDetailLevel(p, parseInt(btn.dataset.evoLvl, 10));
+      refreshDetailForLevel(p, container);
+    });
+  });
+}
+
+// Le niveau a bougé : on repeint l'onglet et l'en-tête (sprite + types) autour.
+function refreshDetailForLevel(p, container) {
+  renderTab('evolution', p, container);
+  if (document.body.classList.contains('is-desktop')) paintDesktopHeader(p);
+  else                                                paintMobileHeader(p);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1988,10 +2278,37 @@ function buildDesktop() {
   else document.querySelector('.desk-body').classList.add('detail-hidden');
 }
 
+// Âge sous lequel tout le Dex est regardé : la grille entière change de forme.
+function buildAgeSelector(onChange) {
+  const row = document.createElement('div');
+  row.className = 'filter-field-row age-row';
+  const lbl = document.createElement('span');
+  lbl.className = 'field-label';
+  lbl.style.color = '#66ddaabb';
+  lbl.textContent = t('dexAgeLabel');
+  row.appendChild(lbl);
+  [['JEUNE', t('ageYoung')], ['MUR', t('ageMature')], ['FINAL', t('ageLate')]].forEach(([k, label]) => {
+    const chip = document.createElement('div');
+    chip.className = 'chip' + (dexAge === k ? ' active' : '');
+    chip.style.borderColor = '#66ddaa';
+    chip.style.color = '#66ddaa';
+    chip.textContent = label;
+    chip.addEventListener('click', () => { dexAge = k; onChange(); });
+    row.appendChild(chip);
+  });
+  return row;
+}
+
 function buildDesktopFilters() {
   const el = document.getElementById('desk-filters');
   el.innerHTML = '';
-  
+
+  el.appendChild(buildAgeSelector(() => {
+    buildDesktopFilters();
+    renderDesktopList();
+    if (selectedPhilo) { resetDetailLevel(selectedPhilo); openDesktopDetail(selectedPhilo); }
+  }));
+
   const eraDiv = document.createElement('div');
   eraDiv.className = 'filter-field-row';
   const eraLabel = document.createElement('span');
@@ -2069,7 +2386,7 @@ function renderDesktopList() {
     const info = document.createElement('div'); info.className = 'philo-info';
     info.innerHTML = `<div class="philo-num">#${p.id}</div>
       <div class="philo-name">${p.nom}</div>
-      <div class="philo-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>`;
+      <div class="philo-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>`;
     const gen = document.createElement('div'); gen.className = 'philo-gen';
     gen.textContent = p.era; gen.style.color = ERA_COLORS[p.era]||'#aaaaaa';
     row.appendChild(thumb); row.appendChild(info); row.appendChild(gen);
@@ -2092,7 +2409,7 @@ function renderDesktopList() {
     const body = document.createElement('div'); body.className = 'card-body';
     body.innerHTML = `<div class="card-num">#${p.id}</div>
       <div class="card-name">${p.nom}</div>
-      <div class="card-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>
+      <div class="card-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>
       <div class="card-gen" style="color:${ERA_COLORS[p.era]||'#aaaaaa'}">${p.era}</div>`;
     card.appendChild(body);
     card.addEventListener('click', ()=>openDesktopDetail(p));
@@ -2106,6 +2423,35 @@ function showDesktopEmpty() {
   document.getElementById('desk-detail-content').classList.remove('visible');
 }
 
+// Sprite + typage de l'en-tête, au stade correspondant au niveau courant.
+function paintDesktopHeader(p) {
+  const si = stageIndexAtLevel(p, curLevel(p));
+  const spriteEl = document.getElementById('desk-d-sprite');
+  if (spriteEl) {
+    const key = `${p.id}_${si}`;
+    const hadRaw = !!rawCache[key];
+    spriteEl.innerHTML = '';
+    spriteEl.appendChild(placeholderCanvas(120));
+    getSprite(p, 120, si).then(c => {
+      spriteEl.innerHTML = ''; spriteEl.appendChild(c);
+      // Si le détail est ce qui a fini par charger l'image, on rafraîchit la carte.
+      if (!hadRaw && rawCache[key] && si === dexStageIndex(p)) {
+        delete spriteCache[`${p.id}_${si}_106`];
+        delete spriteCache[`${p.id}_${si}_50`];
+        const cardEl = document.querySelector(`.philo-card[data-philo-id="${p.id}"]`);
+        const sa = cardEl && cardEl.querySelector('.card-sprite-area');
+        if (sa) getSprite(p, 106, si).then(c2 => { sa.innerHTML = ''; sa.appendChild(c2); });
+      }
+    });
+  }
+  const tEl = document.getElementById('desk-d-types');
+  if (tEl) tEl.innerHTML = typesAt(p, si).map(tp =>
+    `<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('');
+  const stEl = document.getElementById('desk-d-stage');
+  const st = stageOf(p, si);
+  if (stEl) stEl.textContent = st ? `${['I','II','III','IV','V'][si] || (si+1)} · ${(st[lang]||st.fr).nom}` : '';
+}
+
 function openDesktopDetail(p) {
   selectedPhilo = p;
   document.querySelector('.desk-body').classList.remove('detail-hidden');
@@ -2117,24 +2463,8 @@ function openDesktopDetail(p) {
   document.getElementById('desk-empty').style.display = 'none';
   document.getElementById('desk-detail-content').classList.add('visible');
 
-  // Sprite
-  const spriteEl = document.getElementById('desk-d-sprite');
-  spriteEl.innerHTML = '';
-  spriteEl.appendChild(placeholderCanvas(120));
-  const hadRaw = !!rawCache[p.id];
-  getSprite(p,120).then(c=>{
-    spriteEl.innerHTML='';spriteEl.appendChild(c);
-    // If detail was the one that fetched the raw image (card grid failed), patch the card too
-    if (!hadRaw && rawCache[p.id]) {
-      delete spriteCache[`${p.id}_106`];
-      delete spriteCache[`${p.id}_50`];
-      const cardEl = document.querySelector(`.philo-card[data-philo-id="${p.id}"]`);
-      if (cardEl) {
-        const sa = cardEl.querySelector('.card-sprite-area');
-        if (sa) getSprite(p,106).then(c2=>{sa.innerHTML='';sa.appendChild(c2);});
-      }
-    }
-  });
+  resetDetailLevel(p);
+  paintDesktopHeader(p);
 
   // Meta
   document.getElementById('desk-d-num').textContent = '#'+p.id;
@@ -2155,9 +2485,7 @@ function openDesktopDetail(p) {
   fill.style.width = inf+'%';
   fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
 
-  // Types
-  document.getElementById('desk-d-types').innerHTML =
-    p.types.map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('');
+  // Types : peints par paintDesktopHeader, au stade courant.
 
   // Render active tab
   renderTab(activeDesktopTab, p, document.getElementById('desk-tab-body'));
@@ -2202,6 +2530,7 @@ function applyDesktopLangLabels() {
   document.getElementById('desk-tab-stats').textContent    = t('tabStats');
   document.getElementById('desk-tab-matchups').textContent = t('tabMatchups');
   document.getElementById('desk-tab-concepts').textContent = t('tabConcepts');
+  document.getElementById('desk-tab-evolution').textContent = t('tabEvolution');
   document.getElementById('desk-tab-filiation').textContent= t('tabFiliation');
   document.documentElement.lang = lang;
 }
@@ -2221,6 +2550,18 @@ function buildMobile() {
 function buildMobileFilters() {
   const el = document.getElementById('mob-filters');
   el.innerHTML = '';
+  [['JEUNE', t('ageYoung')], ['MUR', t('ageMature')], ['FINAL', t('ageLate')]].forEach(([k, label]) => {
+    const chip = document.createElement('div');
+    chip.className = 'chip' + (dexAge === k ? ' active' : '');
+    chip.style.borderColor = '#66ddaa';
+    chip.style.color = '#66ddaa';
+    chip.textContent = label;
+    chip.addEventListener('click', () => {
+      dexAge = k; buildMobileFilters(); renderMobileList();
+      if (mobilePhilo) { resetDetailLevel(mobilePhilo); paintMobileHeader(mobilePhilo); }
+    });
+    el.appendChild(chip);
+  });
   for(const[,cd] of Object.entries(CHAMPS)){
     cd.types.forEach(tp=>{
       const chip = document.createElement('div');
@@ -2253,11 +2594,26 @@ function renderMobileList() {
     const info = document.createElement('div'); info.className = 'mob-info';
     info.innerHTML = `<div class="mob-num">#${p.id}</div>
       <div class="mob-name">${p.nom}</div>
-      <div class="mob-types">${p.types.map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.substring(0,8).toUpperCase()}</span>`).join('')}</div>`;
+      <div class="mob-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.substring(0,8).toUpperCase()}</span>`).join('')}</div>`;
     row.appendChild(thumb); row.appendChild(info);
     row.addEventListener('click',()=>openMobileDetail(p));
     list.appendChild(row);
   });
+}
+
+function paintMobileHeader(p) {
+  const si = stageIndexAtLevel(p, curLevel(p));
+  const spriteEl = document.getElementById('mob-d-sprite');
+  if (spriteEl) {
+    spriteEl.innerHTML = ''; spriteEl.appendChild(placeholderCanvas(120));
+    getSprite(p, 120, si).then(c => { spriteEl.innerHTML = ''; spriteEl.appendChild(c); });
+  }
+  const tEl = document.getElementById('mob-d-types');
+  if (tEl) tEl.innerHTML = typesAt(p, si).map(tp =>
+    `<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.toUpperCase()}</span>`).join('');
+  const stEl = document.getElementById('mob-d-stage');
+  const st = stageOf(p, si);
+  if (stEl) stEl.textContent = st ? `${['I','II','III','IV','V'][si] || (si+1)} · ${(st[lang]||st.fr).nom}` : '';
 }
 
 function openMobileDetail(p) {
@@ -2267,7 +2623,7 @@ function openMobileDetail(p) {
   document.getElementById('mob-d-full').textContent  = p.full;
   document.getElementById('mob-d-dates').textContent = p.dates+' · '+p.lieu;
   document.getElementById('mob-d-oeuvre').textContent= p[lang].oeuvre;
-  document.getElementById('mob-d-types').innerHTML   = p.types.map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.toUpperCase()}</span>`).join('');
+  resetDetailLevel(p);
 
   const inf = p.stats.INFLUENCE;
   document.getElementById('mob-d-infl-num').textContent = inf;
@@ -2275,9 +2631,7 @@ function openMobileDetail(p) {
   fill.style.width = inf+'%';
   fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
 
-  const spriteEl = document.getElementById('mob-d-sprite');
-  spriteEl.innerHTML=''; spriteEl.appendChild(placeholderCanvas(120));
-  getSprite(p,120).then(c=>{spriteEl.innerHTML='';spriteEl.appendChild(c);});
+  paintMobileHeader(p);
 
   // Reset to entry tab
   activeMobileTab = 'entree';
@@ -2328,6 +2682,7 @@ function applyMobileLangLabels() {
   document.getElementById('mob-tab-stats').textContent     = t('tabStats');
   document.getElementById('mob-tab-matchups').textContent  = t('tabMatchups');
   document.getElementById('mob-tab-concepts').textContent  = t('tabConcepts');
+  document.getElementById('mob-tab-evolution').textContent = t('tabEvolution');
   document.getElementById('mob-tab-filiation').textContent = t('tabFiliation');
   document.documentElement.lang = lang;
 }
@@ -2584,6 +2939,15 @@ document.getElementById('breed-slot-b').addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════════════════════════
 // INIT — load data then render
 // ══════════════════════════════════════════════════════════════════════════════
+// Les sprites sont désormais mis en cache par stade (pdx_raw_<id>_<stade>) ;
+// on évacue les clés de l'ancien schéma, qui ne seront plus jamais relues.
+try {
+  for (let i = localStorage.length - 1; i >= 0; i--) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(LS_RAW) && !/_\d+$/.test(k.slice(LS_RAW.length))) localStorage.removeItem(k);
+  }
+} catch(e) {}
+
 STAT_META = PHILOMON_DATA.statMeta;
 PHILOMON  = PHILOMON_DATA.philomon;
 PHILOMON.forEach(p => { PHILO_BY_NOM[p.nom] = p; });
