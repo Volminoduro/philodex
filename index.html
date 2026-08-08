@@ -334,6 +334,7 @@ body {
   transition: border-color .15s, transform .1s, box-shadow .15s;
   overflow: hidden;
   min-height: 230px;
+  position: relative;   /* ancre la pastille de tri */
 }
 .philo-card:hover {
   border-color: var(--accent);
@@ -578,6 +579,81 @@ body {
 .evo-chip-lvl { font-size:8px; color:#6688aa; letter-spacing:.4px; }
 
 .age-row .chip.active { background:#66ddaa22; }
+
+/* ── Ordonnancement du Dex ── */
+.sort-row .chip.active { background:#c9a0ff22; }
+
+.sort-note {
+  font-size: var(--fs-xxs);
+  color: #c9a0ffaa;
+  letter-spacing: .03em;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* La valeur qui justifie le rang, à droite de la ligne et de la carte. */
+.sort-val {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+.sort-val .sv-num {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: #c9a0ff;
+}
+.sort-val .sv-key {
+  font-size: 8px;
+  color: #c9a0ff77;
+  letter-spacing: .06em;
+}
+
+.philo-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.card-sortval {
+  position: absolute;
+  top: 6px; right: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 6px;
+  border: 1px solid #c9a0ff66;
+  border-radius: 2px;
+  background: rgba(10,8,24,.82);
+  line-height: 1.1;
+  pointer-events: none;
+}
+.card-sortval .sv-num {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: #c9a0ff;
+}
+.card-sortval .sv-key {
+  font-size: 8px;
+  color: #c9a0ff99;
+  letter-spacing: .06em;
+}
+
+/* Le libellé du tri dans la bande mobile, qui n'a pas de colonne de libellés. */
+.strip-label {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #c9a0ffbb;
+  letter-spacing: .06em;
+  align-self: center;
+  flex-shrink: 0;
+  padding-left: 4px;
+}
 
 .detail-meta {
   padding: 16px 18px;
@@ -1418,6 +1494,7 @@ body.is-mobile  #app-desktop { display:none; }
       <div class="center-header">
         <h2 id="desk-grid-label">PHILOMON</h2>
         <span class="count-badge" id="desk-count">8</span>
+        <span class="sort-note" id="desk-sort-note"></span>
       </div>
       <div class="card-grid" id="desk-card-grid"></div>
     </main>
@@ -1609,6 +1686,15 @@ const I18N = {
     ageYoung:       'JEUNE',
     ageMature:      'MÛR',
     ageLate:        'ACCOMPLI',
+    sortLabel:      'TRI',
+    sortNum:        'N°',
+    sortTotal:      'TOTAL',
+    sortHint:       'Cliquer à nouveau pour inverser l\'ordre.',
+    sortNote:       'Classé par %S, %D — valeurs prises à l\'âge « %A ».',
+    sortDesc:       'du plus fort au plus faible',
+    sortAsc:        'du plus faible au plus fort',
+    sortNumDesc:    'du dernier au premier',
+    sortNumAsc:     'du premier au dernier',
     philoStart:     'début philosophique',
     stillAlive:     ' en activité',
     statsAtLevel:   'Valeurs au niveau %L (%A). Le creux indique le potentiel non encore atteint.',
@@ -1645,6 +1731,15 @@ const I18N = {
     ageYoung:       'YOUNG',
     ageMature:      'MATURE',
     ageLate:        'FULL',
+    sortLabel:      'SORT',
+    sortNum:        'NO.',
+    sortTotal:      'TOTAL',
+    sortHint:       'Click again to reverse the order.',
+    sortNote:       'Sorted by %S, %D — values taken at the "%A" age.',
+    sortDesc:       'strongest first',
+    sortAsc:        'weakest first',
+    sortNumDesc:    'last to first',
+    sortNumAsc:     'first to last',
     philoStart:     'philosophical debut',
     stillAlive:     ' still active',
     statsAtLevel:   'Values at level %L (%A). The hollow shows potential not yet reached.',
@@ -2157,9 +2252,33 @@ let activeType   = null;
 let activeSearch = '';
 let activeEra    = 'ALL';
 
+// ── ORDONNANCEMENT DU DEX ───────────────────────────────────────────────────
+// Le Dex se lit par numéro, mais aussi par force : chaque statistique peut
+// devenir la clé de tri, et le total les résume. Les valeurs comparées sont
+// celles de l'âge sous lequel le Dex est regardé — classer le Dex jeune ne
+// donne donc pas le même ordre que le classer accompli, puisque les six
+// statistiques ne mûrissent pas au même rythme.
+const SORT_KEYS = ['NUM', 'TOTAL', 'INFLUENCE', 'RIGUEUR', 'ANCRAGE', 'PORTÉE', 'CLÔTURE', 'CLARTÉ'];
+let dexSort     = 'NUM';
+let dexSortDesc = false;   // le numéro se lit dans l'ordre ; les stats, à l'envers
+
+// Les stats du philosophe tel que la grille l'affiche (donc à l'âge du Dex).
+function dexStats(p) { return statsAt(p, defaultLevel(p)); }
+
+function sortValue(p) {
+  if (dexSort === 'NUM') return parseInt(p.id, 10);
+  const s = dexStats(p);
+  if (dexSort === 'TOTAL') return Object.values(s).reduce((a, v) => a + v, 0);
+  return s[dexSort] || 0;
+}
+
+function sortKeyLabel(k) {
+  return k === 'NUM' ? t('sortNum') : k === 'TOTAL' ? t('sortTotal') : k.substring(0, 5);
+}
+
 function filteredList() {
   const q = activeSearch.toLowerCase();
-  return PHILOMON.filter(p => {
+  const list = PHILOMON.filter(p => {
     const d = p[lang];
     const mq2 = !q || p.nom.toLowerCase().includes(q) || p.full.toLowerCase().includes(q)
                || dexTypes(p).some(tp=>tp.toLowerCase().includes(q))
@@ -2167,6 +2286,12 @@ function filteredList() {
     const mt = !activeType || dexTypes(p).includes(activeType);
     const me = activeEra==='ALL' || p.era===activeEra;
     return mq2 && mt && me;
+  });
+  if (dexSort === 'NUM' && !dexSortDesc) return list;   // l'ordre du Dex, intact
+  // À valeur égale, on retombe sur le numéro : le classement reste reproductible.
+  return list.sort((a, b) => {
+    const d = sortValue(b) - sortValue(a);
+    return (dexSortDesc ? d : -d) || (parseInt(a.id, 10) - parseInt(b.id, 10));
   });
 }
 
@@ -2348,13 +2473,23 @@ function buildFiliationHtml(p) {
 let detailLevel = null;
 let detailLevelFor = null;   // id du philosophe auquel detailLevel se rapporte
 
-// Niveau par défaut : la fin de vie en vue « accomplie », sinon le milieu du stade.
+// Niveau par défaut : l'âge du Dex, lu comme une fraction de la vie
+// philosophique — puis ramené à l'intérieur du stade que la grille montre, pour
+// que le portrait et les statistiques parlent du même moment. Sans cette
+// fraction, un philosophe à forme unique resterait à son niveau maximal même en
+// vue « jeune », faute d'un stade antérieur où le situer.
+const AGE_FRACTION = { JEUNE: 0.25, MUR: 0.6, FINAL: 1 };
+
 function defaultLevel(p) {
   const e = evoOf(p);
   if (!e) return 1;
-  const si = dexStageIndex(p);
-  if (si >= e.stages.length - 1) return lvlMaxOf(p);
-  return Math.round((e.stages[si].lvl + e.stages[si + 1].lvl - 1) / 2);
+  const max = lvlMaxOf(p);
+  if (dexAge === 'FINAL') return max;
+  const si  = dexStageIndex(p);
+  const lo  = e.stages[si].lvl;
+  const hi  = si < e.stages.length - 1 ? e.stages[si + 1].lvl - 1 : max;
+  const lvl = Math.max(1, Math.round(max * (AGE_FRACTION[dexAge] || 1)));
+  return Math.max(lo, Math.min(hi, lvl));
 }
 function curLevel(p) {
   if (detailLevelFor !== p.id || detailLevel === null) return defaultLevel(p);
@@ -2492,6 +2627,59 @@ function buildAgeSelector(onChange) {
   return row;
 }
 
+// Clé de classement du Dex. Re-cliquer la clé active retourne l'ordre.
+function buildSortChips(onChange) {
+  return SORT_KEYS.map(k => {
+    const chip = document.createElement('div');
+    chip.className = 'chip' + (dexSort === k ? ' active' : '');
+    chip.dataset.sort = k;
+    chip.style.borderColor = '#c9a0ff';
+    chip.style.color = '#c9a0ff';
+    chip.title = t('sortHint');
+    chip.textContent = dexSort === k
+      ? `${sortKeyLabel(k)} ${dexSortDesc ? '▼' : '▲'}`
+      : sortKeyLabel(k);
+    chip.addEventListener('click', () => {
+      if (dexSort === k) dexSortDesc = !dexSortDesc;
+      else { dexSort = k; dexSortDesc = (k !== 'NUM'); }
+      onChange();
+    });
+    return chip;
+  });
+}
+
+function buildSortSelector(onChange) {
+  const row = document.createElement('div');
+  row.className = 'filter-field-row sort-row';
+  const lbl = document.createElement('span');
+  lbl.className = 'field-label';
+  lbl.style.color = '#c9a0ffbb';
+  lbl.textContent = t('sortLabel');
+  row.appendChild(lbl);
+  buildSortChips(onChange).forEach(c => row.appendChild(c));
+  return row;
+}
+
+// Rappel de ce qui est classé, et à quel âge les valeurs ont été prises.
+function sortNoteText() {
+  if (dexSort === 'NUM') return '';
+  const age = { JEUNE: t('ageYoung'), MUR: t('ageMature'), FINAL: t('ageLate') }[dexAge];
+  return t('sortNote')
+    .replace('%S', dexSort === 'TOTAL' ? t('sortTotal') : dexSort)
+    .replace('%D', t(dexSortDesc ? 'sortDesc' : 'sortAsc'))
+    .replace('%A', age);
+}
+
+// Pastille de valeur : sans elle, l'ordre serait affirmé mais pas montré.
+function sortBadge(p, cls) {
+  if (dexSort === 'NUM') return null;
+  const el = document.createElement('div');
+  el.className = cls;
+  el.innerHTML = `<span class="sv-num">${sortValue(p)}</span>`
+               + `<span class="sv-key">${sortKeyLabel(dexSort)}</span>`;
+  return el;
+}
+
 function buildDesktopFilters() {
   const el = document.getElementById('desk-filters');
   el.innerHTML = '';
@@ -2500,6 +2688,11 @@ function buildDesktopFilters() {
     buildDesktopFilters();
     renderDesktopList();
     if (selectedPhilo) { resetDetailLevel(selectedPhilo); openDesktopDetail(selectedPhilo); }
+  }));
+
+  el.appendChild(buildSortSelector(() => {
+    buildDesktopFilters();
+    renderDesktopList();
   }));
 
   const eraDiv = document.createElement('div');
@@ -2565,6 +2758,8 @@ function buildDesktopFilters() {
 function renderDesktopList() {
   const items = filteredList();
   document.getElementById('desk-count').textContent = items.length;
+  const note = document.getElementById('desk-sort-note');
+  if (note) note.textContent = sortNoteText();
 
   // Sidebar list
   const sidebar = document.getElementById('desk-sidebar-list');
@@ -2582,7 +2777,11 @@ function renderDesktopList() {
       <div class="philo-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>`;
     const gen = document.createElement('div'); gen.className = 'philo-gen';
     gen.textContent = p.era; gen.style.color = ERA_COLORS[p.era]||'#aaaaaa';
-    row.appendChild(thumb); row.appendChild(info); row.appendChild(gen);
+    const right = document.createElement('div'); right.className = 'philo-right';
+    right.appendChild(gen);
+    const badge = sortBadge(p, 'sort-val');
+    if (badge) right.appendChild(badge);
+    row.appendChild(thumb); row.appendChild(info); row.appendChild(right);
     row.addEventListener('click', ()=>openDesktopDetail(p));
     sidebar.appendChild(row);
   });
@@ -2605,6 +2804,9 @@ function renderDesktopList() {
       <div class="card-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}">${tp.substring(0,5).toUpperCase()}</span>`).join('')}</div>
       <div class="card-gen" style="color:${ERA_COLORS[p.era]||'#aaaaaa'}">${p.era}</div>`;
     card.appendChild(body);
+    // Posée sur la carte et non dans la zone du sprite, que le chargement efface.
+    const badge = sortBadge(p, 'card-sortval');
+    if (badge) card.appendChild(badge);
     card.addEventListener('click', ()=>openDesktopDetail(p));
     grid.appendChild(card);
   });
@@ -2772,6 +2974,13 @@ function buildMobileFilters() {
     });
     el.appendChild(chip);
   });
+  // La bande mobile n'a pas de libellés : celui du tri sépare les deux familles.
+  const sortLbl = document.createElement('span');
+  sortLbl.className = 'strip-label';
+  sortLbl.textContent = t('sortLabel');
+  el.appendChild(sortLbl);
+  buildSortChips(() => { buildMobileFilters(); renderMobileList(); })
+    .forEach(c => el.appendChild(c));
   for(const[,cd] of Object.entries(CHAMPS)){
     cd.types.forEach(tp=>{
       const chip = document.createElement('div');
@@ -2806,6 +3015,8 @@ function renderMobileList() {
       <div class="mob-name">${p.nom}</div>
       <div class="mob-types">${dexTypes(p).map(tp=>`<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.substring(0,8).toUpperCase()}</span>`).join('')}</div>`;
     row.appendChild(thumb); row.appendChild(info);
+    const badge = sortBadge(p, 'sort-val');
+    if (badge) row.appendChild(badge);
     row.addEventListener('click',()=>openMobileDetail(p));
     list.appendChild(row);
   });
