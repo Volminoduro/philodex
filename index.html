@@ -489,6 +489,20 @@ body {
 .learn-locked { font-size:8px; color:#ff8866; border:1px solid #ff886655;
   padding:1px 5px; letter-spacing:.5px; }
 
+/* Provenance d'un concept repris, et marque des concepts abandonnés. */
+.learn-from { font-size:8px; letter-spacing:.5px; padding:1px 5px; cursor:pointer;
+  border:1px solid currentColor; }
+.learn-from.maitre  { color:#66ddaa; }
+.learn-from.capture { color:#dd8844; }
+.learn-from:hover { filter:brightness(1.4); }
+.learn-renounced { font-size:8px; color:#ff5566; border:1px solid #ff556655;
+  padding:1px 5px; letter-spacing:.5px; }
+.concept-card.renounced { opacity:.5; }
+.concept-card.renounced .concept-name { text-decoration:line-through;
+  text-decoration-color:#ff556699; }
+.lb-drop { top:0; height:6px; background:#ff556655; }
+.lb-drop.on { background:#ff5566; }
+
 .evo-section { display:flex; flex-direction:column; gap:16px; }
 .evo-head { display:flex; gap:14px; align-items:flex-start; }
 .evo-sprite { width:96px; height:96px; flex-shrink:0; border:2px solid #66ddaa55;
@@ -534,7 +548,7 @@ body {
 .lb-range::-moz-range-thumb { width:11px; height:16px; background:var(--lcd-green-txt);
   border:2px solid var(--lcd-green-hi); cursor:pointer; border-radius:0; }
 .lb-range:focus-visible { box-shadow:0 0 0 2px #4a5a2077; }
-.lb-stage, .lb-learn { position:absolute; width:2px; pointer-events:none; z-index:1; }
+.lb-stage, .lb-learn, .lb-drop { position:absolute; width:2px; pointer-events:none; z-index:1; }
 .lb-stage { top:4px; height:12px; background:#4a5a2055; }
 .lb-stage.on { background:var(--lcd-green-txt); }
 .lb-learn { top:0; height:6px; background:#8a6a1055; }
@@ -1586,6 +1600,10 @@ const I18N = {
     tabFiliation:   'FILIATION',
     lvlShort:       'NIV.',
     notYetLearned:  'PAS ENCORE ACQUIS',
+    inheritedFrom:  'REPRIS À',
+    takenFrom:      'CAPTURÉ À',
+    renouncedAt:    'RENIÉ AU NIV. %L · %A',
+    renouncedShort: 'renié',
     noEvoData:      'Aucune ligne de vie renseignée pour ce Philomon.',
     dexAgeLabel:    'ÂGE',
     ageYoung:       'JEUNE',
@@ -1618,6 +1636,10 @@ const I18N = {
     tabFiliation:   'LINEAGE',
     lvlShort:       'LV.',
     notYetLearned:  'NOT YET LEARNED',
+    inheritedFrom:  'TAKEN FROM',
+    takenFrom:      'CAPTURED FROM',
+    renouncedAt:    'RENOUNCED AT LV. %L · %A',
+    renouncedShort: 'renounced',
     noEvoData:      'No life-line recorded for this Philomon.',
     dexAgeLabel:    'AGE',
     ageYoung:       'YOUNG',
@@ -1720,6 +1742,51 @@ function statsAt(p, lvl) {
   return out;
 }
 
+
+// ── LIGNAGE : concepts repris à autrui, concepts reniés ─────────────────────
+// Un philosophe ne dispose pas seulement de ses propres concepts. Il reprend
+// ceux de ses maîtres — parfois ceux d'un adversaire, pour les retourner — et
+// il lui arrive d'en abandonner, les siens comme ceux d'un autre.
+function lignageOf(p) {
+  return (typeof PHILOMON_LIGNAGE !== 'undefined' && PHILOMON_LIGNAGE[p.id]) || null;
+}
+
+const _normNom = n => String(n || '').replace(/\s*[(,].*$/, '').normalize('NFD')
+  .replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z]/g, '').toUpperCase();
+
+// Pris à un maître, ou capturé sur un adversaire ?
+function provenanceDe(p, m) {
+  const cible = [m.nom, m.full, m.full.split(/\s+/).pop()].map(_normNom);
+  const cite = list => (list || []).map(_normNom)
+    .some(x => cible.some(c => c && x && (c.includes(x) || x.includes(c))));
+  return cite(p[lang].filiation.contre) && !cite(p[lang].filiation.maitres) ? 'capture' : 'maitre';
+}
+
+// Arsenal complet, trié par ordre d'acquisition : propres et repris mêlés.
+function movePool(p) {
+  const d = p[lang], lg = lignageOf(p) || {};
+  const renie = {};
+  for (const r of (lg.renie || [])) renie[(r.de || 'own') + ':' + r.i] = r.lvl;
+
+  const out = d.concepts.map((c, i) => ({
+    key: 'own:' + i, c, lvl: learnLevel(p, i), src: null, prov: null,
+    renieLvl: renie['own:' + i] === undefined ? null : renie['own:' + i],
+  }));
+  for (const h of (lg.herite || [])) {
+    const m = PHILO_BY_ID[h.de]; if (!m) continue;
+    const c = m[lang].concepts[h.i]; if (!c) continue;
+    const k = h.de + ':' + h.i;
+    out.push({ key: k, c, lvl: h.lvl, src: m, prov: provenanceDe(p, m),
+               renieLvl: renie[k] === undefined ? null : renie[k] });
+  }
+  return out.sort((a, b) => a.lvl - b.lvl || (a.src ? 1 : 0) - (b.src ? 1 : 0));
+}
+
+// futur : pas encore acquis · actif : en main · renie : abandonné depuis
+function moveState(mv, lvl) {
+  if (lvl < mv.lvl) return 'futur';
+  return (mv.renieLvl !== null && lvl >= mv.renieLvl) ? 'renie' : 'actif';
+}
 
 // Concepts appris au niveau donné (indices dans p[lang].concepts).
 function learnLevel(p, i) {
@@ -2065,7 +2132,8 @@ function computeDefMatchups(types) {
 // ══════════════════════════════════════════════════════════════════════════════
 let STAT_META = {};
 let PHILOMON  = [];
-let PHILO_BY_NOM = {}; // populated after PHILOMON loads
+let PHILO_BY_NOM = {};
+let PHILO_BY_ID  = {}; // populated after PHILOMON loads
 
 // ══════════════════════════════════════════════════════════════════════════════
 // LAYOUT DETECTION
@@ -2159,14 +2227,13 @@ function buildMatchupsHtml(p) {
 }
 
 function buildConceptsHtml(p) {
-  const d = p[lang];
   const lvl = curLevel(p);
-  // Ordre d'apprentissage plutôt qu'ordre de saisie : la liste devient une biographie.
-  const order = d.concepts.map((c, i) => i).sort((a, b) => learnLevel(p, a) - learnLevel(p, b));
-  return `<div class="concept-list">${order.map(ci => {
-    const c = d.concepts[ci];
-    const cLvl = learnLevel(p, ci);
-    const known = cLvl <= lvl;
+  // Ordre d'acquisition plutôt qu'ordre de saisie : la liste devient une biographie.
+  return `<div class="concept-list">${movePool(p).map(mv => {
+    const c = mv.c;
+    const cLvl = mv.lvl;
+    const etat = moveState(mv, lvl);
+    const known = etat === 'actif';
     const cType = c.type;
     const isImmanent = c.cat === 'immanent';
     const catLabel = lang === 'fr'
@@ -2193,7 +2260,7 @@ function buildConceptsHtml(p) {
         <span class="vs-pill" style="border-color:#7799cc;color:#7799cc">CLÔTURE</span>`;
     }
 
-    return `<div class="concept-card${known ? '' : ' unlearned'}">
+    return `<div class="concept-card${etat === 'actif' ? '' : ' unlearned'}${etat === 'renie' ? ' renounced' : ''}">
       <div class="concept-top">
         <span class="concept-name">
           ${c.nom}
@@ -2204,7 +2271,11 @@ function buildConceptsHtml(p) {
       <div class="concept-learn">
         <span class="learn-lvl">${t('lvlShort')} ${cLvl}</span>
         <span class="learn-year">${fmtYear(p, yearAt(p, cLvl))}</span>
-        ${known ? '' : `<span class="learn-locked">${t('notYetLearned')}</span>`}
+        ${mv.src ? `<span class="learn-from ${mv.prov}" data-philo-id="${mv.src.id}">${
+          t(mv.prov === 'capture' ? 'takenFrom' : 'inheritedFrom')} ${mv.src.nom}</span>` : ''}
+        ${etat === 'futur' ? `<span class="learn-locked">${t('notYetLearned')}</span>` : ''}
+        ${etat === 'renie' ? `<span class="learn-renounced">${
+          t('renouncedAt').replace('%L', mv.renieLvl).replace('%A', fmtYear(p, yearAt(p, mv.renieLvl)))}</span>` : ''}
       </div>
       <span class="concept-type-tag ${tClass(cType)}">${cType.toUpperCase()}</span>
       <div class="concept-desc">${c.desc}</div>
@@ -2319,9 +2390,12 @@ function renderLifebar(p, host) {
   const max = lvlMaxOf(p);
   const pct = v => max > 1 ? ((v - 1) / (max - 1)) * 100 : 0;
   const marks = e.stages.map(s => `<span class="lb-stage" data-lvl="${s.lvl}" style="left:${pct(s.lvl)}%"></span>`).join('');
-  const learns = p[lang].concepts.map((c, i) => {
-    const L = learnLevel(p, i);
-    return `<span class="lb-learn" data-lvl="${L}" style="left:${pct(L)}%" title="${c.nom} — ${t('lvlShort')} ${L}"></span>`;
+  // Ambre : une acquisition. Rouge : un concept abandonné.
+  const learns = movePool(p).map(mv => {
+    const acquis = `<span class="lb-learn" data-lvl="${mv.lvl}" style="left:${pct(mv.lvl)}%" title="${mv.c.nom} — ${t('lvlShort')} ${mv.lvl}"></span>`;
+    const perdu = mv.renieLvl === null ? '' :
+      `<span class="lb-drop" data-lvl="${mv.renieLvl}" style="left:${pct(mv.renieLvl)}%" title="${mv.c.nom} — ${t('renouncedShort')}"></span>`;
+    return acquis + perdu;
   }).join('');
 
   host.innerHTML = `
@@ -2349,7 +2423,7 @@ function updateLifebar(p, host) {
   const lv = host.querySelector('.lb-lvl'), yr = host.querySelector('.lb-year');
   if (lv) lv.textContent = `${t('lvlShort')} ${lvl}`;
   if (yr) yr.textContent = fmtYear(p, yearAt(p, lvl));
-  host.querySelectorAll('.lb-stage, .lb-learn').forEach(m =>
+  host.querySelectorAll('.lb-stage, .lb-learn, .lb-drop').forEach(m =>
     m.classList.toggle('on', lvl >= parseInt(m.dataset.lvl, 10)));
   const r = host.querySelector('.lb-range');
   if (r && document.activeElement !== r && r.value !== String(lvl)) r.value = lvl;
@@ -3082,17 +3156,17 @@ try {
 
 STAT_META = PHILOMON_DATA.statMeta;
 PHILOMON  = PHILOMON_DATA.philomon;
-PHILOMON.forEach(p => { PHILO_BY_NOM[p.nom] = p; });
+PHILOMON.forEach(p => { PHILO_BY_NOM[p.nom] = p; PHILO_BY_ID[p.id] = p; });
 injectTypeColors();
 applyLayout();
 
 // Delegated filiation link navigation (desktop + mobile)
 document.getElementById('desk-tab-body').addEventListener('click', e => {
-  const tag = e.target.closest('.fil-tag[data-philo-id]');
+  const tag = e.target.closest('[data-philo-id]');
   if (tag) { const p = PHILOMON.find(x=>x.id===tag.dataset.philoId); if(p) openDesktopDetail(p); }
 });
 document.getElementById('mob-tab-body').addEventListener('click', e => {
-  const tag = e.target.closest('.fil-tag[data-philo-id]');
+  const tag = e.target.closest('[data-philo-id]');
   if (tag) { const p = PHILOMON.find(x=>x.id===tag.dataset.philoId); if(p) openMobileDetail(p); }
 });
 </script>

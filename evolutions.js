@@ -1922,3 +1922,85 @@ const PHILOMON_EVO = {
 };
 
 if (typeof module !== 'undefined') module.exports = PHILOMON_EVO;
+
+// ═══════════════════════════════════════════════════════════════════════════
+// LIGNAGE — ce qu'un philosophe prend à ses maîtres, et ce qu'il finit par rejeter
+// ═══════════════════════════════════════════════════════════════════════════
+// Un concept ne se transmet pas parce que deux noms se suivent dans une
+// filiation : il se transmet quand l'héritier s'en sert réellement comme d'un
+// outil à lui, et cela se date. Un concept peut aussi se perdre — Marx renie
+// l'aliénation de Feuerbach, Wittgenstein sa propre théorie picturale.
+//
+//   herite : { de:<id du maître>, i:<index du concept chez lui>, lvl:<niveau> }
+//   renie  : { i:<index> }                pour un concept propre
+//            { de:<id>, i:<index> }       pour un concept hérité
+//            + lvl : niveau où il est abandonné
+//
+// Ne sont saisies que les transmissions et les ruptures documentées, pas les
+// 317 paires que la filiation autorise formellement.
+const PHILOMON_LIGNAGE = {
+
+"006": { herite:[{de:"005",i:0,lvl:1},{de:"005",i:1,lvl:1}] },
+"007": { herite:[{de:"006",i:0,lvl:1}], renie:[{de:"006",i:0,lvl:21}] },
+"010": { herite:[{de:"006",i:0,lvl:14}] },
+"011": { herite:[{de:"007",i:0,lvl:1},{de:"007",i:2,lvl:15},{de:"010",i:1,lvl:15}] },
+"012": { herite:[{de:"001",i:1,lvl:1}] },
+"013": { herite:[{de:"047",i:1,lvl:1}] },
+"002": { herite:[{de:"013",i:0,lvl:1}] },
+"014": { herite:[{de:"002",i:0,lvl:31},{de:"051",i:2,lvl:1}], renie:[{de:"051",i:2,lvl:42}] },
+"015": { herite:[{de:"048",i:0,lvl:1}], renie:[{de:"048",i:0,lvl:7}] },
+"016": { herite:[{de:"059",i:0,lvl:8}], renie:[{de:"059",i:0,lvl:20}] },
+"017": { herite:[{de:"016",i:0,lvl:1},{de:"062",i:1,lvl:6}], renie:[{de:"062",i:1,lvl:10}] },
+"062": { herite:[{de:"016",i:0,lvl:1}], renie:[{de:"016",i:0,lvl:19}] },
+"018": { herite:[{de:"067",i:0,lvl:1}] },
+"019": { herite:[{de:"018",i:0,lvl:8},{de:"018",i:1,lvl:8}], renie:[{de:"018",i:1,lvl:19}] },
+"020": { herite:[{de:"019",i:0,lvl:12},{de:"018",i:1,lvl:10}] },
+"021": { herite:[{de:"020",i:0,lvl:21}] },
+"022": { herite:[{de:"003",i:0,lvl:5}] },
+"023": { herite:[{de:"071",i:0,lvl:1},{de:"084",i:2,lvl:1}], renie:[{i:0,lvl:23}] },
+"024": { herite:[{de:"014",i:1,lvl:16},{de:"015",i:1,lvl:16}] },
+"003": { herite:[{de:"061",i:0,lvl:1}], renie:[{de:"061",i:0,lvl:18}] },
+"061": { herite:[{de:"014",i:2,lvl:1}] },
+"059": { herite:[{de:"014",i:0,lvl:10}] },
+"060": { herite:[{de:"059",i:0,lvl:5}], renie:[{de:"059",i:0,lvl:12}] },
+"064": { herite:[{de:"056",i:0,lvl:1},{de:"056",i:1,lvl:1}], renie:[{de:"056",i:1,lvl:53}] },
+"057": { herite:[{de:"015",i:2,lvl:1}], renie:[{de:"015",i:2,lvl:10}] },
+"071": { renie:[{i:2,lvl:34}] },
+"084": { herite:[{de:"071",i:2,lvl:12}] },
+"087": { herite:[{de:"071",i:0,lvl:1},{de:"084",i:1,lvl:19}] },
+"105": { herite:[{de:"087",i:0,lvl:8}], renie:[{i:0,lvl:45}] },
+"109": { herite:[{de:"087",i:0,lvl:8}], renie:[{de:"087",i:0,lvl:26}] },
+"008": { herite:[{de:"034",i:0,lvl:1}] },
+"039": { herite:[{de:"009",i:2,lvl:1}] },
+"004": { herite:[{de:"039",i:0,lvl:1}] },
+"041": { herite:[{de:"004",i:0,lvl:14}] },
+"042": { herite:[{de:"006",i:0,lvl:1}] },
+"044": { herite:[{de:"010",i:0,lvl:1}] },
+"052": { herite:[{de:"013",i:0,lvl:1}] },
+"073": { herite:[{de:"061",i:0,lvl:20}] },
+"100": { herite:[{de:"073",i:0,lvl:22}] },
+"101": { herite:[{de:"016",i:0,lvl:24}] },
+"102": { herite:[{de:"019",i:0,lvl:4}] },
+"103": { herite:[{de:"018",i:2,lvl:20}] },
+"133": { herite:[{de:"003",i:1,lvl:30}] },
+"135": { herite:[{de:"003",i:2,lvl:19}] },
+"147": { herite:[{de:"019",i:2,lvl:16}] },
+"151": { herite:[{de:"101",i:0,lvl:8}], renie:[{de:"101",i:0,lvl:33}] },
+"130": { herite:[{de:"094",i:0,lvl:11}], renie:[{de:"094",i:0,lvl:31}] },
+"131": { herite:[{de:"094",i:0,lvl:12}], renie:[{de:"094",i:0,lvl:29}] },
+"114": { herite:[{de:"106",i:0,lvl:24}] },
+"150": { herite:[{de:"106",i:0,lvl:4}] },
+"120": { herite:[{de:"023",i:1,lvl:10}] },
+"138": { herite:[{de:"071",i:1,lvl:20}] },
+"161": { herite:[{de:"071",i:1,lvl:1}], renie:[{de:"071",i:1,lvl:13}] },
+"171": { herite:[{de:"095",i:0,lvl:1}] },
+"152": { herite:[{de:"109",i:0,lvl:20}] },
+"179": { herite:[{de:"018",i:2,lvl:26}] },
+"181": { herite:[{de:"056",i:0,lvl:1}] },
+"139": { renie:[{i:1,lvl:47}] },
+"164": { renie:[{i:0,lvl:35},{i:1,lvl:35}] },
+"160": { renie:[{i:1,lvl:31}] },
+
+};
+
+if (typeof module !== 'undefined') module.exports.PHILOMON_LIGNAGE = PHILOMON_LIGNAGE;
