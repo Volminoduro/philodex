@@ -1791,7 +1791,11 @@ function placeholderCanvas(size){
 const spriteCache = {};
 // Raw pixelized canvas cache: key = id (size-independent, persisted in localStorage)
 const rawCache = {};
-const LS_RAW = 'pdx_raw_';
+// Version du rendu des sprites. À incrémenter dès que la pixelisation change :
+// sinon les navigateurs qui ont déjà visité le site continuent de servir les
+// anciennes images depuis le localStorage, quel que soit le code.
+const RAW_VER = 2;
+const LS_RAW  = `pdx_raw_v${RAW_VER}_`;
 
 // canvas.cloneNode(true) does NOT copy pixel data — use drawImage instead
 function copyCanvas(src){
@@ -1830,8 +1834,19 @@ function stageGen(p) {
   return ERA_PIX[p.era] || 2;
 }
 
+// Plusieurs stades partagent le même portrait dès qu'aucun ne lui est propre.
+// On les ramène alors à une seule clé de cache : sinon un philosophe sans
+// portrait par stade déclenchait autant de téléchargements identiques que de
+// formes — et le rendu pouvait diverger si l'un des appels échouait.
+function rawKey(p, si) {
+  const url = stageImgUrl(p, si);
+  const n = stageCount(p);
+  for (let i = 0; i < n; i++) if (stageImgUrl(p, i) === url) return `${p.id}_${i}`;
+  return `${p.id}_${si}`;
+}
+
 async function _fetchRaw(p, si) {
-  const k = `${p.id}_${si}`;
+  const k = rawKey(p, si);
   const stored = localStorage.getItem(LS_RAW + k);
   if (stored) {
     const c = await canvasFromDataURL(stored);
@@ -1848,7 +1863,7 @@ async function _fetchRaw(p, si) {
 }
 
 async function getRawPixel(p, si) {
-  const k = `${p.id}_${si}`;
+  const k = rawKey(p, si);
   if (rawCache[k]) return copyCanvas(rawCache[k]);
   if (!rawFetching[k]) {
     rawFetching[k] = _fetchRaw(p, si).finally(() => delete rawFetching[k]);
@@ -1859,7 +1874,7 @@ async function getRawPixel(p, si) {
 
 async function getSprite(p, size, si) {
   if (si === undefined) si = dexStageIndex(p);
-  const key = `${p.id}_${si}_${size}`;
+  const key = `${rawKey(p, si)}_${size}`;
   if (spriteCache[key]) return copyCanvas(spriteCache[key]);
   const c = await getRawPixel(p, si);
   if (!c) {
@@ -2481,7 +2496,7 @@ function paintDesktopHeader(p) {
   const si = stageIndexAtLevel(p, curLevel(p));
   const spriteEl = document.getElementById('desk-d-sprite');
   if (spriteEl) {
-    const key = `${p.id}_${si}`;
+    const key = rawKey(p, si);
     const hadRaw = !!rawCache[key];
     spriteEl.innerHTML = '';
     spriteEl.appendChild(placeholderCanvas(120));
@@ -2489,8 +2504,8 @@ function paintDesktopHeader(p) {
       spriteEl.innerHTML = ''; spriteEl.appendChild(c);
       // Si le détail est ce qui a fini par charger l'image, on rafraîchit la carte.
       if (!hadRaw && rawCache[key] && si === dexStageIndex(p)) {
-        delete spriteCache[`${p.id}_${si}_106`];
-        delete spriteCache[`${p.id}_${si}_50`];
+        delete spriteCache[`${rawKey(p, si)}_106`];
+        delete spriteCache[`${rawKey(p, si)}_50`];
         const cardEl = document.querySelector(`.philo-card[data-philo-id="${p.id}"]`);
         const sa = cardEl && cardEl.querySelector('.card-sprite-area');
         if (sa) getSprite(p, 106, si).then(c2 => { sa.innerHTML = ''; sa.appendChild(c2); });
@@ -3001,12 +3016,12 @@ document.getElementById('breed-slot-b').addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════════════════════════
 // INIT — load data then render
 // ══════════════════════════════════════════════════════════════════════════════
-// Les sprites sont désormais mis en cache par stade (pdx_raw_<id>_<stade>) ;
-// on évacue les clés de l'ancien schéma, qui ne seront plus jamais relues.
+// Évacue tout sprite mis en cache par une version antérieure du rendu — y
+// compris ceux produits quand la pixelisation dépendait encore du stade.
 try {
   for (let i = localStorage.length - 1; i >= 0; i--) {
     const k = localStorage.key(i);
-    if (k && k.startsWith(LS_RAW) && !/_\d+$/.test(k.slice(LS_RAW.length))) localStorage.removeItem(k);
+    if (k && k.startsWith('pdx_raw') && !k.startsWith(LS_RAW)) localStorage.removeItem(k);
   }
 } catch(e) {}
 
