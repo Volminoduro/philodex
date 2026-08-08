@@ -504,6 +504,17 @@ body {
 .evo-bounds { display:flex; justify-content:space-between; gap:10px; font-size:8px;
   color:#557799; letter-spacing:.5px; }
 
+/* Statistiques indexées sur le niveau : le liseré creux montre ce qui reste à
+   conquérir avant la fin de la vie philosophique. */
+.stat-potential { position:absolute; left:0; top:0; height:100%;
+  background:repeating-linear-gradient(135deg,#ffffff0e,#ffffff0e 3px,transparent 3px,transparent 6px);
+  border-right:1px solid #ffffff26; border-radius:2px; }
+.stat-bar { position:relative; }
+.stat-bar .stat-fill { position:relative; z-index:1; }
+.stat-total-max { color:#557799; font-weight:normal; }
+.stat-lvl-note { margin-top:9px; font-size:9px; color:#6688aa; letter-spacing:.4px;
+  line-height:1.5; border-top:1px solid #22446655; padding-top:7px; }
+
 /* Barre de vie sous le portrait — présente quel que soit l'onglet ouvert.
    Elle est posée sur l'écran LCD vert clair : elle en prend la palette, sinon
    rien n'est lisible. */
@@ -1582,6 +1593,7 @@ const I18N = {
     ageLate:        'ACCOMPLI',
     philoStart:     'début philosophique',
     stillAlive:     ' en activité',
+    statsAtLevel:   'Valeurs au niveau %L (%A). Le creux indique le potentiel non encore atteint.',
     singleForm:     'Forme unique : aucun virage majeur documenté dans sa vie philosophique.',
     approxNote:     'Chronologie reconstruite : les niveaux de ce Philomon sont approximatifs (≈).',
     resistances:    '▲ RÉSISTANCES (×½ SUBI)',
@@ -1613,6 +1625,7 @@ const I18N = {
     ageLate:        'FULL',
     philoStart:     'philosophical debut',
     stillAlive:     ' still active',
+    statsAtLevel:   'Values at level %L (%A). The hollow shows potential not yet reached.',
     singleForm:     'Single form: no major turn documented in his or her philosophical life.',
     approxNote:     'Reconstructed chronology: this Philomon\'s levels are approximate (≈).',
     resistances:    '▲ RESISTANCES (×½ TAKEN)',
@@ -1676,6 +1689,37 @@ function typesAt(p, si) {
   return (st && st.types && st.types.length) ? st.types : p.types;
 }
 function dexTypes(p) { return typesAt(p, dexStageIndex(p)); }
+
+// ── CROISSANCE DES STATISTIQUES ─────────────────────────────────────────────
+// Les valeurs de philomon.js sont celles du philosophe accompli, au dernier
+// niveau. Avant, il n'en tient qu'une part — et toutes ne montent pas au même
+// rythme, parce que les six statistiques ne mesurent pas la même chose :
+//
+//   pool (INFLUENCE) — masse de pensée accumulée. Quasi nulle au début, elle
+//        se constitue tard, une fois les grandes œuvres écrites : courbe > 1.
+//   atk / def        — force et solidité du système, qui se bâtissent au fil
+//        de son élaboration : croissance à peu près régulière.
+//   spd (CLARTÉ)     — l'accessibilité d'une plume est largement donnée
+//        d'emblée : plancher haut, courbe < 1.
+const STAT_GROWTH = {
+  pool: { plancher: 0.12, courbe: 1.35 },
+  atk:  { plancher: 0.35, courbe: 0.95 },
+  def:  { plancher: 0.30, courbe: 0.95 },
+  spd:  { plancher: 0.60, courbe: 0.70 },
+};
+
+function statsAt(p, lvl) {
+  const meta = STAT_META[lang] || STAT_META.fr || {};
+  const max = lvlMaxOf(p);
+  const t = max > 1 ? Math.min(1, Math.max(0, (lvl - 1) / (max - 1))) : 1;
+  const out = {};
+  for (const [k, v] of Object.entries(p.stats)) {
+    const g = STAT_GROWTH[(meta[k] || {}).role] || STAT_GROWTH.atk;
+    out[k] = Math.max(1, Math.round(v * (g.plancher + (1 - g.plancher) * Math.pow(t, g.courbe))));
+  }
+  return out;
+}
+
 
 // Concepts appris au niveau donné (indices dans p[lang].concepts).
 function learnLevel(p, i) {
@@ -2069,20 +2113,26 @@ function buildEntryHtml(p) {
 
 function buildStatsHtml(p) {
   const meta = STAT_META[lang];
-  const total = Object.values(p.stats).reduce((a,v) => a+v, 0);
+  const lvl = curLevel(p), max = lvlMaxOf(p);
+  const cur = statsAt(p, lvl);
+  const total = Object.values(cur).reduce((a,v) => a+v, 0);
+  const totalMax = Object.values(p.stats).reduce((a,v) => a+v, 0);
   return `<div class="stat-list">${
-    Object.entries(p.stats).map(([k,v]) => {
+    Object.entries(cur).map(([k,v]) => {
       const m = meta[k] || { role:'pool', tip:'' };
       const tp0 = typesAt(p, stageIndexAtLevel(p, curLevel(p)));
       const barClass = (m.role === 'atk') ? fillClass(tp0[0]) :
                        (m.role === 'def') ? fillClass(tp0[tp0.length-1]) :
                        fillClass(tp0[0]);
+      // Le reliquat montre en creux ce qu'il reste à conquérir avant la fin de vie.
+      const plein = p.stats[k];
       return `
       <div class="stat-row">
         <span class="stat-key" data-tip="${m.tip}">${k}</span>
         <span class="stat-role ${m.role}">${m.role === 'pool' ? 'PV' : m.role === 'atk' ? 'ATK' : m.role === 'def' ? 'DEF' : 'VIT'}</span>
         <span class="stat-val">${v}</span>
         <div class="stat-bar">
+          ${v < plein ? `<div class="stat-potential" style="width:${plein}%"></div>` : ''}
           <div class="stat-fill ${barClass}" style="width:${v}%"></div>
         </div>
       </div>`;
@@ -2090,8 +2140,9 @@ function buildStatsHtml(p) {
   }
   <div class="stat-total-row">
     <span class="stat-total-label">TOTAL</span>
-    <span class="stat-total-val">${total}</span>
+    <span class="stat-total-val">${total}${total < totalMax ? `<span class="stat-total-max"> / ${totalMax}</span>` : ''}</span>
   </div>
+  ${lvl < max ? `<div class="stat-lvl-note">${t('statsAtLevel').replace('%L', lvl).replace('%A', fmtYear(p, yearAt(p, lvl)))}</div>` : ''}
   </div>`;
 }
 
@@ -2518,7 +2569,21 @@ function paintDesktopHeader(p) {
   const stEl = document.getElementById('desk-d-stage');
   const st = stageOf(p, si);
   if (stEl) stEl.textContent = st ? stageTag(p, si) : '';
+  paintInfluence(p, 'desk-d-infl', 'desk-d-infl-num');
   renderLifebar(p, document.getElementById('desk-lifebar'));
+}
+
+// L'influence est une réserve qui s'accumule : elle suit donc le niveau, et se
+// repeint à chaque mouvement du curseur.
+function paintInfluence(p, barId, numId) {
+  const inf = statsAt(p, curLevel(p)).INFLUENCE;
+  const num = document.getElementById(numId);
+  const fill = document.getElementById(barId);
+  if (num) num.textContent = inf;
+  if (fill) {
+    fill.style.width = inf + '%';
+    fill.className = 'infl-fill ' + (inf >= 50 ? 'hi' : inf >= 25 ? 'mid' : 'low');
+  }
 }
 
 // « II · LE PARADOXE » — le chiffre n'apparaît que si le philosophe a plusieurs formes.
@@ -2555,12 +2620,6 @@ function openDesktopDetail(p) {
   genBadge.style.borderColor = ERA_COLORS[p.era]||'#aaaaaa';
   genBadge.style.color = ERA_COLORS[p.era]||'#aaaaaa';
 
-  // Influence bar
-  const inf = p.stats.INFLUENCE;
-  document.getElementById('desk-d-infl-num').textContent = inf;
-  const fill = document.getElementById('desk-d-infl');
-  fill.style.width = inf+'%';
-  fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
 
   // Types : peints par paintDesktopHeader, au stade courant.
 
@@ -2690,6 +2749,7 @@ function paintMobileHeader(p) {
     `<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.toUpperCase()}</span>`).join('');
   const stEl = document.getElementById('mob-d-stage');
   if (stEl) stEl.textContent = stageTag(p, si);
+  paintInfluence(p, 'mob-d-infl', 'mob-d-infl-num');
   renderLifebar(p, document.getElementById('mob-lifebar'));
 }
 
@@ -2702,11 +2762,6 @@ function openMobileDetail(p) {
   document.getElementById('mob-d-oeuvre').textContent= p[lang].oeuvre;
   resetDetailLevel(p);
 
-  const inf = p.stats.INFLUENCE;
-  document.getElementById('mob-d-infl-num').textContent = inf;
-  const fill = document.getElementById('mob-d-infl');
-  fill.style.width = inf+'%';
-  fill.className = 'infl-fill '+(inf>=50?'hi':inf>=25?'mid':'low');
 
   paintMobileHeader(p);
 
