@@ -496,26 +496,29 @@ body {
 .evo-stage-types { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:6px; }
 .evo-stage-note { font-size:11px; line-height:1.55; color:#a8c4dd; }
 
-.evo-slider-wrap { border:1px solid #224466; padding:11px 13px 9px; background:#00142866; }
-.evo-readout { display:flex; align-items:baseline; gap:10px; margin-bottom:9px; flex-wrap:wrap; }
-.evo-lvl-big { font-size:17px; font-weight:bold; color:#66ddaa; letter-spacing:1px; }
-.evo-year { font-size:12px; color:#e8f4ff; letter-spacing:.5px; }
-.evo-age { font-size:9px; color:#6688aa; letter-spacing:.5px; margin-left:auto; }
+.evo-bounds { display:flex; justify-content:space-between; gap:10px; font-size:8px;
+  color:#557799; letter-spacing:.5px; }
 
-.evo-track { position:relative; height:26px; }
-.evo-range { -webkit-appearance:none; appearance:none; width:100%; height:6px; margin:10px 0 0;
-  background:#123; border:1px solid #2a4a6a; outline:none; position:relative; z-index:2; }
-.evo-range::-webkit-slider-thumb { -webkit-appearance:none; width:13px; height:20px;
+/* Barre de vie sous le portrait — présente quel que soit l'onglet ouvert. */
+.lifebar { width:100%; margin:7px 0 2px; }
+.lifebar:empty { display:none; }
+.lb-readout { display:flex; align-items:baseline; justify-content:center; gap:7px; margin-bottom:3px; }
+.lb-lvl { font-size:11px; font-weight:bold; color:#66ddaa; letter-spacing:1px; }
+.lb-year { font-size:9px; color:#a8c4dd; letter-spacing:.5px; }
+.lb-track { position:relative; height:18px; }
+.lb-range { -webkit-appearance:none; appearance:none; width:100%; height:5px; margin:7px 0 0;
+  background:#12283f; border:1px solid #2a4a6a; outline:none; position:relative; z-index:2;
+  cursor:pointer; }
+.lb-range::-webkit-slider-thumb { -webkit-appearance:none; width:11px; height:17px;
   background:#66ddaa; border:2px solid #001428; cursor:pointer; }
-.evo-range::-moz-range-thumb { width:13px; height:20px; background:#66ddaa;
+.lb-range::-moz-range-thumb { width:11px; height:17px; background:#66ddaa;
   border:2px solid #001428; cursor:pointer; border-radius:0; }
-.evo-mark, .evo-learn-mark { position:absolute; width:2px; pointer-events:none; z-index:1; }
-.evo-mark { top:6px; height:14px; background:#66ddaa44; }
-.evo-mark.on { background:#66ddaa; }
-.evo-learn-mark { top:0; height:8px; background:#ffaa0055; }
-.evo-learn-mark.on { background:#ffaa00; }
-.evo-bounds { display:flex; justify-content:space-between; font-size:8px;
-  color:#557799; letter-spacing:.5px; margin-top:5px; }
+.lb-range:focus-visible { box-shadow:0 0 0 2px #66ddaa66; }
+.lb-stage, .lb-learn { position:absolute; width:2px; pointer-events:none; z-index:1; }
+.lb-stage { top:4px; height:12px; background:#66ddaa40; }
+.lb-stage.on { background:#66ddaa; }
+.lb-learn { top:0; height:6px; background:#ffaa0055; }
+.lb-learn.on { background:#ffaa00; }
 
 .evo-chain { display:flex; align-items:stretch; gap:5px; flex-wrap:wrap; }
 .evo-arrow { color:#335577; font-size:10px; align-self:center; }
@@ -1389,6 +1392,7 @@ body.is-mobile  #app-desktop { display:none; }
           <div class="detail-sprite-panel" id="desk-sprite-panel">
             <span class="sprite-num" id="desk-d-num"></span>
             <div id="desk-d-sprite"></div>
+            <div class="lifebar" id="desk-lifebar"></div>
             <span class="sprite-name" id="desk-d-name"></span>
             <div class="infl-row">
               <span class="infl-lbl">INFL</span>
@@ -1499,6 +1503,7 @@ body.is-mobile  #app-desktop { display:none; }
     <div class="mob-detail-hero">
       <div class="mob-hero-sprite" id="mob-d-sprite-wrap">
         <div id="mob-d-sprite"></div>
+        <div class="lifebar" id="mob-lifebar"></div>
       </div>
       <div class="mob-hero-meta">
         <div class="mob-meta-full"  id="mob-d-full"></div>
@@ -1553,8 +1558,8 @@ const I18N = {
     ageMature:      'MÛR',
     ageLate:        'ACCOMPLI',
     philoStart:     'début philosophique',
-    yearsIn:        '% ans de pensée',
     stillAlive:     ' en activité',
+    singleForm:     'Forme unique : aucun virage majeur documenté dans sa vie philosophique.',
     approxNote:     'Chronologie reconstruite : les niveaux de ce Philomon sont approximatifs (≈).',
     resistances:    '▲ RÉSISTANCES (×½ SUBI)',
     weaknesses:     '▼ FAIBLESSES (×2 SUBI)',
@@ -1584,8 +1589,8 @@ const I18N = {
     ageMature:      'MATURE',
     ageLate:        'FULL',
     philoStart:     'philosophical debut',
-    yearsIn:        '% years of thought',
     stillAlive:     ' still active',
+    singleForm:     'Single form: no major turn documented in his or her philosophical life.',
     approxNote:     'Reconstructed chronology: this Philomon\'s levels are approximate (≈).',
     resistances:    '▲ RESISTANCES (×½ TAKEN)',
     weaknesses:     '▼ WEAKNESSES (×2 TAKEN)',
@@ -1796,13 +1801,10 @@ function stageImgUrl(p, si) {
   return (st && st.img) || p.imgUrl || null;
 }
 
-// Fidelity climbs with the stage: the youngest form is the coarsest read of the
-// face, the final form keeps the era's canonical generation. Philosophers
-// without a distinct portrait still visibly sharpen as they evolve.
-function stageGen(p, si) {
-  const base = ERA_PIX[p.era] || 2;
-  const n = stageCount(p);
-  return Math.max(1, Math.min(3, base - ((n - 1) - si)));
+// La pixelisation reste celle de l'époque, quel que soit le stade : c'est l'ère
+// qui fixe la génération, pas l'âge du philosophe.
+function stageGen(p) {
+  return ERA_PIX[p.era] || 2;
 }
 
 async function _fetchRaw(p, si) {
@@ -1814,7 +1816,7 @@ async function _fetchRaw(p, si) {
   }
   const url = stageImgUrl(p, si);
   if (!url) return null;
-  const c = await pixelizeImage(url, stageGen(p, si));
+  const c = await pixelizeImage(url, stageGen(p));
   if (c) {
     rawCache[k] = c;
     try { localStorage.setItem(LS_RAW + k, c.toDataURL()); } catch(e) {}
@@ -2130,16 +2132,6 @@ function buildEvolutionHtml(p) {
   const max = lvlMaxOf(p), lvl = curLevel(p), si = stageIndexAtLevel(p, lvl);
   const st = e.stages[si], sd = st[lang] || st.fr;
 
-  const marks = e.stages.map((s, i) => {
-    const pct = max > 1 ? ((s.lvl - 1) / (max - 1)) * 100 : 0;
-    return `<span class="evo-mark${i === si ? ' on' : ''}" style="left:${pct}%" title="${s[lang] ? s[lang].nom : s.fr.nom}"></span>`;
-  }).join('');
-  const learnMarks = p[lang].concepts.map((c, i) => {
-    const L = learnLevel(p, i);
-    const pct = max > 1 ? ((L - 1) / (max - 1)) * 100 : 0;
-    return `<span class="evo-learn-mark${L <= lvl ? ' on' : ''}" style="left:${pct}%" title="${c.nom} — ${t('lvlShort')} ${L}"></span>`;
-  }).join('');
-
   const chain = e.stages.map((s, i) => {
     const nm = (s[lang] || s.fr).nom;
     return `<button class="evo-chip${i === si ? ' on' : ''}" data-evo-lvl="${s.lvl}">
@@ -2153,30 +2145,21 @@ function buildEvolutionHtml(p) {
     <div class="evo-head">
       <div class="evo-sprite" id="evo-sprite"></div>
       <div class="evo-head-txt">
-        <div class="evo-stage-rn">${['I','II','III','IV','V'][si] || (si + 1)}</div>
+        ${e.stages.length > 1 ? `<div class="evo-stage-rn">${['I','II','III','IV','V'][si] || (si + 1)}</div>` : ''}
         <div class="evo-stage-nom">${sd.nom}</div>
         <div class="evo-stage-types">${typesAt(p, si).map(tp => `<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('')}</div>
         <div class="evo-stage-note">${sd.note || ''}</div>
       </div>
     </div>
 
-    <div class="evo-slider-wrap">
-      <div class="evo-readout">
-        <span class="evo-lvl-big">${t('lvlShort')} ${lvl}</span>
-        <span class="evo-year">${fmtYear(p, yearAt(p, lvl))}</span>
-        <span class="evo-age">${lvl === 1 ? t('philoStart') : t('yearsIn').replace('%', lvl - 1)}</span>
-      </div>
-      <div class="evo-track">
-        ${marks}${learnMarks}
-        <input type="range" class="evo-range" id="evo-range" min="1" max="${max}" value="${lvl}">
-      </div>
-      <div class="evo-bounds">
-        <span>${t('lvlShort')} 1 · ${fmtYear(p, e.debut)}</span>
-        <span>${t('lvlShort')} ${max} · ${fmtYear(p, endYear(p))}${isAlive(p) ? ' ·' + t('stillAlive') : ''}</span>
-      </div>
+    <div class="evo-bounds">
+      <span>${t('lvlShort')} 1 · ${fmtYear(p, e.debut)} — ${t('philoStart')}</span>
+      <span>${t('lvlShort')} ${max} · ${fmtYear(p, endYear(p))}${isAlive(p) ? ' ·' + t('stillAlive') : ''}</span>
     </div>
 
-    <div class="evo-chain">${chain}</div>
+    ${e.stages.length > 1
+      ? `<div class="evo-chain">${chain}</div>`
+      : `<div class="incommensurable-note">${t('singleForm')}</div>`}
     ${e.approx ? `<div class="incommensurable-note">${t('approxNote')}</div>` : ''}
   </div>`;
 }
@@ -2233,7 +2216,57 @@ function renderTab(tabKey, p, container) {
   if (tabKey === 'evolution') wireEvolutionTab(p, container);
 }
 
-// Rebranche le curseur et les pastilles de stade après chaque rendu.
+// ── BARRE DE VIE ────────────────────────────────────────────────────────────
+// Sous le portrait, quel que soit l'onglet ouvert : le curseur parcourt la vie
+// et tout ce qui est à l'écran se recale sur le niveau choisi.
+// Construite une seule fois par philosophe : recréer l'<input> à chaque
+// mouvement casserait le glissement en cours.
+function renderLifebar(p, host) {
+  if (!host) return;
+  const e = evoOf(p);
+  if (!e) { host.innerHTML = ''; host.dataset.for = ''; return; }
+  if (host.dataset.for === p.id && host.dataset.lang === lang) { updateLifebar(p, host); return; }
+
+  const max = lvlMaxOf(p);
+  const pct = v => max > 1 ? ((v - 1) / (max - 1)) * 100 : 0;
+  const marks = e.stages.map(s => `<span class="lb-stage" data-lvl="${s.lvl}" style="left:${pct(s.lvl)}%"></span>`).join('');
+  const learns = p[lang].concepts.map((c, i) => {
+    const L = learnLevel(p, i);
+    return `<span class="lb-learn" data-lvl="${L}" style="left:${pct(L)}%" title="${c.nom} — ${t('lvlShort')} ${L}"></span>`;
+  }).join('');
+
+  host.innerHTML = `
+    <div class="lb-readout">
+      <span class="lb-lvl"></span><span class="lb-year"></span>
+    </div>
+    <div class="lb-track">${marks}${learns}
+      <input type="range" class="lb-range" min="1" max="${max}" value="${curLevel(p)}"
+             aria-label="${t('tabEvolution')}">
+    </div>`;
+  host.dataset.for = p.id;
+  host.dataset.lang = lang;
+
+  host.querySelector('.lb-range').addEventListener('input', ev => {
+    setDetailLevel(p, parseInt(ev.target.value, 10));
+    refreshDetailForLevel(p);
+  });
+  updateLifebar(p, host);
+}
+
+// Ne touche que le texte et les repères — jamais l'<input> qu'on est en train de traîner.
+function updateLifebar(p, host) {
+  if (!host || host.dataset.for !== p.id) return;
+  const lvl = curLevel(p);
+  const lv = host.querySelector('.lb-lvl'), yr = host.querySelector('.lb-year');
+  if (lv) lv.textContent = `${t('lvlShort')} ${lvl}`;
+  if (yr) yr.textContent = fmtYear(p, yearAt(p, lvl));
+  host.querySelectorAll('.lb-stage, .lb-learn').forEach(m =>
+    m.classList.toggle('on', lvl >= parseInt(m.dataset.lvl, 10)));
+  const r = host.querySelector('.lb-range');
+  if (r && document.activeElement !== r && r.value !== String(lvl)) r.value = lvl;
+}
+
+// Rebranche les pastilles de stade après chaque rendu de l'onglet ÉVOLUTION.
 function wireEvolutionTab(p, container) {
   const si = stageIndexAtLevel(p, curLevel(p));
   const holder = container.querySelector('#evo-sprite');
@@ -2241,27 +2274,24 @@ function wireEvolutionTab(p, container) {
     holder.innerHTML = ''; holder.appendChild(placeholderCanvas(96));
     getSprite(p, 96, si).then(c => { holder.innerHTML = ''; holder.appendChild(c); });
   }
-  const range = container.querySelector('#evo-range');
-  if (range) {
-    const onMove = () => {
-      setDetailLevel(p, parseInt(range.value, 10));
-      refreshDetailForLevel(p, container);
-    };
-    range.addEventListener('input', onMove);
-  }
   container.querySelectorAll('[data-evo-lvl]').forEach(btn => {
     btn.addEventListener('click', () => {
       setDetailLevel(p, parseInt(btn.dataset.evoLvl, 10));
-      refreshDetailForLevel(p, container);
+      refreshDetailForLevel(p);
     });
   });
 }
 
-// Le niveau a bougé : on repeint l'onglet et l'en-tête (sprite + types) autour.
-function refreshDetailForLevel(p, container) {
-  renderTab('evolution', p, container);
-  if (document.body.classList.contains('is-desktop')) paintDesktopHeader(p);
-  else                                                paintMobileHeader(p);
+// Le niveau a bougé : on repeint l'en-tête, la barre et l'onglet ouvert.
+function refreshDetailForLevel(p) {
+  const desktop = document.body.classList.contains('is-desktop');
+  if (desktop) {
+    paintDesktopHeader(p);
+    renderTab(activeDesktopTab, p, document.getElementById('desk-tab-body'));
+  } else {
+    paintMobileHeader(p);
+    renderTab(activeMobileTab, p, document.getElementById('mob-tab-body'));
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -2449,7 +2479,16 @@ function paintDesktopHeader(p) {
     `<span class="type-badge ${tClass(tp)}">${tp.toUpperCase()}</span>`).join('');
   const stEl = document.getElementById('desk-d-stage');
   const st = stageOf(p, si);
-  if (stEl) stEl.textContent = st ? `${['I','II','III','IV','V'][si] || (si+1)} · ${(st[lang]||st.fr).nom}` : '';
+  if (stEl) stEl.textContent = st ? stageTag(p, si) : '';
+  renderLifebar(p, document.getElementById('desk-lifebar'));
+}
+
+// « II · LE PARADOXE » — le chiffre n'apparaît que si le philosophe a plusieurs formes.
+function stageTag(p, si) {
+  const st = stageOf(p, si);
+  if (!st) return '';
+  const nom = (st[lang] || st.fr).nom;
+  return stageCount(p) > 1 ? `${['I','II','III','IV','V'][si] || (si + 1)} · ${nom}` : nom;
 }
 
 function openDesktopDetail(p) {
@@ -2612,8 +2651,8 @@ function paintMobileHeader(p) {
   if (tEl) tEl.innerHTML = typesAt(p, si).map(tp =>
     `<span class="type-badge ${tClass(tp)}" style="font-size:9px;padding:3px 6px">${tp.toUpperCase()}</span>`).join('');
   const stEl = document.getElementById('mob-d-stage');
-  const st = stageOf(p, si);
-  if (stEl) stEl.textContent = st ? `${['I','II','III','IV','V'][si] || (si+1)} · ${(st[lang]||st.fr).nom}` : '';
+  if (stEl) stEl.textContent = stageTag(p, si);
+  renderLifebar(p, document.getElementById('mob-lifebar'));
 }
 
 function openMobileDetail(p) {
