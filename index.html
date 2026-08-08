@@ -473,8 +473,13 @@ body {
 .sprite-types { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; }
 
 /* ── LIGNES DE VIE / ÉVOLUTION ────────────────────────────────────────────── */
-.stage-label { margin-top:5px; font-size:9px; letter-spacing:.5px; color:#66ddaa;
-  text-align:center; text-transform:uppercase; opacity:.9; }
+/* L'étiquette de forme apparaît sur deux fonds : l'écran LCD vert du panneau
+   de détail, et le bandeau bleu sombre du héros mobile. */
+.stage-label { margin-top:5px; font-size:9px; font-weight:bold; letter-spacing:.5px;
+  text-align:center; text-transform:uppercase; line-height:1.35; }
+.stage-label:empty { display:none; }
+.detail-sprite-panel .stage-label { color:#3f5411; }
+.mob-hero-meta .stage-label { color:#66ddaa; }
 
 .concept-card.unlearned { opacity:.42; filter:grayscale(.65); }
 .concept-learn { display:flex; align-items:center; gap:7px; margin:2px 0 5px; flex-wrap:wrap; }
@@ -499,26 +504,42 @@ body {
 .evo-bounds { display:flex; justify-content:space-between; gap:10px; font-size:8px;
   color:#557799; letter-spacing:.5px; }
 
-/* Barre de vie sous le portrait — présente quel que soit l'onglet ouvert. */
-.lifebar { width:100%; margin:7px 0 2px; }
+/* Barre de vie sous le portrait — présente quel que soit l'onglet ouvert.
+   Elle est posée sur l'écran LCD vert clair : elle en prend la palette, sinon
+   rien n'est lisible. */
+.lifebar { width:100%; margin:8px 0 2px; }
 .lifebar:empty { display:none; }
-.lb-readout { display:flex; align-items:baseline; justify-content:center; gap:7px; margin-bottom:3px; }
-.lb-lvl { font-size:11px; font-weight:bold; color:#66ddaa; letter-spacing:1px; }
-.lb-year { font-size:9px; color:#a8c4dd; letter-spacing:.5px; }
-.lb-track { position:relative; height:18px; }
+.lb-readout { display:flex; align-items:baseline; justify-content:center; gap:6px; margin-bottom:4px; }
+.lb-lvl  { font-size:11px; font-weight:bold; color:var(--lcd-green-txt); letter-spacing:.6px;
+  white-space:nowrap; }
+.lb-year { font-size:10px; font-weight:bold; color:#3f5411; letter-spacing:.3px;
+  white-space:nowrap; }
+.lb-track { position:relative; height:17px; }
 .lb-range { -webkit-appearance:none; appearance:none; width:100%; height:5px; margin:7px 0 0;
-  background:#12283f; border:1px solid #2a4a6a; outline:none; position:relative; z-index:2;
-  cursor:pointer; }
-.lb-range::-webkit-slider-thumb { -webkit-appearance:none; width:11px; height:17px;
-  background:#66ddaa; border:2px solid #001428; cursor:pointer; }
-.lb-range::-moz-range-thumb { width:11px; height:17px; background:#66ddaa;
-  border:2px solid #001428; cursor:pointer; border-radius:0; }
-.lb-range:focus-visible { box-shadow:0 0 0 2px #66ddaa66; }
+  background:var(--lcd-green-px); border:1px solid #4a5a20; border-radius:2px; outline:none;
+  position:relative; z-index:2; cursor:pointer; }
+.lb-range::-webkit-slider-thumb { -webkit-appearance:none; width:11px; height:16px;
+  background:var(--lcd-green-txt); border:2px solid var(--lcd-green-hi); cursor:pointer; }
+.lb-range::-moz-range-thumb { width:11px; height:16px; background:var(--lcd-green-txt);
+  border:2px solid var(--lcd-green-hi); cursor:pointer; border-radius:0; }
+.lb-range:focus-visible { box-shadow:0 0 0 2px #4a5a2077; }
 .lb-stage, .lb-learn { position:absolute; width:2px; pointer-events:none; z-index:1; }
-.lb-stage { top:4px; height:12px; background:#66ddaa40; }
-.lb-stage.on { background:#66ddaa; }
-.lb-learn { top:0; height:6px; background:#ffaa0055; }
-.lb-learn.on { background:#ffaa00; }
+.lb-stage { top:4px; height:12px; background:#4a5a2055; }
+.lb-stage.on { background:var(--lcd-green-txt); }
+.lb-learn { top:0; height:6px; background:#8a6a1055; }
+.lb-learn.on { background:#a06000; }
+
+/* En mobile la barre est sortie du LCD : elle repasse sur la palette sombre. */
+.mob-lifebar-row { padding:9px 14px 7px; background:#00182f; border-bottom:1px solid #12283f; margin:0; }
+.mob-lifebar-row .lb-lvl  { color:#66ddaa; }
+.mob-lifebar-row .lb-year { color:#a8c4dd; font-weight:normal; }
+.mob-lifebar-row .lb-range { background:#12283f; border-color:#2a4a6a; }
+.mob-lifebar-row .lb-range::-webkit-slider-thumb { background:#66ddaa; border-color:#001428; }
+.mob-lifebar-row .lb-range::-moz-range-thumb     { background:#66ddaa; border-color:#001428; }
+.mob-lifebar-row .lb-stage    { background:#66ddaa40; }
+.mob-lifebar-row .lb-stage.on { background:#66ddaa; }
+.mob-lifebar-row .lb-learn    { background:#ffaa0055; }
+.mob-lifebar-row .lb-learn.on { background:#ffaa00; }
 
 .evo-chain { display:flex; align-items:stretch; gap:5px; flex-wrap:wrap; }
 .evo-arrow { color:#335577; font-size:10px; align-self:center; }
@@ -1503,7 +1524,6 @@ body.is-mobile  #app-desktop { display:none; }
     <div class="mob-detail-hero">
       <div class="mob-hero-sprite" id="mob-d-sprite-wrap">
         <div id="mob-d-sprite"></div>
-        <div class="lifebar" id="mob-lifebar"></div>
       </div>
       <div class="mob-hero-meta">
         <div class="mob-meta-full"  id="mob-d-full"></div>
@@ -1518,6 +1538,9 @@ body.is-mobile  #app-desktop { display:none; }
         </div>
       </div>
     </div>
+
+    <!-- Pleine largeur : la colonne du portrait est trop étroite pour le curseur. -->
+    <div class="lifebar mob-lifebar-row" id="mob-lifebar"></div>
 
     <div class="mob-tab-strip" id="mob-tab-strip">
       <button class="mob-tab-btn active" data-tab="entree"    id="mob-tab-entree">ENTRÉE</button>
