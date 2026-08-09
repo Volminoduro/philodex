@@ -540,7 +540,7 @@ body {
   white-space:nowrap; }
 .lb-year { font-size:10px; font-weight:bold; color:#3f5411; letter-spacing:.3px;
   white-space:nowrap; }
-.lb-track { position:relative; height:17px; }
+.lb-track { position:relative; height:22px; }   /* 5px de plus pour la rangée d'objets */
 .lb-range { -webkit-appearance:none; appearance:none; width:100%; height:5px; margin:7px 0 0;
   background:var(--lcd-green-px); border:1px solid #4a5a20; border-radius:2px; outline:none;
   position:relative; z-index:2; cursor:pointer; }
@@ -554,6 +554,75 @@ body {
 .lb-stage.on { background:var(--lcd-green-txt); }
 .lb-learn { top:0; height:6px; background:#8a6a1055; }
 .lb-learn.on { background:#a06000; }
+
+/* ── Objets d'évolution ── */
+/* Sur la barre, l'objet est un glyphe et non un trait : on doit le distinguer
+   d'une acquisition de concept sans lire l'infobulle. */
+/* Violet sombre : sur l'écran vert clair, le violet clair du reste de
+   l'interface tombait à 3,1:1. Celui-ci tient 5,8:1. */
+.lb-obj { position:absolute; top:14px; z-index:3; font-size:8px; line-height:1;
+  color:#5a2a9a55; transform:translateX(-50%); cursor:help; }
+.lb-obj.on { color:#5a2a9a; }
+.mob-lifebar-row .lb-obj    { color:#c9a0ff55; }
+.mob-lifebar-row .lb-obj.on { color:#c9a0ff; }
+
+.evo-arrow.has-obj { display:flex; flex-direction:column; align-items:center;
+  gap:1px; color:#c9a0ff; }
+.evo-arrow-glyph { font-size:12px; line-height:1; }
+
+.obj-block { display:flex; flex-direction:column; gap:8px; }
+
+.obj-card {
+  background:#140f22;
+  border:1px solid #3a2a55;
+  border-left:3px solid #c9a0ff;
+  border-radius:2px;
+  padding:9px 11px;
+  opacity:.55;
+  transition:opacity .15s;
+}
+.obj-card.acquis { opacity:1; }
+.obj-card.reniement { border-left-color:#ff5566; }
+.obj-card.eveil     { border-left-color:#66ddaa; }
+
+.obj-top { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+.obj-glyph { font-size:14px; color:#c9a0ff; flex-shrink:0; }
+.obj-nom {
+  font-family:var(--font-pixel);
+  font-size:10px;
+  color:var(--txt-bright);
+  letter-spacing:.05em;
+  flex:1;
+  min-width:0;
+}
+.obj-effet {
+  font-family:var(--font-pixel);
+  font-size:8px;
+  letter-spacing:.06em;
+  padding:2px 5px;
+  border:1px solid;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.obj-effet.evolution { color:#c9a0ff; border-color:#c9a0ff66; }
+.obj-effet.eveil     { color:#66ddaa; border-color:#66ddaa66; }
+.obj-effet.reniement { color:#ff5566; border-color:#ff556666; }
+
+.obj-meta { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:5px 0 4px; }
+.obj-genre { font-size:var(--fs-xxs); color:#c9a0ff99; letter-spacing:.05em; }
+.obj-lvl   { font-size:var(--fs-xxs); color:var(--txt-dim); }
+.obj-shared {
+  font-size:8px;
+  color:#c9a0ff;
+  border:1px solid #c9a0ff44;
+  border-radius:2px;
+  padding:1px 5px;
+  cursor:pointer;
+  letter-spacing:.04em;
+}
+.obj-shared:hover { background:#c9a0ff22; }
+
+.obj-note { font-size:var(--fs-xs); color:var(--txt-mid); line-height:1.5; }
 
 /* En mobile la barre est sortie du LCD : elle repasse sur la palette sombre. */
 .mob-lifebar-row { padding:9px 14px 7px; background:#00182f; border-bottom:1px solid #12283f; margin:0; }
@@ -1695,6 +1764,18 @@ const I18N = {
     sortAsc:        'du plus faible au plus fort',
     sortNumDesc:    'du dernier au premier',
     sortNumAsc:     'du premier au dernier',
+    objectsTitle:   'OBJETS',
+    eff_evolution:  'FAIT ÉVOLUER',
+    eff_eveil:      'ÉVEILLE',
+    eff_reniement:  'FAIT RENIER',
+    sharedWith:     'agit aussi sur %P',
+    genre_livre:      'livre',
+    genre_lettre:     'lettre',
+    genre_instrument: 'instrument',
+    genre_vetement:   'vêtement',
+    genre_lieu:       'lieu',
+    genre_image:      'image',
+    genre_matiere:    'matière',
     philoStart:     'début philosophique',
     stillAlive:     ' en activité',
     statsAtLevel:   'Valeurs au niveau %L (%A). Le creux indique le potentiel non encore atteint.',
@@ -1740,6 +1821,18 @@ const I18N = {
     sortAsc:        'weakest first',
     sortNumDesc:    'last to first',
     sortNumAsc:     'first to last',
+    objectsTitle:   'ITEMS',
+    eff_evolution:  'EVOLVES',
+    eff_eveil:      'AWAKENS',
+    eff_reniement:  'FORCES A RECANTATION',
+    sharedWith:     'also acts on %P',
+    genre_livre:      'book',
+    genre_lettre:     'letter',
+    genre_instrument: 'instrument',
+    genre_vetement:   'garment',
+    genre_lieu:       'place',
+    genre_image:      'image',
+    genre_matiere:    'matter',
     philoStart:     'philosophical debut',
     stillAlive:     ' still active',
     statsAtLevel:   'Values at level %L (%A). The hollow shows potential not yet reached.',
@@ -1891,6 +1984,44 @@ function learnLevel(p, i) {
 function knownAtLevel(p, lvl) {
   const d = p[lang];
   return d.concepts.map((_, i) => learnLevel(p, i) <= lvl);
+}
+
+// ── OBJETS D'ÉVOLUTION ──────────────────────────────────────────────────────
+// Un philosophe ne décide pas toujours de changer : quelque chose lui tombe
+// entre les mains. L'effet de l'objet se déduit du niveau où il agit — sur le
+// seuil d'un stade il fait évoluer, sur un reniement il retire un concept,
+// avant la première évolution il éveille.
+const OBJ_GLYPHE = {
+  livre:'▤', lettre:'✉', instrument:'⚙', vetement:'❈', lieu:'⌂', image:'▣', matiere:'◍',
+};
+
+function effetObjet(p, lvl) {
+  const e = evoOf(p);
+  if (e && lvl > 1 && e.stages.some(s => s.lvl === lvl)) return 'evolution';
+  const lg = lignageOf(p);
+  if (lg && (lg.renie || []).some(r => r.lvl === lvl)) return 'reniement';
+  return 'eveil';
+}
+
+function objetsOf(p) {
+  const list = (typeof PHILOMON_OBJETS !== 'undefined' && PHILOMON_OBJETS[p.id]) || [];
+  return list.map(o => Object.assign({}, o, { effet: effetObjet(p, o.lvl) }))
+             .sort((a, b) => a.lvl - b.lvl);
+}
+
+function objetAtLvl(p, lvl) {
+  return objetsOf(p).find(o => o.lvl === lvl) || null;
+}
+
+// Le plan du panoptique fait évoluer Bentham puis Foucault : un objet peut servir deux fois.
+function autresPorteurs(p, ref) {
+  const out = [];
+  if (!ref || typeof PHILOMON_OBJETS === 'undefined') return out;
+  for (const [id, list] of Object.entries(PHILOMON_OBJETS)) {
+    if (id === p.id) continue;
+    if (list.some(o => o.ref === ref) && PHILO_BY_ID[id]) out.push(PHILO_BY_ID[id]);
+  }
+  return out;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -2417,14 +2548,48 @@ function buildEvolutionHtml(p) {
   const max = lvlMaxOf(p), lvl = curLevel(p), si = stageIndexAtLevel(p, lvl);
   const st = e.stages[si], sd = st[lang] || st.fr;
 
-  const chain = e.stages.map((s, i) => {
+  // La flèche porte l'objet quand un objet est ce qui fait franchir le seuil.
+  const chainParts = [];
+  e.stages.forEach((s, i) => {
+    if (i) {
+      const o = objetAtLvl(p, s.lvl);
+      chainParts.push(o
+        ? `<span class="evo-arrow has-obj" title="${(o[lang] || o.fr).nom.replace(/"/g, '&quot;')}">
+             <span class="evo-arrow-glyph">${OBJ_GLYPHE[o.genre] || '◆'}</span>▶</span>`
+        : '<span class="evo-arrow">▶</span>');
+    }
     const nm = (s[lang] || s.fr).nom;
-    return `<button class="evo-chip${i === si ? ' on' : ''}" data-evo-lvl="${s.lvl}">
+    chainParts.push(`<button class="evo-chip${i === si ? ' on' : ''}" data-evo-lvl="${s.lvl}">
         <span class="evo-chip-rn">${['I','II','III','IV','V'][i] || (i + 1)}</span>
         <span class="evo-chip-nom">${nm}</span>
         <span class="evo-chip-lvl">${t('lvlShort')} ${s.lvl} · ${fmtYear(p, yearAt(p, s.lvl))}</span>
-      </button>`;
-  }).join('<span class="evo-arrow">▶</span>');
+      </button>`);
+  });
+  const chain = chainParts.join('');
+
+  const objets = objetsOf(p);
+  const objHtml = !objets.length ? '' : `
+    <div class="obj-block">
+      <div class="fil-group-title">${t('objectsTitle')}</div>
+      ${objets.map(o => {
+        const d = o[lang] || o.fr;
+        const partage = autresPorteurs(p, o.ref);
+        return `<div class="obj-card ${o.effet}${lvl >= o.lvl ? ' acquis' : ''}">
+          <div class="obj-top">
+            <span class="obj-glyph ${o.genre}">${OBJ_GLYPHE[o.genre] || '◆'}</span>
+            <span class="obj-nom">${d.nom}</span>
+            <span class="obj-effet ${o.effet}">${t('eff_' + o.effet)}</span>
+          </div>
+          <div class="obj-meta">
+            <span class="obj-genre">${t('genre_' + o.genre)}</span>
+            <span class="obj-lvl">${t('lvlShort')} ${o.lvl} · ${fmtYear(p, yearAt(p, o.lvl))}</span>
+            ${partage.map(q => `<span class="obj-shared" data-philo-id="${q.id}">${
+              t('sharedWith').replace('%P', q.nom)}</span>`).join('')}
+          </div>
+          <div class="obj-note">${d.note}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
 
   return `<div class="evo-section">
     <div class="evo-head">
@@ -2445,6 +2610,7 @@ function buildEvolutionHtml(p) {
     ${e.stages.length > 1
       ? `<div class="evo-chain">${chain}</div>`
       : `<div class="incommensurable-note">${t('singleForm')}</div>`}
+    ${objHtml}
     ${e.approx ? `<div class="incommensurable-note">${t('approxNote')}</div>` : ''}
   </div>`;
 }
@@ -2532,12 +2698,16 @@ function renderLifebar(p, host) {
       `<span class="lb-drop" data-lvl="${mv.renieLvl}" style="left:${pct(mv.renieLvl)}%" title="${mv.c.nom} — ${t('renouncedShort')}"></span>`;
     return acquis + perdu;
   }).join('');
+  // Violet : un objet agit ici.
+  const objets = objetsOf(p).map(o => `<span class="lb-obj" data-lvl="${o.lvl}"
+    style="left:${pct(o.lvl)}%" title="${(o[lang] || o.fr).nom.replace(/"/g, '&quot;')} — ${
+    t('eff_' + o.effet)}">${OBJ_GLYPHE[o.genre] || '◆'}</span>`).join('');
 
   host.innerHTML = `
     <div class="lb-readout">
       <span class="lb-lvl"></span><span class="lb-year"></span>
     </div>
-    <div class="lb-track">${marks}${learns}
+    <div class="lb-track">${marks}${learns}${objets}
       <input type="range" class="lb-range" min="1" max="${max}" value="${curLevel(p)}"
              aria-label="${t('tabEvolution')}">
     </div>`;
@@ -2558,7 +2728,7 @@ function updateLifebar(p, host) {
   const lv = host.querySelector('.lb-lvl'), yr = host.querySelector('.lb-year');
   if (lv) lv.textContent = `${t('lvlShort')} ${lvl}`;
   if (yr) yr.textContent = fmtYear(p, yearAt(p, lvl));
-  host.querySelectorAll('.lb-stage, .lb-learn, .lb-drop').forEach(m =>
+  host.querySelectorAll('.lb-stage, .lb-learn, .lb-drop, .lb-obj').forEach(m =>
     m.classList.toggle('on', lvl >= parseInt(m.dataset.lvl, 10)));
   const r = host.querySelector('.lb-range');
   if (r && document.activeElement !== r && r.value !== String(lvl)) r.value = lvl;

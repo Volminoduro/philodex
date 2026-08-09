@@ -2004,3 +2004,238 @@ const PHILOMON_LIGNAGE = {
 };
 
 if (typeof module !== 'undefined') module.exports.PHILOMON_LIGNAGE = PHILOMON_LIGNAGE;
+
+// ── OBJETS D'ÉVOLUTION ──────────────────────────────────────────────────────
+// Un philosophe ne décide pas toujours de changer : quelque chose lui tombe
+// entre les mains. Hobbes ouvre Euclide par hasard, Darwin lit Malthus pour se
+// distraire, une lettre inconnue ruine trente ans de travail de Frege.
+//
+// lvl     niveau auquel l'objet agit
+// genre   livre | lettre | instrument | vetement | lieu | image | matiere
+// ref     clé partagée quand le même objet agit sur plusieurs philosophes
+//
+// L'effet se déduit du niveau : sur le seuil d'un stade il fait évoluer, sur un
+// reniement il retire un concept, avant la première évolution il éveille.
+const PHILOMON_OBJETS = {
+"001": [{ lvl:2, genre:"lieu",
+  fr:{ nom:"LE POÊLE", note:"Une chambre chauffée d'un poêle, quelque part en Allemagne, le 10 novembre 1619 : trois songes en une nuit, dont il datera toute sa vocation." },
+  en:{ nom:"THE STOVE-HEATED ROOM", note:"A room warmed by a stove somewhere in Germany, 10 November 1619: three dreams in one night, from which he dated his whole vocation." } }],
+
+"003": [{ lvl:18, genre:"lieu",
+  fr:{ nom:"LE ROCHER DE SURLEJ", note:"Un bloc pyramidal au bord du lac de Silvaplana, « à 6000 pieds par-delà l'homme et le temps » : l'éternel retour lui vient là, en août 1881." },
+  en:{ nom:"THE ROCK AT SURLEJ", note:"A pyramidal block by Lake Silvaplana, \"6000 feet beyond man and time\": eternal recurrence came to him there in August 1881." } }],
+
+"009": [{ lvl:30, genre:"lieu",
+  fr:{ nom:"LE TONNEAU", note:"Une jarre de terre cuite pour tout logement. Le jour où il voit un enfant boire dans ses mains, il jette aussi son écuelle : il restait du superflu." },
+  en:{ nom:"THE JAR", note:"An earthenware jar for a home. The day he saw a child drinking from cupped hands, he threw away his bowl too: something superfluous had remained." } }],
+
+"010": [{ lvl:14, genre:"livre",
+  fr:{ nom:"LE CODEX DE PAUL", note:"Dans un jardin de Milan, une voix d'enfant chante « prends et lis ». Il ouvre les épîtres au hasard, tombe sur Romains 13, et ne lit pas plus loin." },
+  en:{ nom:"THE CODEX OF PAUL", note:"In a Milan garden a child's voice sings \"take up and read\". He opened the epistles at random, fell on Romans 13, and read no further." } }],
+
+"012": [{ lvl:6, genre:"instrument",
+  fr:{ nom:"LE TOUR À POLIR", note:"Il vit de verres optiques pour n'avoir de compte à rendre à personne, et refusera la chaire de Heidelberg. La poussière de verre finira par le tuer." },
+  en:{ nom:"THE LENS LATHE", note:"He lived by grinding optical glass so as to answer to no one, and refused the Heidelberg chair. The glass dust eventually killed him." } }],
+
+"014": [{ lvl:33, genre:"livre",
+  fr:{ nom:"LE HUME TRADUIT", note:"Vers 1772, la critique humienne de la causalité l'atteint enfin en allemand. Elle le tire, dit-il, de son sommeil dogmatique — et il se tait neuf ans." },
+  en:{ nom:"HUME IN TRANSLATION", note:"Around 1772 Hume's critique of causation reached him in German at last. It woke him, he said, from dogmatic slumber — and he fell silent for nine years." } }],
+
+"015": [{ lvl:1, genre:"livre",
+  fr:{ nom:"LE MERCURE DE FRANCE", note:"Octobre 1749, sur la route de Vincennes où Diderot est enfermé : il ouvre la revue, lit la question de l'Académie de Dijon, et dit avoir vu un autre univers." },
+  en:{ nom:"THE MERCURE DE FRANCE", note:"October 1749, on the road to Vincennes where Diderot was imprisoned: he opened the journal, read the Dijon Academy's question, and said he saw another universe." } },
+  { lvl:7, genre:"lieu",
+  fr:{ nom:"LA FORÊT DE SAINT-GERMAIN", note:"Sept jours seul dans les bois pour écrire sur l'inégalité. Il en rapporte un homme naturel doux et solitaire — l'exact contraire du loup de Hobbes, qu'il abandonne là." },
+  en:{ nom:"THE FOREST OF SAINT-GERMAIN", note:"Seven days alone in the woods to write on inequality. He brought back a gentle, solitary natural man — the exact opposite of Hobbes's wolf, which he left behind there." } }],
+
+"016": [{ lvl:20, genre:"livre",
+  fr:{ nom:"LE MANUSCRIT D'IÉNA", note:"Il achève la Phénoménologie la nuit où Napoléon entre dans Iéna, et emporte les dernières pages dans sa poche en fuyant la ville en flammes." },
+  en:{ nom:"THE JENA MANUSCRIPT", note:"He finished the Phenomenology the night Napoleon entered Jena, and carried the last pages in his pocket as he fled the burning town." } }],
+
+"017": [{ lvl:10, genre:"livre",
+  fr:{ nom:"LE CARNET DE BRUXELLES", note:"Onze notes jetées dans un carnet au printemps 1845, jamais publiées de son vivant : Engels les trouvera après sa mort. Feuerbach y est congédié en une page." },
+  en:{ nom:"THE BRUSSELS NOTEBOOK", note:"Eleven notes jotted in a notebook in spring 1845, never published in his lifetime: Engels found them after his death. Feuerbach is dismissed there in one page." } },
+  { lvl:32, genre:"livre",
+  fr:{ nom:"LES BLUE BOOKS", note:"Les rapports des inspecteurs britanniques du travail, consultés vingt ans durant au British Museum. Le Capital est bâti sur les chiffres de l'État qu'il attaque." },
+  en:{ nom:"THE BLUE BOOKS", note:"The reports of the British factory inspectors, consulted for twenty years at the British Museum. Capital is built on the figures of the state it attacks." } }],
+
+"019": [{ lvl:14, genre:"lieu",
+  fr:{ nom:"LA CABANE DE TODTNAUBERG", note:"Six mètres sur sept, sans eau courante, à 1150 mètres dans la Forêt-Noire. Il y écrit Être et Temps et y retournera toute sa vie pour « travailler comme un paysan »." },
+  en:{ nom:"THE HUT AT TODTNAUBERG", note:"Six metres by seven, no running water, at 1150 metres in the Black Forest. He wrote Being and Time there and returned all his life to \"work like a peasant\"." } }],
+
+"020": [{ lvl:10, genre:"matiere",
+  fr:{ nom:"LE COCKTAIL À L'ABRICOT", note:"Au Bec-de-Gaz, rue Montparnasse, Aron désigne son verre : « Tu peux parler de ce cocktail, et c'est de la philosophie. » Il pâlit et part pour Berlin." },
+  en:{ nom:"THE APRICOT COCKTAIL", note:"At the Bec-de-Gaz on rue Montparnasse, Aron pointed at his glass: \"You can talk about this cocktail, and it is philosophy.\" He went pale and left for Berlin." } }],
+
+"023": [{ lvl:11, genre:"instrument",
+  fr:{ nom:"LA MAQUETTE DU TRIBUNAL", note:"Un journal rapporte qu'à Paris on rejoue un accident avec des voitures miniatures. Si le modèle peut dire l'accident, une proposition peut être l'image d'un fait." },
+  en:{ nom:"THE COURTROOM MODEL", note:"A magazine reported that in Paris an accident was reenacted with toy cars. If a model can state the accident, a proposition can be a picture of a fact." } }],
+
+"033": [{ lvl:1, genre:"instrument",
+  fr:{ nom:"LE FARDEAU FICELÉ", note:"Démocrite l'aurait remarqué porteur de bois, à la façon dont le nœud répartissait la charge : une géométrie sans géomètre, chez un homme sans lettres." },
+  en:{ nom:"THE TIED BUNDLE", note:"Democritus is said to have noticed him carrying wood, by the way the knot distributed the load: geometry without a geometer, in an unlettered man." } }],
+
+"039": [{ lvl:1, genre:"matiere",
+  fr:{ nom:"LA CARGAISON DE POURPRE", note:"Un naufrage près du Pirée engloutit toute sa fortune en teinture. Il entre chez un libraire, y découvre Socrate, et déclarera plus tard avoir fait là son plus beau voyage." },
+  en:{ nom:"THE CARGO OF PURPLE", note:"A shipwreck near Piraeus swallowed his whole fortune in dye. He walked into a bookseller's, discovered Socrates, and later called it his most prosperous voyage." } }],
+
+"041": [{ lvl:38, genre:"livre",
+  fr:{ nom:"LES CARNETS DE CAMPAGNE", note:"Écrits en grec sous la tente, sur le Danube, sans lecteur prévu ni titre. L'empereur s'y adresse des reproches que nul autre n'aurait osé lui faire." },
+  en:{ nom:"THE CAMPAIGN NOTEBOOKS", note:"Written in Greek under canvas on the Danube, with no intended reader and no title. The emperor addresses himself reproaches no one else would have dared." } }],
+
+"046": [{ lvl:16, genre:"vetement",
+  fr:{ nom:"LES HABITS DE COUR", note:"Relégué à Sant'Andrea, il passe le jour à la taverne avec des bûcherons ; le soir il ôte ses vêtements crottés, revêt ses habits de chancellerie, et entre parler aux Anciens." },
+  en:{ nom:"THE COURT GARMENTS", note:"Exiled at Sant'Andrea, he spent the day at the tavern with woodcutters; at evening he removed his muddy clothes, put on his chancery robes, and entered to speak with the ancients." } }],
+
+"048": [{ lvl:22, genre:"livre",
+  fr:{ nom:"LES ÉLÉMENTS D'EUCLIDE", note:"Ouvert par hasard, dans une bibliothèque de gentilhomme, à la proposition 47 du livre I. « Par Dieu, c'est impossible ! » Il remonte les démonstrations une à une, et y croit." },
+  en:{ nom:"EUCLID'S ELEMENTS", note:"Opened by chance in a gentleman's library at Book I, Proposition 47. \"By God, this is impossible!\" He traced the proofs back one by one, and was convinced." } }],
+
+"049": [{ lvl:16, genre:"vetement",
+  fr:{ nom:"LE MÉMORIAL", note:"Un parchemin de quelques lignes, cousu dans la doublure de son pourpoint et recousu à chaque vêtement neuf. Un domestique l'y découvre après sa mort." },
+  en:{ nom:"THE MEMORIAL", note:"A parchment of a few lines, sewn into the lining of his doublet and re-sewn into every new garment. A servant found it there after his death." } }],
+
+"056": [{ lvl:27, genre:"image", ref:"panoptique",
+  fr:{ nom:"LE PLAN DU PANOPTIQUE", note:"Dessiné d'après la fabrique circulaire que son frère Samuel avait bâtie en Russie pour surveiller des ouvriers illettrés. Il en poursuivra la construction vingt ans, en vain." },
+  en:{ nom:"THE PANOPTICON PLAN", note:"Drawn from the circular factory his brother Samuel had built in Russia to oversee illiterate workers. He pursued its construction for twenty years, in vain." } }],
+
+"057": [{ lvl:10, genre:"livre",
+  fr:{ nom:"L'ÉMILE DE ROUSSEAU", note:"Le livre V, qui destine Sophie à plaire, lui est insupportable. Elle le cite longuement pour le réfuter ligne à ligne : l'homme naturel qu'elle admirait ne vaut pas pour les femmes." },
+  en:{ nom:"ROUSSEAU'S EMILE", note:"Book V, which destines Sophie to please, was unbearable to her. She quotes it at length to refute it line by line: the natural man she admired does not extend to women." } }],
+
+"059": [{ lvl:13, genre:"livre",
+  fr:{ nom:"LE LIVRE SANS NOM", note:"L'éditeur omet son nom, par accident ou par calcul. Toute l'Allemagne croit lire un inédit de Kant ; quand Kant détrompe le public, l'inconnu de trente ans est célèbre." },
+  en:{ nom:"THE BOOK WITHOUT A NAME", note:"The publisher omitted his name, by accident or design. All Germany believed it was an unpublished Kant; when Kant set the record straight, the unknown thirty-year-old was famous." } }],
+
+"061": [{ lvl:6, genre:"livre",
+  fr:{ nom:"L'OUPNEK'HAT", note:"Les Upanishads traduites du persan en latin, découvertes en 1814. « Elle a été la consolation de ma vie et sera celle de ma mort. » Il en lisait quelques pages chaque soir." },
+  en:{ nom:"THE OUPNEK'HAT", note:"The Upanishads translated from Persian into Latin, found in 1814. \"It has been the solace of my life and will be the solace of my death.\" He read a few pages every night." } }],
+
+"064": [{ lvl:18, genre:"livre",
+  fr:{ nom:"LES POÈMES DE WORDSWORTH", note:"Après l'effondrement de 1826, deux ans de vide. Un volume de Wordsworth lui rend la capacité d'être ému — et lui apprend qu'une éducation par le calcul avait omis quelque chose." },
+  en:{ nom:"WORDSWORTH'S POEMS", note:"After the 1826 collapse, two empty years. A volume of Wordsworth gave him back the capacity to be moved — and taught him that an education by calculation had left something out." } }],
+
+"065": [{ lvl:8, genre:"livre",
+  fr:{ nom:"L'ESSAI DE MALTHUS", note:"Lu « pour se distraire » en septembre 1838. La population croît plus vite que les subsistances : il tient d'un coup le mécanisme, et n'osera le publier avant vingt ans." },
+  en:{ nom:"MALTHUS'S ESSAY", note:"Read \"for amusement\" in September 1838. Population grows faster than subsistence: he suddenly had his mechanism, and would not dare publish it for twenty years." } },
+  { lvl:29, genre:"lettre",
+  fr:{ nom:"LA LETTRE DE WALLACE", note:"Juin 1858, arrivée de Ternate : un inconnu lui expose sa propre théorie en quelques pages. « Je n'aurais pu faire un meilleur résumé. » Il rédige l'Origine en treize mois." },
+  en:{ nom:"WALLACE'S LETTER", note:"June 1858, from Ternate: a stranger set out his own theory in a few pages. \"I could not have made a better abstract.\" He wrote the Origin in thirteen months." } }],
+
+"066": [{ lvl:14, genre:"vetement",
+  fr:{ nom:"LA BAGUE RENDUE", note:"Il rompt ses fiançailles en 1841 et lui renvoie l'anneau avec une lettre qu'il veut cruelle, pour qu'elle le haïsse. Deux ans plus tard paraissent six livres sous six noms." },
+  en:{ nom:"THE RETURNED RING", note:"He broke the engagement in 1841 and sent back the ring with a letter meant to be cruel, so that she would hate him. Two years later, six books appeared under six names." } }],
+
+"068": [{ lvl:1, genre:"instrument",
+  fr:{ nom:"LE PENDULE DE GRAVIMÉTRIE", note:"Trente ans à mesurer la pesanteur pour le Coast Survey, en traînant ses pendules d'Amérique en Europe. La philosophie se fait le soir, et la mesure lui apprend que toute donnée a une erreur." },
+  en:{ nom:"THE GRAVITY PENDULUM", note:"Thirty years measuring gravity for the Coast Survey, hauling his pendulums across America and Europe. Philosophy came in the evenings, and measurement taught him every datum carries an error." } }],
+
+"069": [{ lvl:1, genre:"instrument",
+  fr:{ nom:"LA BOÎTE DE COULEURS", note:"À dix-huit ans il veut être peintre et travaille chez William Hunt. Son père l'en dissuade ; il ferme la boîte, entre en chimie, et mettra trente ans à s'en remettre." },
+  en:{ nom:"THE PAINTBOX", note:"At eighteen he wanted to be a painter and studied under William Hunt. His father dissuaded him; he shut the box, entered chemistry, and took thirty years to recover." } }],
+
+"071": [{ lvl:34, genre:"lettre",
+  fr:{ nom:"LA LETTRE DE RUSSELL", note:"16 juin 1902, le second tome est sous presse. Un inconnu lui demande si l'ensemble des ensembles qui ne s'appartiennent pas s'appartient. Il ajoute un appendice, et n'écrira plus rien de son système." },
+  en:{ nom:"RUSSELL'S LETTER", note:"16 June 1902, the second volume at the printer's. A stranger asked whether the set of all sets not members of themselves is a member of itself. He added an appendix, and never wrote on his system again." } }],
+
+"072": [{ lvl:8, genre:"lieu",
+  fr:{ nom:"LE MARCHEPIED DE L'OMNIBUS", note:"À Coutances, le pied sur la marche d'un omnibus, la solution des fonctions fuchsiennes lui vient sans effort après des semaines d'échec. Il monte, et poursuit la conversation." },
+  en:{ nom:"THE OMNIBUS STEP", note:"At Coutances, foot on the step of an omnibus, the solution to Fuchsian functions came effortlessly after weeks of failure. He boarded, and continued the conversation." } }],
+
+"073": [{ lvl:1, genre:"instrument",
+  fr:{ nom:"LE MICROSCOPE DE BRÜCKE", note:"Six ans à disséquer des anguilles pour trouver leurs gonades — quatre cents bêtes, sans résultat publiable. Il en garde une méthode : chercher l'organe caché derrière le symptôme." },
+  en:{ nom:"BRÜCKE'S MICROSCOPE", note:"Six years dissecting eels in search of their gonads — four hundred animals, no publishable result. He kept a method from it: look for the hidden organ behind the symptom." } }],
+
+"077": [{ lvl:1, genre:"livre",
+  fr:{ nom:"LA THÈSE REFUSÉE", note:"Berthelot, dont elle contredisait la thermochimie, la fait rejeter. Il la publiera intacte deux ans plus tard, n'aura jamais Paris, et ne pardonnera jamais." },
+  en:{ nom:"THE REJECTED THESIS", note:"Berthelot, whose thermochemistry it contradicted, had it rejected. He published it untouched two years later, never got Paris, and never forgave." } }],
+
+"078": [{ lvl:42, genre:"lettre",
+  fr:{ nom:"LE TÉLÉGRAMME DE DÉMISSION", note:"Un héritage maternel arrive ; il quitte Harvard par télégramme depuis l'Europe, en pleine année universitaire, et ne remettra jamais les pieds en Amérique." },
+  en:{ nom:"THE RESIGNATION TELEGRAM", note:"A maternal inheritance arrived; he resigned from Harvard by telegram from Europe, mid-term, and never set foot in America again." } }],
+
+"084": [{ lvl:29, genre:"lieu",
+  fr:{ nom:"LA CELLULE DE BRIXTON", note:"Six mois pour un article pacifiste, en première division : il a droit à ses livres et à sa plume. Il y écrit une introduction à la philosophie mathématique et trouve la prison reposante." },
+  en:{ nom:"THE BRIXTON CELL", note:"Six months for a pacifist article, in the first division: he was allowed his books and his pen. He wrote an introduction to mathematical philosophy there and found prison restful." } }],
+
+"085": [{ lvl:18, genre:"image",
+  fr:{ nom:"LES PLAQUES DE PRÍNCIPE", note:"29 mai 1919, une éclipse au large de l'Afrique. Sur seize plaques photographiques, deux sont exploitables — et suffisent à courber la lumière et à rendre Einstein célèbre en une nuit." },
+  en:{ nom:"THE PRÍNCIPE PLATES", note:"29 May 1919, an eclipse off the African coast. Of sixteen photographic plates, two were usable — enough to bend light and make Einstein famous overnight." } }],
+
+"086": [{ lvl:1, genre:"livre",
+  fr:{ nom:"LE TAPUSCRIT DU TRACTATUS", note:"À dix-huit ans on lui confie la traduction anglaise du livre le plus difficile du siècle. Il la mène en six semaines, puis part discuter deux semaines avec l'auteur, en Autriche." },
+  en:{ nom:"THE TRACTATUS TYPESCRIPT", note:"At eighteen he was given the English translation of the century's hardest book. He did it in six weeks, then spent a fortnight arguing with its author in Austria." } }],
+
+"088": [{ lvl:1, genre:"livre",
+  fr:{ nom:"L'APPARENCE ET LA RÉALITÉ", note:"Elle emprunte Bradley à la bibliothèque pour tromper une insomnie, et n'en dort pas davantage. Elle deviendra la première femme professeure de philosophie du Royaume-Uni." },
+  en:{ nom:"APPEARANCE AND REALITY", note:"She borrowed Bradley from the library to see out a sleepless night, and slept no better. She became the first woman professor of philosophy in Britain." } }],
+
+"089": [{ lvl:19, genre:"livre",
+  fr:{ nom:"LES TRENTE-TROIS CAHIERS", note:"« Il faut empêcher ce cerveau de fonctionner pendant vingt ans », requiert le procureur. Il obtient de quoi écrire ; sa belle-sœur sortira les cahiers d'Italie après sa mort." },
+  en:{ nom:"THE THIRTY-THREE NOTEBOOKS", note:"\"We must stop this brain working for twenty years,\" demanded the prosecutor. He obtained writing materials; his sister-in-law smuggled the notebooks out of Italy after his death." } }],
+
+"090": [{ lvl:24, genre:"image",
+  fr:{ nom:"L'ANGELUS NOVUS", note:"Un monotype de Klee acheté en 1921 pour mille marks, accroché dans chacun de ses exils. La neuvième thèse le décrit : un ange que la tempête du progrès pousse à reculons vers l'avenir." },
+  en:{ nom:"ANGELUS NOVUS", note:"A Klee monoprint bought in 1921 for a thousand marks, hung in every one of his exiles. The ninth thesis describes it: an angel driven backwards into the future by the storm of progress." } }],
+
+"092": [{ lvl:3, genre:"instrument",
+  fr:{ nom:"LA BOÎTE À LEVIER", note:"Un caisson où un rat presse un levier pour obtenir une bouchée, et où tout se compte : fréquence, délai, extinction. Le comportement devient enfin une variable qu'on manipule." },
+  en:{ nom:"THE OPERANT CHAMBER", note:"A box where a rat presses a lever for a pellet, and everything is counted: rate, delay, extinction. Behaviour at last became a variable one could manipulate." } }],
+
+"097": [{ lvl:22, genre:"lettre",
+  fr:{ nom:"L'INVITATION AU CONGRÈS", note:"Une invitation à Harvard le fait embarquer sur le dernier navire quittant Gdynia, en août 1939. Presque toute sa famille restée en Pologne sera assassinée." },
+  en:{ nom:"THE CONGRESS INVITATION", note:"An invitation to Harvard put him on the last ship out of Gdynia in August 1939. Almost all of his family left in Poland was murdered." } }],
+
+"100": [{ lvl:43, genre:"instrument",
+  fr:{ nom:"LES FICELLES BORROMÉENNES", note:"Il apporte au séminaire de vraies cordes qu'il noue devant l'assistance : trois anneaux tels qu'en couper un libère les deux autres. La démonstration remplace peu à peu la parole." },
+  en:{ nom:"THE BORROMEAN STRINGS", note:"He brought real cord to the seminar and knotted it before the audience: three rings such that cutting one frees the other two. Demonstration gradually replaced speech." } }],
+
+"103": [{ lvl:14, genre:"livre",
+  fr:{ nom:"LES ARCHIVES DE LOUVAIN", note:"Quarante mille pages de sténographie husserlienne, sorties d'Allemagne dans les valises diplomatiques d'un franciscain belge. Il est l'un des premiers étrangers à les lire, en 1939." },
+  en:{ nom:"THE LOUVAIN ARCHIVES", note:"Forty thousand pages of Husserl's shorthand, smuggled out of Germany in a Belgian friar's diplomatic bags. He was among the first foreigners to read them, in 1939." } },
+  { lvl:36, genre:"livre",
+  fr:{ nom:"LE DESCARTES SUR LE BUREAU", note:"Il meurt d'un arrêt cardiaque à cinquante-trois ans, en préparant un cours. On trouve sur sa table la Dioptrique ouverte, et un manuscrit qui s'interrompt au milieu d'une phrase." },
+  en:{ nom:"THE DESCARTES ON THE DESK", note:"He died of heart failure at fifty-three while preparing a lecture. On his table lay the Dioptrics, open, and a manuscript breaking off mid-sentence." } }],
+
+"107": [{ lvl:12, genre:"instrument",
+  fr:{ nom:"LE POSTE D'ÉCOUTE", note:"Six ans à transcrire les radios allemandes pour la BBC. C'est lui qui, reconnaissant la marche funèbre de Bruckner, comprend avant l'annonce que Hitler est mort." },
+  en:{ nom:"THE LISTENING POST", note:"Six years transcribing German radio for the BBC. It was he who, recognising Bruckner's funeral march, knew Hitler was dead before the announcement." } }],
+
+"109": [{ lvl:8, genre:"livre",
+  fr:{ nom:"LE TAPUSCRIT DE PRAGUE", note:"Ina Carnap tapait chaque matin les pages écrites la veille ; il les lisait l'après-midi et en discutait le soir. Six semaines à recevoir un livre avant qu'il existe." },
+  en:{ nom:"THE PRAGUE TYPESCRIPT", note:"Ina Carnap typed each morning the pages written the day before; he read them in the afternoon and argued them at night. Six weeks receiving a book before it existed." } }],
+
+"118": [{ lvl:19, genre:"instrument",
+  fr:{ nom:"LA CITROËN DS", note:"Présentée au Salon de 1955, « tombée du ciel » : il la traite comme une cathédrale gothique, objet consommé par un peuple qui y voit de la magie et non de l'industrie." },
+  en:{ nom:"THE CITROËN DS", note:"Unveiled at the 1955 Motor Show, \"fallen from the sky\": he treats it as a Gothic cathedral, an object consumed by a people who see magic in it rather than industry." } }],
+
+"129": [{ lvl:5, genre:"livre",
+  fr:{ nom:"LA PHYSIQUE D'ARISTOTE", note:"Été 1947, il doit enseigner la mécanique ancienne et la trouve absurde. Un après-midi, le texte se réorganise d'un coup : Aristote n'est pas un mauvais Newton, il parle d'autre chose." },
+  en:{ nom:"ARISTOTLE'S PHYSICS", note:"Summer 1947, asked to teach ancient mechanics, he found it absurd. One afternoon the text suddenly reorganised itself: Aristotle is not a bad Newton, he is speaking of something else." } }],
+
+"133": [{ lvl:30, genre:"image", ref:"panoptique",
+  fr:{ nom:"LE PLAN DU PANOPTIQUE", note:"Il exhume le projet de Bentham, oublié depuis un siècle et demi, et en fait le diagramme de toute une société : être vu sans voir suffit, et le gardien devient inutile." },
+  en:{ nom:"THE PANOPTICON PLAN", note:"He exhumed Bentham's forgotten scheme after a century and a half and made it the diagram of a whole society: being seen without seeing is enough, and the guard becomes unnecessary." } }],
+
+"136": [{ lvl:17, genre:"image",
+  fr:{ nom:"LES BOÎTES BRILLO", note:"Avril 1964, Stable Gallery : des caisses de contreplaqué sérigraphiées, indiscernables de celles de l'entrepôt. Si l'œil ne peut trancher, c'est qu'une théorie décide." },
+  en:{ nom:"THE BRILLO BOXES", note:"April 1964, Stable Gallery: silkscreened plywood cartons, indiscernible from the warehouse ones. If the eye cannot decide, then a theory must." } }],
+
+"143": [{ lvl:16, genre:"instrument",
+  fr:{ nom:"LE GEL D'ÉLECTROPHORÈSE", note:"En 1966 il fait migrer les protéines de drosophiles sur gel et compte les variantes : bien plus qu'aucune théorie n'en prévoyait. La génétique des populations doit tout recommencer." },
+  en:{ nom:"THE ELECTROPHORESIS GEL", note:"In 1966 he ran fruit-fly proteins through gel and counted the variants: far more than any theory predicted. Population genetics had to start over." } }],
+
+"161": [{ lvl:13, genre:"instrument",
+  fr:{ nom:"LE MAGNÉTOPHONE", note:"Janvier 1970, Princeton : trois conférences données sans une note. Le livre le plus cité de la métaphysique du siècle est la transcription d'une bande, ponctuation comprise." },
+  en:{ nom:"THE TAPE RECORDER", note:"January 1970, Princeton: three lectures delivered without a single note. The most cited book in the century's metaphysics is a transcript of a tape, punctuation included." } }],
+
+"170": [{ lvl:28, genre:"livre",
+  fr:{ nom:"LA THÉOLOGIE NATURELLE DE PALEY", note:"Le livre qui enchanta Darwin étudiant : une montre trouvée sur la bruyère suppose un horloger. Il le réfute en gardant l'horloger et en lui retirant les yeux." },
+  en:{ nom:"PALEY'S NATURAL THEOLOGY", note:"The book that delighted the student Darwin: a watch found on a heath implies a watchmaker. He refutes it by keeping the watchmaker and removing his eyes." } }],
+
+"172": [{ lvl:15, genre:"instrument",
+  fr:{ nom:"LA MACHINE À COMPOSER", note:"Il compose lui-même les huit cents pages, dialogues, gravures et acrostiches compris, sur un système de photocomposition qu'il programme. Le livre est sa propre démonstration." },
+  en:{ nom:"THE TYPESETTING MACHINE", note:"He typeset all eight hundred pages himself, dialogues, engravings and acrostics included, on a phototypesetting system he programmed. The book is its own demonstration." } }],
+};
+
+if (typeof module !== 'undefined') module.exports.PHILOMON_OBJETS = PHILOMON_OBJETS;
