@@ -411,6 +411,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 60,
             "desc": "Pose un cadre ontologique extérieur à l'épistémologie : corps et esprit sont deux substances radicalement distinctes."
+          },
+          {
+            "nom": "LE MALIN GÉNIE",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 85,
+            "desc": "Suppose un trompeur tout-puissant pour pousser le doute à son extrême : même les mathématiques deviennent suspectes."
           }
         ],
         "filiation": {
@@ -453,6 +460,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 60,
             "desc": "Posits an ontological framework external to epistemology: mind and body are two radically distinct substances."
+          },
+          {
+            "nom": "THE EVIL DEMON",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 85,
+            "desc": "Posits an all-powerful deceiver to push doubt to its limit: even mathematics falls under suspicion."
           }
         ],
         "filiation": {
@@ -516,6 +530,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 85,
             "desc": "Change le cadre logique lui-même : on ne peut jamais dériver un devoir d'un fait — abîme entre descriptif et normatif."
+          },
+          {
+            "nom": "LA RAISON, ESCLAVE DES PASSIONS",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 88,
+            "desc": "La raison ne fixe aucune fin : elle calcule les moyens. Seul le sentiment meut à l'action, et jamais l'inverse."
           }
         ],
         "filiation": {
@@ -559,6 +580,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 85,
             "desc": "Shifts the logical frame itself: you can never derive an ought from an is — a chasm between descriptive and normative."
+          },
+          {
+            "nom": "REASON, SLAVE OF THE PASSIONS",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 88,
+            "desc": "Reason sets no ends: it computes means. Only sentiment moves us to act, and never the other way round."
           }
         ],
         "filiation": {
@@ -623,6 +651,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 82,
             "desc": "Expérience de pensée qui transcende l'éthique et l'ontologie : vivrais-tu ta vie à l'identique si elle se répétait infiniment ?"
+          },
+          {
+            "nom": "LE SURHOMME",
+            "cat": "transcendant",
+            "type": "Existentialisme",
+            "puissance": 92,
+            "desc": "Non pas une race à venir mais une tâche : créer ses propres valeurs une fois l'ancien ciel vidé."
           }
         ],
         "filiation": {
@@ -666,6 +701,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 82,
             "desc": "A thought-experiment transcending ethics and ontology: would you live your life identically if it repeated infinitely?"
+          },
+          {
+            "nom": "THE OVERMAN",
+            "cat": "transcendant",
+            "type": "Existentialisme",
+            "puissance": 92,
+            "desc": "Not a coming race but a task: to create one's own values once the old heaven has been emptied."
           }
         ],
         "filiation": {
@@ -729,6 +771,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 60,
             "desc": "Jouer parfaitement le rôle que le destin nous a assigné — sort légèrement du champ en posant un cadre cosmique extérieur."
+          },
+          {
+            "nom": "LA PROHAIRESIS",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 80,
+            "desc": "La faculté de choisir est la seule chose que nul tyran ne peut atteindre : elle est le philosophe lui-même."
           }
         ],
         "filiation": {
@@ -770,6 +819,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 60,
             "desc": "Play perfectly the role fate assigned us — steps slightly outside the field by positing an external cosmic framework."
+          },
+          {
+            "nom": "PROHAIRESIS",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 80,
+            "desc": "The faculty of choice is the one thing no tyrant can reach: it is the philosopher himself."
           }
         ],
         "filiation": {
@@ -832,6 +888,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 95,
             "desc": "Invalide tout dogmatisme depuis un méta-niveau : la conscience de l'ignorance est la seule sagesse véritable."
+          },
+          {
+            "nom": "NUL N'EST MÉCHANT VOLONTAIREMENT",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Le mal est une erreur de calcul sur son propre bien. Qui sait vraiment ce qui est bon ne peut choisir autrement."
           }
         ],
         "filiation": {
@@ -874,6 +937,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 95,
             "desc": "Invalidates all dogmatism from a meta-level: awareness of ignorance is the only genuine wisdom."
+          },
+          {
+            "nom": "NO ONE ERRS WILLINGLY",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Evil is a miscalculation about one's own good. Whoever truly knows the good cannot choose otherwise."
           }
         ],
         "filiation": {
@@ -937,6 +1007,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "La cité juste exige que le savoir gouverne — extension politique de la même rupture de cadre ontologique."
+          },
+          {
+            "nom": "LA RÉMINISCENCE",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 85,
+            "desc": "Apprendre, c'est se ressouvenir : l'esclave du Ménon retrouve la géométrie sans l'avoir jamais reçue."
           }
         ],
         "filiation": {
@@ -978,6 +1055,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "The just city requires knowledge to govern — the political extension of the same ontological rupture."
+          },
+          {
+            "nom": "RECOLLECTION",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 85,
+            "desc": "To learn is to remember: the slave in the Meno recovers geometry without ever having been taught it."
           }
         ],
         "filiation": {
@@ -1041,6 +1125,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 82,
             "desc": "Analyser tout phénomène par ses causes matérielle, formelle, efficiente et finale — grille qui épuise l'explication sans recourir aux Idées séparées."
+          },
+          {
+            "nom": "LA PUISSANCE ET L'ACTE",
+            "cat": "transcendant",
+            "type": "Réalisme",
+            "puissance": 90,
+            "desc": "Le gland est chêne en puissance. Le devenir cesse d'être un scandale : il devient le passage réglé du possible au réel."
           }
         ],
         "filiation": {
@@ -1082,6 +1173,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 82,
             "desc": "Every phenomenon analyzed through material, formal, efficient, and final causes — explains without resorting to separate Forms."
+          },
+          {
+            "nom": "POTENCY AND ACT",
+            "cat": "transcendant",
+            "type": "Réalisme",
+            "puissance": 90,
+            "desc": "The acorn is an oak in potency. Becoming ceases to be scandalous: it is the ordered passage from possible to real."
           }
         ],
         "filiation": {
@@ -1144,6 +1242,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "La réalité est faite d'atomes et de vide — bascule ontologique qui dissout la crainte religieuse en réduisant l'âme à de la matière."
+          },
+          {
+            "nom": "LA CLASSIFICATION DES DÉSIRS",
+            "cat": "immanent",
+            "type": "Épicurisme",
+            "puissance": 78,
+            "desc": "Naturels et nécessaires, naturels non nécessaires, vains : trier ses désirs suffit à supprimer presque toute souffrance."
           }
         ],
         "filiation": {
@@ -1185,6 +1290,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "Reality is atoms and void — an ontological shift that dissolves religious fear by reducing the soul to matter."
+          },
+          {
+            "nom": "THE CLASSIFICATION OF DESIRES",
+            "cat": "immanent",
+            "type": "Épicurisme",
+            "puissance": 78,
+            "desc": "Natural and necessary, natural but unnecessary, empty: sorting one's desires removes almost all suffering."
           }
         ],
         "filiation": {
@@ -1246,6 +1358,13 @@ const PHILOMON_DATA = {
             "type": "Cynisme",
             "puissance": 82,
             "desc": "Toute institution sociale est une corruption du naturel — bascule radicale qui invalide la loi au profit de la physis."
+          },
+          {
+            "nom": "LE COSMOPOLITISME",
+            "cat": "transcendant",
+            "type": "Cynisme",
+            "puissance": 80,
+            "desc": "« Je suis citoyen du monde. » La cité qui prétendait tout fonder n'est plus qu'une frontière arbitraire."
           }
         ],
         "filiation": {
@@ -1287,6 +1406,13 @@ const PHILOMON_DATA = {
             "type": "Cynisme",
             "puissance": 82,
             "desc": "Every social institution corrupts nature — a radical shift that invalidates all convention in favor of physis."
+          },
+          {
+            "nom": "COSMOPOLITANISM",
+            "cat": "transcendant",
+            "type": "Cynisme",
+            "puissance": 80,
+            "desc": "\"I am a citizen of the world.\" The city that claimed to found everything becomes an arbitrary border."
           }
         ],
         "filiation": {
@@ -1349,6 +1475,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 80,
             "desc": "Oppose cité terrestre et cité céleste — recadrage politique qui subordonne toute autorité humaine à une fin transcendante."
+          },
+          {
+            "nom": "LE TEMPS DE L'ÂME",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 88,
+            "desc": "Passé et futur n'existent nulle part sinon dans l'âme qui se souvient et attend. Le temps est une distension de l'esprit."
           }
         ],
         "filiation": {
@@ -1391,6 +1524,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 80,
             "desc": "Opposes earthly and heavenly cities — a political reframing subordinating all human authority to a transcendent end."
+          },
+          {
+            "nom": "THE TIME OF THE SOUL",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 88,
+            "desc": "Past and future exist nowhere but in the soul that remembers and expects. Time is a distension of the mind."
           }
         ],
         "filiation": {
@@ -1454,6 +1594,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 75,
             "desc": "Loi morale universelle inscrite dans la nature humaine par Dieu — argument interne qui prétend ancrer le devoir dans l'être."
+          },
+          {
+            "nom": "L'ANALOGIE DE L'ÊTRE",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 78,
+            "desc": "Dire que Dieu est bon n'est ni le même sens qu'un homme bon, ni un sens tout autre : la parole tient par analogie."
           }
         ],
         "filiation": {
@@ -1496,6 +1643,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 75,
             "desc": "Universal moral law inscribed in human nature by God — an internal argument claiming to ground duty in being."
+          },
+          {
+            "nom": "THE ANALOGY OF BEING",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 78,
+            "desc": "Calling God good means neither the same as calling a man good nor something wholly other: speech holds by analogy."
           }
         ],
         "filiation": {
@@ -1559,6 +1713,13 @@ const PHILOMON_DATA = {
             "type": "Panthéisme",
             "puissance": 78,
             "desc": "Chaque chose persiste dans son être — l'effort pour persévérer dans l'existence est l'essence même de tout ce qui est."
+          },
+          {
+            "nom": "L'AMOUR INTELLECTUEL DE DIEU",
+            "cat": "transcendant",
+            "type": "Panthéisme",
+            "puissance": 85,
+            "desc": "Comprendre la nécessité de toutes choses est déjà la béatitude : la joie n'est pas la récompense de la sagesse, elle est la sagesse."
           }
         ],
         "filiation": {
@@ -1601,6 +1762,13 @@ const PHILOMON_DATA = {
             "type": "Panthéisme",
             "puissance": 78,
             "desc": "Each thing persists in its being — the effort to persevere in existence is the very essence of everything that is."
+          },
+          {
+            "nom": "THE INTELLECTUAL LOVE OF GOD",
+            "cat": "transcendant",
+            "type": "Panthéisme",
+            "puissance": 85,
+            "desc": "Grasping the necessity of all things is already blessedness: joy is not wisdom's reward, it is wisdom."
           }
         ],
         "filiation": {
@@ -1664,6 +1832,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "L'autorité légitime repose sur le consentement des gouvernés — argument interne qui fonde le droit à la résistance."
+          },
+          {
+            "nom": "LA PROPRIÉTÉ PAR LE TRAVAIL",
+            "cat": "immanent",
+            "type": "Libéralisme",
+            "puissance": 88,
+            "desc": "Mêler son travail à une chose commune la rend sienne — tant qu'il en reste assez et d'aussi bon pour les autres."
           }
         ],
         "filiation": {
@@ -1708,6 +1883,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "Legitimate political authority rests on the consent of the governed — grounds the right to resist tyranny."
+          },
+          {
+            "nom": "PROPERTY BY LABOUR",
+            "cat": "immanent",
+            "type": "Libéralisme",
+            "puissance": 88,
+            "desc": "Mixing one's labour with a common thing makes it one's own — so long as enough, and as good, is left for others."
           }
         ],
         "filiation": {
@@ -1773,6 +1955,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 88,
             "desc": "Espace, temps, catégories : des structures qui précèdent toute expérience et la rendent possible."
+          },
+          {
+            "nom": "LA CHOSE EN SOI",
+            "cat": "transcendant",
+            "type": "Rationalisme",
+            "puissance": 92,
+            "desc": "Ce qui apparaît n'est jamais ce qui est. Le noumène borne la connaissance sans jamais s'y donner."
           }
         ],
         "filiation": {
@@ -1816,6 +2005,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 88,
             "desc": "Space, time, categories: structures that precede all experience and make it possible."
+          },
+          {
+            "nom": "THE THING IN ITSELF",
+            "cat": "transcendant",
+            "type": "Rationalisme",
+            "puissance": 92,
+            "desc": "What appears is never what is. The noumenon bounds knowledge without ever entering it."
           }
         ],
         "filiation": {
@@ -1880,6 +2076,13 @@ const PHILOMON_DATA = {
             "type": "Contractualisme",
             "puissance": 78,
             "desc": "L'état de nature est bon et libre — invalide toute théorie du péché originel ou de la méchanceté naturelle de Hobbes."
+          },
+          {
+            "nom": "L'AMOUR-PROPRE",
+            "cat": "immanent",
+            "type": "Humanisme",
+            "puissance": 80,
+            "desc": "Le regard d'autrui transforme l'amour de soi en comparaison. La société ne corrompt pas par ses lois mais par ses miroirs."
           }
         ],
         "filiation": {
@@ -1922,6 +2125,13 @@ const PHILOMON_DATA = {
             "type": "Contractualisme",
             "puissance": 78,
             "desc": "The state of nature is good and free — invalidates theories of original sin or Hobbes's natural wickedness."
+          },
+          {
+            "nom": "AMOUR-PROPRE",
+            "cat": "immanent",
+            "type": "Humanisme",
+            "puissance": 80,
+            "desc": "The gaze of others turns self-love into comparison. Society corrupts not through its laws but through its mirrors."
           }
         ],
         "filiation": {
@@ -1985,6 +2195,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 88,
             "desc": "La conscience ne se réalise qu'en étant reconnue par une autre — le soi ne se connaît qu'à travers l'autre et le conflit."
+          },
+          {
+            "nom": "LA RUSE DE LA RAISON",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 85,
+            "desc": "L'histoire se sert des passions des grands hommes pour ses propres fins : César croit régner, il accomplit l'Esprit."
           }
         ],
         "filiation": {
@@ -2028,6 +2245,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 88,
             "desc": "Consciousness only realizes itself through recognition by another — the self knows itself only through conflict with the other."
+          },
+          {
+            "nom": "THE CUNNING OF REASON",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 85,
+            "desc": "History uses great men's passions for its own ends: Caesar thinks he rules, and accomplishes Spirit."
           }
         ],
         "filiation": {
@@ -2093,6 +2317,13 @@ const PHILOMON_DATA = {
             "type": "Marxisme",
             "puissance": 85,
             "desc": "La philosophie n'est vraie que lorsqu'elle se réalise dans la transformation effective du monde — théorie et pratique sont inséparables."
+          },
+          {
+            "nom": "LE FÉTICHISME DE LA MARCHANDISE",
+            "cat": "transcendant",
+            "type": "Marxisme",
+            "puissance": 90,
+            "desc": "Un rapport entre les hommes prend la forme d'un rapport entre les choses : la valeur semble sortir de l'objet lui-même."
           }
         ],
         "filiation": {
@@ -2138,6 +2369,13 @@ const PHILOMON_DATA = {
             "type": "Marxisme",
             "puissance": 85,
             "desc": "Philosophy is only true when it realizes itself in the effective transformation of the world — theory and practice are inseparable."
+          },
+          {
+            "nom": "COMMODITY FETISHISM",
+            "cat": "transcendant",
+            "type": "Marxisme",
+            "puissance": 90,
+            "desc": "A relation between people takes the form of a relation between things: value seems to come from the object itself."
           }
         ],
         "filiation": {
@@ -2204,6 +2442,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "Le monde de la vie précède et fonde les sciences — bascule contre le scientisme positiviste."
+          },
+          {
+            "nom": "L'INTERSUBJECTIVITÉ",
+            "cat": "transcendant",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "Autrui n'est pas déduit : il est aperçu par appairage, comme un autre corps vivant qui porte un autre point de vue sur le même monde."
           }
         ],
         "filiation": {
@@ -2246,6 +2491,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "The lifeworld precedes and grounds the sciences — a shift against positivist scientism."
+          },
+          {
+            "nom": "INTERSUBJECTIVITY",
+            "cat": "transcendant",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "The other is not inferred but apperceived by pairing, as another living body carrying another view of the same world."
           }
         ],
         "filiation": {
@@ -2309,6 +2561,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 85,
             "desc": "Toute la tradition a oublié la différence ontologique (être vs étant) — Heidegger change le cadre entier de la philosophie occidentale."
+          },
+          {
+            "nom": "L'ARRAISONNEMENT",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 85,
+            "desc": "La technique moderne somme la nature de se tenir disponible. Le Rhin devient réserve d'énergie, et l'homme avec lui."
           }
         ],
         "filiation": {
@@ -2352,6 +2611,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 85,
             "desc": "The entire tradition forgot the ontological difference (Being vs beings) — Heidegger shifts the whole frame of Western philosophy."
+          },
+          {
+            "nom": "ENFRAMING",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 85,
+            "desc": "Modern technology summons nature to stand ready. The Rhine becomes an energy reserve, and man along with it."
           }
         ],
         "filiation": {
@@ -2415,6 +2681,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 82,
             "desc": "Ne pas s'engager est encore un choix qui engage — l'authenticité exige de prendre position, il n'y a pas de neutralité possible."
+          },
+          {
+            "nom": "LE REGARD D'AUTRUI",
+            "cat": "immanent",
+            "type": "Existentialisme",
+            "puissance": 85,
+            "desc": "Sous le regard, je deviens objet pour une liberté qui n'est pas la mienne. La honte est la preuve d'autrui."
           }
         ],
         "filiation": {
@@ -2458,6 +2731,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 82,
             "desc": "Not engaging is still a choice — authenticity demands taking a position; there is no possible neutrality."
+          },
+          {
+            "nom": "THE GAZE OF THE OTHER",
+            "cat": "immanent",
+            "type": "Existentialisme",
+            "puissance": 85,
+            "desc": "Under the gaze I become an object for a freedom not my own. Shame is the proof that others exist."
           }
         ],
         "filiation": {
@@ -2522,6 +2802,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 80,
             "desc": "Assumer l'ambiguïté de la condition humaine — ni pur en-soi ni pur pour-soi — comme fondement d'une éthique concrète de la liberté."
+          },
+          {
+            "nom": "LA VIEILLESSE COMME EXIL",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 75,
+            "desc": "La société traite ses vieux comme elle traite ses femmes : en les renvoyant hors du sujet, du côté de ce qui est subi."
           }
         ],
         "filiation": {
@@ -2565,6 +2852,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 80,
             "desc": "Embracing the ambiguity of the human condition as the ground of a concrete ethics of freedom."
+          },
+          {
+            "nom": "OLD AGE AS EXILE",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 75,
+            "desc": "Society treats its old as it treats its women: pushing them outside the subject, onto the side of what is undergone."
           }
         ],
         "filiation": {
@@ -2629,6 +2923,13 @@ const PHILOMON_DATA = {
             "type": "Nihilisme",
             "puissance": 78,
             "desc": "Invalide aussi bien la foi (Kierkegaard) que la résignation nihiliste — l'absurde doit être vécu, pas transcendé."
+          },
+          {
+            "nom": "JE ME RÉVOLTE, DONC NOUS SOMMES",
+            "cat": "immanent",
+            "type": "Humanisme",
+            "puissance": 82,
+            "desc": "Le refus individuel découvre une valeur commune : en disant non pour soi, on dit oui pour tous."
           }
         ],
         "filiation": {
@@ -2671,6 +2972,13 @@ const PHILOMON_DATA = {
             "type": "Nihilisme",
             "puissance": 78,
             "desc": "Invalidates both the leap of faith (Kierkegaard) and nihilist resignation — the absurd must be lived, not transcended."
+          },
+          {
+            "nom": "I REBEL, THEREFORE WE ARE",
+            "cat": "immanent",
+            "type": "Humanisme",
+            "puissance": 82,
+            "desc": "Individual refusal uncovers a shared value: in saying no for oneself, one says yes for everyone."
           }
         ],
         "filiation": {
@@ -2734,6 +3042,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 85,
             "desc": "Ce qui ne peut être dit ne peut qu'être montré — les limites du langage sont les limites de mon monde."
+          },
+          {
+            "nom": "L'ARGUMENT DU LANGAGE PRIVÉ",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 90,
+            "desc": "Un mot qui ne nommerait qu'une sensation à moi seul n'aurait aucun critère de bon usage — donc aucun sens."
           }
         ],
         "filiation": {
@@ -2777,6 +3092,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 85,
             "desc": "What cannot be said can only be shown — the limits of my language are the limits of my world."
+          },
+          {
+            "nom": "THE PRIVATE LANGUAGE ARGUMENT",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 90,
+            "desc": "A word naming only a sensation of mine alone would have no criterion of correct use — hence no meaning."
           }
         ],
         "filiation": {
@@ -2841,6 +3163,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 80,
             "desc": "Bascule du cadre utilitariste : la justice ne maximise pas le bonheur total mais garantit des droits individuels inaliénables."
+          },
+          {
+            "nom": "LE CONSENSUS PAR RECOUPEMENT",
+            "cat": "transcendant",
+            "type": "Libéralisme",
+            "puissance": 82,
+            "desc": "Des doctrines inconciliables peuvent soutenir les mêmes principes politiques, chacune pour ses propres raisons."
           }
         ],
         "filiation": {
@@ -2884,6 +3213,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 80,
             "desc": "A shift from the utilitarian framework: justice does not maximize total happiness but guarantees inalienable individual rights."
+          },
+          {
+            "nom": "OVERLAPPING CONSENSUS",
+            "cat": "transcendant",
+            "type": "Libéralisme",
+            "puissance": 82,
+            "desc": "Irreconcilable doctrines can endorse the same political principles, each for reasons of its own."
           }
         ],
         "filiation": {
@@ -2947,6 +3283,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "Connaissance pratique et mathématique mise au service de la compréhension du monde — l'astronomie comme philosophie en acte."
+          },
+          {
+            "nom": "TOUT EST PLEIN DE DIEUX",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 55,
+            "desc": "Le divin n'est pas au-dessus du monde mais répandu en lui : première formule d'une nature animée sans mythe."
           }
         ],
         "filiation": {
@@ -2984,6 +3327,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "Mathematical and practical knowledge in service of understanding the world — astronomy as philosophy in action."
+          },
+          {
+            "nom": "ALL THINGS ARE FULL OF GODS",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 55,
+            "desc": "The divine is not above the world but spread through it: a first formula for an animate nature without myth."
           }
         ],
         "filiation": {
@@ -3041,6 +3391,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 60,
             "desc": "Les êtres vivants naquirent du milieu humide sous l'effet de la chaleur ; l'humain est issu d'un autre animal."
+          },
+          {
+            "nom": "LA TERRE EN SUSPENS",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 70,
+            "desc": "La Terre ne tombe pas parce qu'aucune direction ne l'emporte : premier argument de symétrie de la pensée grecque."
           }
         ],
         "filiation": {
@@ -3078,6 +3435,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 60,
             "desc": "Living beings arose from moisture under heat; humans descended from another kind of animal."
+          },
+          {
+            "nom": "THE EARTH IN SUSPENSION",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 70,
+            "desc": "The Earth does not fall because no direction prevails: the first argument from symmetry in Greek thought."
           }
         ],
         "filiation": {
@@ -3135,6 +3499,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 58,
             "desc": "Continuité entre cosmologie et anthropologie : l'âme qui nous tient ensemble est de la même nature que ce qui tient le monde."
+          },
+          {
+            "nom": "LA TERRE PORTÉE PAR L'AIR",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 55,
+            "desc": "Plate et large, la Terre repose sur l'air comme un couvercle sur la vapeur : le monde n'a plus besoin de support divin."
           }
         ],
         "filiation": {
@@ -3171,6 +3542,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 58,
             "desc": "Continuity between cosmology and anthropology: the soul that holds us together is the same nature as what holds the world."
+          },
+          {
+            "nom": "THE EARTH RIDING ON AIR",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 55,
+            "desc": "Flat and broad, the Earth rests on air like a lid on steam: the world no longer needs a divine support."
           }
         ],
         "filiation": {
@@ -3228,6 +3606,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 72,
             "desc": "Les corps célestes produisent une musique mathématique inaudible — le cosmos est accord et proportion."
+          },
+          {
+            "nom": "L'INCOMMENSURABLE",
+            "cat": "immanent",
+            "type": "Rationalisme",
+            "puissance": 78,
+            "desc": "La diagonale du carré ne se dit par aucun rapport de nombres entiers. La doctrine se brise sur sa propre géométrie."
           }
         ],
         "filiation": {
@@ -3268,6 +3653,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 72,
             "desc": "Celestial bodies produce inaudible mathematical music — the cosmos is accord and proportion."
+          },
+          {
+            "nom": "THE INCOMMENSURABLE",
+            "cat": "immanent",
+            "type": "Rationalisme",
+            "puissance": 78,
+            "desc": "The square's diagonal answers to no ratio of whole numbers. The doctrine breaks on its own geometry."
           }
         ],
         "filiation": {
@@ -3329,6 +3721,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 72,
             "desc": "Nous ne pouvons avoir que des opinions (dokos) sur le réel — même si une opinion peut être plus vraie qu'une autre, nulle n'est certaine."
+          },
+          {
+            "nom": "CHERCHER AVEC LE TEMPS",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "Les dieux n'ont rien révélé d'emblée ; mais en cherchant longtemps, les hommes trouvent mieux. Première idée de progrès."
           }
         ],
         "filiation": {
@@ -3367,6 +3766,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 72,
             "desc": "We can only have opinions (dokos) about reality — even if one opinion is closer to truth than another, none is certain."
+          },
+          {
+            "nom": "SEEKING IN TIME",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "The gods revealed nothing at the outset; yet by long seeking men find better. The first idea of progress."
           }
         ],
         "filiation": {
@@ -3426,6 +3832,13 @@ const PHILOMON_DATA = {
             "type": "Dialectique",
             "puissance": 82,
             "desc": "Guerre est père et roi de tout — les opposés sont la même chose (voie montante/descendante, vie/mort) ; leur tension produit l'harmonie."
+          },
+          {
+            "nom": "LA GUERRE, PÈRE DE TOUTES CHOSES",
+            "cat": "transcendant",
+            "type": "Dialectique",
+            "puissance": 85,
+            "desc": "Le conflit n'abîme pas l'ordre, il le produit : c'est la tension qui tient l'arc et la lyre."
           }
         ],
         "filiation": {
@@ -3465,6 +3878,13 @@ const PHILOMON_DATA = {
             "type": "Dialectique",
             "puissance": 82,
             "desc": "War is father and king of all — opposites are the same thing (way up/down, life/death); their tension produces harmony."
+          },
+          {
+            "nom": "WAR, FATHER OF ALL THINGS",
+            "cat": "transcendant",
+            "type": "Dialectique",
+            "puissance": 85,
+            "desc": "Conflict does not damage order, it produces it: tension is what holds both the bow and the lyre."
           }
         ],
         "filiation": {
@@ -3525,6 +3945,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 82,
             "desc": "Le mouvement et le changement sont contradictoires avec l'être — invalide d'un coup toute la physique ionienne et Héraclite."
+          },
+          {
+            "nom": "LA VOIE DE L'OPINION",
+            "cat": "immanent",
+            "type": "Rationalisme",
+            "puissance": 75,
+            "desc": "Après la vérité, le poème expose l'apparence — non comme une erreur à fuir, mais comme ce qu'il faut savoir traverser."
           }
         ],
         "filiation": {
@@ -3566,6 +3993,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 82,
             "desc": "Motion and change contradict being — in one stroke invalidates all Ionian physics and Heraclitus."
+          },
+          {
+            "nom": "THE WAY OF OPINION",
+            "cat": "immanent",
+            "type": "Rationalisme",
+            "puissance": 75,
+            "desc": "After truth, the poem sets out appearance — not as an error to flee but as what one must know how to cross."
           }
         ],
         "filiation": {
@@ -3628,6 +4062,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 62,
             "desc": "L'âme transmigre à travers toutes les formes de vie — le végétarisme s'impose comme conséquence éthique."
+          },
+          {
+            "nom": "LES EFFLUVES ET LES PORES",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 62,
+            "desc": "On perçoit quand les particules émises rencontrent des pores de taille accordée : première théorie physique de la sensation."
           }
         ],
         "filiation": {
@@ -3668,6 +4109,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 62,
             "desc": "The soul transmigrates through all forms of life — vegetarianism follows as an ethical consequence."
+          },
+          {
+            "nom": "EFFLUENCES AND PORES",
+            "cat": "immanent",
+            "type": "Matérialisme",
+            "puissance": 62,
+            "desc": "Perception occurs when emitted particles meet pores of matching size: the first physical theory of sensation."
           }
         ],
         "filiation": {
@@ -3729,6 +4177,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 72,
             "desc": "Sur les dieux, je ne sais ni s'ils sont ni comment ils sont — suspension des jugements religieux au nom des limites de la connaissance humaine."
+          },
+          {
+            "nom": "RENDRE FORT LE DISCOURS FAIBLE",
+            "cat": "immanent",
+            "type": "Rhétorique",
+            "puissance": 75,
+            "desc": "Toute cause a deux discours possibles ; l'art consiste à savoir soutenir celui qu'on croyait perdu."
           }
         ],
         "filiation": {
@@ -3768,6 +4223,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 72,
             "desc": "Concerning the gods, I know neither whether they are nor what they are like — suspension of religious judgment."
+          },
+          {
+            "nom": "MAKING THE WEAKER ARGUMENT STRONGER",
+            "cat": "immanent",
+            "type": "Rhétorique",
+            "puissance": 75,
+            "desc": "Every case admits two speeches; the art lies in knowing how to carry the one thought lost."
           }
         ],
         "filiation": {
@@ -3827,6 +4289,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "Le bonheur (euthymia) vient de la modération et de la sagesse, non des biens extérieurs — éthique déduite du matérialisme."
+          },
+          {
+            "nom": "LES QUALITÉS SECONDES",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 88,
+            "desc": "Par convention le doux, l'amer, la couleur ; en réalité, atomes et vide. La perception perd son droit sur le monde."
           }
         ],
         "filiation": {
@@ -3868,6 +4337,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 65,
             "desc": "Happiness (euthymia) comes from moderation and wisdom, not external goods — ethics deduced from materialism."
+          },
+          {
+            "nom": "SECONDARY QUALITIES",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 88,
+            "desc": "By convention sweet, bitter, colour; in reality atoms and void. Perception loses its claim on the world."
           }
         ],
         "filiation": {
@@ -3930,6 +4406,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 80,
             "desc": "Premier usage systématique de la démonstration par l'absurde — si la pluralité existait, elle serait à la fois finie et infinie."
+          },
+          {
+            "nom": "PARADOXE DU STADE",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 82,
+            "desc": "Pour atteindre le but il faut d'abord la moitié, puis la moitié du reste : le mouvement exige une infinité franchie."
           }
         ],
         "filiation": {
@@ -3967,6 +4450,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 80,
             "desc": "First systematic use of proof by contradiction — if plurality existed, it would be both finite and infinite."
+          },
+          {
+            "nom": "THE STADIUM PARADOX",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 82,
+            "desc": "To reach the goal one must first cross half, then half the rest: motion requires an infinity already crossed."
           }
         ],
         "filiation": {
@@ -4024,6 +4514,13 @@ const PHILOMON_DATA = {
             "type": "Hédonisme",
             "puissance": 65,
             "desc": "Je possède le plaisir sans être possédé par lui — l'homme sage jouit sans être esclave de ses désirs."
+          },
+          {
+            "nom": "SEULES LES AFFECTIONS SONT CONNUES",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "Je sais que je suis blanchi, non que la chose est blanche. La sensation est certaine, son objet ne l'est jamais."
           }
         ],
         "filiation": {
@@ -4064,6 +4561,13 @@ const PHILOMON_DATA = {
             "type": "Hédonisme",
             "puissance": 65,
             "desc": "I possess pleasure without being possessed by it — the wise man enjoys without being enslaved to desire."
+          },
+          {
+            "nom": "ONLY AFFECTIONS ARE KNOWN",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "I know that I am whitened, not that the thing is white. The feeling is certain, its object never is."
           }
         ],
         "filiation": {
@@ -4124,6 +4628,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 65,
             "desc": "Tu connais ton père ; cet homme voilé est ton père ; donc tu connais cet homme voilé — paradoxe de l'identité et de la connaissance."
+          },
+          {
+            "nom": "LE CORNU",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 62,
+            "desc": "« Ce que tu n'as pas perdu, tu l'as ; tu n'as pas perdu de cornes. » L'ambiguïté du quantificateur, deux mille ans avant Frege."
           }
         ],
         "filiation": {
@@ -4162,6 +4673,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 65,
             "desc": "You know your father; this veiled man is your father; therefore you know this veiled man — paradox of identity and knowledge."
+          },
+          {
+            "nom": "THE HORNED MAN",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 62,
+            "desc": "\"What you have not lost, you have; you have not lost horns.\" Quantifier ambiguity, two thousand years before Frege."
           }
         ],
         "filiation": {
@@ -4220,6 +4738,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 80,
             "desc": "La paix de l'âme découle de la suspension du jugement — cesser de chercher la vérité absolue, c'est cesser de souffrir."
+          },
+          {
+            "nom": "LES CHOSES SONT INDIFFÉRENCIÉES",
+            "cat": "transcendant",
+            "type": "Scepticisme",
+            "puissance": 82,
+            "desc": "Rien n'est en soi plus ceci que cela. Ce n'est pas notre accès qui échoue : c'est le monde qui ne tranche pas."
           }
         ],
         "filiation": {
@@ -4261,6 +4786,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 80,
             "desc": "Peace of soul follows from suspension of judgment — cease seeking absolute truth, cease suffering."
+          },
+          {
+            "nom": "THINGS ARE UNDIFFERENTIATED",
+            "cat": "transcendant",
+            "type": "Scepticisme",
+            "puissance": 82,
+            "desc": "Nothing is in itself more this than that. It is not our access that fails: the world itself does not decide."
           }
         ],
         "filiation": {
@@ -4322,6 +4854,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 82,
             "desc": "L'excellence humaine consiste à vivre en accord avec la nature rationnelle — la raison nous définit et nous oblige."
+          },
+          {
+            "nom": "LES INDIFFÉRENTS PRÉFÉRABLES",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 78,
+            "desc": "Santé et richesse ne sont pas des biens, mais on les choisit tout de même : l'indifférence n'est pas l'indifférenciation."
           }
         ],
         "filiation": {
@@ -4364,6 +4903,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 82,
             "desc": "Human excellence consists in living in accord with rational nature — reason defines us and obligates us."
+          },
+          {
+            "nom": "PREFERRED INDIFFERENTS",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 78,
+            "desc": "Health and wealth are not goods, yet one still chooses them: indifference is not indistinction."
           }
         ],
         "filiation": {
@@ -4426,6 +4972,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 65,
             "desc": "Les Silloi raillent les grands philosophes — la poésie comme arme sceptique contre la prétention dogmatique."
+          },
+          {
+            "nom": "PAS PLUS CECI QUE CELA",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "Formule qui se retourne sur elle-même : elle ne se pose pas plus qu'elle ne se nie, et c'est ainsi qu'elle tient."
           }
         ],
         "filiation": {
@@ -4464,6 +5017,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 65,
             "desc": "The Silloi mock the great philosophers — poetry as a skeptical weapon against dogmatic pretension."
+          },
+          {
+            "nom": "NO MORE THIS THAN THAT",
+            "cat": "immanent",
+            "type": "Scepticisme",
+            "puissance": 70,
+            "desc": "A formula that turns on itself: it asserts itself no more than it denies itself, and that is how it holds."
           }
         ],
         "filiation": {
@@ -4522,6 +5082,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 72,
             "desc": "Gouverner avec justice est un devoir stoïcien — le sage agit même dans les rôles imposés par le destin sans s'y attacher."
+          },
+          {
+            "nom": "LA VUE D'EN HAUT",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 78,
+            "desc": "Regarder les affaires humaines depuis l'étendue du temps et de l'espace : les empires y ont la taille d'une fourmilière."
           }
         ],
         "filiation": {
@@ -4557,6 +5124,13 @@ const PHILOMON_DATA = {
             "type": "Stoïcisme",
             "puissance": 72,
             "desc": "Governing justly is a Stoic duty — the wise man acts even in roles imposed by fate without becoming attached to them."
+          },
+          {
+            "nom": "THE VIEW FROM ABOVE",
+            "cat": "immanent",
+            "type": "Stoïcisme",
+            "puissance": 78,
+            "desc": "To look at human affairs from the span of time and space: empires there are the size of an anthill."
           }
         ],
         "filiation": {
@@ -4613,6 +5187,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 82,
             "desc": "L'âme peut remonter jusqu'à l'Un par la philosophie et la contemplation — la mystique comme achèvement de la métaphysique."
+          },
+          {
+            "nom": "LE RETOUR",
+            "cat": "immanent",
+            "type": "Mysticisme",
+            "puissance": 78,
+            "desc": "Tout ce qui procède de l'Un aspire à y revenir. La conversion n'est pas un choix moral mais un mouvement de l'être."
           }
         ],
         "filiation": {
@@ -4655,6 +5236,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 82,
             "desc": "The soul can ascend back to the One through philosophy and contemplation — mysticism as the fulfillment of metaphysics."
+          },
+          {
+            "nom": "THE RETURN",
+            "cat": "immanent",
+            "type": "Mysticisme",
+            "puissance": 78,
+            "desc": "All that proceeds from the One yearns back to it. Conversion is not a moral choice but a movement of being."
           }
         ],
         "filiation": {
@@ -4718,6 +5306,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 70,
             "desc": "La vraie raison et la vraie autorité ne peuvent se contredire — l'Écriture doit être interprétée allégoriquement quand elle contredit la raison."
+          },
+          {
+            "nom": "LE MAL COMME NÉANT",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 68,
+            "desc": "Le mal n'a pas d'être propre : il est privation. Dieu ne peut donc l'avoir voulu, ni même le connaître comme chose."
           }
         ],
         "filiation": {
@@ -4758,6 +5353,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 70,
             "desc": "True reason and true authority cannot contradict each other — Scripture must be interpreted allegorically when it conflicts with reason."
+          },
+          {
+            "nom": "EVIL AS NOTHINGNESS",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 68,
+            "desc": "Evil has no being of its own: it is privation. God can therefore neither will it nor know it as a thing."
           }
         ],
         "filiation": {
@@ -4819,6 +5421,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 72,
             "desc": "La foi cherche la compréhension — on croit pour comprendre, non comprend pour croire. La raison éclaire la foi sans la précéder."
+          },
+          {
+            "nom": "LA VÉRITÉ COMME RECTITUDE",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 65,
+            "desc": "Est vrai ce qui fait ce pour quoi il est fait : la proposition, la volonté et la chose ont chacune leur rectitude."
           }
         ],
         "filiation": {
@@ -4860,6 +5469,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 72,
             "desc": "One believes in order to understand, not understands in order to believe. Reason illuminates faith without preceding it."
+          },
+          {
+            "nom": "TRUTH AS RECTITUDE",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 65,
+            "desc": "True is whatever does what it is for: proposition, will and thing each have their own rectitude."
           }
         ],
         "filiation": {
@@ -4922,6 +5538,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 80,
             "desc": "La théologie ne peut être prouvée par la raison — foi et raison opèrent dans des domaines totalement distincts."
+          },
+          {
+            "nom": "LA CONNAISSANCE INTUITIVE",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 78,
+            "desc": "Le singulier est saisi directement, sans passer par l'universel. L'abstraction n'est plus la porte du savoir."
           }
         ],
         "filiation": {
@@ -4963,6 +5586,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 80,
             "desc": "Theology cannot be proved by reason — faith and reason operate in entirely separate domains."
+          },
+          {
+            "nom": "INTUITIVE COGNITION",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 78,
+            "desc": "The singular is grasped directly, without passing through the universal. Abstraction is no longer knowledge's door."
           }
         ],
         "filiation": {
@@ -5025,6 +5655,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 82,
             "desc": "Le prince doit combiner force et ruse — ni l'un ni l'autre ne suffit seul pour gouverner efficacement."
+          },
+          {
+            "nom": "LA FORTUNA",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 85,
+            "desc": "La moitié de nos actes appartient au hasard. Le prince ne la supprime pas : il bâtit des digues avant la crue."
           }
         ],
         "filiation": {
@@ -5067,6 +5704,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 82,
             "desc": "The prince must combine force and cunning — neither alone suffices for effective governance."
+          },
+          {
+            "nom": "FORTUNA",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 85,
+            "desc": "Half of what we do belongs to chance. The prince does not abolish it: he builds dykes before the flood."
           }
         ],
         "filiation": {
@@ -5130,6 +5774,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 80,
             "desc": "Bascule du cadre contemplatif : la science ne vise pas la vérité pour elle-même mais la domination de la nature au profit de l'homme."
+          },
+          {
+            "nom": "L'INSTANCE CRUCIALE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Quand deux explications restent debout, chercher le cas qui ne peut appartenir qu'à l'une : l'expérience devient juge."
           }
         ],
         "filiation": {
@@ -5171,6 +5822,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 80,
             "desc": "A shift from the contemplative frame: science aims not at truth for its own sake but at mastery of nature for human benefit."
+          },
+          {
+            "nom": "THE CRUCIAL INSTANCE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "When two explanations still stand, find the case that can belong to only one: experiment becomes judge."
           }
         ],
         "filiation": {
@@ -5233,6 +5891,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 80,
             "desc": "Tout est corps en mouvement — pensées, sentiments, moral : toute réalité est physique. Bascule qui invalide l'âme immortelle et Dieu."
+          },
+          {
+            "nom": "L'AUTORISATION",
+            "cat": "immanent",
+            "type": "Contractualisme",
+            "puissance": 78,
+            "desc": "Le souverain n'agit pas à ma place : il agit en mon nom. Ses actes sont les miens, ce qui m'interdit de m'en plaindre."
           }
         ],
         "filiation": {
@@ -5275,6 +5940,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 80,
             "desc": "Everything is body in motion — thoughts, feelings, morality: all reality is physical. Invalidates the immortal soul and God."
+          },
+          {
+            "nom": "AUTHORISATION",
+            "cat": "immanent",
+            "type": "Contractualisme",
+            "puissance": 78,
+            "desc": "The sovereign does not act instead of me but in my name. His acts are mine, which bars me from complaining of them."
           }
         ],
         "filiation": {
@@ -5338,6 +6010,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "Dieu se cache — les preuves ne sont ni assez claires pour imposer la foi ni assez vides pour justifier l'athéisme : condition de la liberté humaine."
+          },
+          {
+            "nom": "LE ROSEAU PENSANT",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 82,
+            "desc": "L'univers écrase l'homme sans le savoir ; l'homme sait qu'il meurt. Toute sa dignité tient dans cette conscience."
           }
         ],
         "filiation": {
@@ -5378,6 +6057,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "God hides himself — evidence is neither clear enough to compel faith nor empty enough to justify atheism: a condition of human freedom."
+          },
+          {
+            "nom": "THE THINKING REED",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 82,
+            "desc": "The universe crushes man without knowing it; man knows that he dies. All his dignity lies in that awareness."
           }
         ],
         "filiation": {
@@ -5439,6 +6125,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 65,
             "desc": "Tout être existe sur un continuum de perfection et peut se transformer — pas de hiérarchie fixe entre corps et âme."
+          },
+          {
+            "nom": "LA MUTABILITÉ DES CRÉATURES",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 68,
+            "desc": "Aucune créature n'est fixée dans son rang : toute chose peut s'élever, ce qui rend la damnation éternelle impensable."
           }
         ],
         "filiation": {
@@ -5480,6 +6173,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 65,
             "desc": "Every being exists on a continuum of perfection and can transform — no fixed hierarchy between body and soul."
+          },
+          {
+            "nom": "THE MUTABILITY OF CREATURES",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 68,
+            "desc": "No creature is fixed in its rank: everything can rise, which makes eternal damnation unthinkable."
           }
         ],
         "filiation": {
@@ -5542,6 +6242,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 88,
             "desc": "Rien n'existe sans raison suffisante — tout fait a une explication ; même Dieu choisit le meilleur des mondes possibles."
+          },
+          {
+            "nom": "LE MEILLEUR DES MONDES POSSIBLES",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 88,
+            "desc": "Dieu a comparé tous les mondes compossibles avant de choisir : le mal qui reste est le prix du maximum d'être."
           }
         ],
         "filiation": {
@@ -5584,6 +6291,13 @@ const PHILOMON_DATA = {
             "type": "Rationalisme",
             "puissance": 88,
             "desc": "Nothing exists without sufficient reason — every fact has an explanation; even God chooses the best of all possible worlds."
+          },
+          {
+            "nom": "THE BEST OF ALL POSSIBLE WORLDS",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 88,
+            "desc": "God compared every compossible world before choosing: the evil that remains is the price of maximal being."
           }
         ],
         "filiation": {
@@ -5647,6 +6361,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "Le monde subsiste parce que Dieu le perçoit continuellement — l'idéalisme comme preuve de l'existence divine."
+          },
+          {
+            "nom": "CONTRE LES IDÉES ABSTRAITES",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 80,
+            "desc": "Nul ne peut se représenter un triangle qui ne soit ni équilatéral ni scalène. L'abstraction générale est une illusion de mots."
           }
         ],
         "filiation": {
@@ -5689,6 +6410,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "The world subsists because God perceives it continuously — idealism as a proof of divine existence."
+          },
+          {
+            "nom": "AGAINST ABSTRACT IDEAS",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 80,
+            "desc": "No one can picture a triangle neither equilateral nor scalene. General abstraction is an illusion made of words."
           }
         ],
         "filiation": {
@@ -5752,6 +6480,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "La beauté est perçue par un sens intérieur non réductible à l'utilité ou à la raison — analogie entre sens moral et sens esthétique."
+          },
+          {
+            "nom": "LA BIENVEILLANCE DÉSINTÉRESSÉE",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 72,
+            "desc": "Nous approuvons le bien d'autrui sans y trouver notre compte : l'égoïsme universel est démenti par notre propre approbation."
           }
         ],
         "filiation": {
@@ -5793,6 +6528,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "Beauty is perceived by an inner sense irreducible to utility or reason — analogy between moral and aesthetic sense."
+          },
+          {
+            "nom": "DISINTERESTED BENEVOLENCE",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 72,
+            "desc": "We approve another's good without profiting from it: universal selfishness is refuted by our own approval."
           }
         ],
         "filiation": {
@@ -5855,6 +6597,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Le scepticisme de Hume est le résultat d'une mauvaise théorie de la représentation mentale — retour aux données immédiates de l'expérience."
+          },
+          {
+            "nom": "SENSATION ET PERCEPTION",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 72,
+            "desc": "L'odeur que j'éprouve et la rose que je juge présente sont deux actes distincts : confondre les deux fabrique le scepticisme."
           }
         ],
         "filiation": {
@@ -5896,6 +6645,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Hume's skepticism results from a bad theory of mental representation — return to the immediate data of experience."
+          },
+          {
+            "nom": "SENSATION AND PERCEPTION",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 72,
+            "desc": "The smell I feel and the rose I judge present are two distinct acts: confusing them is what manufactures scepticism."
           }
         ],
         "filiation": {
@@ -5958,6 +6714,13 @@ const PHILOMON_DATA = {
             "type": "Conservatisme",
             "puissance": 75,
             "desc": "Le préjugé n'est pas ignorance mais sagesse collective sédimentée — à préférer aux abstractions de la raison pure."
+          },
+          {
+            "nom": "LE SUBLIME ET LE BEAU",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 80,
+            "desc": "Le beau vient de l'amour, le sublime de la terreur tenue à distance. Deux sources, et non deux degrés."
           }
         ],
         "filiation": {
@@ -6001,6 +6764,13 @@ const PHILOMON_DATA = {
             "type": "Conservatisme",
             "puissance": 75,
             "desc": "Prejudice is not ignorance but accumulated collective wisdom — to be preferred to the abstractions of pure reason."
+          },
+          {
+            "nom": "THE SUBLIME AND THE BEAUTIFUL",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 80,
+            "desc": "Beauty comes from love, sublimity from terror held at a distance. Two sources, not two degrees."
           }
         ],
         "filiation": {
@@ -6064,6 +6834,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 72,
             "desc": "Prison idéale où les détenus se savent observables à tout moment — la surveillance comme outil d'utilité sociale."
+          },
+          {
+            "nom": "UN NON-SENS SUR ÉCHASSES",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 82,
+            "desc": "Les droits naturels sont des vœux déguisés en faits. Seul un législateur crée des droits ; le reste est rhétorique."
           }
         ],
         "filiation": {
@@ -6106,6 +6883,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 72,
             "desc": "An ideal prison where inmates know they may be watched at any moment — surveillance as a tool of social utility."
+          },
+          {
+            "nom": "NONSENSE UPON STILTS",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 82,
+            "desc": "Natural rights are wishes disguised as facts. Only a legislator makes rights; the rest is rhetoric."
           }
         ],
         "filiation": {
@@ -6169,6 +6953,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 78,
             "desc": "Il ne peut y avoir qu'une seule vertu pour l'humanité entière — la morale fondée sur la raison transcende le sexe."
+          },
+          {
+            "nom": "LA RAISON N'A PAS DE SEXE",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 85,
+            "desc": "Si la vertu est une, elle ne peut avoir deux modèles. Une morale féminine séparée est déjà une exclusion."
           }
         ],
         "filiation": {
@@ -6211,6 +7002,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 78,
             "desc": "There can be only one virtue for all of humanity — morality grounded in reason transcends sex."
+          },
+          {
+            "nom": "REASON HAS NO SEX",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 85,
+            "desc": "If virtue is one, it cannot have two models. A separate feminine morality is already an exclusion."
           }
         ],
         "filiation": {
@@ -6273,6 +7071,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 60,
             "desc": "Dieu veut le bonheur de ses créatures — l'éthique utilitariste est fondée sur la volonté divine."
+          },
+          {
+            "nom": "LES PREUVES DU CHRISTIANISME",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 62,
+            "desc": "Des hommes ont accepté de mourir pour un fait qu'ils disaient avoir vu : le témoignage devient une pièce d'argumentation."
           }
         ],
         "filiation": {
@@ -6311,6 +7116,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 60,
             "desc": "God wills the happiness of His creatures — utilitarian ethics is grounded in divine will."
+          },
+          {
+            "nom": "THE EVIDENCES OF CHRISTIANITY",
+            "cat": "immanent",
+            "type": "Philo. Religion",
+            "puissance": 62,
+            "desc": "Men agreed to die for a fact they claimed to have witnessed: testimony becomes a piece of argument."
           }
         ],
         "filiation": {
@@ -6370,6 +7182,13 @@ const PHILOMON_DATA = {
             "type": "Humanisme",
             "puissance": 72,
             "desc": "La langue et la culture constituent une identité nationale — Discours à la nation allemande comme réponse philosophique à l'occupation napoléonienne."
+          },
+          {
+            "nom": "LE NON-MOI",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 78,
+            "desc": "Le Moi se pose en posant ce qui le limite. L'objet n'est pas trouvé dehors : il est engendré par l'acte qui le repousse."
           }
         ],
         "filiation": {
@@ -6411,6 +7230,13 @@ const PHILOMON_DATA = {
             "type": "Humanisme",
             "puissance": 72,
             "desc": "Language and culture constitute national identity — Addresses to the German Nation as philosophical response to Napoleonic occupation."
+          },
+          {
+            "nom": "THE NOT-I",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 78,
+            "desc": "The I posits itself by positing what limits it. The object is not found outside: it is generated by the act repelling it."
           }
         ],
         "filiation": {
@@ -6473,6 +7299,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 72,
             "desc": "Le mal est une possibilité de la liberté — Dieu lui-même contient un fond obscur qui est la condition de sa révélation."
+          },
+          {
+            "nom": "L'ART COMME ORGANON",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "L'œuvre réussit ce que la philosophie ne peut que viser : rendre visible l'identité du conscient et de l'inconscient."
           }
         ],
         "filiation": {
@@ -6515,6 +7348,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 72,
             "desc": "Evil is a possibility of freedom — God himself contains a dark ground which is the condition of his revelation."
+          },
+          {
+            "nom": "ART AS ORGANON",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "The artwork achieves what philosophy can only aim at: making visible the identity of conscious and unconscious."
           }
         ],
         "filiation": {
@@ -6578,6 +7418,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 80,
             "desc": "Nier la Volonté par l'ascèse, la pitié et l'art — seule issue à la souffrance inhérente à l'existence."
+          },
+          {
+            "nom": "LA PITIÉ",
+            "cat": "immanent",
+            "type": "Éthique du Soin",
+            "puissance": 80,
+            "desc": "La morale ne se fonde ni sur le devoir ni sur l'intérêt, mais sur ce moment où la frontière entre moi et l'autre cède."
           }
         ],
         "filiation": {
@@ -6624,6 +7471,13 @@ const PHILOMON_DATA = {
             "type": "Mysticisme",
             "puissance": 80,
             "desc": "Deny the Will through asceticism, compassion, and art — the only exit from the suffering inherent in existence."
+          },
+          {
+            "nom": "COMPASSION",
+            "cat": "immanent",
+            "type": "Éthique du Soin",
+            "puissance": 80,
+            "desc": "Morality rests neither on duty nor on interest, but on the moment when the border between me and the other gives way."
           }
         ],
         "filiation": {
@@ -6691,6 +7545,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 70,
             "desc": "Le matérialisme sensoriel : la conscience est conditionnée par l'alimentation, le corps, les conditions matérielles."
+          },
+          {
+            "nom": "L'ÊTRE GÉNÉRIQUE",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 78,
+            "desc": "L'homme se distingue en pouvant prendre son espèce pour objet. Ce qu'il adore en Dieu, c'est cette essence commune."
           }
         ],
         "filiation": {
@@ -6733,6 +7594,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 70,
             "desc": "Sensory materialism: consciousness is conditioned by food, body, material conditions."
+          },
+          {
+            "nom": "SPECIES-BEING",
+            "cat": "transcendant",
+            "type": "Humanisme",
+            "puissance": 78,
+            "desc": "Man is distinguished by being able to take his species as an object. What he worships in God is that shared essence."
           }
         ],
         "filiation": {
@@ -6795,6 +7663,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 72,
             "desc": "L'existence d'une loi est une chose ; son mérite ou démérite, une autre — distingue description et évaluation en jurisprudence."
+          },
+          {
+            "nom": "LA SANCTION",
+            "cat": "immanent",
+            "type": "Philo. Droit",
+            "puissance": 68,
+            "desc": "Un commandement sans mal annoncé n'oblige pas. La sanction n'accompagne pas la règle : elle la constitue."
           }
         ],
         "filiation": {
@@ -6835,6 +7710,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 72,
             "desc": "The existence of a law is one thing; its merit or demerit another — separates description from evaluation in jurisprudence."
+          },
+          {
+            "nom": "THE SANCTION",
+            "cat": "immanent",
+            "type": "Philo. Droit",
+            "puissance": 68,
+            "desc": "A command with no announced evil does not bind. Sanction does not accompany the rule: it constitutes it."
           }
         ],
         "filiation": {
@@ -6896,6 +7778,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "La liberté d'expression et de pensée est absolument nécessaire — même une opinion fausse doit pouvoir s'exprimer car la vérité a besoin de contradiction."
+          },
+          {
+            "nom": "L'ASSUJETTISSEMENT DES FEMMES",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 85,
+            "desc": "La subordination légale d'un sexe à l'autre est le dernier privilège féodal. Rien ne prouve la nature de la femme : on ne l'a jamais vue libre."
           }
         ],
         "filiation": {
@@ -6939,6 +7828,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "Freedom of expression and thought is absolutely necessary — even a false opinion must be allowed since truth needs contradiction."
+          },
+          {
+            "nom": "THE SUBJECTION OF WOMEN",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 85,
+            "desc": "The legal subordination of one sex to the other is the last feudal privilege. Nothing proves woman's nature: she has never been seen free."
           }
         ],
         "filiation": {
@@ -7003,6 +7899,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 85,
             "desc": "La compétition pour les ressources est le moteur de l'évolution — la nature n'est ni morale ni purposive."
+          },
+          {
+            "nom": "LA SÉLECTION SEXUELLE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 85,
+            "desc": "La queue du paon nuit à la survie et prospère pourtant : tout n'est pas expliqué par l'adaptation au milieu."
           }
         ],
         "filiation": {
@@ -7046,6 +7949,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 85,
             "desc": "Competition for resources drives evolution — nature is neither moral nor purposive."
+          },
+          {
+            "nom": "SEXUAL SELECTION",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 85,
+            "desc": "The peacock's tail harms survival and still prospers: not everything is explained by adaptation to the environment."
           }
         ],
         "filiation": {
@@ -7110,6 +8020,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 80,
             "desc": "Bascule contre Hegel : la vérité n'est pas un système objectif mais une appropriation intérieure passionnée — le subjectif est la vérité."
+          },
+          {
+            "nom": "L'ANGOISSE",
+            "cat": "immanent",
+            "type": "Existentialisme",
+            "puissance": 88,
+            "desc": "Le vertige devant sa propre liberté : on ne craint pas de tomber, on craint de vouloir sauter."
           }
         ],
         "filiation": {
@@ -7154,6 +8071,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 80,
             "desc": "A shift against Hegel: truth is not an objective system but passionate inward appropriation — subjectivity is truth."
+          },
+          {
+            "nom": "ANXIETY",
+            "cat": "immanent",
+            "type": "Existentialisme",
+            "puissance": 88,
+            "desc": "The dizziness of one's own freedom: one does not fear falling, one fears wanting to jump."
           }
         ],
         "filiation": {
@@ -7219,6 +8143,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Certains jugements sont immédiatement évidents pour la conscience — fondement d'une épistémologie sans rationalisme pur."
+          },
+          {
+            "nom": "LE JUGEMENT COMME ACCEPTATION",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 72,
+            "desc": "Juger n'est pas lier deux idées mais accepter ou rejeter une représentation : la logique se détache de la grammaire."
           }
         ],
         "filiation": {
@@ -7262,6 +8193,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Certain judgments are immediately evident to consciousness — the foundation of an epistemology without pure rationalism."
+          },
+          {
+            "nom": "JUDGEMENT AS ACCEPTANCE",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 72,
+            "desc": "To judge is not to link two ideas but to accept or reject a presentation: logic detaches itself from grammar."
           }
         ],
         "filiation": {
@@ -7326,6 +8264,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 80,
             "desc": "Troisième forme d'inférence après déduction et induction : l'abduction consiste à inférer l'hypothèse la plus explicative."
+          },
+          {
+            "nom": "LA VÉRITÉ COMME OPINION FINALE",
+            "cat": "immanent",
+            "type": "Pragmatisme",
+            "puissance": 85,
+            "desc": "Le vrai est ce sur quoi la communauté des chercheurs finirait par tomber d'accord. La vérité cesse d'être un rapport et devient un terme."
           }
         ],
         "filiation": {
@@ -7369,6 +8314,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 80,
             "desc": "A third form of inference after deduction and induction: abduction infers the most explanatory hypothesis from observed facts."
+          },
+          {
+            "nom": "TRUTH AS FINAL OPINION",
+            "cat": "immanent",
+            "type": "Pragmatisme",
+            "puissance": 85,
+            "desc": "The true is what the community of inquirers would ultimately agree upon. Truth stops being a relation and becomes a limit."
           }
         ],
         "filiation": {
@@ -7433,6 +8385,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 80,
             "desc": "Les expériences mystiques et religieuses sont des données empiriques réelles — leur valeur pratique légitime leur étude philosophique."
+          },
+          {
+            "nom": "LE FLUX DE CONSCIENCE",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 88,
+            "desc": "La pensée n'est pas faite de morceaux : elle coule. Les états mentaux n'ont pas de bords, seulement des franges."
           }
         ],
         "filiation": {
@@ -7476,6 +8435,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 80,
             "desc": "Mystical and religious experiences are real empirical data — their practical value legitimizes their philosophical study."
+          },
+          {
+            "nom": "THE STREAM OF CONSCIOUSNESS",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 88,
+            "desc": "Thought is not made of pieces: it flows. Mental states have no edges, only fringes."
           }
         ],
         "filiation": {
@@ -7539,6 +8505,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "Le monde quotidien est plein de contradictions internes — la réalité vraie doit les dépasser dans une totalité cohérente."
+          },
+          {
+            "nom": "MON POSTE ET SES DEVOIRS",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 70,
+            "desc": "Le devoir n'est pas déduit d'un principe : il vient de la place que j'occupe déjà dans un tout organisé."
           }
         ],
         "filiation": {
@@ -7581,6 +8554,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "The everyday world is full of internal contradictions — true reality must overcome them in a coherent totality."
+          },
+          {
+            "nom": "MY STATION AND ITS DUTIES",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 70,
+            "desc": "Duty is not deduced from a principle: it comes from the place I already hold within an organised whole."
           }
         ],
         "filiation": {
@@ -7644,6 +8624,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "L'arithmétique est réductible à la logique pure — programme fondationnaliste détruit par le paradoxe de Russell."
+          },
+          {
+            "nom": "LE PRINCIPE DE CONTEXTE",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "Ne jamais demander le sens d'un mot isolément, mais seulement dans la proposition où il figure."
           }
         ],
         "filiation": {
@@ -7687,6 +8674,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "Arithmetic is reducible to pure logic — a foundationalist program destroyed by Russell's paradox."
+          },
+          {
+            "nom": "THE CONTEXT PRINCIPLE",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "Never ask for a word's meaning in isolation, but only within the proposition where it occurs."
           }
         ],
         "filiation": {
@@ -7751,6 +8745,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Le critère de choix entre théories scientifiques est la commodité, non la vérité absolue — science comme instrument."
+          },
+          {
+            "nom": "L'INVENTION MATHÉMATIQUE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "La solution surgit en montant dans l'omnibus, après des semaines d'échec : le travail inconscient fait partie de la méthode."
           }
         ],
         "filiation": {
@@ -7792,6 +8793,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "The criterion for choosing between scientific theories is convenience, not absolute truth — science as instrument."
+          },
+          {
+            "nom": "MATHEMATICAL INVENTION",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "The solution arrives while boarding the omnibus, after weeks of failure: unconscious work belongs to the method."
           }
         ],
         "filiation": {
@@ -7854,6 +8862,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 78,
             "desc": "Les pulsions refoulées se transforment en créations culturelles — l'art, la science, la morale comme dérivations du désir."
+          },
+          {
+            "nom": "LA PULSION DE MORT",
+            "cat": "transcendant",
+            "type": "Existentialisme",
+            "puissance": 85,
+            "desc": "Au-delà du principe de plaisir, quelque chose répète la souffrance. Le vivant tend aussi vers l'état inanimé."
           }
         ],
         "filiation": {
@@ -7897,6 +8912,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 78,
             "desc": "Repressed drives transform into cultural creations — art, science, morality as derivatives of desire."
+          },
+          {
+            "nom": "THE DEATH DRIVE",
+            "cat": "transcendant",
+            "type": "Existentialisme",
+            "puissance": 85,
+            "desc": "Beyond the pleasure principle, something repeats suffering. The living also tends toward the inanimate state."
           }
         ],
         "filiation": {
@@ -7961,6 +8983,13 @@ const PHILOMON_DATA = {
             "type": "Structuralisme",
             "puissance": 82,
             "desc": "Un signe ne vaut que par opposition aux autres — le sens est relationnel, non substantiel. \"Chien\" signifie ce que \"chat\" ne signifie pas."
+          },
+          {
+            "nom": "SYNCHRONIE ET DIACHRONIE",
+            "cat": "immanent",
+            "type": "Structuralisme",
+            "puissance": 80,
+            "desc": "L'état d'une langue se décrit sans son histoire : la partie d'échecs en cours ne dépend pas des coups qui l'ont produite."
           }
         ],
         "filiation": {
@@ -8003,6 +9032,13 @@ const PHILOMON_DATA = {
             "type": "Structuralisme",
             "puissance": 82,
             "desc": "A sign has value only through opposition to others — meaning is relational, not substantial."
+          },
+          {
+            "nom": "SYNCHRONY AND DIACHRONY",
+            "cat": "immanent",
+            "type": "Structuralisme",
+            "puissance": 80,
+            "desc": "A language's state is describable without its history: the chess position at hand does not depend on the moves that produced it."
           }
         ],
         "filiation": {
@@ -8066,6 +9102,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 78,
             "desc": "Force créatrice qui traverse la matière et produit l'évolution — contre le mécanisme darwinien pur, l'évolution a une direction."
+          },
+          {
+            "nom": "LA MÉMOIRE PURE",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "Le souvenir n'est pas rangé dans le cerveau : le cerveau ne fait que le rappeler à l'action. Se souvenir, c'est revenir dans le passé."
           }
         ],
         "filiation": {
@@ -8109,6 +9152,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 78,
             "desc": "A creative force traversing matter and producing evolution — against pure Darwinian mechanism, evolution has a direction."
+          },
+          {
+            "nom": "PURE MEMORY",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "A memory is not stored in the brain: the brain only recalls it into action. To remember is to move back into the past."
           }
         ],
         "filiation": {
@@ -8172,6 +9222,13 @@ const PHILOMON_DATA = {
             "type": "Pragmatisme",
             "puissance": 78,
             "desc": "L'éducation est l'expérience vécue, non la transmission passive — apprendre en faisant, enquêter, résoudre."
+          },
+          {
+            "nom": "L'ENQUÊTE",
+            "cat": "immanent",
+            "type": "Pragmatisme",
+            "puissance": 85,
+            "desc": "Penser commence dans une situation troublée et s'achève quand elle redevient praticable. La logique est la théorie de ce passage."
           }
         ],
         "filiation": {
@@ -8214,6 +9271,13 @@ const PHILOMON_DATA = {
             "type": "Pragmatisme",
             "puissance": 78,
             "desc": "Education is lived experience, not passive transmission — learn by doing, inquiring, problem-solving."
+          },
+          {
+            "nom": "INQUIRY",
+            "cat": "immanent",
+            "type": "Pragmatisme",
+            "puissance": 85,
+            "desc": "Thinking begins in a troubled situation and ends when it becomes workable again. Logic is the theory of that passage."
           }
         ],
         "filiation": {
@@ -8277,6 +9341,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Face à l'indétermination, le bon sens du physicien — non la logique — décide quelle hypothèse réviser."
+          },
+          {
+            "nom": "SAUVER LES PHÉNOMÈNES",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Une théorie physique ne dit pas ce qu'est le monde : elle range les apparences. Ce fut la thèse des astronomes grecs avant d'être la sienne."
           }
         ],
         "filiation": {
@@ -8318,6 +9389,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Facing underdetermination, the physicist's common sense — not logic — decides which hypothesis to revise."
+          },
+          {
+            "nom": "SAVING THE PHENOMENA",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "A physical theory does not say what the world is: it orders appearances. This was the Greek astronomers' thesis before it was his."
           }
         ],
         "filiation": {
@@ -8380,6 +9458,13 @@ const PHILOMON_DATA = {
             "type": "Humanisme",
             "puissance": 78,
             "desc": "Ceux qui ne se souviennent pas du passé sont condamnés à le répéter — la mémoire historique comme condition de la liberté."
+          },
+          {
+            "nom": "LA FOI ANIMALE",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Aucun argument ne franchit le scepticisme ; c'est l'action qui le franchit. Croire au monde est un acte vital, non une conclusion."
           }
         ],
         "filiation": {
@@ -8421,6 +9506,13 @@ const PHILOMON_DATA = {
             "type": "Humanisme",
             "puissance": 78,
             "desc": "Those who cannot remember the past are condemned to repeat it — historical memory as a condition of freedom."
+          },
+          {
+            "nom": "ANIMAL FAITH",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "No argument crosses scepticism; action does. Believing in the world is a vital act, not a conclusion."
           }
         ],
         "filiation": {
@@ -8483,6 +9575,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 68,
             "desc": "La réalité ultime consiste en âmes éternelles liées par des relations d'amour — idéalisme personnel contre l'Absolu impersonnel de Bradley."
+          },
+          {
+            "nom": "LA SÉRIE C",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 72,
+            "desc": "Reste un ordre sans passage : les événements gardent leur place les uns par rapport aux autres, mais rien ne s'écoule."
           }
         ],
         "filiation": {
@@ -8523,6 +9622,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 68,
             "desc": "Ultimate reality consists of eternal souls bound by relations of love — personal idealism against Bradley's impersonal Absolute."
+          },
+          {
+            "nom": "THE C-SERIES",
+            "cat": "immanent",
+            "type": "Idéalisme",
+            "puissance": 72,
+            "desc": "What remains is an order without passage: events keep their places relative to one another, but nothing flows."
           }
         ],
         "filiation": {
@@ -8584,6 +9690,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "L'histoire est toujours histoire contemporaine — nous connaissons le passé à partir de nos problèmes présents."
+          },
+          {
+            "nom": "L'HISTOIRE COMME HISTOIRE DE LA LIBERTÉ",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 75,
+            "desc": "Écrite sous le fascisme : toute histoire raconte l'effort d'une liberté, et l'historien qui l'écrit y prend parti."
           }
         ],
         "filiation": {
@@ -8624,6 +9737,13 @@ const PHILOMON_DATA = {
             "type": "Idéalisme",
             "puissance": 72,
             "desc": "History is always contemporary history — we know the past from our present problems."
+          },
+          {
+            "nom": "HISTORY AS THE STORY OF LIBERTY",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 75,
+            "desc": "Written under fascism: all history recounts the effort of a freedom, and the historian writing it takes a side."
           }
         ],
         "filiation": {
@@ -8684,6 +9804,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "L'art doit être évalué par ses propres critères formels, non par ses effets sociaux, moraux ou représentatifs."
+          },
+          {
+            "nom": "L'HYPOTHÈSE MÉTAPHYSIQUE",
+            "cat": "transcendant",
+            "type": "Mysticisme",
+            "puissance": 65,
+            "desc": "Si la forme nous émeut sans rien représenter, c'est peut-être qu'elle donne accès à la réalité derrière les apparences."
           }
         ],
         "filiation": {
@@ -8724,6 +9851,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "Art must be evaluated by its own formal criteria, not by social, moral, or representational effects."
+          },
+          {
+            "nom": "THE METAPHYSICAL HYPOTHESIS",
+            "cat": "transcendant",
+            "type": "Mysticisme",
+            "puissance": 65,
+            "desc": "If form moves us while representing nothing, perhaps it grants access to the reality behind appearances."
           }
         ],
         "filiation": {
@@ -8784,6 +9918,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 78,
             "desc": "Norme fondamentale hypothétique qui fonde la validité de tout le système — non une norme réelle mais une présupposition transcendantale."
+          },
+          {
+            "nom": "L'ÊTRE ET LE DEVOIR-ÊTRE",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 80,
+            "desc": "Aucune description de faits ne produit une norme. Le droit n'est pas ce qui se passe : il est ce qui doit être imputé."
           }
         ],
         "filiation": {
@@ -8825,6 +9966,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 78,
             "desc": "The hypothetical basic norm grounding the validity of the entire system — not a real norm but a transcendental presupposition."
+          },
+          {
+            "nom": "IS AND OUGHT",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 80,
+            "desc": "No description of facts yields a norm. Law is not what happens: it is what ought to be imputed."
           }
         ],
         "filiation": {
@@ -8887,6 +10035,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 75,
             "desc": "Le bien est une propriété simple, non naturelle, perçue par intuition directe — l'éthique est irréductible à la science naturelle."
+          },
+          {
+            "nom": "LA PREUVE DU MONDE EXTÉRIEUR",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 82,
+            "desc": "« Voici une main, en voici une autre. » Les prémisses sont plus certaines que n'importe quel argument sceptique."
           }
         ],
         "filiation": {
@@ -8929,6 +10084,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 75,
             "desc": "The good is a simple, non-natural property perceived by direct intuition — ethics is irreducible to natural science."
+          },
+          {
+            "nom": "PROOF OF AN EXTERNAL WORLD",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 82,
+            "desc": "\"Here is one hand, and here is another.\" The premises are more certain than any sceptical argument."
           }
         ],
         "filiation": {
@@ -8992,6 +10154,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 88,
             "desc": "Les descriptions définies n'ont pas de dénotation directe — analyser 'le roi de France est chauve' révèle sa forme logique réelle."
+          },
+          {
+            "nom": "LA THÉORIE DES TYPES",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 88,
+            "desc": "Une classe ne peut se contenir : stratifier les niveaux interdit au paradoxe de se former. Il répare sa propre bombe."
           }
         ],
         "filiation": {
@@ -9035,6 +10204,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 88,
             "desc": "Definite descriptions have no direct denotation — analyzing 'the King of France is bald' reveals its actual logical form."
+          },
+          {
+            "nom": "THE THEORY OF TYPES",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 88,
+            "desc": "A class cannot contain itself: stratifying levels forbids the paradox from forming. He defuses his own bomb."
           }
         ],
         "filiation": {
@@ -9099,6 +10275,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "La table solide du sens commun vs la table vide du physicien — dualité irréductible entre monde vécu et description scientifique."
+          },
+          {
+            "nom": "LA FLÈCHE DU TEMPS",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Les lois fondamentales ignorent le sens du temps ; seule l'entropie le donne. L'irréversibilité est statistique, non mécanique."
           }
         ],
         "filiation": {
@@ -9139,6 +10322,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "The solid table of common sense vs the physicist's empty table — irreducible duality between lived world and scientific description."
+          },
+          {
+            "nom": "THE ARROW OF TIME",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Fundamental laws ignore time's direction; only entropy supplies it. Irreversibility is statistical, not mechanical."
           }
         ],
         "filiation": {
@@ -9200,6 +10390,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "Dire 'il est vrai que p' n'ajoute rien à dire 'p' — la vérité est un prédicat redondant (théorie déflationniste)."
+          },
+          {
+            "nom": "LE THÉORÈME DE RAMSEY",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 80,
+            "desc": "Dans tout désordre assez grand, une régularité doit apparaître. Le hasard complet est mathématiquement impossible."
           }
         ],
         "filiation": {
@@ -9241,6 +10438,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "Saying 'it is true that p' adds nothing to saying 'p' — truth is a redundant predicate (deflationary theory)."
+          },
+          {
+            "nom": "RAMSEY'S THEOREM",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 80,
+            "desc": "In any large enough disorder, some regularity must appear. Complete randomness is mathematically impossible."
           }
         ],
         "filiation": {
@@ -9303,6 +10507,13 @@ const PHILOMON_DATA = {
             "type": "Positivisme",
             "puissance": 78,
             "desc": "Les questions d'existence se posent à l'intérieur d'un cadre linguistique ou à l'extérieur (pragmatique) — pas une vérité absolue."
+          },
+          {
+            "nom": "L'EXPLICATION",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 75,
+            "desc": "Remplacer un concept vague par un concept précis qui en fait le travail : la philosophie ne décrit pas les mots, elle les remplace."
           }
         ],
         "filiation": {
@@ -9346,6 +10557,13 @@ const PHILOMON_DATA = {
             "type": "Positivisme",
             "puissance": 78,
             "desc": "Existence questions arise within a linguistic framework (internal) or about it (external/pragmatic) — no absolute truth."
+          },
+          {
+            "nom": "EXPLICATION",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 75,
+            "desc": "Replace a vague concept with a precise one that does its work: philosophy does not describe words, it replaces them."
           }
         ],
         "filiation": {
@@ -9410,6 +10628,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "Critique des interprétations idéalistes de la physique quantique — la physique ne parle pas de tables qui disparaissent."
+          },
+          {
+            "nom": "CONTRE LA PHYSIQUE POPULAIRE",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "Quand le physicien annonce que sa table n'est pas solide, il confond deux usages du mot. La vulgarisation fabrique de la fausse métaphysique."
           }
         ],
         "filiation": {
@@ -9451,6 +10676,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "Critique of idealist interpretations of quantum physics — physics does not speak of tables that disappear."
+          },
+          {
+            "nom": "AGAINST POPULAR PHYSICS",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "When the physicist announces his table is not solid, he conflates two uses of the word. Popularisation manufactures false metaphysics."
           }
         ],
         "filiation": {
@@ -9513,6 +10745,13 @@ const PHILOMON_DATA = {
             "type": "Marxisme",
             "puissance": 78,
             "desc": "Dans les sociétés civiles avancées, la révolution doit passer par une longue guerre de position culturelle avant toute prise du pouvoir."
+          },
+          {
+            "nom": "LE SENS COMMUN",
+            "cat": "immanent",
+            "type": "Philo. Politique",
+            "puissance": 78,
+            "desc": "La conception du monde du peuple est un dépôt désordonné où l'ordre ancien survit. La transformer est déjà une bataille politique."
           }
         ],
         "filiation": {
@@ -9556,6 +10795,13 @@ const PHILOMON_DATA = {
             "type": "Marxisme",
             "puissance": 78,
             "desc": "In advanced civil societies, revolution must pass through a long cultural war of position before any seizure of power."
+          },
+          {
+            "nom": "COMMON SENSE",
+            "cat": "immanent",
+            "type": "Philo. Politique",
+            "puissance": 78,
+            "desc": "The people's worldview is a disordered deposit where the old order survives. Transforming it is already a political battle."
           }
         ],
         "filiation": {
@@ -9620,6 +10866,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 82,
             "desc": "L'ange de Klee voit la catastrophe s'accumuler — la philosophie de l'histoire comme regard sur les ruines du progrès."
+          },
+          {
+            "nom": "LE FLÂNEUR",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Marcher dans la foule sans y appartenir : la ville devient lisible pour qui refuse de s'y presser."
           }
         ],
         "filiation": {
@@ -9664,6 +10917,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 82,
             "desc": "Klee's angel sees catastrophe accumulate — philosophy of history as a gaze upon the ruins of progress."
+          },
+          {
+            "nom": "THE FLÂNEUR",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Walking in the crowd without belonging to it: the city becomes readable to whoever refuses to hurry through it."
           }
         ],
         "filiation": {
@@ -9729,6 +10989,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 70,
             "desc": "Chaque art crée un espace virtuel spécifique — la musique crée un temps virtuel, la peinture un espace virtuel."
+          },
+          {
+            "nom": "LE SYMBOLISME DISCURSIF",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 75,
+            "desc": "Le langage aligne ses signes un à un ; la musique et l'image donnent tout à la fois. Deux logiques, non deux degrés."
           }
         ],
         "filiation": {
@@ -9769,6 +11036,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 70,
             "desc": "Each art creates a specific virtual space — music creates virtual time, painting a virtual space."
+          },
+          {
+            "nom": "DISCURSIVE SYMBOLISM",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 75,
+            "desc": "Language lines its signs up one by one; music and image give everything at once. Two logics, not two degrees."
           }
         ],
         "filiation": {
@@ -9830,6 +11104,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 68,
             "desc": "Si le comportement est entièrement déterminé par l'environnement, une bonne société peut être conçue scientifiquement."
+          },
+          {
+            "nom": "PAR-DELÀ LA LIBERTÉ ET LA DIGNITÉ",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 78,
+            "desc": "L'homme autonome est une fiction qui protège notre ignorance des causes. Le supprimer, c'est pouvoir enfin concevoir la culture."
           }
         ],
         "filiation": {
@@ -9871,6 +11152,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 68,
             "desc": "If behavior is entirely determined by environment, a good society can be scientifically designed."
+          },
+          {
+            "nom": "BEYOND FREEDOM AND DIGNITY",
+            "cat": "transcendant",
+            "type": "Matérialisme",
+            "puissance": 78,
+            "desc": "Autonomous man is a fiction shielding our ignorance of causes. Removing him is what finally lets culture be designed."
           }
         ],
         "filiation": {
@@ -9933,6 +11221,13 @@ const PHILOMON_DATA = {
             "type": "Positivisme",
             "puissance": 72,
             "desc": "Si les termes théoriques sont nécessaires, ils ne peuvent être éliminés — sinon ils sont superflus. Tension entre utilité et signification empirique."
+          },
+          {
+            "nom": "L'EXPLICATION STATISTIQUE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Expliquer par une loi de probabilité, c'est expliquer à un degré : l'explication cesse d'être tout ou rien."
           }
         ],
         "filiation": {
@@ -9973,6 +11268,13 @@ const PHILOMON_DATA = {
             "type": "Positivisme",
             "puissance": 72,
             "desc": "If theoretical terms are necessary they cannot be eliminated — otherwise they are superfluous. Tension between utility and empirical significance."
+          },
+          {
+            "nom": "STATISTICAL EXPLANATION",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "To explain by a probabilistic law is to explain to a degree: explanation stops being all or nothing."
           }
         ],
         "filiation": {
@@ -10034,6 +11336,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 85,
             "desc": "Contre Platon, Hegel, Marx — le totalitarisme est la conséquence de l'historicisme et de la certitude intellectuelle. La société ouverte accueille la critique."
+          },
+          {
+            "nom": "LA MISÈRE DE L'HISTORICISME",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 82,
+            "desc": "Aucune loi ne gouverne l'histoire : la connaissance future est imprévisible, donc le cours futur l'est aussi."
           }
         ],
         "filiation": {
@@ -10077,6 +11386,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 85,
             "desc": "Against Plato, Hegel, Marx — totalitarianism follows from historicism and intellectual certainty. The open society welcomes criticism."
+          },
+          {
+            "nom": "THE POVERTY OF HISTORICISM",
+            "cat": "transcendant",
+            "type": "Philo. Histoire",
+            "puissance": 82,
+            "desc": "No law governs history: future knowledge is unpredictable, so the future course is too."
           }
         ],
         "filiation": {
@@ -10141,6 +11457,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Distinction entre connaissance pratique (savoir nager) et connaissance propositionnelle (savoir que l'eau est H2O) — irréductibilité du pratique au théorique."
+          },
+          {
+            "nom": "LES DISPOSITIONS",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 80,
+            "desc": "Dire qu'un homme est irritable, c'est parler de ce qu'il ferait, non d'un événement caché. Le verre est fragile sans se briser."
           }
         ],
         "filiation": {
@@ -10181,6 +11504,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Distinction between practical knowledge (knowing how to swim) and propositional knowledge (knowing that water is H2O)."
+          },
+          {
+            "nom": "DISPOSITIONS",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 80,
+            "desc": "Calling a man irritable speaks of what he would do, not of a hidden event. Glass is brittle without breaking."
           }
         ],
         "filiation": {
@@ -10242,6 +11572,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 80,
             "desc": "Gödel est platonicien : les objets mathématiques existent indépendamment de l'esprit — leurs vérités sont découvertes, non inventées."
+          },
+          {
+            "nom": "LA PREUVE ONTOLOGIQUE",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 72,
+            "desc": "Formalisée en logique modale et gardée dans un tiroir : l'inventeur de l'incomplétude tenait à ce que l'argument fût valide."
           }
         ],
         "filiation": {
@@ -10284,6 +11621,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 80,
             "desc": "Gödel is a Platonist: mathematical objects exist independently of mind — their truths are discovered, not invented."
+          },
+          {
+            "nom": "THE ONTOLOGICAL PROOF",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 72,
+            "desc": "Formalised in modal logic and kept in a drawer: the discoverer of incompleteness insisted the argument was valid."
           }
         ],
         "filiation": {
@@ -10347,6 +11691,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "Pour éviter le paradoxe du menteur, séparer le langage décrit (objet) du langage qui décrit (méta) — hiérarchie sémantique."
+          },
+          {
+            "nom": "L'INDÉFINISSABILITÉ DE LA VÉRITÉ",
+            "cat": "transcendant",
+            "type": "Logique",
+            "puissance": 88,
+            "desc": "Aucun langage assez riche ne peut définir sa propre vérité. Il faut toujours monter d'un étage."
           }
         ],
         "filiation": {
@@ -10389,6 +11740,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "To avoid the liar paradox, separate the language described (object) from the language doing the describing (meta) — semantic hierarchy."
+          },
+          {
+            "nom": "THE UNDEFINABILITY OF TRUTH",
+            "cat": "transcendant",
+            "type": "Logique",
+            "puissance": 88,
+            "desc": "No sufficiently rich language can define its own truth. One must always climb one storey higher."
           }
         ],
         "filiation": {
@@ -10451,6 +11809,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "La biologie a ses propres lois (téléonomiques) irréductibles à la physique — la causalité finale en biologie est légitime."
+          },
+          {
+            "nom": "CAUSES PROXIMALES ET ULTIMES",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Pourquoi l'oiseau migre-t-il ? La longueur du jour et l'histoire de l'espèce répondent tous deux, sans se concurrencer."
           }
         ],
         "filiation": {
@@ -10491,6 +11856,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Biology has its own (teleomatic) laws irreducible to physics — final causation in biology is legitimate."
+          },
+          {
+            "nom": "PROXIMATE AND ULTIMATE CAUSES",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Why does the bird migrate? Day length and the species' history both answer, without competing."
           }
         ],
         "filiation": {
@@ -10552,6 +11924,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 78,
             "desc": "La transgression ne supprime pas l'interdit mais le complète — l'interdit et sa violation sont dialectiquement liés."
+          },
+          {
+            "nom": "L'EXPÉRIENCE INTÉRIEURE",
+            "cat": "transcendant",
+            "type": "Mysticisme",
+            "puissance": 78,
+            "desc": "Une mystique sans Dieu : aller au bout du possible pour atteindre le point où le savoir se défait."
           }
         ],
         "filiation": {
@@ -10595,6 +11974,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 78,
             "desc": "Transgression does not abolish the prohibition but completes it — prohibition and its violation are dialectically linked."
+          },
+          {
+            "nom": "INNER EXPERIENCE",
+            "cat": "transcendant",
+            "type": "Mysticisme",
+            "puissance": 78,
+            "desc": "A mysticism without God: going to the end of the possible to reach the point where knowledge comes undone."
           }
         ],
         "filiation": {
@@ -10659,6 +12045,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 80,
             "desc": "Trois registres de l'existence humaine : le symbolique (langage), l'imaginaire (image/moi), le réel (ce qui résiste à toute symbolisation)."
+          },
+          {
+            "nom": "LE DÉSIR EST LE DÉSIR DE L'AUTRE",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "On ne désire jamais un objet : on désire être désiré, et l'on emprunte à autrui jusqu'à la forme de son manque."
           }
         ],
         "filiation": {
@@ -10703,6 +12096,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 80,
             "desc": "Three registers of human existence: the symbolic (language), the imaginary (image/ego), the real (that which resists all symbolization)."
+          },
+          {
+            "nom": "DESIRE IS THE DESIRE OF THE OTHER",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "One never desires an object: one desires to be desired, borrowing from others even the shape of one's lack."
           }
         ],
         "filiation": {
@@ -10768,6 +12168,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 82,
             "desc": "Refus de tout système clos et de toute identité positive — la pensée doit maintenir la tension du non-identique contre la totalisation."
+          },
+          {
+            "nom": "APRÈS AUSCHWITZ",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 82,
+            "desc": "Écrire un poème après Auschwitz est barbare — et la phrase vaut contre elle-même, car se taire le serait aussi."
           }
         ],
         "filiation": {
@@ -10812,6 +12219,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 82,
             "desc": "Refusal of all closed systems and positive identity — thought must maintain the tension of the non-identical against totalization."
+          },
+          {
+            "nom": "AFTER AUSCHWITZ",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 82,
+            "desc": "To write a poem after Auschwitz is barbaric — and the sentence turns on itself, for silence would be barbaric too."
           }
         ],
         "filiation": {
@@ -10877,6 +12291,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 88,
             "desc": "Rupture radicale avec toute tradition politique — le totalitarisme vise à détruire la pluralité humaine et à rendre les hommes superflus."
+          },
+          {
+            "nom": "LA NATALITÉ",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 82,
+            "desc": "Parce que des êtres neufs naissent sans cesse, quelque chose d'imprévu peut toujours commencer. C'est le fondement de l'action."
           }
         ],
         "filiation": {
@@ -10919,6 +12340,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 88,
             "desc": "A radical break with all political tradition — totalitarianism aims to destroy human plurality and render humans superfluous."
+          },
+          {
+            "nom": "NATALITY",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 82,
+            "desc": "Because new beings are ceaselessly born, something unforeseen can always begin. That is the ground of action."
           }
         ],
         "filiation": {
@@ -10982,6 +12410,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 75,
             "desc": "L'existence humaine est fondamentalement ambiguë — ni liberté absolue (Sartre) ni déterminisme — une liberté incarnée et situationnelle."
+          },
+          {
+            "nom": "L'INTENTIONNALITÉ OPÉRANTE",
+            "cat": "immanent",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "Ma main sait saisir avant que je le sache : il existe une visée du corps qui précède toute conscience thématique."
           }
         ],
         "filiation": {
@@ -11024,6 +12459,13 @@ const PHILOMON_DATA = {
             "type": "Existentialisme",
             "puissance": 75,
             "desc": "Human existence is fundamentally ambiguous — neither absolute freedom (Sartre) nor determinism — an embodied, situational freedom."
+          },
+          {
+            "nom": "OPERATIVE INTENTIONALITY",
+            "cat": "immanent",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "My hand knows how to grasp before I do: there is an aiming of the body preceding all thematic consciousness."
           }
         ],
         "filiation": {
@@ -11086,6 +12528,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 78,
             "desc": "Les règles juridiques ont des cas centraux (clairement applicables) et une pénombre d'incertitude — le pouvoir discrétionnaire judiciaire est irréductible."
+          },
+          {
+            "nom": "LE POINT DE VUE INTERNE",
+            "cat": "immanent",
+            "type": "Philo. Droit",
+            "puissance": 82,
+            "desc": "Le sociologue voit des habitudes ; le juge voit une règle qui l'oblige. Sans ce point de vue, on ne décrit qu'un bandit armé."
           }
         ],
         "filiation": {
@@ -11128,6 +12577,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Droit",
             "puissance": 78,
             "desc": "Legal rules have core cases (clearly applicable) and a penumbra of uncertainty — judicial discretion is irreducible."
+          },
+          {
+            "nom": "THE INTERNAL POINT OF VIEW",
+            "cat": "immanent",
+            "type": "Philo. Droit",
+            "puissance": 82,
+            "desc": "The sociologist sees habits; the judge sees a rule that binds. Without that viewpoint, only a gunman is described."
           }
         ],
         "filiation": {
@@ -11191,6 +12647,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Les objets physiques sont des constructions logiques à partir de données sensorielles immédiates — empirisme radical."
+          },
+          {
+            "nom": "LE DROIT D'ÊTRE SÛR",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 78,
+            "desc": "Savoir, c'est tenir pour vrai, avoir raison de le tenir, et avoir le droit d'en être sûr. Trois conditions, pas une."
           }
         ],
         "filiation": {
@@ -11233,6 +12696,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 72,
             "desc": "Physical objects are logical constructions from immediate sensory data — radical empiricism."
+          },
+          {
+            "nom": "THE RIGHT TO BE SURE",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 78,
+            "desc": "To know is to hold true, to be right in holding it, and to have the right to be sure. Three conditions, not one."
           }
         ],
         "filiation": {
@@ -11295,6 +12765,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "Certains énoncés font ce qu'ils disent — 'je vous déclare mariés' accomplit le mariage, non le décrit."
+          },
+          {
+            "nom": "LA DÉFENSE DES EXCUSES",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 72,
+            "desc": "Les mille façons de mal agir sans être coupable — par mégarde, par inadvertance, sous contrainte — sont déposées dans le vocabulaire ordinaire."
           }
         ],
         "filiation": {
@@ -11336,6 +12813,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "Certain utterances do what they say — 'I now pronounce you married' accomplishes the marriage, does not describe it."
+          },
+          {
+            "nom": "A PLEA FOR EXCUSES",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 72,
+            "desc": "The thousand ways of acting badly without being guilty — inadvertently, by mistake, under duress — are deposited in ordinary vocabulary."
           }
         ],
         "filiation": {
@@ -11398,6 +12882,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "La représentation artistique n'est pas copie du réel mais convention symbolique — la ressemblance est construite, non naturelle."
+          },
+          {
+            "nom": "IL N'Y A QUE DES ARTISTES",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "« L'Art » avec majuscule n'existe pas : il n'y a que des hommes qui résolvent des problèmes précis, dans des situations datées."
           }
         ],
         "filiation": {
@@ -11439,6 +12930,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Artistic representation is not a copy of reality but a symbolic convention — resemblance is constructed, not natural."
+          },
+          {
+            "nom": "THERE ARE ONLY ARTISTS",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "\"Art\" with a capital A does not exist: there are only people solving specific problems in dated situations."
           }
         ],
         "filiation": {
@@ -11501,6 +12999,13 @@ const PHILOMON_DATA = {
             "type": "Constructivisme",
             "puissance": 78,
             "desc": "Le problème de 'grue' (vert+bleu) montre que l'induction dépend de prédicats antérieurement projetés — toute induction est convention."
+          },
+          {
+            "nom": "AUTOGRAPHIQUE ET ALLOGRAPHIQUE",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Un faux tableau est concevable, un faux quatuor ne l'est pas. Certains arts tiennent à leur histoire de production, d'autres à leur notation."
           }
         ],
         "filiation": {
@@ -11543,6 +13048,13 @@ const PHILOMON_DATA = {
             "type": "Constructivisme",
             "puissance": 78,
             "desc": "The 'grue' problem (green+blue) shows induction depends on previously projected predicates — all induction is convention."
+          },
+          {
+            "nom": "AUTOGRAPHIC AND ALLOGRAPHIC",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "A forged painting is conceivable, a forged quartet is not. Some arts depend on their history of production, others on their notation."
           }
         ],
         "filiation": {
@@ -11606,6 +13118,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 85,
             "desc": "Des manuels de traduction radicalement différents peuvent être compatibles avec les mêmes comportements — le sens est indéterminé."
+          },
+          {
+            "nom": "ÊTRE, C'EST ÊTRE LA VALEUR D'UNE VARIABLE",
+            "cat": "transcendant",
+            "type": "Logique",
+            "puissance": 85,
+            "desc": "Ce à quoi une théorie s'engage n'est pas ce qu'elle nomme, mais ce sur quoi ses quantificateurs doivent porter."
           }
         ],
         "filiation": {
@@ -11649,6 +13168,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 85,
             "desc": "Radically different translation manuals can be compatible with the same behaviors — meaning is indeterminate."
+          },
+          {
+            "nom": "TO BE IS TO BE THE VALUE OF A VARIABLE",
+            "cat": "transcendant",
+            "type": "Logique",
+            "puissance": 85,
+            "desc": "What a theory commits to is not what it names, but what its quantifiers must range over."
           }
         ],
         "filiation": {
@@ -11713,6 +13239,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 68,
             "desc": "Cartographie systématique des positions éthiques (déontologie, téléologie, intuitionnisme) — cadre conceptuel pour la philosophie morale."
+          },
+          {
+            "nom": "BIENFAISANCE ET JUSTICE",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 70,
+            "desc": "Deux principes irréductibles suffisent à la morale : faire du bien, et le répartir équitablement. Aucun ne domine l'autre."
           }
         ],
         "filiation": {
@@ -11753,6 +13286,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 68,
             "desc": "Systematic mapping of ethical positions (deontology, teleology, intuitionism) — conceptual framework for moral philosophy."
+          },
+          {
+            "nom": "BENEFICENCE AND JUSTICE",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 70,
+            "desc": "Two irreducible principles suffice for morality: do good, and distribute it fairly. Neither overrides the other."
           }
         ],
         "filiation": {
@@ -11813,6 +13353,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "L'avant-garde maintient la qualité culturelle contre le kitsch de masse — tension entre culture authentique et culture commerciale."
+          },
+          {
+            "nom": "LE GOÛT EST INVOLONTAIRE",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 70,
+            "desc": "On ne décide pas d'aimer une œuvre : le jugement se produit, et l'honnêteté consiste à ne pas le corriger après coup."
           }
         ],
         "filiation": {
@@ -11854,6 +13401,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "The avant-garde maintains cultural quality against mass kitsch — tension between authentic and commercial culture."
+          },
+          {
+            "nom": "TASTE IS INVOLUNTARY",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 70,
+            "desc": "One does not decide to like a work: the judgement happens, and honesty means not correcting it afterwards."
           }
         ],
         "filiation": {
@@ -11916,6 +13470,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 80,
             "desc": "Les états mentaux appartiennent à l'espace des raisons (normativité), non à l'espace des causes — la psychologie n'est pas réductible à la physique."
+          },
+          {
+            "nom": "LE MYTHE DE JONES",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Une fable pour montrer que le vocabulaire mental a pu être appris du dehors : le for intérieur est une théorie devenue familière."
           }
         ],
         "filiation": {
@@ -11959,6 +13520,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 80,
             "desc": "Mental states belong to the space of reasons (normativity), not the space of causes — psychology is not reducible to physics."
+          },
+          {
+            "nom": "THE MYTH OF JONES",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "A fable showing that mental vocabulary could have been learned from outside: inwardness is a theory grown familiar."
           }
         ],
         "filiation": {
@@ -12023,6 +13591,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 75,
             "desc": "Les personnes sont des entités primitives irréductibles — ni corps pur ni âme pure, on leur attribue états mentaux et corporels également."
+          },
+          {
+            "nom": "LES ATTITUDES RÉACTIVES",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Le ressentiment et la gratitude ne dépendent d'aucune thèse sur le déterminisme : la responsabilité est déjà dans nos rapports."
           }
         ],
         "filiation": {
@@ -12064,6 +13639,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 75,
             "desc": "Persons are primitive irreducible entities — neither pure body nor pure soul; mental and corporeal states are attributed equally."
+          },
+          {
+            "nom": "REACTIVE ATTITUDES",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Resentment and gratitude depend on no thesis about determinism: responsibility already lives in our relationships."
           }
         ],
         "filiation": {
@@ -12125,6 +13707,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 78,
             "desc": "Les interlocuteurs supposent mutuellement que leurs contributions sont appropriées au contexte conversationnel en cours."
+          },
+          {
+            "nom": "LE VOULOIR-DIRE",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 80,
+            "desc": "Signifier quelque chose, c'est vouloir produire un effet par la reconnaissance même de cette intention."
           }
         ],
         "filiation": {
@@ -12166,6 +13755,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 78,
             "desc": "Interlocutors mutually assume that their contributions are appropriate to the current conversational context."
+          },
+          {
+            "nom": "SPEAKER MEANING",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 80,
+            "desc": "To mean something is to intend an effect through the very recognition of that intention."
           }
         ],
         "filiation": {
@@ -12227,6 +13823,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "Converger sur un objet par plusieurs méthodes indépendantes renforce la confiance — la corroboration multi-méthodes réduit les biais."
+          },
+          {
+            "nom": "LA LOI DE CAMPBELL",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Plus un indicateur sert à décider, plus il est corrompu — et plus il corrompt ce qu'il était censé mesurer."
           }
         ],
         "filiation": {
@@ -12268,6 +13871,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 68,
             "desc": "Converging on an object through multiple independent methods strengthens confidence — multi-method corroboration reduces bias."
+          },
+          {
+            "nom": "CAMPBELL'S LAW",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "The more an indicator is used for decisions, the more it is corrupted — and the more it corrupts what it was to measure."
           }
         ],
         "filiation": {
@@ -12329,6 +13939,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 75,
             "desc": "L'œuvre d'art est un objet avec ses propres propriétés objectivement describables — l'analyse formelle prime sur la biographie."
+          },
+          {
+            "nom": "L'ERREUR AFFECTIVE",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Juger l'œuvre par l'émotion qu'elle produit, c'est encore parler de soi. Le poème n'est pas son effet."
           }
         ],
         "filiation": {
@@ -12369,6 +13986,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 75,
             "desc": "The artwork is an object with its own objectively describable properties — formal analysis takes precedence over biography."
+          },
+          {
+            "nom": "THE AFFECTIVE FALLACY",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Judging a work by the emotion it produces is still speaking of oneself. The poem is not its effect."
           }
         ],
         "filiation": {
@@ -12429,6 +14053,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "Les concepts esthétiques sont ouverts — la créativité de l'art exige que de nouveaux cas puissent être inclus ou exclus selon les contextes."
+          },
+          {
+            "nom": "LES THÉORIES COMME RECOMMANDATIONS",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 72,
+            "desc": "Les définitions de l'art échouent comme définitions mais réussissent autrement : chacune recommande de regarder ce qu'on négligeait."
           }
         ],
         "filiation": {
@@ -12470,6 +14101,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "Aesthetic concepts are open — the creativity of art demands that new cases can be included or excluded according to context."
+          },
+          {
+            "nom": "THEORIES AS RECOMMENDATIONS",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 72,
+            "desc": "Definitions of art fail as definitions but succeed otherwise: each recommends attending to what was being overlooked."
           }
         ],
         "filiation": {
@@ -12532,6 +14170,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 80,
             "desc": "Le plaisir confirme les codes culturels ; la jouissance les brise et déstabilise — deux rapports au texte fondamentalement différents."
+          },
+          {
+            "nom": "LE PUNCTUM",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 82,
+            "desc": "Le détail qui pique et qu'on n'a pas cherché : ce qui, dans une photographie, échappe au code et blesse le regardeur."
           }
         ],
         "filiation": {
@@ -12574,6 +14219,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 80,
             "desc": "Pleasure confirms cultural codes; jouissance breaks them and destabilizes — two fundamentally different relations to the text."
+          },
+          {
+            "nom": "THE PUNCTUM",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 82,
+            "desc": "The detail that pricks and was never sought: what, in a photograph, escapes the code and wounds the viewer."
           }
         ],
         "filiation": {
@@ -12637,6 +14289,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 72,
             "desc": "La métaphysique d'Aristote-Thomas d'Aquin reste viable — substance, forme, acte et puissance sont des catégories réelles."
+          },
+          {
+            "nom": "LE PROBLÈME DE FREGE-GEACH",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 82,
+            "desc": "Si « c'est mal » n'est qu'une désapprobation, que devient la même phrase logée dans un « si… alors » ? L'expressivisme y perd son inférence."
           }
         ],
         "filiation": {
@@ -12679,6 +14338,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 72,
             "desc": "The Aristotle-Aquinas metaphysics remains viable — substance, form, act and potency are real categories."
+          },
+          {
+            "nom": "THE FREGE-GEACH PROBLEM",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 82,
+            "desc": "If \"that is wrong\" is mere disapproval, what happens to the same clause inside an \"if… then\"? Expressivism loses its inferences."
           }
         ],
         "filiation": {
@@ -12742,6 +14408,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Distinction entre faits bruts (naturels) et faits institutionnels (constitués par des conventions humaines) — préfigure Searle."
+          },
+          {
+            "nom": "L'INTERDIT DU MEURTRE DE L'INNOCENT",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 78,
+            "desc": "Aucune conséquence, si bonne soit-elle, n'autorise à tuer un innocent. Elle le soutint seule contre son université."
           }
         ],
         "filiation": {
@@ -12786,6 +14459,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Distinction between brute facts (natural) and institutional facts (constituted by human conventions) — prefigures Searle."
+          },
+          {
+            "nom": "THE BAN ON KILLING THE INNOCENT",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 78,
+            "desc": "No consequence, however good, licenses killing an innocent. She maintained this alone against her university."
           }
         ],
         "filiation": {
@@ -12851,6 +14531,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Les sciences sociales visent la compréhension (verstehen) du sens, non l'explication causale — distinction nomologique/herméneutique."
+          },
+          {
+            "nom": "COMPRENDRE UNE SOCIÉTÉ PRIMITIVE",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 75,
+            "desc": "Juger la sorcellerie azandé irrationnelle, c'est lui appliquer des critères qu'elle n'a pas. Comprendre exige d'abord d'entrer."
           }
         ],
         "filiation": {
@@ -12891,6 +14578,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Social sciences aim at understanding (verstehen) of meaning, not causal explanation — nomological/hermeneutic distinction."
+          },
+          {
+            "nom": "UNDERSTANDING A PRIMITIVE SOCIETY",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 75,
+            "desc": "Calling Azande witchcraft irrational applies criteria it never held. Understanding requires entering first."
           }
         ],
         "filiation": {
@@ -12952,6 +14646,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "L'esprit, le monde et l'autre agent forment un triangle — la pensée et la signification n'émergent que dans des interactions triangulaires."
+          },
+          {
+            "nom": "CONTRE LE SCHÈME CONCEPTUEL",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 85,
+            "desc": "L'idée d'un cadre organisant un contenu neutre est le troisième dogme de l'empirisme. Sans elle, le relativisme perd son objet."
           }
         ],
         "filiation": {
@@ -12994,6 +14695,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Mind, world, and the other agent form a triangle — thought and meaning emerge only in triangular interactions."
+          },
+          {
+            "nom": "AGAINST THE CONCEPTUAL SCHEME",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 85,
+            "desc": "The idea of a framework organising neutral content is empiricism's third dogma. Without it, relativism loses its subject."
           }
         ],
         "filiation": {
@@ -13057,6 +14765,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 65,
             "desc": "Les droits ne sont pas des propriétés abstraites mais des relations entre personnes au sein de pratiques sociales concrètes."
+          },
+          {
+            "nom": "L'OBLIGATION COMME LIEN",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 62,
+            "desc": "Le devoir ne tombe pas d'un principe : il naît de rapports déjà noués — père, ami, créancier — qui portent leurs exigences."
           }
         ],
         "filiation": {
@@ -13098,6 +14813,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 65,
             "desc": "Rights are not abstract properties but relations between persons within concrete social practices."
+          },
+          {
+            "nom": "OBLIGATION AS BOND",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 62,
+            "desc": "Duty does not fall from a principle: it arises from relations already formed — father, friend, creditor — that carry their own demands."
           }
         ],
         "filiation": {
@@ -13160,6 +14882,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "Les entités théoriques de la science existent réellement — l'électron est aussi réel que la table."
+          },
+          {
+            "nom": "LE TEMPS SANS PASSAGE",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Rien ne s'écoule : « maintenant » ne désigne que le moment où la phrase est dite, comme « ici » le lieu où elle est prononcée."
           }
         ],
         "filiation": {
@@ -13202,6 +14931,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "The theoretical entities of science really exist — the electron is as real as the table."
+          },
+          {
+            "nom": "TIME WITHOUT PASSAGE",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Nothing flows: \"now\" only marks when the sentence is uttered, as \"here\" marks where."
           }
         ],
         "filiation": {
@@ -13265,6 +15001,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 75,
             "desc": "Le prescriptivisme universel implique de prendre en compte les préférences de tous les affectés — convergence avec l'utilitarisme des préférences."
+          },
+          {
+            "nom": "LES DEUX NIVEAUX",
+            "cat": "immanent",
+            "type": "Utilitarisme",
+            "puissance": 78,
+            "desc": "Au quotidien, suivre des règles simples ; dans les cas difficiles, calculer. L'intuition et le calcul cessent d'être rivaux."
           }
         ],
         "filiation": {
@@ -13307,6 +15050,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 75,
             "desc": "Universal prescriptivism implies taking into account the preferences of all affected — convergence with preference utilitarianism."
+          },
+          {
+            "nom": "THE TWO LEVELS",
+            "cat": "immanent",
+            "type": "Utilitarisme",
+            "puissance": 78,
+            "desc": "Day to day, follow simple rules; in hard cases, calculate. Intuition and calculation stop being rivals."
           }
         ],
         "filiation": {
@@ -13370,6 +15120,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 75,
             "desc": "Même si l'éthique objective est une erreur, nous pouvons construire des normes rationnellement justifiées pour la coopération sociale."
+          },
+          {
+            "nom": "LE MAL ET LA TOUTE-PUISSANCE",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 80,
+            "desc": "Bon, tout-puissant, et le mal existe : trois propositions dont on ne peut garder que deux."
           }
         ],
         "filiation": {
@@ -13413,6 +15170,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 75,
             "desc": "Even if objective ethics is an error, we can construct rationally justified norms for social cooperation."
+          },
+          {
+            "nom": "EVIL AND OMNIPOTENCE",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 80,
+            "desc": "Good, omnipotent, and evil exists: three propositions of which only two can be kept."
           }
         ],
         "filiation": {
@@ -13476,6 +15240,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "Les vertus bénéficient à celui qui les possède — contre l'idée kantienne qu'une vertu pourrait nuire à son porteur."
+          },
+          {
+            "nom": "LA MORALE COMME IMPÉRATIF HYPOTHÉTIQUE",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 80,
+            "desc": "Le devoir moral n'échappe pas à la condition « si tu veux » : sans désir du bien, sa nécessité s'évapore."
           }
         ],
         "filiation": {
@@ -13520,6 +15291,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "Virtues benefit the one who possesses them — against the Kantian idea that a virtue could harm its bearer."
+          },
+          {
+            "nom": "MORALITY AS HYPOTHETICAL IMPERATIVE",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 80,
+            "desc": "Moral duty does not escape the \"if you want\" clause: without a desire for the good, its necessity evaporates."
           }
         ],
         "filiation": {
@@ -13584,6 +15362,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "Aucune liste de conditions générales ne garantit l'applicabilité des concepts esthétiques — chaque cas exige une vision nouvelle."
+          },
+          {
+            "nom": "LA CRITIQUE COMME MONSTRATION",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 70,
+            "desc": "Le critique ne prouve pas qu'une œuvre est gracieuse : il fait voir, en signalant, en comparant, jusqu'à ce que l'autre aperçoive."
           }
         ],
         "filiation": {
@@ -13624,6 +15409,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 72,
             "desc": "No list of general conditions guarantees the applicability of aesthetic concepts — each case demands fresh vision."
+          },
+          {
+            "nom": "CRITICISM AS SHOWING",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 70,
+            "desc": "The critic does not prove a work graceful: he makes it seen, pointing and comparing until the other perceives it too."
           }
         ],
         "filiation": {
@@ -13685,6 +15477,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 82,
             "desc": "La science ordinaire consiste à résoudre des problèmes sous un paradigme donné — pas à remettre en question les fondements."
+          },
+          {
+            "nom": "LA CONVERSION DU REGARD",
+            "cat": "transcendant",
+            "type": "Constructivisme",
+            "puissance": 82,
+            "desc": "Changer de paradigme n'est pas conclure : c'est voir un canard là où l'on voyait un lapin. La preuve arrive après."
           }
         ],
         "filiation": {
@@ -13727,6 +15526,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 82,
             "desc": "Ordinary science consists in solving puzzles under a given paradigm — not questioning the foundations."
+          },
+          {
+            "nom": "THE GESTALT SWITCH",
+            "cat": "transcendant",
+            "type": "Constructivisme",
+            "puissance": 82,
+            "desc": "Changing paradigm is not concluding: it is seeing a duck where a rabbit was. Proof arrives afterwards."
           }
         ],
         "filiation": {
@@ -13789,6 +15595,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 78,
             "desc": "Un programme régressif produit des hypothèses ad hoc sans nouvelles prédictions ; un programme progressif prédit des faits nouveaux."
+          },
+          {
+            "nom": "PREUVES ET RÉFUTATIONS",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 80,
+            "desc": "Même en mathématiques, une preuve se corrige par les monstres qu'on lui oppose. Le théorème d'Euler s'écrit en se défendant."
           }
         ],
         "filiation": {
@@ -13830,6 +15643,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 78,
             "desc": "A regressive program produces ad hoc hypotheses without new predictions; a progressive one predicts novel facts."
+          },
+          {
+            "nom": "PROOFS AND REFUTATIONS",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 80,
+            "desc": "Even in mathematics a proof is corrected by the monsters raised against it. Euler's theorem is written by defending itself."
           }
         ],
         "filiation": {
@@ -13892,6 +15712,13 @@ const PHILOMON_DATA = {
             "type": "Anarchisme",
             "puissance": 80,
             "desc": "La science est une idéologie parmi d'autres — l'État devrait être séparé de la science comme il l'est de l'Église."
+          },
+          {
+            "nom": "LA CONTRE-INDUCTION",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Inventer des théories incompatibles avec les faits établis : c'est le seul moyen de découvrir ce que les faits cachaient."
           }
         ],
         "filiation": {
@@ -13935,6 +15762,13 @@ const PHILOMON_DATA = {
             "type": "Anarchisme",
             "puissance": 80,
             "desc": "Science is an ideology among others — the state should be separated from science as it is from the church."
+          },
+          {
+            "nom": "COUNTERINDUCTION",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Invent theories incompatible with established facts: that is the only way to discover what the facts were hiding."
           }
         ],
         "filiation": {
@@ -13999,6 +15833,13 @@ const PHILOMON_DATA = {
             "type": "Structuralisme",
             "puissance": 80,
             "desc": "L'idéologie interpelle les individus en sujets — 'Hé, toi là !' : la constitution du sujet est un effet idéologique, non un donné."
+          },
+          {
+            "nom": "LA SURDÉTERMINATION",
+            "cat": "immanent",
+            "type": "Marxisme",
+            "puissance": 80,
+            "desc": "Aucune contradiction n'agit seule : la révolution éclate là où plusieurs retards s'accumulent, non où l'économie l'annonçait."
           }
         ],
         "filiation": {
@@ -14043,6 +15884,13 @@ const PHILOMON_DATA = {
             "type": "Structuralisme",
             "puissance": 80,
             "desc": "Ideology interpellates individuals as subjects — 'Hey, you there!': the constitution of the subject is an ideological effect, not a given."
+          },
+          {
+            "nom": "OVERDETERMINATION",
+            "cat": "immanent",
+            "type": "Marxisme",
+            "puissance": 80,
+            "desc": "No contradiction acts alone: revolution breaks out where several lags accumulate, not where economics announced it."
           }
         ],
         "filiation": {
@@ -14108,6 +15956,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 85,
             "desc": "Bascule : depuis le XVIIIe siècle, le pouvoir ne s'exerce plus sur les individus seuls mais sur la vie des populations entières."
+          },
+          {
+            "nom": "L'ÉPISTÉMÈ",
+            "cat": "transcendant",
+            "type": "Postmodernisme",
+            "puissance": 88,
+            "desc": "Chaque époque n'autorise qu'un certain ordre du dicible. Ce n'est pas ce que les savants pensent, c'est ce qu'ils peuvent penser."
           }
         ],
         "filiation": {
@@ -14152,6 +16007,13 @@ const PHILOMON_DATA = {
             "type": "Théorie Critique",
             "puissance": 85,
             "desc": "A shift: since the 18th century, power is exercised not only on individuals but on the life of entire populations."
+          },
+          {
+            "nom": "THE EPISTEME",
+            "cat": "transcendant",
+            "type": "Postmodernisme",
+            "puissance": 88,
+            "desc": "Each era permits only a certain order of the sayable. Not what scholars think, but what they are able to think."
           }
         ],
         "filiation": {
@@ -14216,6 +16078,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 78,
             "desc": "Chaque domaine a ses propres règles et critères de validité incommensurables — pas de métalangage universel pour les arbitrer."
+          },
+          {
+            "nom": "LE SUBLIME POSTMODERNE",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 75,
+            "desc": "L'art moderne fait sentir qu'il existe de l'imprésentable. Il ne console pas : il rappelle ce que la forme ne peut pas contenir."
           }
         ],
         "filiation": {
@@ -14257,6 +16126,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 78,
             "desc": "Each domain has its own incommensurable rules and validity criteria — no universal metalanguage to arbitrate between them."
+          },
+          {
+            "nom": "THE POSTMODERN SUBLIME",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 75,
+            "desc": "Modern art makes felt that something unpresentable exists. It does not console: it recalls what form cannot hold."
           }
         ],
         "filiation": {
@@ -14319,6 +16195,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Technique",
             "puissance": 82,
             "desc": "Le désir n'est pas manque (Lacan, Platon) mais production — les machines désirantes branchent et découpent des flux."
+          },
+          {
+            "nom": "LES SOCIÉTÉS DE CONTRÔLE",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 85,
+            "desc": "L'enfermement cède à la modulation continue : on n'enferme plus, on suit. Le mot de passe remplace le mur."
           }
         ],
         "filiation": {
@@ -14364,6 +16247,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Technique",
             "puissance": 82,
             "desc": "Desire is not lack (Lacan, Plato) but production — desiring-machines connect and cut flows."
+          },
+          {
+            "nom": "SOCIETIES OF CONTROL",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 85,
+            "desc": "Confinement gives way to continuous modulation: one no longer locks up, one tracks. The password replaces the wall."
           }
         ],
         "filiation": {
@@ -14430,6 +16320,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Histoire",
             "puissance": 78,
             "desc": "Après Warhol, l'art a atteint sa fin philosophique — non qu'il cesse, mais qu'il perd son projet définitionnel : toute chose peut être art."
+          },
+          {
+            "nom": "L'INTERPRÉTATION CONSTITUE L'ŒUVRE",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Deux objets identiques peuvent être deux œuvres différentes, ou n'en être aucune : ce qui décide n'est jamais dans la rétine."
           }
         ],
         "filiation": {
@@ -14473,6 +16370,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Histoire",
             "puissance": 78,
             "desc": "After Warhol, art has reached its philosophical end — not that it stops, but that it loses its definitional project: anything can be art."
+          },
+          {
+            "nom": "INTERPRETATION CONSTITUTES THE WORK",
+            "cat": "immanent",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Two identical objects may be two different works, or none: what decides is never on the retina."
           }
         ],
         "filiation": {
@@ -14536,6 +16440,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "Le statut d'art ne requiert aucune qualité perceptive particulière — c'est un statut institutionnel, non une propriété intrinsèque."
+          },
+          {
+            "nom": "LE MYTHE DE L'ATTITUDE ESTHÉTIQUE",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "Il n'existe pas de manière spéciale de regarder : celui qui « prend du recul » ne fait qu'écouter plus attentivement."
           }
         ],
         "filiation": {
@@ -14576,6 +16487,13 @@ const PHILOMON_DATA = {
             "type": "Esthétique",
             "puissance": 68,
             "desc": "Art status requires no particular perceptive quality — it is an institutional status, not an intrinsic property."
+          },
+          {
+            "nom": "THE MYTH OF THE AESTHETIC ATTITUDE",
+            "cat": "transcendant",
+            "type": "Esthétique",
+            "puissance": 78,
+            "desc": "There is no special way of looking: whoever \"stands back\" is merely attending more closely."
           }
         ],
         "filiation": {
@@ -14637,6 +16555,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 78,
             "desc": "Hériter de Wittgenstein : comprendre une expression = savoir comment l'utiliser pour prouver des assertions."
+          },
+          {
+            "nom": "LA JUSTIFICATION DE LA DÉDUCTION",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 78,
+            "desc": "Toute justification des règles logiques les emploie déjà. Le cercle n'est pas vicieux, mais il interdit de fonder du dehors."
           }
         ],
         "filiation": {
@@ -14679,6 +16604,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 78,
             "desc": "Inheriting from Wittgenstein: to understand an expression = to know how to use it in proving assertions."
+          },
+          {
+            "nom": "THE JUSTIFICATION OF DEDUCTION",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 78,
+            "desc": "Any justification of logical rules already uses them. The circle is not vicious, but it forbids grounding from outside."
           }
         ],
         "filiation": {
@@ -14742,6 +16674,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "Earth/Twin Earth : 'eau' réfère à H2O même si nos ancêtres ne connaissaient pas la chimie — le sens est dans le monde, pas dans la tête."
+          },
+          {
+            "nom": "LA RÉALISABILITÉ MULTIPLE",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "La douleur d'un poulpe et la nôtre ne partagent aucun état cérébral. Identifier le mental au neuronal est trop étroit."
           }
         ],
         "filiation": {
@@ -14783,6 +16722,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "Earth/Twin Earth: 'water' refers to H2O even if our ancestors didn't know chemistry — meaning is in the world, not in the head."
+          },
+          {
+            "nom": "MULTIPLE REALISABILITY",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "An octopus's pain and ours share no brain state. Identifying the mental with the neural is too narrow."
           }
         ],
         "filiation": {
@@ -14845,6 +16791,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 78,
             "desc": "Une solution proposée : la connaissance requiert une connexion causale appropriée entre la croyance et le fait qui la rend vraie."
+          },
+          {
+            "nom": "LA CLÔTURE DE LA JUSTIFICATION",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 75,
+            "desc": "Si je suis justifié à croire p et que p implique q, je le suis pour q. Sans ce principe, les contre-exemples ne mordent pas."
           }
         ],
         "filiation": {
@@ -14886,6 +16839,13 @@ const PHILOMON_DATA = {
             "type": "Empirisme",
             "puissance": 78,
             "desc": "A proposed solution: knowledge requires an appropriate causal connection between the belief and the fact that makes it true."
+          },
+          {
+            "nom": "CLOSURE OF JUSTIFICATION",
+            "cat": "immanent",
+            "type": "Empirisme",
+            "puissance": 75,
+            "desc": "If I am justified in believing p and p entails q, I am justified in q. Without that principle the counterexamples do not bite."
           }
         ],
         "filiation": {
@@ -14948,6 +16908,13 @@ const PHILOMON_DATA = {
             "type": "Anarchisme",
             "puissance": 82,
             "desc": "Les médias de masse fabriquent le consentement — les pouvoirs économiques et étatiques contrôlent l'information pour manipuler l'opinion publique."
+          },
+          {
+            "nom": "LA RECENSION DE SKINNER",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "Un compte rendu de librairie qui démolit le béhaviorisme : nul renforcement n'explique qu'un enfant produise des phrases jamais entendues."
           }
         ],
         "filiation": {
@@ -14991,6 +16958,13 @@ const PHILOMON_DATA = {
             "type": "Anarchisme",
             "puissance": 82,
             "desc": "Mass media manufacture consent — economic and state powers control information to manipulate public opinion."
+          },
+          {
+            "nom": "THE SKINNER REVIEW",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "A book review that demolished behaviourism: no reinforcement explains a child producing sentences never heard."
           }
         ],
         "filiation": {
@@ -15054,6 +17028,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 80,
             "desc": "La distinction réel/représentation s'effondre — les médias ne reflètent pas le réel mais le constituent et le remplacent."
+          },
+          {
+            "nom": "L'ÉCHANGE SYMBOLIQUE",
+            "cat": "immanent",
+            "type": "Postmodernisme",
+            "puissance": 78,
+            "desc": "Avant la valeur d'usage et la valeur d'échange, le don et la dépense. Ce que la marchandise a supprimé, la mort le rappelle."
           }
         ],
         "filiation": {
@@ -15096,6 +17077,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 80,
             "desc": "The real/representation distinction collapses — media do not reflect reality but constitute and replace it."
+          },
+          {
+            "nom": "SYMBOLIC EXCHANGE",
+            "cat": "immanent",
+            "type": "Postmodernisme",
+            "puissance": 78,
+            "desc": "Before use value and exchange value come gift and expenditure. What the commodity abolished, death recalls."
           }
         ],
         "filiation": {
@@ -15159,6 +17147,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Le déterminisme biologique sert des intérêts politiques conservateurs — la biologie n'est pas neutre, ses métaphores véhiculent des idéologies."
+          },
+          {
+            "nom": "LES TYMPANS DE SAN MARCO",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 82,
+            "desc": "L'espace triangulaire sous la coupole n'a pas été conçu pour ses mosaïques : toute structure n'est pas une adaptation."
           }
         ],
         "filiation": {
@@ -15202,6 +17197,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Biological determinism serves conservative political interests — biology is not neutral, its metaphors carry ideologies."
+          },
+          {
+            "nom": "THE SPANDRELS OF SAN MARCO",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 82,
+            "desc": "The triangular space beneath the dome was not designed for its mosaics: not every structure is an adaptation."
           }
         ],
         "filiation": {
@@ -15266,6 +17268,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "Bascule : le bullshitter est pire que le menteur — le menteur se soucie de la vérité (pour la dissimuler), le bullshitter s'en fout."
+          },
+          {
+            "nom": "LES CAS DE FRANKFURT",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "Un dispositif qui interviendrait si vous hésitiez, mais n'intervient pas : vous n'auriez pas pu faire autrement, et restez responsable."
           }
         ],
         "filiation": {
@@ -15308,6 +17317,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "A shift: the bullshitter is worse than the liar — the liar cares about truth (to conceal it), the bullshitter doesn't care at all."
+          },
+          {
+            "nom": "FRANKFURT CASES",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 85,
+            "desc": "A device that would intervene had you wavered, but does not: you could not have done otherwise, and remain responsible."
           }
         ],
         "filiation": {
@@ -15371,6 +17387,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 78,
             "desc": "Les théories morales systématiques ne peuvent capturer la complexité de la vie éthique réelle — scepticisme envers l'éthique philosophique."
+          },
+          {
+            "nom": "LA CHANCE MORALE",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Gauguin part et devient grand peintre ; s'il avait échoué, on le condamnerait. Le jugement moral dépend de ce qu'il ne maîtrise pas."
           }
         ],
         "filiation": {
@@ -15414,6 +17437,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 78,
             "desc": "Systematic moral theories cannot capture the complexity of real ethical life — skepticism toward philosophical ethics."
+          },
+          {
+            "nom": "MORAL LUCK",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Gauguin leaves and becomes a great painter; had he failed, we would condemn him. Moral judgement rests on what it does not control."
           }
         ],
         "filiation": {
@@ -15477,6 +17507,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 80,
             "desc": "Distinctions entre cas trolley : rediriger vs pousser quelqu'un — la moralité dépend de la structure de l'action, non de ses seuls effets."
+          },
+          {
+            "nom": "L'AGRESSEUR INNOCENT",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 75,
+            "desc": "Un homme précipité sur vous sans sa volonté vous tuera. Le droit de se défendre survit-il à l'innocence de la menace ?"
           }
         ],
         "filiation": {
@@ -15518,6 +17555,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 80,
             "desc": "Distinctions between trolley cases: redirecting vs pushing someone — morality depends on the structure of action, not its effects alone."
+          },
+          {
+            "nom": "THE INNOCENT AGGRESSOR",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 75,
+            "desc": "A man hurled at you against his will will kill you. Does the right of self-defence survive the threat's innocence?"
           }
         ],
         "filiation": {
@@ -15580,6 +17624,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 82,
             "desc": "Tout contexte est un texte — il n'y a pas d'accès direct à un référent ou une intention hors de la chaîne des renvois textuels."
+          },
+          {
+            "nom": "LE PHARMAKON",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "Le même mot grec dit le remède et le poison. L'écriture soigne la mémoire en la ruinant : le texte ne choisit pas."
           }
         ],
         "filiation": {
@@ -15625,6 +17676,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 82,
             "desc": "Every context is a text — there is no direct access to a referent or intention outside the chain of textual referrals."
+          },
+          {
+            "nom": "THE PHARMAKON",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "One Greek word says both remedy and poison. Writing cures memory by ruining it: the text does not choose."
           }
         ],
         "filiation": {
@@ -15690,6 +17748,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "Bascule : la croyance en Dieu peut être rationnellement appropriée sans preuve — elle est une croyance de base, comme la croyance au monde extérieur."
+          },
+          {
+            "nom": "L'ARGUMENT ÉVOLUTIONNISTE CONTRE LE NATURALISME",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 80,
+            "desc": "Si l'évolution ne sélectionne que l'utile, elle ne garantit pas le vrai — et le naturaliste perd le droit de croire au naturalisme."
           }
         ],
         "filiation": {
@@ -15731,6 +17796,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 78,
             "desc": "A shift: belief in God can be rationally appropriate without proof — it is a basic belief, like belief in the external world."
+          },
+          {
+            "nom": "THE EVOLUTIONARY ARGUMENT AGAINST NATURALISM",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 80,
+            "desc": "If evolution selects only the useful, it does not secure the true — and the naturalist loses the right to believe naturalism."
           }
         ],
         "filiation": {
@@ -15793,6 +17865,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "Les deux lèvres qui se touchent — une morphologie du corps féminin comme modèle d'une autre logique : ni un ni deux, mais contact."
+          },
+          {
+            "nom": "LA DIFFÉRENCE SEXUELLE",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 80,
+            "desc": "Chaque époque a une question à penser ; la nôtre est celle-là. L'égalité qui l'efface reconduit encore un seul modèle."
           }
         ],
         "filiation": {
@@ -15836,6 +17915,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "Two lips touching — a morphology of the female body as model for another logic: neither one nor two, but contact."
+          },
+          {
+            "nom": "SEXUAL DIFFERENCE",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 80,
+            "desc": "Each era has one question to think; ours is this one. An equality that erases it still carries a single model forward."
           }
         ],
         "filiation": {
@@ -15900,6 +17986,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "L'argent, le mariage, le gouvernement — des faits constitués par des règles collectives : X compte comme Y dans le contexte C."
+          },
+          {
+            "nom": "L'ARRIÈRE-PLAN",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Comprendre « couper le gâteau » et « couper l'herbe » suppose un savoir-faire non représenté, que nulle règle ne rattrape."
           }
         ],
         "filiation": {
@@ -15942,6 +18035,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Langage",
             "puissance": 80,
             "desc": "Money, marriage, government — facts constituted by collective rules: X counts as Y in context C."
+          },
+          {
+            "nom": "THE BACKGROUND",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Understanding \"cut the cake\" and \"cut the grass\" presupposes unrepresented know-how that no rule catches up with."
           }
         ],
         "filiation": {
@@ -16005,6 +18105,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 80,
             "desc": "La démocratie délibérative requiert un espace public où les raisons circulent librement — contre l'instrumentalisation politique de la communication."
+          },
+          {
+            "nom": "LA COLONISATION DU MONDE VÉCU",
+            "cat": "transcendant",
+            "type": "Théorie Critique",
+            "puissance": 85,
+            "desc": "L'argent et l'administration pénètrent les rapports qui ne tenaient que par l'entente. Les pathologies modernes naissent là."
           }
         ],
         "filiation": {
@@ -16048,6 +18155,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Politique",
             "puissance": 80,
             "desc": "Deliberative democracy requires a public sphere where reasons circulate freely — against the political instrumentalization of communication."
+          },
+          {
+            "nom": "THE COLONISATION OF THE LIFEWORLD",
+            "cat": "transcendant",
+            "type": "Théorie Critique",
+            "puissance": 85,
+            "desc": "Money and administration penetrate relations that held only through mutual understanding. Modern pathologies are born there."
           }
         ],
         "filiation": {
@@ -16112,6 +18226,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 78,
             "desc": "Synthèse de Dewey, Wittgenstein et Heidegger : la philosophie comme thérapie culturelle contre l'illusion des Fondements."
+          },
+          {
+            "nom": "L'IRONISTE LIBÉRALE",
+            "cat": "transcendant",
+            "type": "Postmodernisme",
+            "puissance": 82,
+            "desc": "Douter radicalement de son propre vocabulaire final tout en refusant la cruauté : le scepticisme privé n'empêche pas la solidarité publique."
           }
         ],
         "filiation": {
@@ -16156,6 +18277,13 @@ const PHILOMON_DATA = {
             "type": "Postmodernisme",
             "puissance": 78,
             "desc": "Synthesis of Dewey, Wittgenstein, and Heidegger: philosophy as cultural therapy against the illusion of Foundations."
+          },
+          {
+            "nom": "THE LIBERAL IRONIST",
+            "cat": "transcendant",
+            "type": "Postmodernisme",
+            "puissance": 82,
+            "desc": "Doubting one's own final vocabulary while refusing cruelty: private scepticism does not preclude public solidarity."
           }
         ],
         "filiation": {
@@ -16221,6 +18349,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Si les modules sont encapsulés, le système central d'inférence reste inexplicable par les sciences cognitives actuelles — aveu d'échec courageux."
+          },
+          {
+            "nom": "LE PROBLÈME DE LA DISJONCTION",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 78,
+            "desc": "Si « vache » s'allume aussi devant un cheval par nuit noire, que signifie-t-il ? Il faut une asymétrie pour que l'erreur reste possible."
           }
         ],
         "filiation": {
@@ -16264,6 +18399,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "If modules are encapsulated, the central inference system remains inexplicable by current cognitive sciences — a courageous admission of failure."
+          },
+          {
+            "nom": "THE DISJUNCTION PROBLEM",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 78,
+            "desc": "If \"cow\" also fires at a horse on a dark night, what does it mean? An asymmetry is needed for error to remain possible."
           }
         ],
         "filiation": {
@@ -16328,6 +18470,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 80,
             "desc": "La tension entre le point de vue personnel et le point de vue objectif (de nulle part) est irréductible — en éthique comme en épistémologie."
+          },
+          {
+            "nom": "LA POSSIBILITÉ DE L'ALTRUISME",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 75,
+            "desc": "Se soucier d'autrui est aussi rationnel que se soucier de son futur : dans les deux cas, il faut se voir comme une personne parmi d'autres."
           }
         ],
         "filiation": {
@@ -16371,6 +18520,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 80,
             "desc": "The tension between the personal and objective (view from nowhere) viewpoints is irreducible — in ethics as in epistemology."
+          },
+          {
+            "nom": "THE POSSIBILITY OF ALTRUISM",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 75,
+            "desc": "Caring about others is as rational as caring about one's future: both require seeing oneself as one person among others."
           }
         ],
         "filiation": {
@@ -16435,6 +18591,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 75,
             "desc": "Toute connaissance est produite depuis une position sociale — la neutralité est une idéologie qui masque le point de vue dominant masculin."
+          },
+          {
+            "nom": "L'INSTABILITÉ DES CATÉGORIES",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 75,
+            "desc": "La critique féministe de la science ne peut se fonder sur « la femme » sans reproduire l'unité qu'elle conteste."
           }
         ],
         "filiation": {
@@ -16478,6 +18641,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 75,
             "desc": "All knowledge is produced from a social position — neutrality is an ideology masking the dominant masculine viewpoint."
+          },
+          {
+            "nom": "THE INSTABILITY OF CATEGORIES",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 75,
+            "desc": "Feminist critique of science cannot ground itself on \"woman\" without reproducing the very unity it contests."
           }
         ],
         "filiation": {
@@ -16542,6 +18712,13 @@ const PHILOMON_DATA = {
             "type": "Éthique du Soin",
             "puissance": 75,
             "desc": "La résolution morale n'est pas l'application de règles abstraites mais la réponse sensible à la singularité des personnes et des relations."
+          },
+          {
+            "nom": "LA CRITIQUE DE KOHLBERG",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 78,
+            "desc": "Les filles marquaient un stade inférieur parce que l'échelle était bâtie sur des garçons. Le retard mesurait l'instrument."
           }
         ],
         "filiation": {
@@ -16585,6 +18762,13 @@ const PHILOMON_DATA = {
             "type": "Éthique du Soin",
             "puissance": 75,
             "desc": "Moral resolution is not the application of abstract rules but sensitive response to the singularity of persons and relationships."
+          },
+          {
+            "nom": "THE CRITIQUE OF KOHLBERG",
+            "cat": "transcendant",
+            "type": "Féminisme",
+            "puissance": 78,
+            "desc": "Girls scored a lower stage because the scale was built on boys. The lag was measuring the instrument."
           }
         ],
         "filiation": {
@@ -16649,6 +18833,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 72,
             "desc": "Le mécanisme darwinien (variation, sélection, hérédité) s'applique à toute entité évolutionnaire — biologique, culturelle, conceptuelle."
+          },
+          {
+            "nom": "LA SCIENCE COMME PROCESSUS",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "L'ambition et le crédit ne corrompent pas la science : ce sont eux qui la font marcher, en rendant la critique payante."
           }
         ],
         "filiation": {
@@ -16691,6 +18882,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 72,
             "desc": "The Darwinian mechanism (variation, selection, heredity) applies to any evolutionary entity — biological, cultural, conceptual."
+          },
+          {
+            "nom": "SCIENCE AS A PROCESS",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Ambition and credit do not corrupt science: they are what make it work, by making criticism pay."
           }
         ],
         "filiation": {
@@ -16754,6 +18952,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 75,
             "desc": "La connaissance est une activité sociale — les institutions et pratiques épistémiques peuvent être évaluées comme conductrices ou non à la vérité."
+          },
+          {
+            "nom": "LA SIMULATION MENTALE",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 75,
+            "desc": "Comprendre autrui n'est pas appliquer une théorie : c'est faire tourner son propre esprit à vide, avec les données de l'autre."
           }
         ],
         "filiation": {
@@ -16796,6 +19001,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 75,
             "desc": "Knowledge is a social activity — epistemic institutions and practices can be evaluated as conducive or not to truth."
+          },
+          {
+            "nom": "MENTAL SIMULATION",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 75,
+            "desc": "Understanding others is not applying a theory: it is running one's own mind offline on someone else's inputs."
           }
         ],
         "filiation": {
@@ -16859,6 +19071,13 @@ const PHILOMON_DATA = {
             "type": "Métaphysique",
             "puissance": 70,
             "desc": "Les objets ordinaires persistent à travers le temps — contre le quatre-dimensionnalisme et le nihilisme compositionnel qui les eliminent."
+          },
+          {
+            "nom": "LES DISPUTES VERBALES",
+            "cat": "transcendant",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Quand deux métaphysiciens s'opposent sur ce qui existe, chacun parle vrai dans sa langue. Le désaccord n'est pas sur le monde."
           }
         ],
         "filiation": {
@@ -16901,6 +19120,13 @@ const PHILOMON_DATA = {
             "type": "Métaphysique",
             "puissance": 70,
             "desc": "Ordinary objects persist through time — against four-dimensionalism and compositional nihilism that eliminate them."
+          },
+          {
+            "nom": "VERBAL DISPUTES",
+            "cat": "transcendant",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "When two metaphysicians clash over what exists, each speaks truly in his own tongue. The disagreement is not about the world."
           }
         ],
         "filiation": {
@@ -16964,6 +19190,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "Une distribution est juste si elle résulte d'une séquence de transferts volontaires légitimes depuis une acquisition initiale légitime — contre Rawls."
+          },
+          {
+            "nom": "LA MACHINE À EXPÉRIENCES",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "Une cuve qui donnerait toutes les sensations d'une vie réussie : personne ne s'y branche. Le plaisir n'est donc pas tout ce qui compte."
           }
         ],
         "filiation": {
@@ -17007,6 +19240,13 @@ const PHILOMON_DATA = {
             "type": "Libéralisme",
             "puissance": 82,
             "desc": "A distribution is just if it results from a sequence of voluntary legitimate transfers from a legitimate initial acquisition — against Rawls."
+          },
+          {
+            "nom": "THE EXPERIENCE MACHINE",
+            "cat": "transcendant",
+            "type": "Éthique des Vertus",
+            "puissance": 85,
+            "desc": "A tank supplying every sensation of a successful life: nobody plugs in. Pleasure is therefore not all that matters."
           }
         ],
         "filiation": {
@@ -17071,6 +19311,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 85,
             "desc": "Formalisation de la modalité : un énoncé est nécessairement vrai si vrai dans tous les mondes possibles accessibles — Kripke frames pour les logiques modales."
+          },
+          {
+            "nom": "LE PARADOXE DES RÈGLES",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 85,
+            "desc": "Rien dans mon passé ne fixe si j'ai voulu dire plus ou quus. Le sens n'est garanti par aucun fait sur moi seul."
           }
         ],
         "filiation": {
@@ -17114,6 +19361,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 85,
             "desc": "Formalization of modality: a statement is necessarily true if true in all accessible possible worlds — Kripke frames for modal logics."
+          },
+          {
+            "nom": "THE RULE-FOLLOWING PARADOX",
+            "cat": "transcendant",
+            "type": "Philo. Langage",
+            "puissance": 85,
+            "desc": "Nothing in my past fixes whether I meant plus or quus. Meaning is secured by no fact about me alone."
           }
         ],
         "filiation": {
@@ -17178,6 +19432,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 75,
             "desc": "La science ne converge pas vers la vérité — les entités théoriques changent radicalement entre révolutions scientifiques."
+          },
+          {
+            "nom": "LE MODÈLE RÉTICULÉ",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Théories, méthodes et buts se corrigent l'un l'autre. Aucun étage ne commande : le changement scientifique n'a pas de sommet."
           }
         ],
         "filiation": {
@@ -17220,6 +19481,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 75,
             "desc": "Science does not converge toward truth — theoretical entities change radically between scientific revolutions."
+          },
+          {
+            "nom": "THE RETICULATED MODEL",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Theories, methods and aims correct one another. No storey commands: scientific change has no apex."
           }
         ],
         "filiation": {
@@ -17282,6 +19550,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 78,
             "desc": "La ligne entre observable et inobservable est contextuelle et pragmatique — non métaphysique mais épistémiquement cruciale."
+          },
+          {
+            "nom": "L'EXPLICATION EST UNE RÉPONSE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Pourquoi Adam a-t-il mangé la pomme ? La question porte toujours un contraste implicite : expliquer dépend de ce qu'on oppose."
           }
         ],
         "filiation": {
@@ -17325,6 +19600,13 @@ const PHILOMON_DATA = {
             "type": "Scepticisme",
             "puissance": 78,
             "desc": "The line between observable and unobservable is contextual and pragmatic — not metaphysical but epistemically crucial."
+          },
+          {
+            "nom": "EXPLANATION IS AN ANSWER",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Why did Adam eat the apple? The question always carries an implicit contrast: explanation depends on what is set against it."
           }
         ],
         "filiation": {
@@ -17389,6 +19671,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Réfutation du physicalisme : si tout le savoir physique ne suffit pas, il y a des faits non-physiques — argument classique contre la réduction."
+          },
+          {
+            "nom": "LA MÉTAPHYSIQUE SÉRIEUSE",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Ne retenir qu'un inventaire réduit et montrer que le reste en découle. C'est ce programme qui finira par lui coûter Mary."
           }
         ],
         "filiation": {
@@ -17432,6 +19721,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Refutation of physicalism: if all physical knowledge is insufficient, there are non-physical facts — a classic argument against reduction."
+          },
+          {
+            "nom": "SERIOUS METAPHYSICS",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "Keep a reduced inventory and show the rest follows from it. That programme is what will eventually cost him Mary."
           }
         ],
         "filiation": {
@@ -17496,6 +19792,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "Les conditionnels contrefactuels sont vrais ssi dans les mondes possibles les plus proches où l'antécédent est vrai, le conséquent l'est aussi."
+          },
+          {
+            "nom": "LA CONVENTION",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "Une régularité que chacun suit parce qu'il attend que les autres la suivent. Nul accord n'a jamais eu à être passé."
           }
         ],
         "filiation": {
@@ -17539,6 +19842,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 82,
             "desc": "Counterfactual conditionals are true iff in the closest possible worlds where the antecedent is true, the consequent is also true."
+          },
+          {
+            "nom": "CONVENTION",
+            "cat": "immanent",
+            "type": "Philo. Langage",
+            "puissance": 82,
+            "desc": "A regularity each follows because he expects the others to follow it. No agreement ever had to be made."
           }
         ],
         "filiation": {
@@ -17603,6 +19913,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "La science progresse en se rapprochant de la vérité — contre la méta-induction pessimiste de Laudan."
+          },
+          {
+            "nom": "LES GRAPPES HOMÉOSTATIQUES",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "Une espèce n'a pas d'essence : elle a un faisceau de propriétés que des mécanismes maintiennent ensemble, avec des bords flous."
           }
         ],
         "filiation": {
@@ -17645,6 +19962,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "Science progresses by approaching truth — against Laudan's pessimistic meta-induction."
+          },
+          {
+            "nom": "HOMEOSTATIC PROPERTY CLUSTERS",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 78,
+            "desc": "A kind has no essence: it has a bundle of properties held together by mechanisms, with blurred edges."
           }
         ],
         "filiation": {
@@ -17708,6 +20032,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 75,
             "desc": "Sellars avait raison : le mythe du donné est une erreur — mais McDowell refuse le cohérentisme pur en maintenant un contact avec le monde."
+          },
+          {
+            "nom": "LA VERTU COMME PERCEPTION",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 78,
+            "desc": "L'homme vertueux ne calcule pas : il voit la situation autrement, et cette vision fait taire les autres raisons."
           }
         ],
         "filiation": {
@@ -17751,6 +20082,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 75,
             "desc": "Sellars was right: the myth of the given is an error — but McDowell refuses pure coherentism by maintaining contact with the world."
+          },
+          {
+            "nom": "VIRTUE AS PERCEPTION",
+            "cat": "immanent",
+            "type": "Éthique des Vertus",
+            "puissance": 78,
+            "desc": "The virtuous person does not calculate: he sees the situation differently, and that seeing silences the other reasons."
           }
         ],
         "filiation": {
@@ -17815,6 +20153,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 78,
             "desc": "Contre l'utilitarisme et le kantisme : ce n'est pas la maximisation du bien ni le devoir a priori, mais ce qu'on ne peut raisonnablement refuser."
+          },
+          {
+            "nom": "LA VALEUR RENVOIE AUX RAISONS",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 78,
+            "desc": "Dire qu'une chose est bonne n'ajoute rien : c'est dire qu'elle a des propriétés qui donnent des raisons de la traiter ainsi."
           }
         ],
         "filiation": {
@@ -17856,6 +20201,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 78,
             "desc": "Against utilitarianism and Kantianism: not maximization of good nor a priori duty, but what one cannot reasonably refuse."
+          },
+          {
+            "nom": "THE BUCK-PASSING ACCOUNT",
+            "cat": "immanent",
+            "type": "Déontologie",
+            "puissance": 78,
+            "desc": "Calling a thing good adds nothing: it says the thing has properties giving reasons to treat it so."
           }
         ],
         "filiation": {
@@ -17918,6 +20270,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 80,
             "desc": "Au terme de Raisons et Personnes : conséquentialisme, contractualisme et déontologie convergent dans leurs prescriptions — un optimisme éthique."
+          },
+          {
+            "nom": "LA CONCLUSION RÉPUGNANTE",
+            "cat": "transcendant",
+            "type": "Déontologie",
+            "puissance": 88,
+            "desc": "Une population immense à peine digne d'être vécue vaudrait mieux qu'un monde heureux. L'arithmétique morale mène où nul ne veut aller."
           }
         ],
         "filiation": {
@@ -17960,6 +20319,13 @@ const PHILOMON_DATA = {
             "type": "Déontologie",
             "puissance": 80,
             "desc": "At the end of Reasons and Persons: consequentialism, contractualism, and deontology converge in their prescriptions — an ethical optimism."
+          },
+          {
+            "nom": "THE REPUGNANT CONCLUSION",
+            "cat": "transcendant",
+            "type": "Déontologie",
+            "puissance": 88,
+            "desc": "A vast population barely worth living would beat a happy world. Moral arithmetic leads where nobody wants to go."
           }
         ],
         "filiation": {
@@ -18023,6 +20389,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 80,
             "desc": "La sélection naturelle simule un concepteur intelligent sans l'être — argument définitif contre l'argument téléologique pour l'existence de Dieu."
+          },
+          {
+            "nom": "LE PHÉNOTYPE ÉTENDU",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 82,
+            "desc": "Le barrage du castor est un organe du gène, au même titre que sa dent. Les effets du gène ne s'arrêtent pas à la peau."
           }
         ],
         "filiation": {
@@ -18066,6 +20439,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 80,
             "desc": "Natural selection simulates an intelligent designer without being one — the definitive argument against the teleological argument for God."
+          },
+          {
+            "nom": "THE EXTENDED PHENOTYPE",
+            "cat": "transcendant",
+            "type": "Philo. Sciences",
+            "puissance": 82,
+            "desc": "The beaver's dam is an organ of the gene, no less than its tooth. A gene's effects do not stop at the skin."
           }
         ],
         "filiation": {
@@ -18130,6 +20510,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 80,
             "desc": "L'évolution par sélection naturelle est un algorithme universel qui dissout toute téléologie — applicable à l'esprit, la culture, la morale."
+          },
+          {
+            "nom": "LA POMPE À INTUITION",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Ces expériences de pensée qui emportent l'adhésion : il faut en tourner les boutons pour voir si l'intuition tient encore."
           }
         ],
         "filiation": {
@@ -18174,6 +20561,13 @@ const PHILOMON_DATA = {
             "type": "Matérialisme",
             "puissance": 80,
             "desc": "Evolution by natural selection is a universal algorithm that dissolves all teleology — applicable to mind, culture, and morality."
+          },
+          {
+            "nom": "THE INTUITION PUMP",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Those thought experiments that carry conviction: turn their knobs and see whether the intuition still holds."
           }
         ],
         "filiation": {
@@ -18239,6 +20633,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "L'incomplétude de Gödel révèle les limites des systèmes formels — et peut-être aussi les limites de ce que l'IA peut simuler de l'esprit humain."
+          },
+          {
+            "nom": "L'ANALOGIE AU CŒUR DE LA PENSÉE",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 80,
+            "desc": "Percevoir que ceci est comme cela n'est pas un ornement du raisonnement : c'est l'opération même de la cognition."
           }
         ],
         "filiation": {
@@ -18282,6 +20683,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "Gödel's incompleteness reveals the limits of formal systems — and perhaps also the limits of what AI can simulate of the human mind."
+          },
+          {
+            "nom": "ANALOGY AS THE CORE OF COGNITION",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 80,
+            "desc": "Seeing that this is like that is no ornament of reasoning: it is the very operation of cognition."
           }
         ],
         "filiation": {
@@ -18346,6 +20754,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Les réseaux de neurones artificiels modélisent mieux la cognition que le traitement symbolique — soutien au connexionnisme contre le computationnalisme symbolique."
+          },
+          {
+            "nom": "L'ESPACE DES ÉTATS NEURONAUX",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 75,
+            "desc": "Une sensation est un point dans un espace à plusieurs dimensions d'activations. Les qualia deviennent des coordonnées."
           }
         ],
         "filiation": {
@@ -18389,6 +20804,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Artificial neural networks model cognition better than symbolic processing — support for connectionism against symbolic computationalism."
+          },
+          {
+            "nom": "NEURAL STATE SPACE",
+            "cat": "immanent",
+            "type": "Philo. Esprit",
+            "puissance": 75,
+            "desc": "A sensation is a point in a many-dimensioned space of activations. Qualia become coordinates."
           }
         ],
         "filiation": {
@@ -18452,6 +20874,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Les qualia (conscience-P) résistent à toute réduction fonctionnelle ou physique — le problème difficile reste ouvert même après toute explication fonctionnelle."
+          },
+          {
+            "nom": "LA NATION CHINOISE",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "Si un milliard de Chinois réalisaient l'organisation fonctionnelle d'un cerveau, l'ensemble éprouverait-il quelque chose ? Le fonctionnalisme doit répondre oui."
           }
         ],
         "filiation": {
@@ -18495,6 +20924,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Esprit",
             "puissance": 78,
             "desc": "Qualia (P-consciousness) resist all functional or physical reduction — the hard problem remains open even after complete functional explanation."
+          },
+          {
+            "nom": "THE CHINESE NATION",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "If a billion people realised a brain's functional organisation, would the whole feel anything? Functionalism must answer yes."
           }
         ],
         "filiation": {
@@ -18559,6 +20995,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "La nature est un 'dappled world' (monde bigarré) — pas un système unifié sous quelques lois fondamentales mais une mosaïque de domaines hétérogènes."
+          },
+          {
+            "nom": "L'INFÉRENCE À LA MEILLEURE CAUSE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Remonter à une cause est légitime ; remonter à la théorie qui l'explique le mieux ne l'est pas. Les deux inférences n'ont pas le même droit."
           }
         ],
         "filiation": {
@@ -18602,6 +21045,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 75,
             "desc": "Nature is a 'dappled world' — not a unified system under a few fundamental laws but a mosaic of heterogeneous domains."
+          },
+          {
+            "nom": "INFERENCE TO THE MOST LIKELY CAUSE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Inferring a cause is legitimate; inferring the theory that best explains it is not. The two inferences differ in right."
           }
         ],
         "filiation": {
@@ -18666,6 +21116,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 72,
             "desc": "Les attitudes morales ont une structure d'engagement pratique — elles ne sont pas que des expressions émotionnelles mais des engagements normatifs."
+          },
+          {
+            "nom": "LA VÉRITÉ SANS RÉALISME",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "On peut dire d'un jugement moral qu'il est vrai, et n'avoir rien admis d'autre que des attitudes bien construites."
           }
         ],
         "filiation": {
@@ -18709,6 +21166,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 72,
             "desc": "Moral attitudes have a structure of practical commitment — they are not mere emotional expressions but normative commitments."
+          },
+          {
+            "nom": "TRUTH WITHOUT REALISM",
+            "cat": "immanent",
+            "type": "Réalisme",
+            "puissance": 75,
+            "desc": "One may call a moral judgement true while having conceded nothing beyond well-built attitudes."
           }
         ],
         "filiation": {
@@ -18773,6 +21237,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 78,
             "desc": "Bascule cosmopolitique : apprendre à cohabiter avec les autres espèces dans la crise écologique — le compostisme contre le transhumanisme."
+          },
+          {
+            "nom": "LE TÉMOIN MODESTE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "Le savant qui prétend rapporter sans corps ni lieu s'est fabriqué une invisibilité. La modestie du témoin est une position de pouvoir."
           }
         ],
         "filiation": {
@@ -18816,6 +21287,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 78,
             "desc": "A cosmopolitical shift: learning to cohabit with other species in the ecological crisis — compostism against transhumanism."
+          },
+          {
+            "nom": "THE MODEST WITNESS",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "The scientist who claims to report from no body and no place has manufactured an invisibility. Modesty is a position of power."
           }
         ],
         "filiation": {
@@ -18880,6 +21358,13 @@ const PHILOMON_DATA = {
             "type": "Pragmatisme",
             "puissance": 72,
             "desc": "Le relativisme postmoderne et le féminisme critique de la science sont des menaces épistémiques — défense de la recherche honnête de la vérité."
+          },
+          {
+            "nom": "CONTRE L'ÉPISTÉMOLOGIE MILITANTE",
+            "cat": "transcendant",
+            "type": "Empirisme",
+            "puissance": 72,
+            "desc": "Faire dépendre les critères de preuve d'une position politique ne libère personne : cela retire seulement le moyen de contester."
           }
         ],
         "filiation": {
@@ -18922,6 +21407,13 @@ const PHILOMON_DATA = {
             "type": "Pragmatisme",
             "puissance": 72,
             "desc": "Postmodern relativism and feminist critique of science are epistemic threats — defense of honest pursuit of truth."
+          },
+          {
+            "nom": "AGAINST PARTISAN EPISTEMOLOGY",
+            "cat": "transcendant",
+            "type": "Empirisme",
+            "puissance": 72,
+            "desc": "Making standards of evidence depend on a political position frees no one: it merely removes the means of contesting."
           }
         ],
         "filiation": {
@@ -18985,6 +21477,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "La cognition dépend du corps dans son environnement — Merleau-Ponty rencontre les neurosciences dans une phénoménologie naturaliste."
+          },
+          {
+            "nom": "LA NEUROPHÉNOMÉNOLOGIE",
+            "cat": "transcendant",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "Former les sujets à décrire leur expérience, puis chercher la contrainte réciproque avec les mesures. Les deux bouts se corrigent."
           }
         ],
         "filiation": {
@@ -19027,6 +21526,13 @@ const PHILOMON_DATA = {
             "type": "Phénoménologie",
             "puissance": 78,
             "desc": "Cognition depends on the body in its environment — Merleau-Ponty meets neuroscience in a naturalized phenomenology."
+          },
+          {
+            "nom": "NEUROPHENOMENOLOGY",
+            "cat": "transcendant",
+            "type": "Phénoménologie",
+            "puissance": 78,
+            "desc": "Train subjects to describe their experience, then seek mutual constraint with the measurements. Both ends correct each other."
           }
         ],
         "filiation": {
@@ -19089,6 +21595,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Le réalisme structurel répond à la méta-induction pessimiste (Laudan) tout en évitant le miracle de van Fraassen — une position médiatrice."
+          },
+          {
+            "nom": "LA NOUVEAUTÉ D'USAGE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "Un fait déjà connu confirme une théorie s'il n'a pas servi à la construire. Ce n'est pas la date qui compte, c'est l'usage."
           }
         ],
         "filiation": {
@@ -19133,6 +21646,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Sciences",
             "puissance": 72,
             "desc": "Structural realism responds to the pessimistic meta-induction (Laudan) while avoiding van Fraassen's miracle — a mediating position."
+          },
+          {
+            "nom": "USE-NOVELTY",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 72,
+            "desc": "A known fact confirms a theory if it was not used to build it. What counts is not the date but the use."
           }
         ],
         "filiation": {
@@ -19198,6 +21718,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 82,
             "desc": "Nous avons une obligation morale forte d'aider ceux qui souffrent de malnutrition — le luxe des riches est moralement indefensible à côté de la famine."
+          },
+          {
+            "nom": "LE CERCLE ÉLARGI",
+            "cat": "transcendant",
+            "type": "Écophilosophie",
+            "puissance": 78,
+            "desc": "La morale a cessé de s'arrêter à la tribu, puis à la nation, puis à l'espèce. Rien ne justifie d'arrêter le mouvement ici."
           }
         ],
         "filiation": {
@@ -19241,6 +21768,13 @@ const PHILOMON_DATA = {
             "type": "Utilitarisme",
             "puissance": 82,
             "desc": "We have a strong moral obligation to help those suffering from malnutrition — the luxury of the rich is morally indefensible next to famine."
+          },
+          {
+            "nom": "THE EXPANDING CIRCLE",
+            "cat": "transcendant",
+            "type": "Écophilosophie",
+            "puissance": 78,
+            "desc": "Morality stopped halting at the tribe, then the nation, then the species. Nothing justifies stopping the movement here."
           }
         ],
         "filiation": {
@@ -19304,6 +21838,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "Les grands paradoxes (Kant, Hegel, Cantor, Gödel, Russell) révèlent des situations limites où la pensée atteint sa propre négation."
+          },
+          {
+            "nom": "LE SCHÉMA DE CLÔTURE",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 78,
+            "desc": "Toutes les grandes antinomies ont la même forme : on définit une totalité, puis on produit l'objet qui lui échappe en lui appartenant."
           }
         ],
         "filiation": {
@@ -19347,6 +21888,13 @@ const PHILOMON_DATA = {
             "type": "Logique",
             "puissance": 78,
             "desc": "The great paradoxes (Kant, Hegel, Cantor, Gödel, Russell) reveal limit situations where thought reaches its own negation."
+          },
+          {
+            "nom": "THE INCLOSURE SCHEMA",
+            "cat": "immanent",
+            "type": "Logique",
+            "puissance": 78,
+            "desc": "Every great antinomy shares one form: a totality is defined, then the object that escapes it by belonging to it is produced."
           }
         ],
         "filiation": {
@@ -19411,6 +21959,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "La vie bonne est vulnérable à la fortune (tukhè) — contre l'idéal stoïcien d'autarcie, Aristote a raison de valoriser les biens extérieurs."
+          },
+          {
+            "nom": "LE DÉGOÛT COMME MAUVAIS JUGE",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 78,
+            "desc": "Aucune loi ne devrait s'appuyer sur la répulsion : le dégoût a toujours servi à mettre des humains hors de l'humanité."
           }
         ],
         "filiation": {
@@ -19454,6 +22009,13 @@ const PHILOMON_DATA = {
             "type": "Éthique des Vertus",
             "puissance": 78,
             "desc": "The good life is vulnerable to fortune (tuche) — against the Stoic ideal of self-sufficiency, Aristotle is right to value external goods."
+          },
+          {
+            "nom": "DISGUST AS A BAD JUDGE",
+            "cat": "transcendant",
+            "type": "Philo. Droit",
+            "puissance": 78,
+            "desc": "No law should rest on revulsion: disgust has always served to place humans outside humanity."
           }
         ],
         "filiation": {
@@ -19518,6 +22080,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 80,
             "desc": "Le drag, le cross-dressing — la parodie du genre révèle son artificialité et ouvre des espaces de subversion des normes hégémoniques."
+          },
+          {
+            "nom": "LA PRÉCARITÉ",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 82,
+            "desc": "Tous les corps sont exposés, mais pas également : certaines vies sont d'avance comptées comme pleurables, d'autres non."
           }
         ],
         "filiation": {
@@ -19562,6 +22131,13 @@ const PHILOMON_DATA = {
             "type": "Féminisme",
             "puissance": 80,
             "desc": "Drag, cross-dressing — gender parody reveals its artificiality and opens spaces for subverting hegemonic norms."
+          },
+          {
+            "nom": "PRECARIOUSNESS",
+            "cat": "transcendant",
+            "type": "Philo. Politique",
+            "puissance": 82,
+            "desc": "All bodies are exposed, but not equally: some lives are counted grievable in advance, others are not."
           }
         ],
         "filiation": {
@@ -19627,6 +22203,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 70,
             "desc": "Le moi n'est pas une construction narrative — il y a un sujet réel d'expérience, contre Parfit, Dennett et les récits bouddhistes du non-soi."
+          },
+          {
+            "nom": "L'ARGUMENT DE BASE",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "Pour être responsable de ses actes, il faudrait être responsable de ce qu'on est — et donc s'être fait soi-même. Nul ne le peut."
           }
         ],
         "filiation": {
@@ -19669,6 +22252,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 70,
             "desc": "The self is not a narrative construction — there is a real subject of experience, against Parfit, Dennett, and Buddhist no-self accounts."
+          },
+          {
+            "nom": "THE BASIC ARGUMENT",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 78,
+            "desc": "To be responsible for one's acts one would have to be responsible for what one is — hence self-made. Nobody can be."
           }
         ],
         "filiation": {
@@ -19732,6 +22322,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 72,
             "desc": "Un naturalisme qui admet son incomplétude — pas de preuve décisive contre Dieu, mais la charge de la preuve incombe aux théistes."
+          },
+          {
+            "nom": "LA COMPARAISON DES VISIONS DU MONDE",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 78,
+            "desc": "Aucun argument isolé ne tranche : il faut peser des théories entières, sur leur portée, leur simplicité et leur ajustement."
           }
         ],
         "filiation": {
@@ -19774,6 +22371,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Religion",
             "puissance": 72,
             "desc": "A naturalism that admits its incompleteness — no decisive proof against God, but the burden of proof lies with theists."
+          },
+          {
+            "nom": "COMPARING WORLDVIEWS",
+            "cat": "transcendant",
+            "type": "Philo. Religion",
+            "puissance": 78,
+            "desc": "No single argument settles it: whole theories must be weighed for scope, simplicity and fit."
           }
         ],
         "filiation": {
@@ -19837,6 +22441,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Technique",
             "puissance": 75,
             "desc": "Les humains sont naturellement des bricoleurs cognitifs — nous nous sommes toujours augmentés d'outils qui étendent nos capacités cognitives."
+          },
+          {
+            "nom": "LE CERVEAU PRÉDICTIF",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "Percevoir n'est pas recevoir : le cerveau devine le signal et ne traite que son erreur. L'esprit est une machine à anticiper."
           }
         ],
         "filiation": {
@@ -19880,6 +22491,13 @@ const PHILOMON_DATA = {
             "type": "Philo. Technique",
             "puissance": 75,
             "desc": "Humans are naturally cognitive tinkerers — we have always extended ourselves with tools that expand our cognitive capacities."
+          },
+          {
+            "nom": "THE PREDICTIVE BRAIN",
+            "cat": "transcendant",
+            "type": "Philo. Esprit",
+            "puissance": 82,
+            "desc": "To perceive is not to receive: the brain guesses the signal and processes only its error. Mind is an anticipation engine."
           }
         ],
         "filiation": {
@@ -19944,6 +22562,13 @@ const PHILOMON_DATA = {
             "type": "Dualisme",
             "puissance": 82,
             "desc": "Les propriétés phénoménales sont distinctes des propriétés physiques — non une substance distincte (Descartes) mais des propriétés irréductibles."
+          },
+          {
+            "nom": "LA RÉALITÉ VIRTUELLE EST RÉELLE",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 78,
+            "desc": "Un objet numérique existe autant qu'une chaise : ce qui compte est la structure causale, non la matière qui la porte."
           }
         ],
         "filiation": {
@@ -19986,6 +22611,13 @@ const PHILOMON_DATA = {
             "type": "Dualisme",
             "puissance": 82,
             "desc": "Phenomenal properties are distinct from physical properties — not a distinct substance (Descartes) but irreducible properties."
+          },
+          {
+            "nom": "VIRTUAL REALITY IS REAL",
+            "cat": "transcendant",
+            "type": "Philo. Technique",
+            "puissance": 78,
+            "desc": "A digital object exists as much as a chair: what matters is causal structure, not the matter carrying it."
           }
         ],
         "filiation": {
@@ -20049,6 +22681,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "La métaphysique doit être contrainte par la physique — toute ontologie en conflit avec la physique fondamentale est à rejeter."
+          },
+          {
+            "nom": "LA CLÔTURE NATURALISTE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "Une thèse métaphysique n'est recevable que si elle unifie deux hypothèses scientifiques sérieuses. Le reste est de la décoration."
           }
         ],
         "filiation": {
@@ -20091,6 +22730,13 @@ const PHILOMON_DATA = {
             "type": "Réalisme",
             "puissance": 72,
             "desc": "Metaphysics must be constrained by physics — any ontology in conflict with fundamental physics is to be rejected."
+          },
+          {
+            "nom": "THE NATURALISTIC CLOSURE PRINCIPLE",
+            "cat": "immanent",
+            "type": "Philo. Sciences",
+            "puissance": 75,
+            "desc": "A metaphysical claim is admissible only if it unifies two serious scientific hypotheses. The rest is decoration."
           }
         ],
         "filiation": {

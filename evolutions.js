@@ -23,7 +23,7 @@
 
 const PHILOMON_EVO = {
 
-"001": { debut:1618, fin:1650, learn:[24,20,32], stages:[
+"001": { debut:1618, fin:1650, learn:[24,20,32,24], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE SOLDAT GÉOMÈTRE", note:"Beeckman lui montre que la physique peut s'écrire en mathématiques ; suivent les songes du 10 novembre 1619."},
     en:{nom:"THE SOLDIER GEOMETER", note:"Beeckman shows him physics can be written as mathematics; the dreams of 10 November 1619 follow."} },
@@ -35,7 +35,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE METAPHYSICIAN", note:"The Meditations turn a method into an ontology: two substances, extension and thought."} },
 ]},
 
-"002": { debut:1729, fin:1776, learn:[11,11,12], stages:[
+"002": { debut:1729, fin:1776, learn:[11,11,12,11], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"LA SCÈNE NOUVELLE", note:"À dix-huit ans « une scène de pensée nouvelle » s'ouvre à lui et lui coûte la santé."},
     en:{nom:"THE NEW SCENE", note:"At eighteen \"a new scene of thought\" opens before him, and costs him his health."} },
@@ -44,7 +44,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE MITIGATED SCEPTIC", note:"The Enquiries restate the scandal in clear prose — and this time he is heard."} },
 ]},
 
-"003": { debut:1865, fin:1889, learn:[18,22,17], stages:[
+"003": { debut:1865, fin:1889, learn:[18,22,17,19], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"LE PHILOLOGUE", note:"Il trouve Schopenhauer chez un bouquiniste de Leipzig ; à vingt-quatre ans il est professeur à Bâle."},
     en:{nom:"THE PHILOLOGIST", note:"He finds Schopenhauer in a Leipzig second-hand shop; at twenty-four he holds a chair at Basel."} },
@@ -56,7 +56,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE HAMMER", note:"Beyond Good and Evil finally names the will to power; philosophy is done with a hammer."} },
 ]},
 
-"004": { debut:68, fin:135, approx:true, learn:[26,30,41], stages:[
+"004": { debut:68, fin:135, approx:true, learn:[26,30,41,35], stages:[
   { lvl:1,  types:["Stoïcisme"], img:null,
     fr:{nom:"L'ESCLAVE ÉCOLIER", note:"Esclave d'Épaphrodite à Rome, il est autorisé à suivre les leçons de Musonius Rufus."},
     en:{nom:"THE SLAVE SCHOLAR", note:"A slave of Epaphroditus in Rome, he is allowed to attend Musonius Rufus's lessons."} },
@@ -65,7 +65,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE HANDBOOK", note:"Arrian takes down his words; a student turns a spoken course into a pocket manual."} },
 ]},
 
-"005": { debut:-450, fin:-399, approx:true, learn:[26,26,21], stages:[
+"005": { debut:-450, fin:-399, approx:true, learn:[26,26,21,30], stages:[
   { lvl:1,  types:["Dialectique"], img:null,
     fr:{nom:"LE TAILLEUR DE PIERRE", note:"Fils de sculpteur et de sage-femme, il fréquente Archélaos et la physique ionienne."},
     en:{nom:"THE STONECUTTER", note:"Son of a sculptor and a midwife, he studies under Archelaus and Ionian physics."} },
@@ -74,7 +74,7 @@ const PHILOMON_EVO = {
     en:{nom:"GADFLY OF THE CITY", note:"He midwifes minds in the agora and makes virtue a matter of definition."} },
 ]},
 
-"006": { debut:-407, fin:-347, approx:true, learn:[28,33,33], stages:[
+"006": { debut:-407, fin:-347, approx:true, learn:[28,33,33,27], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE DISCIPLE DE SOCRATE", note:"Il brûle ses tragédies après avoir entendu Socrate, qu'il suivra huit ans."},
     en:{nom:"SOCRATES' DISCIPLE", note:"He burns his tragedies after hearing Socrates, whom he follows for eight years."} },
@@ -86,7 +86,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LAWGIVER", note:"The Parmenides turns his own weapons against the Forms; the Laws remain, and the bitterness of Syracuse."} },
 ]},
 
-"007": { debut:-367, fin:-322, approx:true, learn:[18,38,25], stages:[
+"007": { debut:-367, fin:-322, approx:true, learn:[18,38,25,30], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉLÈVE DE L'ACADÉMIE", note:"Dix-sept ans, vingt années d'Académie ; il y forge l'Organon contre son propre maître."},
     en:{nom:"THE ACADEMY STUDENT", note:"Seventeen years old, twenty years at the Academy; there he forges the Organon against his own master."} },
@@ -98,7 +98,7 @@ const PHILOMON_EVO = {
     en:{nom:"MASTER OF THE LYCEUM", note:"The Lyceum, the walks, the Nicomachean Ethics: happiness becomes an activity, not a state."} },
 ]},
 
-"008": { debut:-327, fin:-270, approx:true, learn:[22,28,17], stages:[
+"008": { debut:-327, fin:-270, approx:true, learn:[22,28,17,30], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE NAUSIPHANE", note:"Il apprend l'atomisme de Démocrite par un disciple qu'il reniera ensuite avec véhémence."},
     en:{nom:"NAUSIPHANES' PUPIL", note:"He learns Democritus's atomism from a disciple he will later fiercely disown."} },
@@ -107,7 +107,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE GARDENER", note:"The Garden in Athens admits women and slaves; there one lives hidden, and well."} },
 ]},
 
-"009": { debut:-384, fin:-323, approx:true, learn:[21,15,30], stages:[
+"009": { debut:-384, fin:-323, approx:true, learn:[21,15,30,35], stages:[
   { lvl:1,  types:["Cynisme"], img:null,
     fr:{nom:"L'EXILÉ DE SINOPE", note:"Banni pour avoir falsifié la monnaie, il fera de « falsifier la monnaie » son programme."},
     en:{nom:"THE EXILE OF SINOPE", note:"Banished for defacing the currency, he will make \"deface the currency\" his programme."} },
@@ -116,7 +116,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE BARREL", note:"He asks Alexander to step out of his sunlight: nature has no use for crowns."} },
 ]},
 
-"010": { debut:373, fin:430, learn:[14,40,41], stages:[
+"010": { debut:373, fin:430, learn:[14,40,41,25], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE RHÉTEUR MANICHÉEN", note:"L'Hortensius de Cicéron l'enflamme à dix-neuf ans ; suivront neuf années chez les manichéens."},
     en:{nom:"THE MANICHEAN RHETOR", note:"Cicero's Hortensius sets him alight at nineteen; nine years among the Manicheans follow."} },
@@ -128,7 +128,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE BISHOP OF HIPPO", note:"Pelagius and the sack of Rome drive him to the two cities and to a grace that cannot be earned."} },
 ]},
 
-"011": { debut:1245, fin:1274, learn:[21,15,27], stages:[
+"011": { debut:1245, fin:1274, learn:[21,15,27,22], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE BŒUF MUET", note:"Ses condisciples le surnomment ainsi ; Albert le Grand prédit que son mugissement s'entendra partout."},
     en:{nom:"THE DUMB OX", note:"His fellow students nickname him so; Albert the Great predicts his bellow will be heard everywhere."} },
@@ -137,7 +137,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ANGELIC DOCTOR", note:"The Summa Theologiae makes faith Aristotelian; then, after a vision, it all seems straw to him."} },
 ]},
 
-"012": { debut:1656, fin:1677, learn:[10,6,15], stages:[
+"012": { debut:1656, fin:1677, learn:[10,6,15,20], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"L'EXCOMMUNIÉ", note:"Le herem d'Amsterdam le retranche de sa communauté à vingt-trois ans ; il ne le contestera jamais."},
     en:{nom:"THE EXCOMMUNICATE", note:"Amsterdam's herem cuts him from his community at twenty-three; he never contests it."} },
@@ -149,7 +149,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE VIRTUOUS ATHEIST", note:"The Theological-Political Treatise appears anonymously and scandalises Europe; God or Nature, as you please."} },
 ]},
 
-"013": { debut:1652, fin:1704, learn:[20,29,39], stages:[
+"013": { debut:1652, fin:1704, learn:[20,29,39,39], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"L'ÉTUDIANT D'OXFORD", note:"Il s'ennuie de la scolastique et se tourne vers la médecine et Boyle."},
     en:{nom:"THE OXFORD STUDENT", note:"Bored by scholasticism, he turns to medicine and Boyle."} },
@@ -158,7 +158,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DUTCH EXILE", note:"The Two Treatises, written in hiding, make consent the sole legitimacy."} },
 ]},
 
-"014": { debut:1740, fin:1804, learn:[42,46,31], stages:[
+"014": { debut:1740, fin:1804, learn:[42,46,31,42], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE PRÉ-CRITIQUE", note:"Newton, Wolff, la théorie des nébuleuses : quinze ans de précepteur avant la première chaire."},
     en:{nom:"THE PRE-CRITICAL", note:"Newton, Wolff, the nebular hypothesis: fifteen years as a tutor before his first chair."} },
@@ -170,7 +170,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE MORAL LAWGIVER", note:"The Groundwork draws from practical reason a law requiring no content."} },
 ]},
 
-"015": { debut:1749, fin:1778, learn:[14,14,7], stages:[
+"015": { debut:1749, fin:1778, learn:[14,14,7,6], stages:[
   { lvl:1,  types:["Contractualisme"], img:null,
     fr:{nom:"L'ILLUMINÉ DE VINCENNES", note:"Sur la route de la prison de Diderot, une question d'académie lui révèle tout son système."},
     en:{nom:"THE VINCENNES ILLUMINATION", note:"On the road to Diderot's prison, an academy prize question reveals his whole system to him."} },
@@ -179,7 +179,7 @@ const PHILOMON_EVO = {
     en:{nom:"CITIZEN OF GENEVA", note:"The Social Contract invents a will that is not the sum of wills; both books are burned."} },
 ]},
 
-"016": { debut:1788, fin:1831, learn:[20,30,20], stages:[
+"016": { debut:1788, fin:1831, learn:[20,30,20,35], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"LE SÉMINARISTE DE TÜBINGEN", note:"Il partage sa chambre avec Hölderlin et Schelling, et plante un arbre de la liberté."},
     en:{nom:"THE TÜBINGEN SEMINARIAN", note:"He shares a room with Hölderlin and Schelling, and plants a liberty tree."} },
@@ -191,7 +191,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE STATE PHILOSOPHER", note:"The Berlin chair; the Encyclopaedia closes the circle on absolute spirit."} },
 ]},
 
-"017": { debut:1836, fin:1883, learn:[11,32,10], stages:[
+"017": { debut:1836, fin:1883, learn:[11,32,10,32], stages:[
   { lvl:1,  types:["Dialectique"], img:null,
     fr:{nom:"LE JEUNE HÉGÉLIEN", note:"Berlin, le Club des docteurs, une thèse sur Démocrite et Épicure — et aucune chaire en vue."},
     en:{nom:"THE YOUNG HEGELIAN", note:"Berlin, the Doctors' Club, a thesis on Democritus and Epicurus — and no chair in sight."} },
@@ -203,7 +203,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LONDON ECONOMIST", note:"Twenty years in the British Museum; Capital names the legal theft called surplus value."} },
 ]},
 
-"018": { debut:1884, fin:1938, learn:[17,30,53], stages:[
+"018": { debut:1884, fin:1938, learn:[17,30,53,48], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE BRENTANO", note:"Docteur en mathématiques, il quitte Weierstrass pour les cours de Brentano à Vienne."},
     en:{nom:"BRENTANO'S PUPIL", note:"A doctor of mathematics, he leaves Weierstrass for Brentano's Vienna lectures."} },
@@ -215,7 +215,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE TRANSCENDENTAL", note:"Ideen brackets the world; thirty years later the Krisis restores the lifeworld to him."} },
 ]},
 
-"019": { debut:1909, fin:1976, learn:[19,19,39], stages:[
+"019": { debut:1909, fin:1976, learn:[19,19,39,45], stages:[
   { lvl:1,  types:["Phénoménologie"], img:null,
     fr:{nom:"LE SÉMINARISTE DE MESSKIRCH", note:"Entré au séminaire jésuite, il en sort pour Brentano, Duns Scot et l'assistanat de Husserl."},
     en:{nom:"THE MESSKIRCH SEMINARIAN", note:"He enters a Jesuit seminary and leaves it for Brentano, Duns Scotus and Husserl's assistantship."} },
@@ -227,7 +227,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE SHEPHERD OF BEING", note:"After the rectorship and the teaching ban, the turn: it is no longer man who questions being."} },
 ]},
 
-"020": { debut:1924, fin:1980, learn:[23,20,22], stages:[
+"020": { debut:1924, fin:1980, learn:[23,20,22,20], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"LE NORMALIEN", note:"Rue d'Ulm, l'agrégation ratée puis reçue premier ; Berlin lui apporte Husserl et un cocktail à l'abricot."},
     en:{nom:"THE NORMALIEN", note:"Rue d'Ulm, the agrégation failed then passed first; Berlin brings him Husserl and an apricot cocktail."} },
@@ -239,7 +239,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE COMMITTED INTELLECTUAL", note:"Les Temps modernes, the refused Nobel, the barrels of Billancourt: freedom obliges."} },
 ]},
 
-"021": { debut:1927, fin:1986, learn:[23,23,21], stages:[
+"021": { debut:1927, fin:1986, learn:[23,23,21,44], stages:[
   { lvl:1,  types:["Existentialisme"], img:"Simone de Beauvoir 1955.jpg",
     fr:{nom:"LE CASTOR", note:"Deuxième à l'agrégation derrière Sartre, la plus jeune agrégée de France."},
     en:{nom:"THE BEAVER", note:"Second in the agrégation behind Sartre, the youngest ever to pass it in France."} },
@@ -251,7 +251,7 @@ const PHILOMON_EVO = {
     en:{nom:"AUTHOR OF THE SECOND SEX", note:"She meant to write about herself and found she must first say what being a woman is."} },
 ]},
 
-"022": { debut:1932, fin:1960, learn:[11,20,11], stages:[
+"022": { debut:1932, fin:1960, learn:[11,20,11,20], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"L'ÉTUDIANT D'ALGER", note:"La tuberculose lui ferme l'agrégation ; restent Plotin, le football et la lumière de Tipasa."},
     en:{nom:"THE ALGIERS STUDENT", note:"Tuberculosis closes the agrégation to him; Plotinus, football and the light of Tipasa remain."} },
@@ -263,7 +263,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE REBEL", note:"I rebel, therefore we are — and the break with Sartre follows."} },
 ]},
 
-"023": { debut:1911, fin:1951, learn:[11,23,11], stages:[
+"023": { debut:1911, fin:1951, learn:[11,23,11,35], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'INGÉNIEUR AÉRONAUTE", note:"Il abandonne les hélices de Manchester pour frapper à la porte de Russell."},
     en:{nom:"THE AERONAUTICAL ENGINEER", note:"He abandons Manchester's propellers to knock on Russell's door."} },
@@ -275,7 +275,7 @@ const PHILOMON_EVO = {
     en:{nom:"WITTGENSTEIN II · THE GAMES", note:"Back at Cambridge after schoolteaching and architecture, he demolishes his own book: meaning is use."} },
 ]},
 
-"024": { debut:1943, fin:2002, learn:[29,29,16], stages:[
+"024": { debut:1943, fin:2002, learn:[29,29,16,51], stages:[
   { lvl:1,  types:["Libéralisme"], img:"John Rawls (1937 senior portrait).jpg",
     fr:{nom:"LE FANTASSIN DU PACIFIQUE", note:"Une thèse de théologie abandonnée, puis la Nouvelle-Guinée et Hiroshima vue de près."},
     en:{nom:"THE PACIFIC INFANTRYMAN", note:"An abandoned theology thesis, then New Guinea and Hiroshima seen up close."} },
@@ -287,7 +287,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE THEORIST OF JUSTICE", note:"Twenty years of rewriting; A Theory of Justice puts political philosophy back to work."} },
 ]},
 
-"025": { debut:-604, fin:-546, approx:true, learn:[30,40,20], stages:[
+"025": { debut:-604, fin:-546, approx:true, learn:[30,40,20,35], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"LE MARCHAND DE MILET", note:"Le commerce le mène en Égypte, d'où il rapporte la géométrie et la mesure des pyramides."},
     en:{nom:"THE MERCHANT OF MILETUS", note:"Trade takes him to Egypt, whence he brings back geometry and the measuring of pyramids."} },
@@ -296,7 +296,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE FIRST PHYSICIST", note:"All comes from water, and the lodestone has a soul — the first account of the world without gods."} },
 ]},
 
-"026": { debut:-590, fin:-546, approx:true, learn:[16,26,36], stages:[
+"026": { debut:-590, fin:-546, approx:true, learn:[16,26,36,30], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE THALÈS", note:"Il hérite de l'école de Milet et refuse d'emblée que le principe soit une chose connue."},
     en:{nom:"THALES' PUPIL", note:"He inherits the Milesian school and refuses from the start that the principle be a known thing."} },
@@ -305,13 +305,13 @@ const PHILOMON_EVO = {
     en:{nom:"THINKER OF THE BOUNDLESS", note:"The apeiron, and that astonishing line: things render justice to one another by the order of time."} },
 ]},
 
-"027": { debut:-565, fin:-528, approx:true, learn:[11,21,31], stages:[
+"027": { debut:-565, fin:-528, approx:true, learn:[11,21,31,26], stages:[
   { lvl:1, types:["Matérialisme"], img:null,
     fr:{nom:"LA CONDENSATION", note:"Une seule matière, deux processus : raréfier fait le feu, condenser fait la pierre. Le qualitatif devient quantitatif."},
     en:{nom:"CONDENSATION", note:"One matter, two processes: rarefaction makes fire, condensation makes stone. Quality becomes quantity."} },
 ]},
 
-"028": { debut:-550, fin:-497, approx:true, learn:[21,26,31], stages:[
+"028": { debut:-550, fin:-497, approx:true, learn:[21,26,31,36], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE VOYAGEUR D'ÉGYPTE", note:"Samos, l'Égypte, peut-être Babylone : il rapporte des mathématiques et des interdits alimentaires."},
     en:{nom:"THE TRAVELLER TO EGYPT", note:"Samos, Egypt, perhaps Babylon: he brings back mathematics and dietary prohibitions."} },
@@ -320,7 +320,7 @@ const PHILOMON_EVO = {
     en:{nom:"MASTER OF THE SECT", note:"The soul transmigrates, the spheres sound — mathematics and salvation become one."} },
 ]},
 
-"029": { debut:-550, fin:-475, approx:true, learn:[21,31,51], stages:[
+"029": { debut:-550, fin:-475, approx:true, learn:[21,31,51,41], stages:[
   { lvl:1,  types:["Philo. Religion"], img:null,
     fr:{nom:"LE RHAPSODE EXILÉ", note:"Chassé de Colophon par les Mèdes, il récite ses propres vers sur les routes pendant soixante-sept ans."},
     en:{nom:"THE EXILED RHAPSODE", note:"Driven from Colophon by the Medes, he recites his own verses on the roads for sixty-seven years."} },
@@ -329,7 +329,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE OLD SCEPTIC", note:"No man has seen the truth nor will see it; over all things, seeming holds sway."} },
 ]},
 
-"030": { debut:-515, fin:-475, approx:true, learn:[16,21,26], stages:[
+"030": { debut:-515, fin:-475, approx:true, learn:[16,21,26,31], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"L'HÉRITIER D'ÉPHÈSE", note:"Il cède à son frère la charge royale héritée et se retire jouer aux osselets près du temple."},
     en:{nom:"THE HEIR OF EPHESUS", note:"He hands his inherited royal office to his brother and withdraws to play dice by the temple."} },
@@ -338,7 +338,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE EVER-LIVING FIRE", note:"You cannot step twice into the same river; war is the father of all things."} },
 ]},
 
-"031": { debut:-495, fin:-460, approx:true, learn:[16,16,21], stages:[
+"031": { debut:-495, fin:-460, approx:true, learn:[16,16,21,26], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE LÉGISLATEUR D'ÉLÉE", note:"On dit qu'il donna des lois à sa cité avant de donner des lois à la pensée."},
     en:{nom:"THE LAWGIVER OF ELEA", note:"He is said to have given laws to his city before giving laws to thought."} },
@@ -347,7 +347,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE OLD MAN OF ATHENS", note:"Venerable and formidable, in Athens he meets a very young Socrates and corners him."} },
 ]},
 
-"032": { debut:-470, fin:-430, approx:true, learn:[11,16,26], stages:[
+"032": { debut:-470, fin:-430, approx:true, learn:[11,16,26,31], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"L'ARISTOCRATE D'AGRIGENTE", note:"Riche, démocrate, médecin et thaumaturge : il refuse la royauté qu'on lui offre."},
     en:{nom:"THE ARISTOCRAT OF ACRAGAS", note:"Rich, democrat, physician and wonder-worker: he refuses the kingship offered him."} },
@@ -356,7 +356,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE GOD OF ETNA", note:"The Purifications call him a god exiled among mortals; legend throws him into the volcano."} },
 ]},
 
-"033": { debut:-470, fin:-420, approx:true, learn:[21,11,31], stages:[
+"033": { debut:-470, fin:-420, approx:true, learn:[21,11,31,26], stages:[
   { lvl:1,  types:["Rhétorique"], img:null,
     fr:{nom:"LE PORTEFAIX D'ABDÈRE", note:"Démocrite l'aurait remarqué à la façon savante dont il ficelait son fardeau."},
     en:{nom:"THE PORTER OF ABDERA", note:"Democritus is said to have noticed the ingenious way he bundled his load."} },
@@ -365,7 +365,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LAWGIVER OF THURII", note:"Pericles entrusts him with a colony's laws; his books on the gods end up burned."} },
 ]},
 
-"034": { debut:-440, fin:-370, approx:true, learn:[21,31,51], stages:[
+"034": { debut:-440, fin:-370, approx:true, learn:[21,31,51,41], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"L'HÉRITIER DISSIPÉ", note:"Il dépense tout son héritage en voyages — Égypte, Perse, peut-être l'Inde — et rentre sans un sou."},
     en:{nom:"THE SQUANDERED INHERITANCE", note:"He spends his whole inheritance travelling — Egypt, Persia, perhaps India — and returns penniless."} },
@@ -374,7 +374,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LAUGHING PHILOSOPHER", note:"Cheerful serenity as the goal; Plato reportedly wished to burn his books, and failed."} },
 ]},
 
-"035": { debut:-470, fin:-430, approx:true, learn:[16,16,21], stages:[
+"035": { debut:-470, fin:-430, approx:true, learn:[16,16,21,26], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE PARMÉNIDE", note:"Fils adoptif et défenseur du maître ; il n'écrira que pour le protéger."},
     en:{nom:"PARMENIDES' PUPIL", note:"Adopted son and defender of his master; he writes only to shield him."} },
@@ -383,7 +383,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CONSPIRATOR", note:"Caught plotting against a tyrant, he is said to have bitten off his tongue rather than speak."} },
 ]},
 
-"036": { debut:-415, fin:-356, approx:true, learn:[21,26,36], stages:[
+"036": { debut:-415, fin:-356, approx:true, learn:[21,26,36,31], stages:[
   { lvl:1,  types:["Hédonisme"], img:null,
     fr:{nom:"LE CYRÉNÉEN À ATHÈNES", note:"Attiré de Cyrène par la réputation de Socrate, il sera le premier de ses élèves à se faire payer."},
     en:{nom:"THE CYRENEAN IN ATHENS", note:"Drawn from Cyrene by Socrates' fame, he becomes the first of his pupils to charge a fee."} },
@@ -392,13 +392,13 @@ const PHILOMON_EVO = {
     en:{nom:"MASTER OF PLEASURE", note:"I possess, I am not possessed: the pleasure of the moment, without becoming its slave."} },
 ]},
 
-"037": { debut:-370, fin:-330, approx:true, learn:[11,16,21], stages:[
+"037": { debut:-370, fin:-330, approx:true, learn:[11,16,21,26], stages:[
   { lvl:1, types:["Logique"], img:null,
     fr:{nom:"LE FAISEUR D'ÉNIGMES", note:"Sept paradoxes qui n'ont pas vieilli d'un jour en vingt-quatre siècles."},
     en:{nom:"THE RIDDLE-MAKER", note:"Seven paradoxes that have not aged a day in twenty-four centuries."} },
 ]},
 
-"038": { debut:-340, fin:-270, approx:true, learn:[21,26,36], stages:[
+"038": { debut:-340, fin:-270, approx:true, learn:[21,26,36,31], stages:[
   { lvl:1,  types:["Scepticisme"], img:null,
     fr:{nom:"LE PEINTRE D'ÉLIS", note:"Il peignait des porte-flambeaux, sans génie, avant de suivre Anaxarque."},
     en:{nom:"THE PAINTER OF ELIS", note:"He painted torch-bearers, without genius, before following Anaxarchus."} },
@@ -407,7 +407,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE SUSPENDER", note:"Nothing is this rather than that: suspend judgement, and peace follows of itself, like a shadow."} },
 ]},
 
-"039": { debut:-312, fin:-262, approx:true, learn:[16,21,26], stages:[
+"039": { debut:-312, fin:-262, approx:true, learn:[16,21,26,31], stages:[
   { lvl:1,  types:["Stoïcisme"], img:null,
     fr:{nom:"LE NAUFRAGÉ", note:"Il perd sa cargaison de pourpre près du Pirée et déclare avoir fait là son plus beau voyage."},
     en:{nom:"THE SHIPWRECKED", note:"He loses his cargo of purple off Piraeus and declares it his most prosperous voyage."} },
@@ -416,13 +416,13 @@ const PHILOMON_EVO = {
     en:{nom:"LIVE ACCORDING TO NATURE", note:"One reason runs through the cosmos; to accord with it is the only good, the rest indifferent."} },
 ]},
 
-"040": { debut:-300, fin:-230, approx:true, learn:[21,21,31], stages:[
+"040": { debut:-300, fin:-230, approx:true, learn:[21,21,31,41], stages:[
   { lvl:1, types:["Scepticisme"], img:null,
     fr:{nom:"LE SATIRISTE DES SILLES", note:"Il met tous les dogmatiques en vers moqueurs — seul Pyrrhon échappe à la charge."},
     en:{nom:"THE SATIRIST OF THE SILLOI", note:"He sets every dogmatist to mocking verse — only Pyrrho escapes the charge."} },
 ]},
 
-"041": { debut:133, fin:180, learn:[38,41,29], stages:[
+"041": { debut:133, fin:180, learn:[38,41,29,44], stages:[
   { lvl:1,  types:["Stoïcisme"], img:null,
     fr:{nom:"L'ENFANT AU MANTEAU", note:"À douze ans il prend le manteau râpé du philosophe et dort à même le sol, jusqu'à ce que sa mère cède."},
     en:{nom:"THE BOY IN THE CLOAK", note:"At twelve he takes the philosopher's rough cloak and sleeps on the ground, until his mother relents."} },
@@ -431,7 +431,7 @@ const PHILOMON_EVO = {
     en:{nom:"MEDITATIONS FROM CAMP", note:"Under canvas, in Greek, for himself alone: an emperor urging himself not to be Caesarified."} },
 ]},
 
-"042": { debut:232, fin:270, learn:[22,22,32], stages:[
+"042": { debut:232, fin:270, learn:[22,22,32,35], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"L'ÉLÈVE D'AMMONIOS", note:"À vingt-huit ans il trouve enfin à Alexandrie le maître qu'il cherchait, et reste onze ans."},
     en:{nom:"AMMONIUS'S PUPIL", note:"At twenty-eight he finally finds in Alexandria the master he sought, and stays eleven years."} },
@@ -443,7 +443,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ENNEADS", note:"The One overflows without dividing; four times in his life, says Porphyry, he reached it."} },
 ]},
 
-"043": { debut:840, fin:877, approx:true, learn:[23,23,12], stages:[
+"043": { debut:840, fin:877, approx:true, learn:[23,23,12,15], stages:[
   { lvl:1,  types:["Philo. Religion"], img:null,
     fr:{nom:"LE SCOT À LA COUR", note:"Venu d'Irlande, il est l'un des rares Occidentaux de son siècle à lire le grec."},
     en:{nom:"THE SCOT AT COURT", note:"Come from Ireland, he is among the few Westerners of his century who read Greek."} },
@@ -452,7 +452,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DIVISION OF NATURE", note:"The Periphyseon puts God and world in one division — the Church will condemn it for three centuries."} },
 ]},
 
-"044": { debut:1059, fin:1109, learn:[20,40,18], stages:[
+"044": { debut:1059, fin:1109, learn:[20,40,18,30], stages:[
   { lvl:1,  types:["Philo. Religion"], img:null,
     fr:{nom:"LE MOINE DU BEC", note:"Il quitte l'Italie pour suivre Lanfranc en Normandie, et y prend l'habit à vingt-sept ans."},
     en:{nom:"THE MONK OF BEC", note:"He leaves Italy to follow Lanfranc into Normandy, and takes the habit at twenty-seven."} },
@@ -461,7 +461,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE EXILED ARCHBISHOP", note:"Twice exiled by his kings; Cur Deus Homo is written far from Canterbury."} },
 ]},
 
-"045": { debut:1309, fin:1347, learn:[11,11,20], stages:[
+"045": { debut:1309, fin:1347, learn:[11,11,20,15], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE BACHELIER D'OXFORD", note:"Franciscain, il commente les Sentences sans jamais obtenir la maîtrise — d'où son surnom d'Inceptor."},
     en:{nom:"THE OXFORD BACHELOR", note:"A Franciscan, he lectures on the Sentences without ever taking the mastership — hence Inceptor."} },
@@ -470,7 +470,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE FUGITIVE FRIAR", note:"Summoned to Avignon, he flees to the Emperor: defend me with the sword, I will defend you with the pen."} },
 ]},
 
-"046": { debut:1498, fin:1527, learn:[16,5,16], stages:[
+"046": { debut:1498, fin:1527, learn:[16,5,16,16], stages:[
   { lvl:1,  types:["Philo. Politique"], img:null,
     fr:{nom:"LE SECRÉTAIRE FLORENTIN", note:"La chute de Savonarole lui ouvre la seconde chancellerie ; il a vingt-neuf ans et aucune fortune."},
     en:{nom:"THE FLORENTINE SECRETARY", note:"Savonarola's fall opens the second chancery to him; he is twenty-nine and without means."} },
@@ -482,7 +482,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE EXILE OF SANT'ANDREA", note:"Dismissed, tortured, banished: in the evening he dons court dress to write The Prince."} },
 ]},
 
-"047": { debut:1579, fin:1626, learn:[42,42,27], stages:[
+"047": { debut:1579, fin:1626, learn:[42,42,27,42], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"L'AVOCAT AMBITIEUX", note:"Son père meurt sans l'avoir doté ; il lui faudra la cour, le droit et trente ans de patience."},
     en:{nom:"THE AMBITIOUS LAWYER", note:"His father dies without providing for him; it will take the court, the law and thirty years of patience."} },
@@ -491,7 +491,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE NOVUM ORGANUM", note:"A new instrument against Aristotle's: first drive out the idols, then induce step by step."} },
 ]},
 
-"048": { debut:1608, fin:1679, learn:[33,44,48], stages:[
+"048": { debut:1608, fin:1679, learn:[33,44,48,44], stages:[
   { lvl:1,  types:["Matérialisme"], img:null,
     fr:{nom:"LE PRÉCEPTEUR", note:"Attaché aux Cavendish toute sa vie, il voyage, traduit Thucydide et rencontre Galilée."},
     en:{nom:"THE TUTOR", note:"Attached to the Cavendishes all his life, he travels, translates Thucydides and meets Galileo."} },
@@ -503,7 +503,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PARIS EXILE", note:"Eleven years fleeing civil war; Leviathan is born of fear, as the state itself is."} },
 ]},
 
-"049": { debut:1639, fin:1662, learn:[19,19,21], stages:[
+"049": { debut:1639, fin:1662, learn:[19,19,21,21], stages:[
   { lvl:1,  types:["Scepticisme"], img:null,
     fr:{nom:"LE GÉOMÈTRE PRÉCOCE", note:"À seize ans un théorème sur les coniques ; à dix-neuf, une machine à calculer pour son père."},
     en:{nom:"THE PRECOCIOUS GEOMETER", note:"At sixteen a theorem on conics; at nineteen a calculating machine for his father."} },
@@ -515,7 +515,7 @@ const PHILOMON_EVO = {
     en:{nom:"APOLOGIST OF THE PENSÉES", note:"The apology stays in bundles; the heart has its reasons, and the wager addresses those who have none."} },
 ]},
 
-"050": { debut:1650, fin:1679, learn:[28,28,24], stages:[
+"050": { debut:1650, fin:1679, learn:[28,28,24,28], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE HENRY MORE", note:"Écartée de l'université, elle apprend le platonisme de Cambridge par correspondance, à dix-neuf ans."},
     en:{nom:"HENRY MORE'S PUPIL", note:"Barred from university, she learns Cambridge Platonism by correspondence, at nineteen."} },
@@ -524,7 +524,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PRINCIPLES", note:"A notebook found after her death: one living substance, graded — Leibniz will take the word monad from it."} },
 ]},
 
-"051": { debut:1661, fin:1716, learn:[54,35,26], stages:[
+"051": { debut:1661, fin:1716, learn:[54,35,26,50], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"L'AUTODIDACTE DE LEIPZIG", note:"À quinze ans il a lu toute la bibliothèque de son père ; à vingt, on lui refuse le doctorat pour jeunesse."},
     en:{nom:"THE LEIPZIG AUTODIDACT", note:"At fifteen he has read his father's whole library; at twenty he is denied a doctorate for youth."} },
@@ -536,7 +536,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE HANOVER LIBRARIAN", note:"Genealogist to a princely house for forty years; between two archives, the monads."} },
 ]},
 
-"052": { debut:1700, fin:1753, learn:[11,11,14], stages:[
+"052": { debut:1700, fin:1753, learn:[11,11,14,11], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"L'ÉTUDIANT DE TRINITY", note:"Dublin lui donne Locke et Newton d'un coup ; il décide que le premier réfute le second."},
     en:{nom:"THE TRINITY STUDENT", note:"Dublin gives him Locke and Newton at once; he decides the first refutes the second."} },
@@ -545,7 +545,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE BISHOP OF CLOYNE", note:"If the tree persists unseen, it is because one gaze never closes."} },
 ]},
 
-"053": { debut:1711, fin:1746, learn:[15,15,15], stages:[
+"053": { debut:1711, fin:1746, learn:[15,15,15,20], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"L'ÉTUDIANT DE GLASGOW", note:"Fils de pasteur presbytérien, il y étudie la théologie avant d'ouvrir une académie à Dublin."},
     en:{nom:"THE GLASGOW STUDENT", note:"Son of a Presbyterian minister, he studies theology there before opening an academy in Dublin."} },
@@ -554,7 +554,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE GLASGOW PROFESSOR", note:"The first to lecture in English rather than Latin; among his students, one Adam Smith."} },
 ]},
 
-"054": { debut:1726, fin:1796, learn:[39,60,39], stages:[
+"054": { debut:1726, fin:1796, learn:[39,60,39,45], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"LE PASTEUR D'ABERDEEN", note:"Bibliothécaire puis ministre de New Machar, il lit Hume et en reste stupéfait."},
     en:{nom:"THE ABERDEEN MINISTER", note:"Librarian then minister of New Machar, he reads Hume and is left stunned."} },
@@ -563,7 +563,7 @@ const PHILOMON_EVO = {
     en:{nom:"MASTER OF COMMON SENSE", note:"Adam Smith's successor at Glasgow; some beliefs are not proved, they are presupposed."} },
 ]},
 
-"055": { debut:1748, fin:1797, learn:[43,43,43], stages:[
+"055": { debut:1748, fin:1797, learn:[43,43,43,10], stages:[
   { lvl:1,  types:["Philo. Politique"], img:null,
     fr:{nom:"L'ESSAYISTE DU SUBLIME", note:"Un traité sur le beau et le sublime à vingt-huit ans, avant la politique et le Parlement."},
     en:{nom:"ESSAYIST OF THE SUBLIME", note:"A treatise on the beautiful and the sublime at twenty-eight, before politics and Parliament."} },
@@ -575,7 +575,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE COUNTER-REVOLUTIONARY", note:"The Reflections foretell the Terror and a general; his Whig friends never forgive him."} },
 ]},
 
-"056": { debut:1763, fin:1832, learn:[14,27,29], stages:[
+"056": { debut:1763, fin:1832, learn:[14,27,29,43], stages:[
   { lvl:1,  types:["Utilitarisme"], img:null,
     fr:{nom:"L'ENFANT PRODIGE", note:"Latin à trois ans, Oxford à douze ; il y prête serment aux Trente-Neuf Articles et ne s'en remettra pas."},
     en:{nom:"THE CHILD PRODIGY", note:"Latin at three, Oxford at twelve; there he swears to the Thirty-Nine Articles and never recovers."} },
@@ -587,7 +587,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE UNIVERSAL LEGISLATOR", note:"The felicific calculus, then the circular prison — and his stuffed body left to University College."} },
 ]},
 
-"057": { debut:1783, fin:1797, learn:[10,5,10], stages:[
+"057": { debut:1783, fin:1797, learn:[10,5,10,10], stages:[
   { lvl:1,  types:["Libéralisme"], img:null,
     fr:{nom:"LA MAÎTRESSE D'ÉCOLE", note:"Elle ouvre une école à Newington Green faute d'autre métier ouvert à une femme sans dot."},
     en:{nom:"THE SCHOOLMISTRESS", note:"She opens a school at Newington Green for want of any other trade open to a dowerless woman."} },
@@ -596,7 +596,7 @@ const PHILOMON_EVO = {
     en:{nom:"VINDICATION OF THE RIGHTS OF WOMAN", note:"If virtue is one, education must be too: one does not manufacture wives, one forms rational beings."} },
 ]},
 
-"058": { debut:1763, fin:1805, learn:[40,40,23], stages:[
+"058": { debut:1763, fin:1805, learn:[40,40,23,32], stages:[
   { lvl:1,  types:["Philo. Religion"], img:null,
     fr:{nom:"LE TUTEUR DE CAMBRIDGE", note:"Senior wrangler, il enseigne la morale et le Nouveau Testament à Christ's College."},
     en:{nom:"THE CAMBRIDGE TUTOR", note:"Senior wrangler, he teaches morals and the New Testament at Christ's College."} },
@@ -605,7 +605,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE WATCHMAKER ON THE HEATH", note:"A watch found on the heath implies a watchmaker; the eye implies more. Darwin will read him at Cambridge with delight."} },
 ]},
 
-"059": { debut:1780, fin:1814, learn:[15,15,29], stages:[
+"059": { debut:1780, fin:1814, learn:[15,15,29,15], stages:[
   { lvl:1,  types:["Rationalisme"], img:null,
     fr:{nom:"LE BOURSIER PAUVRE", note:"Fils de tisserand, remarqué par un baron pour avoir su répéter un sermon entier de mémoire."},
     en:{nom:"THE POOR SCHOLARSHIP BOY", note:"A weaver's son, noticed by a baron for repeating an entire sermon from memory."} },
@@ -620,7 +620,7 @@ const PHILOMON_EVO = {
     en:{nom:"ORATOR TO THE NATION", note:"Berlin under Napoleon; he makes the nation a task of education, not a race."} },
 ]},
 
-"060": { debut:1790, fin:1854, learn:[11,8,20], stages:[
+"060": { debut:1790, fin:1854, learn:[11,8,20,11], stages:[
   { lvl:1,  types:["Idéalisme"], img:"Portret van Friedrich Wilhelm Joseph von Schelling, RP-P-1914-4017.jpg",
     fr:{nom:"L'ENFANT DU STIFT", note:"Admis à quinze ans, cinq ans avant l'âge ; il y partage une chambre avec Hegel et Hölderlin."},
     en:{nom:"THE CHILD OF THE STIFT", note:"Admitted at fifteen, five years under age; he shares a room with Hegel and Hölderlin."} },
@@ -632,7 +632,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE THINKER OF FREEDOM", note:"After Caroline's death, the freedom essay places a dark ground even within the absolute."} },
 ]},
 
-"061": { debut:1809, fin:1860, learn:[10,10,10], stages:[
+"061": { debut:1809, fin:1860, learn:[10,10,10,32], stages:[
   { lvl:1,  types:["Idéalisme"], img:"Arthur Schopenhauer Portrait by Ludwig Sigismund Ruhl 1815.jpeg",
     fr:{nom:"L'ÉTUDIANT MISANTHROPE", note:"Il abandonne le négoce paternel pour Göttingen, et n'aura jamais à gagner sa vie."},
     en:{nom:"THE MISANTHROPIC STUDENT", note:"He abandons his father's trade for Göttingen, and never has to earn a living."} },
@@ -641,7 +641,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE SAGE OF FRANKFURT", note:"The Parerga finally bring him fame, at sixty-three, between his poodle and his table d'hôte."} },
 ]},
 
-"062": { debut:1823, fin:1872, learn:[19,19,40], stages:[
+"062": { debut:1823, fin:1872, learn:[19,19,40,19], stages:[
   { lvl:1,  types:["Humanisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE HEGEL", note:"Il quitte la théologie de Heidelberg pour deux années aux pieds de Hegel à Berlin."},
     en:{nom:"HEGEL'S PUPIL", note:"He leaves Heidelberg theology for two years at Hegel's feet in Berlin."} },
@@ -650,13 +650,13 @@ const PHILOMON_EVO = {
     en:{nom:"THE MATERIALIST", note:"Man is what he eats — the German pun turns anthropology into a question of subsistence."} },
 ]},
 
-"063": { debut:1818, fin:1859, learn:[15,15,15], stages:[
+"063": { debut:1818, fin:1859, learn:[15,15,15,18], stages:[
   { lvl:1, types:["Philo. Droit"], img:null,
     fr:{nom:"LA PROVINCE DU DROIT", note:"Le droit est le commandement d'un souverain assorti d'une sanction — que la loi soit juste est une autre question."},
     en:{nom:"THE PROVINCE OF JURISPRUDENCE", note:"Law is a sovereign's command backed by sanction — whether it is just is another question."} },
 ]},
 
-"064": { debut:1809, fin:1873, learn:[53,51,51], stages:[
+"064": { debut:1809, fin:1873, learn:[53,51,51,61], stages:[
   { lvl:1,  types:["Utilitarisme"], img:null,
     fr:{nom:"L'ENFANT DE LABORATOIRE", note:"Grec à trois ans, Platon à sept, l'économie politique à treize : son père l'élève comme une démonstration."},
     en:{nom:"THE LABORATORY CHILD", note:"Greek at three, Plato at seven, political economy at thirteen: his father raises him as a demonstration."} },
@@ -668,7 +668,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DEFENDER OF LIBERTY", note:"On Liberty appears the year Harriet Taylor dies, whose book he says it is as much as his."} },
 ]},
 
-"065": { debut:1831, fin:1882, learn:[8,29,8], stages:[
+"065": { debut:1831, fin:1882, learn:[8,29,8,41], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE NATURALISTE DU BEAGLE", note:"Recalé de médecine, destiné à l'Église, il embarque pour cinq ans comme compagnon de table du capitaine."},
     en:{nom:"THE BEAGLE'S NATURALIST", note:"A medical dropout bound for the Church, he sails for five years as the captain's dining companion."} },
@@ -680,7 +680,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ORIGIN OF SPECIES", note:"A letter from Wallace forces him to publish; the whole edition sells on the first day."} },
 ]},
 
-"066": { debut:1830, fin:1855, learn:[14,14,17], stages:[
+"066": { debut:1830, fin:1855, learn:[14,14,17,15], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"L'ÉTUDIANT MÉLANCOLIQUE", note:"Dix ans de théologie et de dettes, sous le « grand tremblement de terre » de la malédiction paternelle."},
     en:{nom:"THE MELANCHOLY STUDENT", note:"Ten years of theology and debts, under the \"great earthquake\" of his father's curse."} },
@@ -692,7 +692,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ATTACK UPON CHRISTENDOM", note:"A year of pamphlets against the Danish Church; he collapses in the street and dies at forty-two."} },
 ]},
 
-"067": { debut:1856, fin:1917, learn:[19,19,30], stages:[
+"067": { debut:1856, fin:1917, learn:[19,19,30,30], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"LE PRÊTRE ARISTOTÉLICIEN", note:"Une thèse sur les sens multiples de l'être chez Aristote, puis l'ordination."},
     en:{nom:"THE ARISTOTELIAN PRIEST", note:"A thesis on the manifold senses of being in Aristotle, then ordination."} },
@@ -704,7 +704,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE VIENNA MASTER", note:"He leaves the Church to marry and loses his chair; a mere Privatdozent, he trains Husserl, Freud and Meinong."} },
 ]},
 
-"068": { debut:1859, fin:1914, learn:[20,9,35], stages:[
+"068": { debut:1859, fin:1914, learn:[20,9,35,20], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ARPENTEUR DU COAST SURVEY", note:"Trente ans à mesurer la gravité pour l'État fédéral ; la philosophie se fait le soir."},
     en:{nom:"THE COAST SURVEY MAN", note:"Thirty years measuring gravity for the federal government; philosophy is done in the evenings."} },
@@ -716,7 +716,7 @@ const PHILOMON_EVO = {
     en:{nom:"FATHER OF PRAGMATISM", note:"An idea's meaning is the sum of its conceivable effects; when James makes it something else, he renames his own pragmaticism."} },
 ]},
 
-"069": { debut:1861, fin:1910, learn:[47,47,42], stages:[
+"069": { debut:1861, fin:1910, learn:[47,47,42,30], stages:[
   { lvl:1,  types:["Pragmatisme"], img:null,
     fr:{nom:"LE PEINTRE MANQUÉ", note:"Il veut être peintre, son père l'en dissuade ; suivront la chimie, la médecine et une longue dépression."},
     en:{nom:"THE FAILED PAINTER", note:"He wants to be a painter, his father dissuades him; chemistry, medicine and a long depression follow."} },
@@ -728,7 +728,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE VARIETIES", note:"He treats religious experience as a fact to describe, not a thesis to refute."} },
 ]},
 
-"070": { debut:1865, fin:1924, learn:[29,19,29], stages:[
+"070": { debut:1865, fin:1924, learn:[29,19,29,12], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"LE FELLOW DE MERTON", note:"Une maladie rénale à vingt-cinq ans lui vaut une bourse sans obligation d'enseigner — et cinquante ans de réclusion."},
     en:{nom:"THE MERTON FELLOW", note:"A kidney disease at twenty-five earns him a fellowship with no teaching duties — and fifty years of seclusion."} },
@@ -737,7 +737,7 @@ const PHILOMON_EVO = {
     en:{nom:"APPEARANCE AND REALITY", note:"Almost all we take for real is contradictory; only the Absolute escapes — Russell and Moore will rise against him."} },
 ]},
 
-"071": { debut:1869, fin:1925, learn:[11,24,16], stages:[
+"071": { debut:1869, fin:1925, learn:[11,24,16,16], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉTUDIANT D'IÉNA", note:"Mathématicien de formation, il enseignera toute sa vie dans une obscurité presque totale."},
     en:{nom:"THE JENA STUDENT", note:"A trained mathematician, he will teach his whole life in near-total obscurity."} },
@@ -746,7 +746,7 @@ const PHILOMON_EVO = {
     en:{nom:"SENSE AND REFERENCE", note:"Morning star and evening star name one body and do not say the same thing. In 1902 Russell's letter will ruin the edifice."} },
 ]},
 
-"072": { debut:1873, fin:1912, learn:[30,25,30], stages:[
+"072": { debut:1873, fin:1912, learn:[30,25,30,35], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'INGÉNIEUR DES MINES", note:"Polytechnique, puis les mines de Vesoul ; il fait sa thèse de mathématiques entre deux inspections."},
     en:{nom:"THE MINING ENGINEER", note:"Polytechnique, then the Vesoul mines; he writes his mathematics thesis between inspections."} },
@@ -755,7 +755,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CONVENTIONALIST", note:"Axioms are neither true nor false: they are convenient. Which does not make them arbitrary."} },
 ]},
 
-"073": { debut:1876, fin:1939, learn:[25,48,30], stages:[
+"073": { debut:1876, fin:1939, learn:[25,48,30,45], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:"Freud 1885.jpg",
     fr:{nom:"LE NEUROLOGUE", note:"Six ans à disséquer des anguilles chez Brücke, puis Charcot et l'hypnose à la Salpêtrière."},
     en:{nom:"THE NEUROLOGIST", note:"Six years dissecting eels in Brücke's lab, then Charcot and hypnosis at the Salpêtrière."} },
@@ -767,7 +767,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE SECOND TOPOGRAPHY", note:"After the war and the jaw cancer, the psychic apparatus is remade in three agencies."} },
 ]},
 
-"074": { debut:1876, fin:1913, learn:[32,32,34], stages:[
+"074": { debut:1876, fin:1913, learn:[32,32,34,34], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"LE PRODIGE DE LEIPZIG", note:"À vingt et un ans, un Mémoire sur les voyelles indo-européennes qui stupéfie les néogrammairiens."},
     en:{nom:"THE LEIPZIG PRODIGY", note:"At twenty-one, a Mémoire on Indo-European vowels that astounds the Neogrammarians."} },
@@ -779,7 +779,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE COURSE IN GENERAL LINGUISTICS", note:"Three courses, no book; his students publish their notes after his death and found a century of thought."} },
 ]},
 
-"075": { debut:1878, fin:1941, learn:[12,19,30], stages:[
+"075": { debut:1878, fin:1941, learn:[12,19,30,19], stages:[
   { lvl:1,  types:["Phénoménologie"], img:null,
     fr:{nom:"LE NORMALIEN MATHÉMATICIEN", note:"On lui promet une carrière de mathématicien ; il choisit la philosophie, au grand dam de ses maîtres."},
     en:{nom:"THE MATHEMATICIAN NORMALIEN", note:"A mathematician's career is promised him; he chooses philosophy, to his teachers' dismay."} },
@@ -791,7 +791,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE VITAL IMPETUS", note:"The Collège de France turns crowds away; people come from New York to hear him, and the Nobel follows."} },
 ]},
 
-"076": { debut:1879, fin:1952, learn:[60,38,18], stages:[
+"076": { debut:1879, fin:1952, learn:[60,38,18,60], stages:[
   { lvl:1,  types:["Pragmatisme"], img:"John Dewey, studio portrait, ca 1890.jpg",
     fr:{nom:"LE MAÎTRE D'ÉCOLE DE OIL CITY", note:"Trois ans à enseigner dans une ville pétrolière de Pennsylvanie avant de reprendre des études."},
     en:{nom:"THE OIL CITY SCHOOLMASTER", note:"Three years teaching in a Pennsylvania oil town before returning to study."} },
@@ -800,7 +800,7 @@ const PHILOMON_EVO = {
     en:{nom:"PHILOSOPHER OF DEMOCRACY", note:"Democracy is not a regime but a way of living together and inquiring together."} },
 ]},
 
-"077": { debut:1882, fin:1916, learn:[25,25,25], stages:[
+"077": { debut:1882, fin:1916, learn:[25,25,25,27], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:"Pierre Duhem 1900 (cropped).jpg",
     fr:{nom:"LA THÈSE REFUSÉE", note:"Berthelot fait rejeter sa thèse ; il n'enseignera jamais à Paris, et ne pardonnera jamais."},
     en:{nom:"THE REJECTED THESIS", note:"Berthelot has his thesis rejected; he will never teach in Paris, and never forgive."} },
@@ -809,7 +809,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE AIM AND STRUCTURE OF PHYSICAL THEORY", note:"No experiment refutes a lone hypothesis: the whole theoretical group stands trial."} },
 ]},
 
-"078": { debut:1882, fin:1952, learn:[15,42,24], stages:[
+"078": { debut:1882, fin:1952, learn:[15,42,24,42], stages:[
   { lvl:1,  types:["Esthétique"], img:"George Santayana (1863–1952) c. 1886.png",
     fr:{nom:"L'ESPAGNOL DE HARVARD", note:"Né à Madrid, élevé à Boston, il restera étranger aux deux et le revendiquera."},
     en:{nom:"THE SPANIARD AT HARVARD", note:"Born in Madrid, raised in Boston, he stays foreign to both and claims it."} },
@@ -818,7 +818,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ROMAN HERMIT", note:"A legacy lets him resign from Harvard by telegram; he ends his days with nuns in Rome."} },
 ]},
 
-"079": { debut:1885, fin:1925, learn:[24,24,37], stages:[
+"079": { debut:1885, fin:1925, learn:[24,24,37,24], stages:[
   { lvl:1,  types:["Idéalisme"], img:null,
     fr:{nom:"L'HÉGÉLIEN DE CAMBRIDGE", note:"Renvoyé de son école pour athéisme, il devient le dernier grand hégélien anglais."},
     en:{nom:"THE CAMBRIDGE HEGELIAN", note:"Expelled from school for atheism, he becomes the last great English Hegelian."} },
@@ -827,7 +827,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ATHEIST OF IMMORTAL SOULS", note:"No God, but a universe made of eternal persons bound by love."} },
 ]},
 
-"080": { debut:1886, fin:1952, learn:[17,17,32], stages:[
+"080": { debut:1886, fin:1952, learn:[17,17,32,53], stages:[
   { lvl:1,  types:["Esthétique"], img:"Benedetto Croce 01 (cropped).jpg",
     fr:{nom:"L'ORPHELIN DE CASAMICCIOLA", note:"Le tremblement de terre d'Ischia tue ses parents et sa sœur ; il reste enseveli des heures à seize ans."},
     en:{nom:"THE ORPHAN OF CASAMICCIOLA", note:"The Ischia earthquake kills his parents and sister; he lies buried for hours, aged sixteen."} },
@@ -836,7 +836,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ANTIFASCIST MANIFESTO", note:"A senator, he answers Gentile publicly in 1925; all history is contemporary history."} },
 ]},
 
-"081": { debut:1902, fin:1964, learn:[13,13,13], stages:[
+"081": { debut:1902, fin:1964, learn:[13,13,13,13], stages:[
   { lvl:1,  types:["Esthétique"], img:"Clive-bell-c-1913.jpg",
     fr:{nom:"L'HOMME DE BLOOMSBURY", note:"Trinity College, la Midnight Society, puis le mariage avec Vanessa Stephen — sœur de Virginia Woolf."},
     en:{nom:"THE BLOOMSBURY MAN", note:"Trinity College, the Midnight Society, then marriage to Vanessa Stephen — Virginia Woolf's sister."} },
@@ -845,7 +845,7 @@ const PHILOMON_EVO = {
     en:{nom:"SIGNIFICANT FORM", note:"What makes art is neither subject nor represented emotion, but an arrangement of lines and colours."} },
 ]},
 
-"082": { debut:1900, fin:1973, learn:[35,21,35], stages:[
+"082": { debut:1900, fin:1973, learn:[35,21,35,21], stages:[
   { lvl:1,  types:["Philo. Droit"], img:null,
     fr:{nom:"LE JURISTE DE VIENNE", note:"Il choisit le droit faute de pouvoir vivre de la philosophie, et décide de le rendre philosophique."},
     en:{nom:"THE VIENNA JURIST", note:"He picks law for want of a living in philosophy, and resolves to make law philosophical."} },
@@ -854,7 +854,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PURE THEORY", note:"A norm holds only through a higher norm; at the summit, the Grundnorm, presupposed and unproven."} },
 ]},
 
-"083": { debut:1892, fin:1958, learn:[12,34,12], stages:[
+"083": { debut:1892, fin:1958, learn:[12,34,12,48], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"L'ÉTUDIANT DE CLASSIQUES", note:"Venu pour le grec, il bascule en philosophie après avoir rencontré Russell — de deux ans son aîné."},
     en:{nom:"THE CLASSICS STUDENT", note:"Come for Greek, he switches to philosophy after meeting Russell — two years his senior."} },
@@ -863,7 +863,7 @@ const PHILOMON_EVO = {
     en:{nom:"HERE IS ONE HAND", note:"Against scepticism he raises one hand then the other: the sceptic's premises are less certain than this."} },
 ]},
 
-"084": { debut:1890, fin:1970, learn:[12,29,16], stages:[
+"084": { debut:1890, fin:1970, learn:[12,29,16,19], stages:[
   { lvl:1,  types:["Logique"], img:"Portrait of Bertrand Russell in 1893.jpg",
     fr:{nom:"L'ORPHELIN ARISTOCRATE", note:"Élevé par sa grand-mère dans une piété qu'il rejette ; Euclide à onze ans lui fait l'effet d'un premier amour."},
     en:{nom:"THE ARISTOCRAT ORPHAN", note:"Raised by his grandmother in a piety he rejects; Euclid at eleven strikes him like a first love."} },
@@ -875,7 +875,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE BRIXTON PRISONER", note:"Six months in gaol for pacifism, where he writes an introduction to mathematical philosophy."} },
 ]},
 
-"085": { debut:1902, fin:1944, learn:[33,27,27], stages:[
+"085": { debut:1902, fin:1944, learn:[33,27,27,27], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE QUAKER DE CAMBRIDGE", note:"Senior wrangler, puis astronome royal adjoint ; sa foi quaker lui interdira de porter les armes."},
     en:{nom:"THE CAMBRIDGE QUAKER", note:"Senior wrangler, then chief assistant at Greenwich; his Quaker faith will forbid him to bear arms."} },
@@ -884,7 +884,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE TWO TABLES", note:"The commonsense table and the physicist's; what science catches depends on the net it casts."} },
 ]},
 
-"086": { debut:1920, fin:1930, learn:[7,10,8], stages:[
+"086": { debut:1920, fin:1930, learn:[7,10,8,9], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE TRADUCTEUR DU TRACTATUS", note:"À dix-huit ans il traduit Wittgenstein en anglais, puis va discuter avec lui deux semaines en Autriche."},
     en:{nom:"THE TRACTATUS TRANSLATOR", note:"At eighteen he translates Wittgenstein into English, then argues with him for a fortnight in Austria."} },
@@ -893,7 +893,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE INTERRUPTED YEAR", note:"Economics, mathematics, philosophy: he refounds three fields, then dies at twenty-six."} },
 ]},
 
-"087": { debut:1910, fin:1970, learn:[19,25,41], stages:[
+"087": { debut:1910, fin:1970, learn:[19,25,41,41], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉLÈVE DE FREGE", note:"Il suit à Iéna les cours d'un vieux professeur que trois étudiants écoutent."},
     en:{nom:"FREGE'S PUPIL", note:"At Jena he attends the lectures of an old professor heard by three students."} },
@@ -905,7 +905,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PRINCIPLE OF TOLERANCE", note:"In logic there are no morals: build your own language, provided you state its rules."} },
 ]},
 
-"088": { debut:1906, fin:1943, learn:[25,34,32], stages:[
+"088": { debut:1906, fin:1943, learn:[25,34,32,32], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE GIRTON", note:"Elle découvre la philosophie par hasard, en empruntant l'Apparence et Réalité de Bradley pour une insomnie."},
     en:{nom:"THE GIRTON STUDENT", note:"She finds philosophy by chance, borrowing Bradley's Appearance and Reality to cure insomnia."} },
@@ -914,7 +914,7 @@ const PHILOMON_EVO = {
     en:{nom:"AGAINST THE MYSTICAL PHYSICISTS", note:"She dismantles the prose of Eddington and Jeans, then teaches the public to spot a crooked argument."} },
 ]},
 
-"089": { debut:1911, fin:1937, learn:[19,21,23], stages:[
+"089": { debut:1911, fin:1937, learn:[19,21,23,23], stages:[
   { lvl:1,  types:["Marxisme"], img:null,
     fr:{nom:"L'ÉTUDIANT SARDE", note:"Une bourse pour pauvres l'amène à Turin ; il y passe le concours au même examen que Togliatti."},
     en:{nom:"THE SARDINIAN STUDENT", note:"A scholarship for the poor brings him to Turin; he sits the entrance exam alongside Togliatti."} },
@@ -926,7 +926,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PRISON NOTEBOOKS", note:"\"We must stop this brain working for twenty years,\" says the prosecutor. Thirty-three notebooks answer."} },
 ]},
 
-"090": { debut:1912, fin:1940, learn:[24,29,29], stages:[
+"090": { debut:1912, fin:1940, learn:[24,29,29,26], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"L'ÉTUDIANT DU WANDERVOGEL", note:"Le mouvement de jeunesse allemand, puis une thèse sur le romantisme et la critique d'art."},
     en:{nom:"THE WANDERVOGEL STUDENT", note:"The German youth movement, then a thesis on Romanticism and art criticism."} },
@@ -938,7 +938,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PARIS ARCADES", note:"The arcades, reproducibility, the angel blown backwards into the future — and Portbou, in 1940."} },
 ]},
 
-"091": { debut:1916, fin:1985, learn:[27,38,38], stages:[
+"091": { debut:1916, fin:1985, learn:[27,38,38,27], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE RADCLIFFE", note:"Élève de Whitehead, elle enseignera vingt ans comme simple tutrice avant d'obtenir un poste."},
     en:{nom:"THE RADCLIFFE STUDENT", note:"Whitehead's student, she teaches twenty years as a mere tutor before securing a post."} },
@@ -947,7 +947,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE FORM OF FEELING", note:"Art gives feeling a form without describing it — presenting its structure, not its content."} },
 ]},
 
-"092": { debut:1928, fin:1990, learn:[11,21,21], stages:[
+"092": { debut:1928, fin:1990, learn:[11,21,21,44], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"L'ÉCRIVAIN RATÉ", note:"Une « année noire » à tenter d'être romancier le convainc que la littérature ne sait rien du comportement."},
     en:{nom:"THE FAILED NOVELIST", note:"A \"dark year\" attempting fiction convinces him literature knows nothing of behaviour."} },
@@ -956,7 +956,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE UTOPIA ENGINEER", note:"Walden Two proposes designing a society as one designs a protocol — America takes fright."} },
 ]},
 
-"093": { debut:1925, fin:1997, learn:[24,21,34], stages:[
+"093": { debut:1925, fin:1997, learn:[24,21,34,41], stages:[
   { lvl:1,  types:["Positivisme"], img:null,
     fr:{nom:"LE CERCLE DE BERLIN", note:"Élève de Reichenbach, il assiste à la thèse de Gödel et fuit l'Allemagne en 1934."},
     en:{nom:"THE BERLIN CIRCLE", note:"Reichenbach's student, he attends Gödel's defence and flees Germany in 1934."} },
@@ -965,7 +965,7 @@ const PHILOMON_EVO = {
     en:{nom:"DEDUCTIVE EXPLANATION", note:"To explain is to deduce the fact from a law plus initial conditions — the model rules for thirty years."} },
 ]},
 
-"094": { debut:1919, fin:1994, learn:[16,45,27], stages:[
+"094": { debut:1919, fin:1994, learn:[16,45,27,26], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'APPRENTI ÉBÉNISTE", note:"Une fusillade communiste à Vienne le dégoûte du marxisme à dix-sept ans ; il apprend un métier manuel."},
     en:{nom:"THE CABINETMAKER'S APPRENTICE", note:"A communist shooting in Vienna disgusts him with Marxism at seventeen; he learns a manual trade."} },
@@ -977,7 +977,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE OPEN SOCIETY", note:"Written in New Zealand, \"my war effort\": Plato, Hegel and Marx in the dock."} },
 ]},
 
-"095": { debut:1919, fin:1976, learn:[31,20,31], stages:[
+"095": { debut:1919, fin:1976, learn:[31,20,31,31], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"L'ÉTUDIANT D'OXFORD", note:"Formé aux classiques, il apprend l'allemand seul pour lire Husserl et Meinong dans le texte."},
     en:{nom:"THE OXFORD STUDENT", note:"Trained in classics, he teaches himself German to read Husserl and Meinong in the original."} },
@@ -989,7 +989,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE GHOST IN THE MACHINE", note:"Cartesian dualism is not false but ill-formed; knowing-how does not reduce to knowing-that."} },
 ]},
 
-"096": { debut:1924, fin:1978, learn:[8,8,41], stages:[
+"096": { debut:1924, fin:1978, learn:[8,8,41,47], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉTUDIANT DU CERCLE DE VIENNE", note:"Il assiste aux réunions sans jamais partager le positivisme de ses hôtes."},
     en:{nom:"THE VIENNA CIRCLE STUDENT", note:"He attends the meetings without ever sharing his hosts' positivism."} },
@@ -1001,7 +1001,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PRINCETON PLATONIST", note:"Mathematical objects exist and are perceived; he walks with Einstein and ends by refusing to eat."} },
 ]},
 
-"097": { debut:1918, fin:1983, learn:[16,16,16], stages:[
+"097": { debut:1918, fin:1983, learn:[16,16,16,19], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'ÉCOLE DE VARSOVIE", note:"Élève de Leśniewski dans la plus forte école de logique du monde ; il change son nom pour survivre."},
     en:{nom:"THE WARSAW SCHOOL", note:"Leśniewski's student in the world's strongest school of logic; he changes his name to survive."} },
@@ -1010,7 +1010,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LAST SHIP", note:"He leaves Poland in August 1939 for a congress; nearly all his family is murdered behind him."} },
 ]},
 
-"098": { debut:1926, fin:2005, learn:[17,17,57], stages:[
+"098": { debut:1926, fin:2005, learn:[17,17,57,36], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ORNITHOLOGUE DE NOUVELLE-GUINÉE", note:"Deux ans et demi à collecter des oiseaux dans la jungle ; il y voit les espèces se séparer géographiquement."},
     en:{nom:"THE NEW GUINEA ORNITHOLOGIST", note:"Two and a half years collecting birds in the jungle; there he sees species split geographically."} },
@@ -1019,7 +1019,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE HISTORIAN OF BIOLOGY", note:"Near eighty he writes his field's history to prove it is not physics."} },
 ]},
 
-"099": { debut:1922, fin:1962, learn:[28,36,22], stages:[
+"099": { debut:1922, fin:1962, learn:[28,36,22,22], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"LE BIBLIOTHÉCAIRE", note:"Sorti de l'École des chartes, il classe des médailles au Cabinet, et mène la nuit une tout autre vie."},
     en:{nom:"THE LIBRARIAN", note:"Out of the École des chartes, he catalogues medals by day and leads quite another life by night."} },
@@ -1028,7 +1028,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ACCURSED SHARE", note:"An economy not of scarcity but of excess: the real problem is spending the surplus."} },
 ]},
 
-"100": { debut:1932, fin:1981, learn:[22,5,43], stages:[
+"100": { debut:1932, fin:1981, learn:[22,5,43,25], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE PSYCHIATRE DE SAINTE-ANNE", note:"Une thèse sur le cas Aimée qui enthousiasme les surréalistes plus que les médecins."},
     en:{nom:"THE SAINTE-ANNE PSYCHIATRIST", note:"A thesis on the Aimée case that excites the surrealists more than the physicians."} },
@@ -1040,7 +1040,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE KNOTS", note:"Real, symbolic, imaginary tied borromeanly; he ends by teaching almost without speaking."} },
 ]},
 
-"101": { debut:1921, fin:1969, learn:[24,24,46], stages:[
+"101": { debut:1921, fin:1969, learn:[24,24,46,29], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"L'ÉLÈVE DE BERG", note:"Il part à Vienne étudier la composition ; il restera toute sa vie un musicien qui fait de la philosophie."},
     en:{nom:"BERG'S PUPIL", note:"He goes to Vienna to study composition; he remains all his life a musician doing philosophy."} },
@@ -1052,7 +1052,7 @@ const PHILOMON_EVO = {
     en:{nom:"NEGATIVE DIALECTICS", note:"No synthesis redeems the negative; the students of '68 heckle him and it nearly kills him."} },
 ]},
 
-"102": { debut:1924, fin:1975, learn:[40,35,28], stages:[
+"102": { debut:1924, fin:1975, learn:[40,35,28,35], stages:[
   { lvl:1,  types:["Existentialisme"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE MARBOURG", note:"À dix-huit ans elle suit Heidegger, puis Jaspers ; sa thèse porte sur l'amour chez Augustin."},
     en:{nom:"THE MARBURG STUDENT", note:"At eighteen she studies under Heidegger, then Jaspers; her thesis is on love in Augustine."} },
@@ -1064,7 +1064,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE JERUSALEM REPORTER", note:"She sees in the accused a thoughtless functionary, not a monster — and loses half her friends."} },
 ]},
 
-"103": { debut:1926, fin:1961, learn:[20,36,20], stages:[
+"103": { debut:1926, fin:1961, learn:[20,36,20,20], stages:[
   { lvl:1,  types:["Phénoménologie"], img:null,
     fr:{nom:"LE NORMALIEN", note:"Rue d'Ulm avec Sartre et Beauvoir ; il ira lire à Louvain les inédits de Husserl sauvés des nazis."},
     en:{nom:"THE NORMALIEN", note:"Rue d'Ulm with Sartre and Beauvoir; he will read at Louvain the Husserl papers saved from the Nazis."} },
@@ -1076,7 +1076,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE FLESH OF THE WORLD", note:"The manuscript stops short: he dies at fifty-three, Descartes open on his desk."} },
 ]},
 
-"104": { debut:1929, fin:1992, learn:[33,33,33], stages:[
+"104": { debut:1929, fin:1992, learn:[33,33,33,33], stages:[
   { lvl:1,  types:["Philo. Droit"], img:null,
     fr:{nom:"L'AVOCAT DE CHANCERY", note:"Huit ans au barreau, une réputation d'esprit redoutable et aucune envie d'enseigner."},
     en:{nom:"THE CHANCERY BARRISTER", note:"Eight years at the bar, a reputation for formidable wit and no wish to teach."} },
@@ -1085,7 +1085,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CONCEPT OF LAW", note:"Law is not an order backed by a gun: it is the union of primary and secondary rules."} },
 ]},
 
-"105": { debut:1929, fin:1989, learn:[8,8,8], stages:[
+"105": { debut:1929, fin:1989, learn:[8,8,8,28], stages:[
   { lvl:1,  types:["Positivisme"], img:null,
     fr:{nom:"L'ÉMISSAIRE À VIENNE", note:"Ryle l'envoie à vingt-deux ans assister aux réunions du Cercle ; il en rapporte le vérificationnisme."},
     en:{nom:"THE ENVOY TO VIENNA", note:"Ryle sends him at twenty-two to attend the Circle's meetings; he brings back verificationism."} },
@@ -1094,7 +1094,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PUBLIC PHILOSOPHER", note:"Television, football and society; he spends the rest of his life patching a book he knows is wrong."} },
 ]},
 
-"106": { debut:1929, fin:1960, learn:[27,27,27], stages:[
+"106": { debut:1929, fin:1960, learn:[27,27,27,28], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"LE CLASSICISTE", note:"Formé sur Aristote et Leibniz, il apporte à la philosophie une exigence de philologue."},
     en:{nom:"THE CLASSICIST", note:"Trained on Aristotle and Leibniz, he brings a philologist's exactness to philosophy."} },
@@ -1103,7 +1103,7 @@ const PHILOMON_EVO = {
     en:{nom:"HOW TO DO THINGS WITH WORDS", note:"\"I do\" describes nothing: some sentences perform the act they state."} },
 ]},
 
-"107": { debut:1928, fin:2001, learn:[33,33,33], stages:[
+"107": { debut:1928, fin:2001, learn:[33,33,33,23], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"L'ÉCOLE DE VIENNE", note:"Formé chez Schlosser, il fuit l'Autriche en 1936 et écoute les radios allemandes pour la BBC."},
     en:{nom:"THE VIENNA SCHOOL", note:"Trained under Schlosser, he flees Austria in 1936 and monitors German radio for the BBC."} },
@@ -1112,7 +1112,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE INNOCENT EYE", note:"One never sees without expectation: the artist corrects a learned schema, he does not copy the world."} },
 ]},
 
-"108": { debut:1928, fin:1998, learn:[51,41,28], stages:[
+"108": { debut:1928, fin:1998, learn:[51,41,28,41], stages:[
   { lvl:1,  types:["Constructivisme"], img:null,
     fr:{nom:"LE MARCHAND D'ART", note:"Il tient une galerie à Boston pendant ses études et finance sa thèse en vendant des tableaux."},
     en:{nom:"THE ART DEALER", note:"He runs a Boston gallery while studying and funds his thesis by selling paintings."} },
@@ -1124,7 +1124,7 @@ const PHILOMON_EVO = {
     en:{nom:"LANGUAGES OF ART", note:"The right question is not \"what is art?\" but \"when is there art?\""} },
 ]},
 
-"109": { debut:1926, fin:2000, learn:[26,26,35], stages:[
+"109": { debut:1926, fin:2000, learn:[26,26,35,23], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"LE VOYAGEUR D'EUROPE CENTRALE", note:"Une bourse le mène à Vienne, Prague et Varsovie : Carnap, puis Tarski, en une seule année."},
     en:{nom:"THE CENTRAL EUROPEAN TRAVELLER", note:"A fellowship takes him to Vienna, Prague and Warsaw: Carnap, then Tarski, in a single year."} },
@@ -1136,7 +1136,7 @@ const PHILOMON_EVO = {
     en:{nom:"WORD AND OBJECT", note:"Gavagai: nothing in behaviour decides between \"rabbit\" and \"undetached rabbit parts\"."} },
 ]},
 
-"110": { debut:1930, fin:1994, learn:[34,10,34], stages:[
+"110": { debut:1930, fin:1994, learn:[34,10,34,33], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:"William Frankena, 1964.jpg",
     fr:{nom:"LE CALVINISTE DU MICHIGAN", note:"Formé à Calvin College, il gardera d'une éducation religieuse le goût de la clarté doctrinale."},
     en:{nom:"THE MICHIGAN CALVINIST", note:"Trained at Calvin College, he keeps from a religious upbringing a taste for doctrinal clarity."} },
@@ -1145,7 +1145,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ETHICS PRIMER", note:"A small book that teaches two generations to separate meta-ethics, normative and applied."} },
 ]},
 
-"111": { debut:1939, fin:1994, learn:[22,22,1], stages:[
+"111": { debut:1939, fin:1994, learn:[22,22,1,33], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"AVANT-GARDE ET KITSCH", note:"Un douanier de trente ans publie dans Partisan Review l'article qui fera de lui un pouvoir."},
     en:{nom:"AVANT-GARDE AND KITSCH", note:"A thirty-year-old customs clerk publishes in Partisan Review the essay that makes him a power."} },
@@ -1154,7 +1154,7 @@ const PHILOMON_EVO = {
     en:{nom:"MODERNIST PAINTING", note:"Each art must purify itself toward what is proper to it; for painting, that is flatness."} },
 ]},
 
-"112": { debut:1934, fin:1989, learn:[23,29,23], stages:[
+"112": { debut:1934, fin:1989, learn:[23,29,23,23], stages:[
   { lvl:1,  types:["Réalisme"], img:null,
     fr:{nom:"LE FILS DU RÉALISTE", note:"Son père Roy Wood Sellars est philosophe ; il grandit dans le réalisme critique américain."},
     en:{nom:"THE REALIST'S SON", note:"His father Roy Wood Sellars is a philosopher; he grows up inside American critical realism."} },
@@ -1163,7 +1163,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE TWO IMAGES", note:"The manifest image of man and the scientific image must be reconciled, not ranked."} },
 ]},
 
-"113": { debut:1937, fin:2006, learn:[23,14,23], stages:[
+"113": { debut:1937, fin:2006, learn:[23,14,23,26], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"L'ÉTUDIANT DE PPE", note:"Philosophie, politique et économie à St John's, puis cinq ans dans l'artillerie."},
     en:{nom:"THE PPE STUDENT", note:"Philosophy, politics and economics at St John's, then five years in the artillery."} },
@@ -1172,7 +1172,7 @@ const PHILOMON_EVO = {
     en:{nom:"DESCRIPTIVE METAPHYSICS", note:"Describe the actual structure of our thought, rather than propose a better one."} },
 ]},
 
-"114": { debut:1932, fin:1988, learn:[30,36,36], stages:[
+"114": { debut:1932, fin:1988, learn:[30,36,36,26], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"L'ÉTUDIANT DE CORPUS", note:"Classiques à Oxford, puis un an de maître d'école avant la philosophie."},
     en:{nom:"THE CORPUS STUDENT", note:"Classics at Oxford, then a year of schoolmastering before philosophy."} },
@@ -1181,7 +1181,7 @@ const PHILOMON_EVO = {
     en:{nom:"IMPLICATURE", note:"What a sentence suggests is not what it says: conversation obeys tacit maxims."} },
 ]},
 
-"115": { debut:1937, fin:1996, learn:[38,38,23], stages:[
+"115": { debut:1937, fin:1996, learn:[38,38,23,40], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE PSYCHOLOGUE SOCIAL", note:"Formé à Berkeley, il passe sa vie à se demander comment une méthode peut se corriger elle-même."},
     en:{nom:"THE SOCIAL PSYCHOLOGIST", note:"Berkeley-trained, he spends his life asking how a method can correct itself."} },
@@ -1190,7 +1190,7 @@ const PHILOMON_EVO = {
     en:{nom:"EVOLUTIONARY EPISTEMOLOGY", note:"Knowledge advances as species do: blind variation and selective retention."} },
 ]},
 
-"116": { debut:1936, fin:1985, learn:[11,23,23], stages:[
+"116": { debut:1936, fin:1985, learn:[11,23,23,14], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"L'ÉTUDIANT DE YALE", note:"Formé dans l'analyse, il choisit l'esthétique quand presque personne n'y voit une discipline sérieuse."},
     en:{nom:"THE YALE STUDENT", note:"Analytically trained, he chooses aesthetics when almost no one takes it for a serious field."} },
@@ -1199,13 +1199,13 @@ const PHILOMON_EVO = {
     en:{nom:"THE AESTHETICS TREATISE", note:"Eight hundred pages giving analytic aesthetics its first systematic textbook."} },
 ]},
 
-"117": { debut:1938, fin:1981, learn:[19,19,19], stages:[
+"117": { debut:1938, fin:1981, learn:[19,19,19,19], stages:[
   { lvl:1, types:["Esthétique"], img:null,
     fr:{nom:"L'ART INDÉFINISSABLE", note:"Chercher les conditions nécessaires de l'art est une erreur de méthode : c'est un concept ouvert."},
     en:{nom:"ART UNDEFINABLE", note:"Seeking necessary conditions for art is a methodological error: it is an open concept."} },
 ]},
 
-"118": { debut:1939, fin:1980, learn:[19,30,35], stages:[
+"118": { debut:1939, fin:1980, learn:[19,30,35,42], stages:[
   { lvl:1,  types:["Structuralisme"], img:null,
     fr:{nom:"LE PENSIONNAIRE DU SANATORIUM", note:"La tuberculose lui vole huit ans et lui donne le temps de lire Michelet, Marx et Gide."},
     en:{nom:"THE SANATORIUM PATIENT", note:"Tuberculosis steals eight years from him and gives him time to read Michelet, Marx and Gide."} },
@@ -1217,7 +1217,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DEATH OF THE AUTHOR", note:"The birth of the reader is paid for by the death of the author — then comes the pleasure of the text."} },
 ]},
 
-"119": { debut:1934, fin:2013, learn:[29,29,24], stages:[
+"119": { debut:1934, fin:2013, learn:[29,29,24,32], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE CONVERTI", note:"Catholique à dix-neuf ans, il épouse Anscombe et forme avec elle le couple le plus redouté d'Oxford."},
     en:{nom:"THE CONVERT", note:"A Catholic at nineteen, he marries Anscombe and forms with her Oxford's most feared couple."} },
@@ -1226,7 +1226,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ANALYTIC THOMIST", note:"He rereads medieval logic with Frege's tools, and the reverse."} },
 ]},
 
-"120": { debut:1937, fin:2001, learn:[22,21,21], stages:[
+"120": { debut:1937, fin:2001, learn:[22,21,21,20], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LA CONVERTIE DE ST HUGH'S", note:"Catholique à dix-huit ans ; elle protestera contre le doctorat honoris causa décerné à Truman."},
     en:{nom:"THE ST HUGH'S CONVERT", note:"A Catholic at eighteen; she will protest the honorary degree given to Truman."} },
@@ -1235,7 +1235,7 @@ const PHILOMON_EVO = {
     en:{nom:"INTENTION", note:"Action is described under a description; and modern moral philosophy should fall silent for want of a lawgiver."} },
 ]},
 
-"121": { debut:1946, fin:1997, learn:[13,19,13], stages:[
+"121": { debut:1946, fin:1997, learn:[13,19,13,19], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉTUDIANT D'OXFORD", note:"Marine marchande puis St Edmund Hall ; il lit Wittgenstein contre le positivisme ambiant."},
     en:{nom:"THE OXFORD STUDENT", note:"The merchant navy then St Edmund Hall; he reads Wittgenstein against the ambient positivism."} },
@@ -1244,7 +1244,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE AZANDE", note:"Their witchcraft is not bad science: it is another way of making life intelligible."} },
 ]},
 
-"122": { debut:1935, fin:2003, learn:[36,39,48], stages:[
+"122": { debut:1935, fin:2003, learn:[36,39,48,40], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'ÉTUDIANT DE CLASSIQUES", note:"Une thèse sur le Philèbe, la marine, puis une reconversion tardive à la logique."},
     en:{nom:"THE CLASSICS STUDENT", note:"A thesis on the Philebus, the navy, then a late conversion to logic."} },
@@ -1253,7 +1253,7 @@ const PHILOMON_EVO = {
     en:{nom:"ANOMALOUS MONISM", note:"Every mental event is physical, yet no strict law connects the two vocabularies."} },
 ]},
 
-"123": { debut:1932, fin:1991, learn:[30,30,46], stages:[
+"123": { debut:1932, fin:1991, learn:[30,30,46,46], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'ÉTUDIANT DE BERKELEY", note:"Formé en Californie, il enseignera presque toute sa vie à Irvine."},
     en:{nom:"THE BERKELEY STUDENT", note:"California-trained, he teaches nearly all his life at Irvine."} },
@@ -1262,7 +1262,7 @@ const PHILOMON_EVO = {
     en:{nom:"RIGHTS AND PERSONS", note:"A right is not a property but a moral relation between persons."} },
 ]},
 
-"124": { debut:1946, fin:2012, learn:[14,28,20], stages:[
+"124": { debut:1946, fin:2012, learn:[14,28,20,18], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE SOLDAT DEVENU PHILOSOPHE", note:"Six ans dans l'armée britannique en Inde et en Birmanie avant Glasgow et Oxford."},
     en:{nom:"THE SOLDIER TURNED PHILOSOPHER", note:"Six years in the British army in India and Burma before Glasgow and Oxford."} },
@@ -1271,7 +1271,7 @@ const PHILOMON_EVO = {
     en:{nom:"UTILITARIANISM UNVARNISHED", note:"He defends the hardest version and prints Williams's attack in the same volume."} },
 ]},
 
-"125": { debut:1937, fin:2002, learn:[16,27,45], stages:[
+"125": { debut:1937, fin:2002, learn:[16,27,45,45], stages:[
   { lvl:1,  types:["Déontologie"], img:null,
     fr:{nom:"LE PRISONNIER DE LA VOIE FERRÉE", note:"Capturé à Singapour, il travaille sur la voie ferrée de Birmanie ; il en tirera l'idée qu'une morale doit tenir en enfer."},
     en:{nom:"THE RAILWAY PRISONER", note:"Captured at Singapore, he works on the Burma railway; he concludes a morality must hold in hell."} },
@@ -1280,7 +1280,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE TWO LEVELS", note:"Intuitive in daily life, critical in reflection: utilitarianism finally absorbs its objections."} },
 ]},
 
-"126": { debut:1935, fin:1981, learn:[43,43,43], stages:[
+"126": { debut:1935, fin:1981, learn:[43,43,43,21], stages:[
   { lvl:1,  types:["Scepticisme"], img:null,
     fr:{nom:"L'AUSTRALIEN", note:"Sydney puis Oxford ; il gardera de l'Australie un goût du naturalisme sans façons."},
     en:{nom:"THE AUSTRALIAN", note:"Sydney then Oxford; he keeps from Australia a taste for no-nonsense naturalism."} },
@@ -1289,7 +1289,7 @@ const PHILOMON_EVO = {
     en:{nom:"INVENTING RIGHT AND WRONG", note:"There are no objective values: all our moral claims are false, and we must live with it."} },
 ]},
 
-"127": { debut:1939, fin:2010, learn:[63,29,34], stages:[
+"127": { debut:1939, fin:2010, learn:[63,29,34,34], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE SOMERVILLE", note:"Petite-fille d'un président américain, élevée sans école ; elle entre à Oxford avec Murdoch et Anscombe."},
     en:{nom:"THE SOMERVILLE STUDENT", note:"Granddaughter of an American president, raised without schooling; she enters Oxford alongside Murdoch and Anscombe."} },
@@ -1298,13 +1298,13 @@ const PHILOMON_EVO = {
     en:{nom:"NATURAL GOODNESS", note:"At eighty-one: human good is judged like an organism's health, according to its life-form."} },
 ]},
 
-"128": { debut:1946, fin:1996, learn:[14,14,20], stages:[
+"128": { debut:1946, fin:1996, learn:[14,14,20,25], stages:[
   { lvl:1, types:["Esthétique"], img:null,
     fr:{nom:"LES CONCEPTS ESTHÉTIQUES", note:"Gracieux, poignant, criard : ces mots ne s'appliquent par aucune règle, et pourtant on s'accorde."},
     en:{nom:"AESTHETIC CONCEPTS", note:"Graceful, poignant, garish: no rule governs these words, and yet we agree."} },
 ]},
 
-"129": { debut:1943, fin:1996, learn:[20,20,20], stages:[
+"129": { debut:1943, fin:1996, learn:[20,20,20,20], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE PHYSICIEN DU RADAR", note:"Docteur en physique théorique, il passe la guerre à travailler sur les contre-mesures radar."},
     en:{nom:"THE RADAR PHYSICIST", note:"A doctor of theoretical physics, he spends the war on radar countermeasures."} },
@@ -1316,7 +1316,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE STRUCTURE", note:"Normal science solves puzzles until a paradigm gives way; the two do not translate into each other."} },
 ]},
 
-"130": { debut:1940, fin:1974, learn:[31,31,31], stages:[
+"130": { debut:1940, fin:1974, learn:[31,31,31,24], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE RÉSISTANT", note:"Juif hongrois sous l'occupation nazie, il change de nom et perd sa mère et sa grand-mère à Auschwitz."},
     en:{nom:"THE RESISTER", note:"A Hungarian Jew under Nazi occupation, he changes his name and loses his mother and grandmother at Auschwitz."} },
@@ -1328,7 +1328,7 @@ const PHILOMON_EVO = {
     en:{nom:"PROOFS AND REFUTATIONS", note:"An imaginary class reinvents a theorem by breaking it; then research programmes replace bare falsification."} },
 ]},
 
-"131": { debut:1947, fin:1994, learn:[29,29,35], stages:[
+"131": { debut:1947, fin:1994, learn:[29,29,35,17], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'OFFICIER BLESSÉ", note:"Une balle dans la colonne sur le front de l'Est le laisse infirme à vingt ans ; il voulait être chanteur d'opéra."},
     en:{nom:"THE WOUNDED OFFICER", note:"A bullet in the spine on the Eastern Front leaves him crippled at twenty; he had wanted to be an opera singer."} },
@@ -1340,7 +1340,7 @@ const PHILOMON_EVO = {
     en:{nom:"AGAINST METHOD", note:"The only principle that does not inhibit progress: anything goes. Galileo himself cheated."} },
 ]},
 
-"132": { debut:1939, fin:1980, learn:[27,32,32], stages:[
+"132": { debut:1939, fin:1980, learn:[27,32,32,24], stages:[
   { lvl:1,  types:["Marxisme"], img:null,
     fr:{nom:"LE PRISONNIER DE GUERRE", note:"Reçu à l'ENS puis mobilisé, il passe cinq ans en stalag avant d'avoir suivi un seul cours."},
     en:{nom:"THE PRISONER OF WAR", note:"Admitted to the ENS then mobilised, he spends five years in a stalag before attending a single class."} },
@@ -1352,7 +1352,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE IDEOLOGICAL APPARATUSES", note:"Ideology does not deceive: it constitutes us as subjects, hailing us in the street."} },
 ]},
 
-"133": { debut:1946, fin:1984, learn:[30,30,31], stages:[
+"133": { debut:1946, fin:1984, learn:[30,30,31,21], stages:[
   { lvl:1,  types:["Postmodernisme"], img:null,
     fr:{nom:"LE NORMALIEN INSOMNIAQUE", note:"Rue d'Ulm, une tentative de suicide, la psychologie et l'internement volontaire à Sainte-Anne."},
     en:{nom:"THE SLEEPLESS NORMALIEN", note:"Rue d'Ulm, a suicide attempt, psychology and a voluntary stay at Sainte-Anne."} },
@@ -1364,7 +1364,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE GENEALOGIST", note:"The prison, sexuality: power does not first repress, it produces bodies and knowledges."} },
 ]},
 
-"134": { debut:1950, fin:1998, learn:[30,34,30], stages:[
+"134": { debut:1950, fin:1998, learn:[30,34,30,35], stages:[
   { lvl:1,  types:["Postmodernisme"], img:null,
     fr:{nom:"LE MILITANT D'ALGÉRIE", note:"Professeur à Constantine, puis douze ans à Socialisme ou Barbarie ; il rompt avec le marxisme sans rejoindre l'ordre."},
     en:{nom:"THE ALGERIAN MILITANT", note:"A teacher in Constantine, then twelve years with Socialisme ou Barbarie; he breaks with Marxism without joining the order."} },
@@ -1373,7 +1373,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DIFFEREND", note:"A wrong no court can state, for want of an idiom shared by both parties."} },
 ]},
 
-"135": { debut:1944, fin:1995, learn:[37,25,29], stages:[
+"135": { debut:1944, fin:1995, learn:[37,25,29,47], stages:[
   { lvl:1,  types:["Postmodernisme"], img:null,
     fr:{nom:"L'HISTORIEN DE LA PHILOSOPHIE", note:"Hume, Nietzsche, Bergson, Spinoza : il dit prendre les auteurs par derrière pour leur faire des enfants monstrueux."},
     en:{nom:"THE HISTORIAN OF PHILOSOPHY", note:"Hume, Nietzsche, Bergson, Spinoza: he says he takes authors from behind to give them monstrous children."} },
@@ -1385,7 +1385,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE MEETING WITH GUATTARI", note:"Anti-Oedipus then A Thousand Plateaus: the rhizome against the tree, the machine against the structure."} },
 ]},
 
-"136": { debut:1948, fin:2013, learn:[17,34,37], stages:[
+"136": { debut:1948, fin:2013, learn:[17,34,37,34], stages:[
   { lvl:1,  types:["Esthétique"], img:null,
     fr:{nom:"LE GRAVEUR", note:"Il expose ses estampes pendant quinze ans avant de renoncer à faire de l'art pour en parler."},
     en:{nom:"THE PRINTMAKER", note:"He exhibits his prints for fifteen years before giving up making art to talk about it."} },
@@ -1397,13 +1397,13 @@ const PHILOMON_EVO = {
     en:{nom:"THE END OF ART", note:"Not that art stops, but that it stops having a historical direction: everything becomes possible at once."} },
 ]},
 
-"137": { debut:1949, fin:2020, learn:[26,26,32], stages:[
+"137": { debut:1949, fin:2020, learn:[26,26,32,16], stages:[
   { lvl:1, types:["Esthétique"], img:null,
     fr:{nom:"LA THÉORIE INSTITUTIONNELLE", note:"Une chose devient art quand quelqu'un habilité lui confère ce statut au nom du monde de l'art."},
     en:{nom:"THE INSTITUTIONAL THEORY", note:"A thing becomes art when someone entitled confers that status on behalf of the artworld."} },
 ]},
 
-"138": { debut:1944, fin:2011, learn:[30,34,30], stages:[
+"138": { debut:1944, fin:2011, learn:[30,34,30,30], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE DÉCHIFFREUR", note:"Il sert au renseignement militaire, se convertit au catholicisme, et découvre Frege presque oublié."},
     en:{nom:"THE CODEBREAKER", note:"He serves in military intelligence, converts to Catholicism, and finds Frege nearly forgotten."} },
@@ -1412,7 +1412,7 @@ const PHILOMON_EVO = {
     en:{nom:"REJECTING EXCLUDED MIDDLE", note:"He draws a logical consequence from semantics: intuitionist mathematics — alongside anti-racist activism."} },
 ]},
 
-"139": { debut:1948, fin:2016, learn:[34,34,28], stages:[
+"139": { debut:1948, fin:2016, learn:[34,34,28,20], stages:[
   { lvl:1,  types:["Réalisme"], img:null,
     fr:{nom:"LE FILS DU TRADUCTEUR", note:"Élevé en France par un père traducteur communiste ; il militera contre la guerre du Vietnam."},
     en:{nom:"THE TRANSLATOR'S SON", note:"Raised in France by a communist translator father; he will campaign against the Vietnam War."} },
@@ -1424,13 +1424,13 @@ const PHILOMON_EVO = {
     en:{nom:"INTERNAL REALISM", note:"He refutes the brain in a vat, then spends his life changing his mind — out of honesty, he says."} },
 ]},
 
-"140": { debut:1949, fin:2021, learn:[15,15,20], stages:[
+"140": { debut:1949, fin:2021, learn:[15,15,20,15], stages:[
   { lvl:1, types:["Scepticisme","Empirisme"], img:null,
     fr:{nom:"LES TROIS PAGES", note:"Deux contre-exemples suffisent à démolir une définition tenue depuis Platon : le vrai, le cru et le justifié ne font pas la connaissance."},
     en:{nom:"THE THREE PAGES", note:"Two counterexamples suffice to demolish a definition held since Plato: true, believed and justified is not knowledge."} },
 ]},
 
-"141": { debut:1945, fin:null, learn:[13,15,44], stages:[
+"141": { debut:1945, fin:null, learn:[13,15,44,15], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"L'ÉLÈVE DE HARRIS", note:"À seize ans il entre à Penn ; il allait abandonner quand il rencontre le linguiste Zellig Harris."},
     en:{nom:"HARRIS'S STUDENT", note:"At sixteen he enters Penn; he is about to drop out when he meets the linguist Zellig Harris."} },
@@ -1439,7 +1439,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE RESPONSIBILITY OF INTELLECTUALS", note:"Vietnam tips him into political criticism, which he never leaves."} },
 ]},
 
-"142": { debut:1956, fin:2007, learn:[26,26,32], stages:[
+"142": { debut:1956, fin:2007, learn:[26,26,32,21], stages:[
   { lvl:1,  types:["Postmodernisme"], img:null,
     fr:{nom:"LE GERMANISTE", note:"Professeur de lycée, traducteur de Brecht et de Marx avant de devenir sociologue."},
     en:{nom:"THE GERMANIST", note:"A secondary school teacher, translator of Brecht and Marx before turning sociologist."} },
@@ -1448,7 +1448,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DESERT OF THE REAL", note:"The copy imitates nothing: the map precedes the territory, and the territory is gone."} },
 ]},
 
-"143": { debut:1951, fin:2021, learn:[29,50,41], stages:[
+"143": { debut:1951, fin:2021, learn:[29,50,41,29], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE GÉNÉTICIEN DES POPULATIONS", note:"Il introduit l'électrophorèse en génétique et découvre une variabilité que nul n'attendait."},
     en:{nom:"THE POPULATION GENETICIST", note:"He brings electrophoresis into genetics and finds a variability no one expected."} },
@@ -1457,7 +1457,7 @@ const PHILOMON_EVO = {
     en:{nom:"BIOLOGY AS IDEOLOGY", note:"The organism does not adapt to a given environment: it builds the environment as much as it depends on it."} },
 ]},
 
-"144": { debut:1949, fin:2023, learn:[23,23,38], stages:[
+"144": { debut:1949, fin:2023, learn:[23,23,38,21], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE CARTÉSIEN", note:"Sa thèse porte sur Descartes ; il gardera le goût des questions posées le plus simplement possible."},
     en:{nom:"THE CARTESIAN", note:"His thesis is on Descartes; he keeps a taste for questions posed as plainly as possible."} },
@@ -1466,7 +1466,7 @@ const PHILOMON_EVO = {
     en:{nom:"ON BULLSHIT", note:"The liar honours truth by dodging it; the bullshitter does not care — and that is worse."} },
 ]},
 
-"145": { debut:1948, fin:2003, learn:[26,26,38], stages:[
+"145": { debut:1948, fin:2003, learn:[26,26,38,29], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"LE PILOTE DE CHASSE", note:"Service national dans la RAF au Canada, puis Oxford ; il gardera un mépris tranquille pour les systèmes."},
     en:{nom:"THE FIGHTER PILOT", note:"National service flying for the RAF in Canada, then Oxford; he keeps a quiet contempt for systems."} },
@@ -1475,7 +1475,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LIMITS OF PHILOSOPHY", note:"Moral philosophy mistook its ambition; the Greeks asked how to live, not what one must do."} },
 ]},
 
-"146": { debut:1950, fin:2020, learn:[22,41,36], stages:[
+"146": { debut:1950, fin:2020, learn:[22,41,36,42], stages:[
   { lvl:1,  types:["Déontologie"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE BARNARD", note:"Barnard puis Cambridge ; elle prendra les cas les plus concrets pour trancher les questions les plus abstraites."},
     en:{nom:"THE BARNARD STUDENT", note:"Barnard then Cambridge; she will take the most concrete cases to settle the most abstract questions."} },
@@ -1484,7 +1484,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE FOOTBRIDGE", note:"Diverting the trolley is permitted, pushing the large man is not — and one must explain why."} },
 ]},
 
-"147": { debut:1952, fin:2004, learn:[16,16,16], stages:[
+"147": { debut:1952, fin:2004, learn:[16,16,16,21], stages:[
   { lvl:1,  types:["Postmodernisme"], img:null,
     fr:{nom:"LE PIED-NOIR D'EL BIAR", note:"Exclu de son lycée d'Alger à douze ans par les lois raciales de Vichy ; il rate deux fois l'entrée à l'ENS."},
     en:{nom:"THE PIED-NOIR OF EL BIAR", note:"Expelled from his Algiers school at twelve by Vichy's racial laws; he fails the ENS entrance twice."} },
@@ -1496,7 +1496,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE ETHICAL TURN", note:"Specters of Marx, hospitality, forgiveness: deconstruction discovers a demand for justice."} },
 ]},
 
-"148": { debut:1954, fin:null, learn:[21,21,30], stages:[
+"148": { debut:1954, fin:null, learn:[21,21,30,40], stages:[
   { lvl:1,  types:["Philo. Religion"], img:null,
     fr:{nom:"LE CALVINISTE", note:"Il quitte Harvard pour Calvin College après un cours qui lui montre que la foi peut s'argumenter."},
     en:{nom:"THE CALVINIST", note:"He leaves Harvard for Calvin College after a course showing him faith can be argued."} },
@@ -1505,7 +1505,7 @@ const PHILOMON_EVO = {
     en:{nom:"REFORMED EPISTEMOLOGY", note:"Belief in God may be properly basic: it needs proving no more than the existence of other minds."} },
 ]},
 
-"149": { debut:1955, fin:null, learn:[20,23,23], stages:[
+"149": { debut:1955, fin:null, learn:[20,23,23,30], stages:[
   { lvl:1,  types:["Phénoménologie"], img:null,
     fr:{nom:"LA LINGUISTE", note:"Deux doctorats, une pratique analytique, et l'étude du langage des patients déments."},
     en:{nom:"THE LINGUIST", note:"Two doctorates, an analytic practice, and the study of demented patients' language."} },
@@ -1514,7 +1514,7 @@ const PHILOMON_EVO = {
     en:{nom:"SPEAKING AS WOMAN", note:"The feminine cannot be said in a language built on the one; its syntax must be invented."} },
 ]},
 
-"150": { debut:1952, fin:null, learn:[29,18,44], stages:[
+"150": { debut:1952, fin:null, learn:[29,18,44,32], stages:[
   { lvl:1,  types:["Philo. Langage"], img:null,
     fr:{nom:"L'ÉLÈVE D'AUSTIN", note:"Boursier Rhodes à Oxford ; il y milite contre l'apartheid avant de rentrer enseigner à Berkeley."},
     en:{nom:"AUSTIN'S STUDENT", note:"A Rhodes scholar at Oxford; he campaigns against apartheid before returning to teach at Berkeley."} },
@@ -1526,7 +1526,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CHINESE ROOM", note:"Manipulating symbols by rules does not amount to understanding Chinese — so a program does not think."} },
 ]},
 
-"151": { debut:1949, fin:null, learn:[33,33,14], stages:[
+"151": { debut:1949, fin:null, learn:[33,33,14,33], stages:[
   { lvl:1,  types:["Théorie Critique"], img:null,
     fr:{nom:"L'ADOLESCENT DE NUREMBERG", note:"Les procès lui révèlent à quinze ans ce qu'il avait vécu sans le savoir ; il ne s'en remettra pas."},
     en:{nom:"THE NUREMBERG ADOLESCENT", note:"At fifteen the trials reveal to him what he had lived through unknowing; he never gets over it."} },
@@ -1538,7 +1538,7 @@ const PHILOMON_EVO = {
     en:{nom:"COMMUNICATIVE ACTION", note:"To speak is already to presuppose one could justify oneself; reason is not dead, it is intersubjective."} },
 ]},
 
-"152": { debut:1949, fin:2007, learn:[31,41,41], stages:[
+"152": { debut:1949, fin:2007, learn:[31,41,41,41], stages:[
   { lvl:1,  types:["Pragmatisme"], img:null,
     fr:{nom:"L'ENFANT TROTSKISTE", note:"Ses parents rompent avec le Parti ; il collectionne les orchidées sauvages et cherche à concilier les deux."},
     en:{nom:"THE TROTSKYIST CHILD", note:"His parents break with the Party; he collects wild orchids and seeks to reconcile the two."} },
@@ -1550,7 +1550,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE LIBERAL IRONIST", note:"One can know one's vocabulary contingent and still be committed to not causing suffering."} },
 ]},
 
-"153": { debut:1956, fin:2017, learn:[20,28,45], stages:[
+"153": { debut:1956, fin:2017, learn:[20,28,45,35], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE JEUNE COGNITIVISTE", note:"Columbia puis Princeton ; il rejoint le MIT quand la science cognitive n'a pas encore de nom."},
     en:{nom:"THE YOUNG COGNITIVIST", note:"Columbia then Princeton; he joins MIT when cognitive science has no name yet."} },
@@ -1562,7 +1562,7 @@ const PHILOMON_EVO = {
     en:{nom:"MODULARITY", note:"Perception is encapsulated and fast; the rest of the mind is global — and for that reason unexplained."} },
 ]},
 
-"154": { debut:1958, fin:null, learn:[17,17,29], stages:[
+"154": { debut:1958, fin:null, learn:[17,17,29,13], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'ÉLÈVE DE RAWLS", note:"Né à Belgrade, formé à Cornell, Oxford et Harvard ; il gardera de Rawls le sens de l'objectivité morale."},
     en:{nom:"RAWLS'S STUDENT", note:"Born in Belgrade, trained at Cornell, Oxford and Harvard; from Rawls he keeps a sense of moral objectivity."} },
@@ -1574,7 +1574,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE VIEW FROM NOWHERE", note:"One must hold together the view from within and the view of the universe, dissolving neither."} },
 ]},
 
-"155": { debut:1956, fin:2025, learn:[31,36,36], stages:[
+"155": { debut:1956, fin:2025, learn:[31,36,36,31], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉTUDIANTE DE NEW YORK", note:"Formée en philosophie des sciences classique avant de se demander qui, au juste, produit la science."},
     en:{nom:"THE NEW YORK STUDENT", note:"Trained in classical philosophy of science before asking who exactly produces science."} },
@@ -1583,7 +1583,7 @@ const PHILOMON_EVO = {
     en:{nom:"STRONG OBJECTIVITY", note:"Starting from the margins makes one more objective, not less: one sees what the centre cannot."} },
 ]},
 
-"156": { debut:1958, fin:null, learn:[25,25,25], stages:[
+"156": { debut:1958, fin:null, learn:[25,25,25,24], stages:[
   { lvl:1,  types:["Féminisme"], img:null,
     fr:{nom:"L'ASSISTANTE DE KOHLBERG", note:"Elle code les entretiens de son directeur et remarque que les filles échouent systématiquement à son échelle."},
     en:{nom:"KOHLBERG'S ASSISTANT", note:"She codes her supervisor's interviews and notices girls systematically score lower on his scale."} },
@@ -1592,7 +1592,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CONTROVERSY", note:"Accused of essentialism, she answers the voice is situated, not feminine by nature."} },
 ]},
 
-"157": { debut:1957, fin:2010, learn:[22,32,32], stages:[
+"157": { debut:1957, fin:2010, learn:[22,32,32,32], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LE BIOLOGISTE PHILOSOPHE", note:"Il contribue à fonder une discipline qui n'existait pas : la philosophie de la biologie."},
     en:{nom:"THE PHILOSOPHER-BIOLOGIST", note:"He helps found a discipline that did not exist: philosophy of biology."} },
@@ -1601,7 +1601,7 @@ const PHILOMON_EVO = {
     en:{nom:"SCIENCE AS A PROCESS", note:"Theories evolve like lineages; researchers' ambition plays the role of selection."} },
 ]},
 
-"158": { debut:1960, fin:2024, learn:[20,8,40], stages:[
+"158": { debut:1960, fin:2024, learn:[20,8,40,30], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"L'ÉTUDIANT DE PRINCETON", note:"Formé dans l'analyse la plus classique, il en sortira par la psychologie cognitive."},
     en:{nom:"THE PRINCETON STUDENT", note:"Trained in the most classical analysis, he leaves it through cognitive psychology."} },
@@ -1610,7 +1610,7 @@ const PHILOMON_EVO = {
     en:{nom:"SOCIAL EPISTEMOLOGY", note:"Nearly all we know we hold from others; so the institutions of knowledge must be assessed."} },
 ]},
 
-"159": { debut:1960, fin:null, learn:[34,34,23], stages:[
+"159": { debut:1960, fin:null, learn:[34,34,23,45], stages:[
   { lvl:1,  types:["Réalisme"], img:null,
     fr:{nom:"L'ÉTUDIANT DE NEW YORK", note:"Formé dans la métaphysique analytique naissante, il en interrogera le vocabulaire même."},
     en:{nom:"THE NEW YORK STUDENT", note:"Trained in nascent analytic metaphysics, he will question its very vocabulary."} },
@@ -1619,7 +1619,7 @@ const PHILOMON_EVO = {
     en:{nom:"QUANTIFIER VARIANCE", note:"Many ontological disputes are verbal: the two camps give \"exists\" different senses."} },
 ]},
 
-"160": { debut:1959, fin:2002, learn:[16,16,16], stages:[
+"160": { debut:1959, fin:2002, learn:[16,16,16,16], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"LE JEUNE SOCIALISTE", note:"Il préside la ligue socialiste étudiante de Columbia avant qu'un séminaire ne le retourne entièrement."},
     en:{nom:"THE YOUNG SOCIALIST", note:"He chairs Columbia's student socialist league before a seminar turns him entirely around."} },
@@ -1631,7 +1631,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PHILOSOPHER WITHOUT A SYSTEM", note:"He refuses to spend a life on one book and writes about something else entirely, on principle."} },
 ]},
 
-"161": { debut:1958, fin:2022, learn:[13,13,2], stages:[
+"161": { debut:1958, fin:2022, learn:[13,13,2,25], stages:[
   { lvl:1,  types:["Logique"], img:"Kripke.JPG",
     fr:{nom:"LE LYCÉEN DU NEBRASKA", note:"À dix-sept ans il démontre la complétude de la logique modale ; Harvard lui propose un poste avant son diplôme."},
     en:{nom:"THE NEBRASKA SCHOOLBOY", note:"At seventeen he proves the completeness of modal logic; Harvard offers him a post before his degree."} },
@@ -1643,7 +1643,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE SCEPTICAL PARADOX", note:"Nothing in my past fixes what I meant by \"plus\" — Wittgenstein reread as a sceptic."} },
 ]},
 
-"162": { debut:1962, fin:2022, learn:[20,16,20], stages:[
+"162": { debut:1962, fin:2022, learn:[20,16,20,23], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'HISTORIEN DES SCIENCES", note:"Formé à Princeton, il prend l'histoire au sérieux comme donnée pour trancher entre théories de la rationalité."},
     en:{nom:"THE HISTORIAN OF SCIENCE", note:"Princeton-trained, he takes history seriously as evidence for adjudicating theories of rationality."} },
@@ -1652,7 +1652,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE PESSIMISTIC META-INDUCTION", note:"Every past successful theory turned out false; why should ours escape?"} },
 ]},
 
-"163": { debut:1963, fin:null, learn:[18,18,18], stages:[
+"163": { debut:1963, fin:null, learn:[18,18,18,18], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉMIGRÉ NÉERLANDAIS", note:"Enfant sous l'occupation allemande, il grandit au Canada et se forme à Pittsburgh."},
     en:{nom:"THE DUTCH ÉMIGRÉ", note:"A child under German occupation, he grows up in Canada and trains at Pittsburgh."} },
@@ -1661,7 +1661,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE EMPIRICIST STANCE", note:"Empiricism is not a doctrine but a stance — otherwise it refutes itself."} },
 ]},
 
-"164": { debut:1964, fin:null, learn:[19,19,23], stages:[
+"164": { debut:1964, fin:null, learn:[19,19,23,35], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE FILS DE PHILOSOPHE", note:"Formé aux mathématiques et à la logique en Australie, dans le milieu le plus physicaliste du monde."},
     en:{nom:"THE PHILOSOPHER'S SON", note:"Trained in mathematics and logic in Australia, the most physicalist milieu in the world."} },
@@ -1673,7 +1673,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE RETRACTION", note:"A rare case: he declares his own argument bad and turns physicalist, convincing no one to drop Mary."} },
 ]},
 
-"165": { debut:1962, fin:2001, learn:[25,25,12], stages:[
+"165": { debut:1962, fin:2001, learn:[25,25,12,8], stages:[
   { lvl:1,  types:["Réalisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE QUINE", note:"Un séjour à Oxford le décide ; il rentre à Harvard et invente une métaphysique que Quine désavouera."},
     en:{nom:"QUINE'S STUDENT", note:"A stay in Oxford decides him; he returns to Harvard and invents a metaphysics Quine will disown."} },
@@ -1685,13 +1685,13 @@ const PHILOMON_EVO = {
     en:{nom:"THE PLURALITY OF WORLDS", note:"Other possible worlds exist as concretely as this one; he maintains it without ever smiling."} },
 ]},
 
-"166": { debut:1963, fin:2021, learn:[18,18,25], stages:[
+"166": { debut:1963, fin:2021, learn:[18,18,25,29], stages:[
   { lvl:1, types:["Philo. Sciences","Réalisme"], img:null,
     fr:{nom:"L'ARGUMENT DU NON-MIRACLE", note:"Le succès de la science serait un miracle si ses théories ne touchaient pas à peu près juste."},
     en:{nom:"THE NO-MIRACLES ARGUMENT", note:"Science's success would be a miracle if its theories were not roughly right."} },
 ]},
 
-"167": { debut:1963, fin:null, learn:[32,32,32], stages:[
+"167": { debut:1963, fin:null, learn:[32,32,32,17], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE SUD-AFRICAIN À OXFORD", note:"Venu d'Afrique du Sud, il reste toute sa carrière entre Oxford et Pittsburgh."},
     en:{nom:"THE SOUTH AFRICAN AT OXFORD", note:"Come from South Africa, he stays his whole career between Oxford and Pittsburgh."} },
@@ -1700,7 +1700,7 @@ const PHILOMON_EVO = {
     en:{nom:"MIND AND WORLD", note:"Experience is already conceptual: thus one escapes the myth of the given without falling into bare coherence."} },
 ]},
 
-"168": { debut:1962, fin:null, learn:[21,37,37], stages:[
+"168": { debut:1962, fin:null, learn:[21,37,37,37], stages:[
   { lvl:1,  types:["Déontologie"], img:null,
     fr:{nom:"L'ÉTUDIANT DE PRINCETON", note:"Formé auprès de Rawls et Hempel ; il mettra vingt ans à écrire son premier livre."},
     en:{nom:"THE PRINCETON STUDENT", note:"Trained under Rawls and Hempel; he will take twenty years to write his first book."} },
@@ -1709,7 +1709,7 @@ const PHILOMON_EVO = {
     en:{nom:"WHAT WE OWE TO EACH OTHER", note:"Morality is not the calculation of good: it is what we can justify to one another."} },
 ]},
 
-"169": { debut:1964, fin:2017, learn:[21,21,48], stages:[
+"169": { debut:1964, fin:2017, learn:[21,21,48,21], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'HISTORIEN REPENTI", note:"Il abandonne l'histoire pour la philosophie et passera sa vie à All Souls, sans jamais enseigner beaucoup."},
     en:{nom:"THE REPENTANT HISTORIAN", note:"He drops history for philosophy and spends his life at All Souls, hardly ever teaching."} },
@@ -1721,7 +1721,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE MOUNTAIN", note:"Kantians, contractualists and consequentialists climb the same mountain from different sides."} },
 ]},
 
-"170": { debut:1959, fin:null, learn:[18,18,28], stages:[
+"170": { debut:1959, fin:null, learn:[18,18,28,24], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉLÈVE DE TINBERGEN", note:"Né à Nairobi, formé à l'éthologie oxonienne par un futur prix Nobel."},
     en:{nom:"TINBERGEN'S STUDENT", note:"Born in Nairobi, trained in Oxford ethology by a future Nobel laureate."} },
@@ -1730,7 +1730,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE BLIND WATCHMAKER", note:"The answer to Paley, two centuries on: the watchmaker exists, but is sightless and has no plan."} },
 ]},
 
-"171": { debut:1963, fin:2024, learn:[25,29,33], stages:[
+"171": { debut:1963, fin:2024, learn:[25,29,33,18], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'ÉLÈVE DE RYLE", note:"Il part à Oxford travailler sous Ryle, décidé à réfuter le behaviorisme de l'intérieur."},
     en:{nom:"RYLE'S STUDENT", note:"He goes to Oxford to work under Ryle, set on refuting behaviourism from within."} },
@@ -1742,7 +1742,7 @@ const PHILOMON_EVO = {
     en:{nom:"MULTIPLE DRAFTS", note:"There is no central stage where it all comes together: the Cartesian theatre is empty, and Darwin is a universal acid."} },
 ]},
 
-"172": { debut:1965, fin:null, learn:[15,43,15], stages:[
+"172": { debut:1965, fin:null, learn:[15,43,15,30], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE PHYSICIEN", note:"Une thèse sur les électrons en champ magnétique lui vaut une fractale qui porte son nom."},
     en:{nom:"THE PHYSICIST", note:"A thesis on electrons in magnetic fields earns him a fractal bearing his name."} },
@@ -1754,7 +1754,7 @@ const PHILOMON_EVO = {
     en:{nom:"I AM A STRANGE LOOP", note:"After his wife's death he argues a self is a pattern that can survive in other brains."} },
 ]},
 
-"173": { debut:1964, fin:null, learn:[16,16,23], stages:[
+"173": { debut:1964, fin:null, learn:[16,16,23,26], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE COUPLE DE PITTSBURGH", note:"Formés ensemble par Sellars, ils signeront séparément une même philosophie."},
     en:{nom:"THE PITTSBURGH COUPLE", note:"Trained together under Sellars, they will sign one philosophy separately."} },
@@ -1763,7 +1763,7 @@ const PHILOMON_EVO = {
     en:{nom:"NEUROPHILOSOPHY", note:"She insists philosophy of mind must first learn how the brain is actually built."} },
 ]},
 
-"174": { debut:1964, fin:null, learn:[32,15,32], stages:[
+"174": { debut:1964, fin:null, learn:[32,15,32,15], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"L'ÉTUDIANT DU MIT", note:"Formé chez Putnam et Fodor, il deviendra le critique le plus obstiné du fonctionnalisme qu'il a servi."},
     en:{nom:"THE MIT STUDENT", note:"Trained under Putnam and Fodor, he becomes the most obstinate critic of the functionalism he served."} },
@@ -1772,7 +1772,7 @@ const PHILOMON_EVO = {
     en:{nom:"P-CONSCIOUSNESS AND A-CONSCIOUSNESS", note:"One word covers two things: what it is like, and what is available for reasoning."} },
 ]},
 
-"175": { debut:1966, fin:null, learn:[18,18,34], stages:[
+"175": { debut:1966, fin:null, learn:[18,18,34,18], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LA PHYSICIENNE", note:"Mathématiques puis philosophie des sciences ; elle enseignera à Stanford, San Diego et à la LSE."},
     en:{nom:"THE PHYSICIST", note:"Mathematics then philosophy of science; she teaches at Stanford, San Diego and the LSE."} },
@@ -1781,7 +1781,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE DAPPLED WORLD", note:"No theory covers everything: the world is a patchwork of ill-joined domains."} },
 ]},
 
-"176": { debut:1962, fin:null, learn:[23,23,37], stages:[
+"176": { debut:1962, fin:null, learn:[23,23,37,37], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"L'ÉTUDIANT DE CAMBRIDGE", note:"Formé aux mathématiques avant la philosophie ; il en gardera le goût des constructions explicites."},
     en:{nom:"THE CAMBRIDGE STUDENT", note:"Trained in mathematics before philosophy; he keeps a taste for explicit constructions."} },
@@ -1790,7 +1790,7 @@ const PHILOMON_EVO = {
     en:{nom:"RULING PASSIONS", note:"Hume was right: reason is slave to the passions, but passions criticise one another."} },
 ]},
 
-"177": { debut:1966, fin:null, learn:[20,23,51], stages:[
+"177": { debut:1966, fin:null, learn:[20,23,51,32], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"LA BIOLOGISTE", note:"Doctorat de biologie à Yale ; elle vient aux études des sciences par les laboratoires, pas par la théorie."},
     en:{nom:"THE BIOLOGIST", note:"A Yale biology doctorate; she comes to science studies through laboratories, not theory."} },
@@ -1802,7 +1802,7 @@ const PHILOMON_EVO = {
     en:{nom:"STAYING WITH THE TROUBLE", note:"Neither denial nor apocalypse: making unexpected kin in a damaged world."} },
 ]},
 
-"178": { debut:1966, fin:null, learn:[28,28,38], stages:[
+"178": { debut:1966, fin:null, learn:[28,28,38,28], stages:[
   { lvl:1,  types:["Empirisme"], img:null,
     fr:{nom:"L'ÉTUDIANTE D'OXFORD", note:"Première femme fellow en philosophie à New College ; elle passera sa vie à contrarier les deux camps."},
     en:{nom:"THE OXFORD STUDENT", note:"The first woman philosophy fellow at New College; she spends her life vexing both camps."} },
@@ -1811,7 +1811,7 @@ const PHILOMON_EVO = {
     en:{nom:"DEFENDING SCIENCE", note:"Against scientism and cynicism at once: science is neither sacred nor bogus."} },
 ]},
 
-"179": { debut:1966, fin:2001, learn:[26,7,26], stages:[
+"179": { debut:1966, fin:2001, learn:[26,7,26,31], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉLÈVE DE MATURANA", note:"Biologiste à Santiago ; le coup d'État de 1973 l'envoie en exil et il perd son laboratoire."},
     en:{nom:"MATURANA'S STUDENT", note:"A biologist in Santiago; the 1973 coup drives him into exile and costs him his laboratory."} },
@@ -1823,13 +1823,13 @@ const PHILOMON_EVO = {
     en:{nom:"THE EMBODIED MIND", note:"With Thompson and Rosch: cognition is not representation but action bringing forth a world."} },
 ]},
 
-"180": { debut:1968, fin:null, learn:[22,22,30], stages:[
+"180": { debut:1968, fin:null, learn:[22,22,30,22], stages:[
   { lvl:1, types:["Philo. Sciences"], img:null,
     fr:{nom:"LE RÉALISME STRUCTUREL", note:"Ce qui survit aux révolutions n'est pas l'ontologie mais les équations : Fresnel passe entier dans Maxwell."},
     en:{nom:"STRUCTURAL REALISM", note:"What survives revolutions is not ontology but equations: Fresnel passes whole into Maxwell."} },
 ]},
 
-"181": { debut:1967, fin:null, learn:[9,9,6], stages:[
+"181": { debut:1967, fin:null, learn:[9,9,6,15], stages:[
   { lvl:1,  types:["Utilitarisme"], img:null,
     fr:{nom:"L'ÉTUDIANT DE MELBOURNE", note:"Petit-fils de Viennois réfugiés dont trois grands-parents sont morts en camp ; il choisit l'éthique appliquée."},
     en:{nom:"THE MELBOURNE STUDENT", note:"Grandson of Viennese refugees, three of whose grandparents died in camps; he chooses applied ethics."} },
@@ -1841,7 +1841,7 @@ const PHILOMON_EVO = {
     en:{nom:"ANIMAL LIBERATION", note:"The question is not can they reason but can they suffer; a worldwide movement is born of it."} },
 ]},
 
-"182": { debut:1968, fin:null, learn:[20,20,28], stages:[
+"182": { debut:1968, fin:null, learn:[20,20,28,27], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"LE MATHÉMATICIEN", note:"Formé aux mathématiques à Cambridge, il passe à la logique par le paradoxe du menteur."},
     en:{nom:"THE MATHEMATICIAN", note:"Cambridge-trained in mathematics, he moves to logic through the liar paradox."} },
@@ -1850,7 +1850,7 @@ const PHILOMON_EVO = {
     en:{nom:"BEYOND THE LIMITS", note:"Wherever thought reaches its limit, the same contradictory structure reappears."} },
 ]},
 
-"183": { debut:1969, fin:null, learn:[25,33,18], stages:[
+"183": { debut:1969, fin:null, learn:[25,33,18,35], stages:[
   { lvl:1,  types:["Éthique des Vertus"], img:null,
     fr:{nom:"L'HELLÉNISTE", note:"Elle quitte le théâtre pour les classiques, se convertit au judaïsme et rencontre l'hostilité de Harvard."},
     en:{nom:"THE HELLENIST", note:"She leaves theatre for classics, converts to Judaism, and meets Harvard's hostility."} },
@@ -1862,7 +1862,7 @@ const PHILOMON_EVO = {
     en:{nom:"CAPABILITIES", note:"With Sen: measure not income but what people are actually able to do and to be."} },
 ]},
 
-"184": { debut:1974, fin:null, learn:[17,20,17], stages:[
+"184": { debut:1974, fin:null, learn:[17,20,17,30], stages:[
   { lvl:1,  types:["Féminisme"], img:null,
     fr:{nom:"L'ÉLÈVE DE L'ÉCOLE HÉBRAÏQUE", note:"L'éthique juive et Spinoza avant Hegel ; punie, on lui fait lire de la philosophie en guise de sanction."},
     en:{nom:"THE HEBREW SCHOOL PUPIL", note:"Jewish ethics and Spinoza before Hegel; punished, they set philosophy as the penalty."} },
@@ -1871,7 +1871,7 @@ const PHILOMON_EVO = {
     en:{nom:"EXCITABLE SPEECH", note:"The wounding word can be taken up and turned: citation is also what makes subversion possible."} },
 ]},
 
-"185": { debut:1973, fin:null, learn:[34,22,32], stages:[
+"185": { debut:1973, fin:null, learn:[34,22,32,22], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE FILS DE STRAWSON", note:"Fils du métaphysicien descriptif, il travaillera contre presque tous les consensus de son milieu."},
     en:{nom:"STRAWSON'S SON", note:"Son of the descriptive metaphysician, he works against nearly every consensus of his milieu."} },
@@ -1883,7 +1883,7 @@ const PHILOMON_EVO = {
     en:{nom:"REALISTIC PANPSYCHISM", note:"Real physicalism leads to panpsychism; and the narrative self is a fashion, not a necessity."} },
 ]},
 
-"186": { debut:1980, fin:null, learn:[16,16,27], stages:[
+"186": { debut:1980, fin:null, learn:[16,16,27,35], stages:[
   { lvl:1,  types:["Logique"], img:null,
     fr:{nom:"L'AUSTRALIEN", note:"Formé à Melbourne et Princeton ; il traitera la théologie comme un domaine où l'on compte les prémisses."},
     en:{nom:"THE AUSTRALIAN", note:"Trained at Melbourne and Princeton; he treats theology as a field where premises are counted."} },
@@ -1892,7 +1892,7 @@ const PHILOMON_EVO = {
     en:{nom:"HUMBLE NATURALISM", note:"An atheist without triumphalism: neither side holds an argument that ought to convince the other."} },
 ]},
 
-"187": { debut:1977, fin:null, learn:[22,22,27], stages:[
+"187": { debut:1977, fin:null, learn:[22,22,27,37], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:null,
     fr:{nom:"LE CONNEXIONNISTE", note:"Formé à Stirling, il défend les réseaux de neurones quand le symbolique règne encore."},
     en:{nom:"THE CONNECTIONIST", note:"Trained at Stirling, he defends neural networks while the symbolic still reigns."} },
@@ -1901,7 +1901,7 @@ const PHILOMON_EVO = {
     en:{nom:"NATURAL-BORN CYBORGS", note:"We did not wait for implants: language and writing already augmented us."} },
 ]},
 
-"188": { debut:1986, fin:null, learn:[10,11,11], stages:[
+"188": { debut:1986, fin:null, learn:[10,11,11,37], stages:[
   { lvl:1,  types:["Philo. Esprit"], img:"David Chalmers.jpg",
     fr:{nom:"L'OLYMPIEN DES MATHÉMATIQUES", note:"Médaillé aux Olympiades internationales, il abandonne un doctorat de mathématiques pour la conscience."},
     en:{nom:"THE MATHEMATICS OLYMPIAN", note:"An International Olympiad medallist, he abandons a mathematics doctorate for consciousness."} },
@@ -1910,7 +1910,7 @@ const PHILOMON_EVO = {
     en:{nom:"THE CONSCIOUS MIND", note:"A zombie physically identical to me is conceivable; so the physical does not suffice."} },
 ]},
 
-"189": { debut:1990, fin:null, learn:[18,18,18], stages:[
+"189": { debut:1990, fin:null, learn:[18,18,18,18], stages:[
   { lvl:1,  types:["Philo. Sciences"], img:null,
     fr:{nom:"L'ÉLÈVE DE WORRALL", note:"Formé à la LSE, il hérite du réalisme structurel pour le pousser bien plus loin que son maître."},
     en:{nom:"WORRALL'S STUDENT", note:"LSE-trained, he inherits structural realism and pushes it far past his teacher."} },
