@@ -624,6 +624,168 @@ body {
 
 .obj-note { font-size:var(--fs-xs); color:var(--txt-mid); line-height:1.5; }
 
+/* ══ LA JOUTE ══════════════════════════════════════════════════════════════ */
+.joute-open-btn {
+  font-family:var(--font-pixel); font-size:9px; letter-spacing:.08em;
+  background:#5a1030; color:#ff88bb; border:1px solid #ff4488;
+  padding:5px 9px; border-radius:2px; cursor:pointer; white-space:nowrap;
+}
+.joute-open-btn:hover { background:#ff4488; color:#000; }
+
+/* Superposition plein écran : le même écran sert au bureau et au mobile. */
+#joute-screen {
+  display:none; position:fixed; inset:0; z-index:200;
+  background:var(--bg); flex-direction:column; overflow:hidden;
+}
+#joute-screen.open { display:flex; }
+
+.joute-header {
+  flex-shrink:0; display:flex; align-items:center; gap:12px;
+  padding:10px 16px; background:var(--bg-mid); border-bottom:1px solid #3a1030;
+}
+.joute-manche { margin-left:auto; font-family:var(--font-pixel); font-size:9px;
+  color:#ff88bb; letter-spacing:.08em; }
+
+/* ── Préparation ── */
+.joute-setup, .joute-field { flex:1; min-height:0; display:none; flex-direction:column; }
+.joute-setup.on { display:flex; }
+/* Le combat se groupe au centre : ni terrain démesuré, ni journal vide. */
+.joute-field.on { display:flex; justify-content:center; }
+
+.joute-slots { display:flex; align-items:center; justify-content:center; gap:16px;
+  padding:14px 12px 10px; flex-wrap:wrap; flex-shrink:0; }
+
+.joute-slot {
+  width:186px; background:var(--bg-card); border:2px solid #223;
+  border-radius:var(--radius); padding:9px; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+}
+.joute-slot:hover  { border-color:var(--accent); }
+.joute-slot.active { border-color:#ff4488; box-shadow:0 0 0 1px #ff448855; }
+.joute-slot-label { font-family:var(--font-pixel); font-size:8px; color:var(--txt-dim);
+  letter-spacing:.1em; }
+.joute-slot.active .joute-slot-label { color:#ff88bb; }
+.joute-slot-canvas { width:80px; height:80px; display:flex; align-items:center;
+  justify-content:center; background:var(--lcd-green-bg); image-rendering:pixelated; }
+.joute-slot-canvas canvas { image-rendering:pixelated; }
+.joute-slot-name { font-family:var(--font-pixel); font-size:10px; color:var(--txt-bright);
+  letter-spacing:.05em; text-align:center; }
+.joute-slot-types { display:flex; gap:3px; flex-wrap:wrap; justify-content:center; }
+
+.joute-lvlpick { width:100%; display:flex; flex-direction:column; gap:3px; margin-top:2px; }
+.joute-lvlpick input { width:100%; }
+.joute-lvlpick .jl-read { font-size:var(--fs-xxs); color:var(--txt-mid); text-align:center; }
+.joute-lvlpick .jl-forme { font-size:8px; color:#66ddaa; text-align:center;
+  letter-spacing:.04em; min-height:10px; }
+
+.joute-actions { display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+  padding:0 12px 10px; flex-shrink:0; }
+.joute-mode-btn {
+  font-family:var(--font-pixel); font-size:9px; letter-spacing:.06em;
+  background:transparent; color:#ff88bb; border:1px solid #ff448866;
+  padding:7px 12px; border-radius:2px; cursor:pointer;
+}
+.joute-mode-btn:hover:not(:disabled) { background:#ff448822; border-color:#ff4488; }
+.joute-mode-btn.primary { background:#5a1030; border-color:#ff4488; }
+.joute-mode-btn:disabled { opacity:.35; cursor:not-allowed; }
+
+.joute-search { margin:0 12px 8px; flex-shrink:0; }
+.joute-pick-grid {
+  flex:1; min-height:0; overflow-y:auto; padding:0 12px 14px;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(92px,1fr)); gap:8px;
+  align-content:start;
+}
+.joute-pick-card {
+  background:var(--bg-card); border:1px solid #1a2040; border-radius:2px;
+  padding:5px; cursor:pointer; display:flex; flex-direction:column;
+  align-items:center; gap:3px;
+}
+.joute-pick-card:hover { border-color:#ff4488; }
+.joute-pick-card .jp-sprite { width:56px; height:56px; background:var(--lcd-green-bg);
+  display:flex; align-items:center; justify-content:center; }
+.joute-pick-name { font-family:var(--font-pixel); font-size:8px; color:var(--txt-bright);
+  letter-spacing:.04em; text-align:center; }
+
+/* ── Terrain ── */
+.joute-board { flex:0 1 340px; min-height:210px; padding:12px 16px;
+  display:flex; flex-direction:column; justify-content:space-between; gap:10px;
+  background:linear-gradient(180deg,#0d1730 0%,#0a1020 100%); }
+.joute-side { display:flex; align-items:center; gap:14px; }
+.joute-side.adv  { justify-content:flex-start; }
+.joute-side.vous { justify-content:flex-end; }
+
+.joute-sprite { width:104px; height:104px; flex-shrink:0; background:var(--lcd-green-bg);
+  border:1px solid #2a3a5a; display:flex; align-items:center; justify-content:center;
+  image-rendering:pixelated; }
+.joute-sprite canvas { image-rendering:pixelated; }
+.joute-sprite.touche { animation:joute-hit .28s steps(2) 2; }
+@keyframes joute-hit { 0%{opacity:1} 50%{opacity:.25} 100%{opacity:1} }
+
+.joute-plate { flex:1; max-width:330px; background:#0a1428; border:2px solid #2a4a6a;
+  border-radius:3px; padding:7px 10px; }
+.joute-plate-top, .joute-plate-bot { display:flex; align-items:center; gap:8px; }
+.joute-plate-bot { margin-top:3px; }
+.joute-plate-nom { font-family:var(--font-pixel); font-size:10px; color:var(--txt-bright);
+  letter-spacing:.05em; flex:1; min-width:0; }
+.joute-plate-lvl { font-size:var(--fs-xxs); color:var(--txt-mid); white-space:nowrap; }
+.joute-plate-types { display:flex; gap:3px; flex:1; flex-wrap:wrap; }
+.joute-plate-pv { font-family:var(--font-pixel); font-size:9px; color:var(--txt-mid);
+  white-space:nowrap; }
+
+.joute-pv-bar { height:7px; background:#001428; border:1px solid #2a4a6a;
+  border-radius:2px; overflow:hidden; margin-top:5px; }
+.joute-pv-fill { height:100%; width:100%; background:#44dd66; transition:width .35s ease; }
+.joute-pv-fill.mid { background:#ddbb22; }
+.joute-pv-fill.low { background:#dd3344; }
+
+.joute-log {
+  flex:0 1 auto; height:124px; overflow-y:auto; padding:8px 14px;
+  background:#050a16; border-top:1px solid #2a4a6a; border-bottom:1px solid #2a4a6a;
+  font-size:var(--fs-xs); color:var(--txt-mid); line-height:1.6;
+}
+.joute-log p { margin:0 0 2px; }
+.joute-log .jl-fort { color:#44ff88; }
+.joute-log .jl-faible { color:#ff8866; }
+.joute-log .jl-nul { color:#7799cc; }
+.joute-log .jl-tour { color:var(--txt-dim); letter-spacing:.06em; font-size:var(--fs-xxs); }
+
+.joute-moves { flex-shrink:0; display:grid; grid-template-columns:1fr 1fr; gap:7px;
+  padding:10px 14px; }
+.joute-move {
+  text-align:left; background:var(--bg-card-alt); border:1px solid #2a3a5a;
+  border-left:3px solid var(--accent); border-radius:2px; padding:7px 9px;
+  cursor:pointer; font-family:inherit; color:inherit;
+  display:flex; flex-direction:column; gap:3px;
+}
+.joute-move:hover:not(:disabled) { border-color:#ff4488; background:#1a1030; }
+.joute-move:disabled { opacity:.4; cursor:not-allowed; }
+.joute-move.transcendant { border-left-color:#cc66ff; }
+.joute-move-nom { font-family:var(--font-pixel); font-size:9px; color:var(--txt-bright);
+  letter-spacing:.04em; }
+.joute-move-meta { display:flex; gap:7px; align-items:center; flex-wrap:wrap;
+  font-size:var(--fs-xxs); color:var(--txt-dim); }
+.joute-move-pp { margin-left:auto; }
+.joute-move-eff { font-size:8px; padding:1px 4px; border:1px solid; border-radius:2px; }
+.joute-move-eff.fort  { color:#44ff88; border-color:#44ff8866; }
+.joute-move-eff.faible{ color:#ff8866; border-color:#ff886666; }
+.joute-move-eff.nul   { color:#7799cc; border-color:#7799cc66; }
+
+.joute-end { flex-shrink:0; display:none; gap:8px; justify-content:center;
+  padding:0 14px 14px; flex-wrap:wrap; }
+.joute-end.on { display:flex; }
+
+@media (max-width:700px) {
+  .joute-sprite { width:76px; height:76px; }
+  /* 76 px de portrait + une plaque de 330 débordaient d'un écran de 390. */
+  .joute-plate { max-width:none; min-width:0; padding:6px 8px; }
+  .joute-side { gap:8px; }
+  .joute-plate-nom { font-size:9px; }
+  .joute-moves { grid-template-columns:1fr; }
+  .joute-board { flex:0 1 auto; min-height:170px; }
+  .joute-log { height:88px; }
+  .joute-slot { width:150px; }
+}
+
 /* En mobile la barre est sortie du LCD : elle repasse sur la palette sombre. */
 .mob-lifebar-row { padding:9px 14px 7px; background:#00182f; border-bottom:1px solid #12283f; margin:0; }
 .mob-lifebar-row .lb-lvl  { color:#66ddaa; }
@@ -1541,6 +1703,7 @@ body.is-mobile  #app-desktop { display:none; }
     </div>
     <span class="title">PHILODEX</span>
     <span class="version">v1.2</span>
+    <button class="joute-open-btn" id="joute-open-desk">⚔ LA JOUTE</button>
     <button class="breed-open-btn" id="breed-open">♥ ÉLEVAGE</button>
     <button class="tc-open-btn" id="typechart-open">TABLE DES TYPES</button>
     <button class="lang-btn" id="desk-lang">EN</button>
@@ -1672,6 +1835,7 @@ body.is-mobile  #app-desktop { display:none; }
   <header class="mob-header">
     <div class="light-big" style="width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#aaeeff,#0088cc);border:2.5px solid #005588;box-shadow:0 0 0 2px #003355;flex-shrink:0"></div>
     <span class="title">PHILODEX</span>
+    <button class="joute-open-btn" id="joute-open-mob">⚔</button>
     <button class="lang-btn" id="mob-lang">EN</button>
   </header>
 
@@ -1728,6 +1892,87 @@ body.is-mobile  #app-desktop { display:none; }
 </div>
 
 
+<!-- ════════════════════════════════════════════════════
+     LA JOUTE — écran de combat, commun aux deux mises en page
+     ════════════════════════════════════════════════════ -->
+<div id="joute-screen">
+  <div class="joute-header">
+    <button class="breed-back-btn" id="joute-back">◀ RETOUR</button>
+    <span class="breed-screen-title" id="joute-title">⚔ LA JOUTE</span>
+    <span class="joute-manche" id="joute-manche"></span>
+  </div>
+
+  <!-- Phase de préparation -->
+  <div class="joute-setup" id="joute-setup">
+    <div class="joute-slots">
+      <div class="joute-slot active" id="joute-slot-vous" data-cote="vous">
+        <span class="joute-slot-label" id="joute-lbl-vous">VOUS</span>
+        <div class="joute-slot-canvas" id="joute-canvas-vous"><span class="breed-slot-empty-glyph">?</span></div>
+        <span class="joute-slot-name" id="joute-name-vous">—</span>
+        <div class="joute-slot-types" id="joute-types-vous"></div>
+        <div class="joute-lvlpick" id="joute-lvl-vous"></div>
+      </div>
+      <span class="breed-operator">⚔</span>
+      <div class="joute-slot" id="joute-slot-adv" data-cote="adv">
+        <span class="joute-slot-label" id="joute-lbl-adv">ADVERSAIRE</span>
+        <div class="joute-slot-canvas" id="joute-canvas-adv"><span class="breed-slot-empty-glyph">?</span></div>
+        <span class="joute-slot-name" id="joute-name-adv">—</span>
+        <div class="joute-slot-types" id="joute-types-adv"></div>
+        <div class="joute-lvlpick" id="joute-lvl-adv"></div>
+      </div>
+    </div>
+
+    <div class="joute-actions">
+      <button class="joute-mode-btn primary" id="joute-go">COMBATTRE</button>
+      <button class="joute-mode-btn" id="joute-random">ADVERSAIRE AU HASARD</button>
+      <button class="joute-mode-btn" id="joute-arene">ARÈNE — 5 ADVERSAIRES</button>
+    </div>
+
+    <input class="mob-search-box joute-search" id="joute-search" type="text" placeholder="RECHERCHE...">
+    <div class="joute-pick-grid" id="joute-pick-grid"></div>
+  </div>
+
+  <!-- Phase de combat -->
+  <div class="joute-field" id="joute-field">
+    <div class="joute-board">
+      <div class="joute-side adv">
+        <div class="joute-plate">
+          <div class="joute-plate-top">
+            <span class="joute-plate-nom" id="joute-f-nom-adv"></span>
+            <span class="joute-plate-lvl" id="joute-f-lvl-adv"></span>
+          </div>
+          <div class="joute-pv-bar"><div class="joute-pv-fill" id="joute-f-pv-adv"></div></div>
+          <div class="joute-plate-bot">
+            <span class="joute-plate-types" id="joute-f-types-adv"></span>
+            <span class="joute-plate-pv" id="joute-f-pvnum-adv"></span>
+          </div>
+        </div>
+        <div class="joute-sprite" id="joute-f-sprite-adv"></div>
+      </div>
+
+      <div class="joute-side vous">
+        <div class="joute-sprite" id="joute-f-sprite-vous"></div>
+        <div class="joute-plate">
+          <div class="joute-plate-top">
+            <span class="joute-plate-nom" id="joute-f-nom-vous"></span>
+            <span class="joute-plate-lvl" id="joute-f-lvl-vous"></span>
+          </div>
+          <div class="joute-pv-bar"><div class="joute-pv-fill" id="joute-f-pv-vous"></div></div>
+          <div class="joute-plate-bot">
+            <span class="joute-plate-types" id="joute-f-types-vous"></span>
+            <span class="joute-plate-pv" id="joute-f-pvnum-vous"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="joute-log" id="joute-log"></div>
+    <div class="joute-moves" id="joute-moves"></div>
+    <div class="joute-end" id="joute-end"></div>
+  </div>
+</div>
+
+
 <script>
 // ══════════════════════════════════════════════════════════════════════════════
 // I18N
@@ -1776,6 +2021,38 @@ const I18N = {
     genre_lieu:       'lieu',
     genre_image:      'image',
     genre_matiere:    'matière',
+    jTitle:         'LA JOUTE',
+    jYou:           'VOUS',
+    jFoe:           'ADVERSAIRE',
+    jFight:         'COMBATTRE',
+    jRandom:        'ADVERSAIRE AU HASARD',
+    jArena:         'ARÈNE — 5 ADVERSAIRES',
+    jRound:         'MANCHE',
+    jPV:            'PV',
+    jImmanent:      'immanent',
+    jTranscendent:  'transcendant',
+    jNoType:        'sans type',
+    jTurn:          'TOUR',
+    jFallbackMove:  "L'ARGUMENT D'AUTORITÉ",
+    jOpening:       '%A et %B entrent en discussion.',
+    jUses:          '%P avance %C.',
+    jDamage:        '%D perd %N points d\'influence.',
+    jDecisive:      'décisif',
+    jWeak:          'porte mal',
+    jNoHold:        'aucune prise',
+    jIncomm:        'incommensurable',
+    jDecisiveLong:  "L'argument frappe au défaut de la cuirasse.",
+    jWeakLong:      'Le terrain adverse absorbe le coup.',
+    jNoHoldLong:    "%D n'a aucune prise à offrir : l'argument de %A glisse.",
+    jIncommLong:    'Les champs sont incommensurables — l\'argument ne rencontre pas %P.',
+    jFrameShift:    '%P récuse le cadre plutôt que le contenu.',
+    jAbandoned:     '%P est abandonné par l\'histoire.',
+    jAgain:         'REVANCHE',
+    jBackSetup:     'CHANGER DE COMBATTANT',
+    jNextRound:     'MANCHE SUIVANTE',
+    jArenaNext:     'Un %Ne adversaire se présente.',
+    jArenaHeal:     'Le souffle revient : +%N points d\'influence.',
+    jArenaWon:      "%P traverse l'arène entière.",
     philoStart:     'début philosophique',
     stillAlive:     ' en activité',
     statsAtLevel:   'Valeurs au niveau %L (%A). Le creux indique le potentiel non encore atteint.',
@@ -1833,6 +2110,38 @@ const I18N = {
     genre_lieu:       'place',
     genre_image:      'image',
     genre_matiere:    'matter',
+    jTitle:         'THE DISPUTATION',
+    jYou:           'YOU',
+    jFoe:           'OPPONENT',
+    jFight:         'FIGHT',
+    jRandom:        'RANDOM OPPONENT',
+    jArena:         'ARENA — 5 OPPONENTS',
+    jRound:         'ROUND',
+    jPV:            'HP',
+    jImmanent:      'immanent',
+    jTranscendent:  'transcendent',
+    jNoType:        'typeless',
+    jTurn:          'TURN',
+    jFallbackMove:  'THE APPEAL TO AUTHORITY',
+    jOpening:       '%A and %B enter into dispute.',
+    jUses:          '%P advances %C.',
+    jDamage:        '%D loses %N points of influence.',
+    jDecisive:      'decisive',
+    jWeak:          'lands poorly',
+    jNoHold:        'no purchase',
+    jIncomm:        'incommensurable',
+    jDecisiveLong:  'The argument strikes the flaw in the armour.',
+    jWeakLong:      'The opposing ground absorbs the blow.',
+    jNoHoldLong:    '%D offers no purchase: the argument of %A slides off.',
+    jIncommLong:    'The fields are incommensurable — the argument never meets %P.',
+    jFrameShift:    '%P rejects the frame rather than the content.',
+    jAbandoned:     '%P is abandoned by history.',
+    jAgain:         'REMATCH',
+    jBackSetup:     'CHANGE FIGHTER',
+    jNextRound:     'NEXT ROUND',
+    jArenaNext:     'A %Nth opponent steps forward.',
+    jArenaHeal:     'Breath returns: +%N points of influence.',
+    jArenaWon:      '%P crosses the whole arena.',
     philoStart:     'philosophical debut',
     stillAlive:     ' still active',
     statsAtLevel:   'Values at level %L (%A). The hollow shows potential not yet reached.',
@@ -2496,19 +2805,20 @@ function buildConceptsHtml(p) {
       ? (isImmanent ? 'IMMANENT' : 'TRANSCENDANT')
       : (isImmanent ? 'IMMANENT' : 'TRANSCENDENT');
 
-    // Offensive matchups only apply to immanent moves (they stay in the field)
+    // Les matchups offensifs ne valent que pour l'immanent : le transcendant ne
+    // se bat pas dans le champ. Ils se lisent dans la table des types, et non
+    // dans CHAMPS, qui n'a jamais porté de matchups — d'où une rangée
+    // durablement vide avant correction.
     let vsRows = '';
     if (isImmanent) {
-      for (const [,cd] of Object.entries(CHAMPS)) {
-        if (champOf(cType) !== Object.keys(CHAMPS).find(k => CHAMPS[k] === cd)) continue;
-        for (const dt of cd.types) {
-          if (dt === cType) continue;
-          const m = cd.matchups?.[cType]?.[dt];
-          if (m && m !== 1) vsRows += `
-            <span class="vs-lbl">vs</span>
-            <span class="vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span>
-            <span class="vs-mult" style="color:${m>=2?'#44ff44':'#ff4444'}">${m>=2?'×2':'×½'}</span>`;
-        }
+      const contre = PHILOMON_DATA.typechart[cType] || {};
+      for (const [dt, m] of Object.entries(contre)) {
+        if (m === 1) continue;
+        const lbl = m >= 2 ? '×2' : m === 0 ? '×0' : '×½';
+        vsRows += `
+          <span class="vs-lbl">vs</span>
+          <span class="vs-pill ${tClass(dt)}">${dt.substring(0,6).toUpperCase()}</span>
+          <span class="vs-mult" style="color:${m>=2?'#44ff44':m===0?'#7799cc':'#ff4444'}">${lbl}</span>`;
       }
     } else {
       // Transcendent: always hits CLÔTURE regardless of type
@@ -3521,6 +3831,464 @@ document.getElementById('breed-slot-a').addEventListener('click', () => {
 document.getElementById('breed-slot-b').addEventListener('click', () => {
   activeBreedSlot = 'b';
   updateBreedingUI();
+});
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LA JOUTE — moteur de combat
+// ══════════════════════════════════════════════════════════════════════════════
+// Rien n'est inventé ici : les six statistiques portent déjà leur rôle, et les
+// concepts portent déjà leur catégorie.
+//
+//   INFLUENCE  réserve  « combien de coups le système peut absorber avant
+//                         d'être abandonné par l'histoire » — ce sont les PV
+//   RIGUEUR    attaque  argument immanent, qui se bat dans le champ adverse
+//   ANCRAGE    défense  ce qui résiste à l'argument immanent
+//   PORTÉE     attaque  argument transcendant, qui récuse le cadre
+//   CLÔTURE    défense  ce qui résiste au changement de cadre
+//   CLARTÉ     vitesse  qui parle en premier
+//
+// Un concept immanent passe par la table des types : il peut valoir ×2, être
+// réduit de moitié, ne rien donner du tout — ou tomber dans le vide quand les
+// deux champs sont incommensurables. Un concept transcendant ignore la table :
+// il ne discute pas le contenu, il attaque le terrain. C'est la réponse à
+// l'incommensurabilité, et c'est ce qui fait tenir les deux catégories
+// ensemble.
+//
+// Les clés de statistiques sont identiques en français et en anglais dans
+// philomon.js ; seules les infobulles sont traduites.
+const ST = { PV:'INFLUENCE', ATK_I:'RIGUEUR', DEF_I:'ANCRAGE', ATK_T:'PORTÉE', DEF_T:'CLÔTURE', VIT:'CLARTÉ' };
+
+// Les vies n'ont pas la même longueur : Nietzsche s'arrête au niveau 25,
+// Chomsky en est à 82. Prendre le niveau brut ferait du combat un test de
+// longévité — Socrate écrasait Nietzsche en un coup. Le combat se joue donc sur
+// l'avancement dans la vie, pas sur le nombre d'années : accompli, chacun se
+// bat au niveau effectif 50 ; débutant, au niveau 5. Le niveau biographique
+// reste celui qu'on lit à l'écran.
+function jLvlEff(p, lvl) {
+  const max = lvlMaxOf(p);
+  const t = max > 1 ? Math.min(1, Math.max(0, (lvl - 1) / (max - 1))) : 1;
+  return Math.max(5, Math.round(5 + 45 * t));
+}
+
+function jPV(p, lvl) {
+  const L = jLvlEff(p, lvl);
+  return Math.floor(2 * p.stats[ST.PV] * L / 100) + L + 10;
+}
+function jStat(p, lvl, cle) { return statsAt(p, lvl)[cle] || 1; }
+function jTypes(p, lvl) { return typesAt(p, stageIndexAtLevel(p, lvl)); }
+
+function ppDe(puiss) { return puiss >= 90 ? 8 : puiss >= 80 ? 10 : 12; }
+
+// L'arsenal disponible à ce niveau : les concepts hérités comptent, les
+// concepts reniés ne comptent plus. Le jeune Marx dispose de la dialectique de
+// Hegel ; le Marx mûr a perdu l'aliénation de Feuerbach.
+function jMoves(p, lvl) {
+  const out = movePool(p).filter(mv => moveState(mv, lvl) === 'actif').map(mv => ({
+    nom: mv.c.nom, type: mv.c.type, cat: mv.c.cat, puiss: mv.c.puissance,
+    src: mv.src, prov: mv.prov, pp: ppDe(mv.c.puissance), ppMax: ppDe(mv.c.puissance),
+  }));
+  return out.length ? out : [{
+    nom: t('jFallbackMove'), type: null, cat: 'immanent', puiss: 30,
+    src: null, pp: 99, ppMax: 99, fallback: true,
+  }];
+}
+
+// Un argument immanent trouve prise de deux façons : la table déclare un
+// rapport entre les deux types — y compris par-dessus les champs, comme
+// Rationalisme contre Mysticisme —, ou bien les deux se tiennent dans le même
+// champ, auquel cas ils peuvent discuter sans que l'un ait l'avantage.
+// Faute des deux, les discours passent l'un à côté de l'autre.
+//
+// La table ne renseigne que 202 couples sur 3025 : s'en tenir à elle rendait
+// 86 % des attaques immanentes inertes et le transcendant gagnait 81 % des
+// duels. Le champ partagé rattrape ce que la table ne dit pas.
+function jTypeMult(attType, defTypes) {
+  const tc = PHILOMON_DATA.typechart;
+  if (!attType) return { mult: 1, incomm: false };
+  let mult = 1, entree = false;
+  for (const dt of defTypes) {
+    const v = tc[attType] && tc[attType][dt];
+    if (v !== undefined) { mult *= v; entree = true; }
+  }
+  const champA = champOf(attType);
+  const memeChamp = defTypes.some(dt => champOf(dt) === champA);
+  return { mult, incomm: !entree && !memeChamp };
+}
+
+// alea = null pour l'estimation affichée dans les boutons ; sinon on tire.
+function jDegats(att, lvlA, def, lvlD, mv, alea) {
+  const immanent = mv.cat === 'immanent';
+  const A = jStat(att, lvlA, immanent ? ST.ATK_I : ST.ATK_T);
+  const D = jStat(def, lvlD, immanent ? ST.DEF_I : ST.DEF_T);
+  let mult = 1, note = null;
+
+  if (immanent) {
+    const r = jTypeMult(mv.type, jTypes(def, lvlD));
+    // ×0,5 et non ×0 : parler à côté n'est pas ne rien dire.
+    if (r.incomm)          { mult = 0.5;  note = 'incomm'; }
+    else if (r.mult === 0) { mult = 0;    note = 'nul'; }
+    else                     mult = r.mult;
+    // Un argument immanent porté depuis son propre sol frappe plus fort.
+    if (mv.type && jTypes(att, lvlA).includes(mv.type)) mult *= 1.5;
+  } else {
+    note = 'cadre';
+  }
+
+  // ×1,5 sur la défense : dans ce corpus la RIGUEUR dépasse l'ANCRAGE de douze
+  // points en moyenne, et sans correction tout le monde s'effondre en deux tours.
+  // Le rapport est borné parce que les défenses vont de 18 à 95 : la CLÔTURE de
+  // Nietzsche est à 25, et sans borne le moindre argument transcendant le
+  // pulvérisait. Bridé, il l'ébranle encore très fort — ce qui est la bonne
+  // lecture.
+  const ratio = Math.min(2.2, Math.max(0.4, A / (D * 1.5)));
+  const L = jLvlEff(att, lvlA);
+  const r = alea === null ? 1 : 0.85 + Math.random() * 0.15;
+  const brut = ((2 * L / 5 + 2) * mv.puiss * ratio / 85 + 2) * mult * r;
+  return { degats: mult === 0 ? 0 : Math.max(1, Math.round(brut)), mult, note };
+}
+
+const JOUTE = {
+  vous:null, adv:null, lvlVous:1, lvlAdv:1, cote:'vous',
+  pvVous:0, pvAdv:0, mvVous:[], mvAdv:[],
+  mode:'duel', arene:[], manche:0, enCours:false, verrou:false,
+};
+
+function jouteOuverte() { return document.getElementById('joute-screen').classList.contains('open'); }
+
+function openJoute() {
+  document.getElementById('joute-screen').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  jouteSetupPhase();
+  jRenderPickGrid();
+  jRefreshSetup();
+  jApplyLangJoute();
+}
+
+function closeJoute() {
+  document.getElementById('joute-screen').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function jouteSetupPhase() {
+  document.getElementById('joute-setup').classList.add('on');
+  document.getElementById('joute-field').classList.remove('on');
+  document.getElementById('joute-manche').textContent = '';
+}
+
+// ── Préparation ─────────────────────────────────────────────────────────────
+let joutePickBuilt = false;
+
+function jRenderPickGrid() {
+  const grid = document.getElementById('joute-pick-grid');
+  if (joutePickBuilt) return;
+  joutePickBuilt = true;
+  PHILOMON.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'joute-pick-card';
+    card.dataset.nom = (p.nom + ' ' + p.full).toLowerCase();
+    const sp = document.createElement('div'); sp.className = 'jp-sprite';
+    sp.appendChild(placeholderCanvas(56));
+    getSprite(p, 56).then(c => { sp.innerHTML = ''; sp.appendChild(c); });
+    card.appendChild(sp);
+    const nm = document.createElement('div'); nm.className = 'joute-pick-name'; nm.textContent = p.nom;
+    card.appendChild(nm);
+    card.addEventListener('click', () => jChoisir(p));
+    grid.appendChild(card);
+  });
+}
+
+function jChoisir(p) {
+  if (JOUTE.cote === 'vous') { JOUTE.vous = p; JOUTE.lvlVous = lvlMaxOf(p); JOUTE.cote = 'adv'; }
+  else                       { JOUTE.adv  = p; JOUTE.lvlAdv  = lvlMaxOf(p); JOUTE.cote = 'vous'; }
+  jRefreshSetup();
+}
+
+function jRefreshSetup() {
+  for (const cote of ['vous', 'adv']) {
+    const p = JOUTE[cote];
+    const slot = document.getElementById('joute-slot-' + cote);
+    slot.classList.toggle('active', JOUTE.cote === cote);
+    const cv = document.getElementById('joute-canvas-' + cote);
+    const nm = document.getElementById('joute-name-' + cote);
+    const tp = document.getElementById('joute-types-' + cote);
+    const lp = document.getElementById('joute-lvl-' + cote);
+    if (!p) {
+      cv.innerHTML = '<span class="breed-slot-empty-glyph">?</span>';
+      nm.textContent = '—'; tp.innerHTML = ''; lp.innerHTML = '';
+      continue;
+    }
+    const lvl = cote === 'vous' ? JOUTE.lvlVous : JOUTE.lvlAdv;
+    const si = stageIndexAtLevel(p, lvl);
+    cv.innerHTML = ''; cv.appendChild(placeholderCanvas(80));
+    getSprite(p, 80, si).then(c => { cv.innerHTML = ''; cv.appendChild(c); });
+    nm.textContent = p.nom;
+    tp.innerHTML = jTypes(p, lvl).map(x =>
+      `<span class="type-badge ${tClass(x)}" style="font-size:9px;padding:1px 4px">${x.substring(0,5).toUpperCase()}</span>`).join('');
+    if (lp.dataset.for !== p.id) {
+      lp.dataset.for = p.id;
+      lp.innerHTML = `<input type="range" class="lb-range" min="1" max="${lvlMaxOf(p)}" value="${lvl}"
+          aria-label="${t('lvlShort')}"><div class="jl-read"></div><div class="jl-forme"></div>`;
+      lp.querySelector('input').addEventListener('input', ev => {
+        const v = parseInt(ev.target.value, 10);
+        if (cote === 'vous') JOUTE.lvlVous = v; else JOUTE.lvlAdv = v;
+        jRefreshSetup();
+      });
+    }
+    const inp = lp.querySelector('input');
+    if (inp && document.activeElement !== inp) inp.value = lvl;
+    lp.querySelector('.jl-read').textContent =
+      `${t('lvlShort')} ${lvl} · ${fmtYear(p, yearAt(p, lvl))} · ${jPV(p, lvl)} ${t('jPV')}`;
+    lp.querySelector('.jl-forme').textContent = stageCount(p) > 1 ? stageTag(p, si) : '';
+  }
+  document.getElementById('joute-go').disabled = !(JOUTE.vous && JOUTE.adv);
+  document.getElementById('joute-arene').disabled = !JOUTE.vous;
+}
+
+// ── Déroulement ─────────────────────────────────────────────────────────────
+function jStart(mode) {
+  JOUTE.mode = mode;
+  JOUTE.enCours = true;
+  JOUTE.verrou = false;
+  JOUTE.pvVous = jPV(JOUTE.vous, JOUTE.lvlVous);
+  JOUTE.pvAdv  = jPV(JOUTE.adv,  JOUTE.lvlAdv);
+  JOUTE.mvVous = jMoves(JOUTE.vous, JOUTE.lvlVous);
+  JOUTE.mvAdv  = jMoves(JOUTE.adv,  JOUTE.lvlAdv);
+  document.getElementById('joute-setup').classList.remove('on');
+  document.getElementById('joute-field').classList.add('on');
+  document.getElementById('joute-end').classList.remove('on');
+  document.getElementById('joute-log').innerHTML = '';
+  document.getElementById('joute-manche').textContent = mode === 'arene'
+    ? `${t('jRound')} ${JOUTE.manche} / 5` : '';
+  jPaintField(true);
+  jLog(t('jOpening').replace('%A', JOUTE.vous.nom).replace('%B', JOUTE.adv.nom), 'jl-tour');
+  jRenderMoves();
+}
+
+// Le combat garde les PV entre les manches : une arène use.
+function jStartArene() {
+  const pool = PHILOMON.filter(p => p.id !== JOUTE.vous.id);
+  const tot = p => Object.values(p.stats).reduce((a, v) => a + v, 0);
+  const tirage = [];
+  while (tirage.length < 5 && pool.length) {
+    tirage.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  tirage.sort((a, b) => tot(a) - tot(b));
+  JOUTE.arene = tirage;
+  JOUTE.manche = 1;
+  JOUTE.adv = tirage[0];
+  JOUTE.lvlAdv = lvlMaxOf(JOUTE.adv);
+  jStart('arene');
+}
+
+function jPaintField(rebuild) {
+  for (const cote of ['vous', 'adv']) {
+    const p = JOUTE[cote];
+    const lvl = cote === 'vous' ? JOUTE.lvlVous : JOUTE.lvlAdv;
+    const pv = cote === 'vous' ? JOUTE.pvVous : JOUTE.pvAdv;
+    const pvm = jPV(p, lvl);
+    document.getElementById('joute-f-nom-' + cote).textContent = p.nom;
+    document.getElementById('joute-f-lvl-' + cote).textContent =
+      `${t('lvlShort')} ${lvl} · ${fmtYear(p, yearAt(p, lvl))}`;
+    document.getElementById('joute-f-types-' + cote).innerHTML = jTypes(p, lvl).map(x =>
+      `<span class="type-badge ${tClass(x)}" style="font-size:9px;padding:1px 4px">${x.substring(0,5).toUpperCase()}</span>`).join('');
+    document.getElementById('joute-f-pvnum-' + cote).textContent = `${Math.max(0, pv)} / ${pvm}`;
+    const fill = document.getElementById('joute-f-pv-' + cote);
+    const r = Math.max(0, pv) / pvm;
+    fill.style.width = (r * 100) + '%';
+    fill.className = 'joute-pv-fill' + (r <= 0.2 ? ' low' : r <= 0.5 ? ' mid' : '');
+    if (rebuild) {
+      const host = document.getElementById('joute-f-sprite-' + cote);
+      const si = stageIndexAtLevel(p, lvl);
+      host.innerHTML = ''; host.appendChild(placeholderCanvas(104));
+      getSprite(p, 104, si).then(c => { host.innerHTML = ''; host.appendChild(c); });
+    }
+  }
+}
+
+function jLog(txt, cls) {
+  const log = document.getElementById('joute-log');
+  const p = document.createElement('p');
+  if (cls) p.className = cls;
+  p.innerHTML = txt;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+}
+
+function jEffLabel(mult, note) {
+  if (note === 'incomm') return { cls:'nul', txt:t('jIncomm') };
+  if (mult === 0)        return { cls:'nul', txt:t('jNoHold') };
+  if (mult >= 2)         return { cls:'fort', txt:t('jDecisive') };
+  if (mult < 1)          return { cls:'faible', txt:t('jWeak') };
+  return null;
+}
+
+function jRenderMoves() {
+  const host = document.getElementById('joute-moves');
+  host.innerHTML = '';
+  JOUTE.mvVous.forEach((m, i) => {
+    const est = jDegats(JOUTE.vous, JOUTE.lvlVous, JOUTE.adv, JOUTE.lvlAdv, m, null);
+    const eff = jEffLabel(est.mult, est.note);
+    const b = document.createElement('button');
+    b.className = 'joute-move' + (m.cat === 'transcendant' ? ' transcendant' : '');
+    b.disabled = m.pp <= 0 || JOUTE.verrou || !JOUTE.enCours;
+    b.innerHTML = `<span class="joute-move-nom">${m.nom}</span>
+      <span class="joute-move-meta">
+        <span class="${m.type ? tClass(m.type) : ''}">${m.type ? m.type.toUpperCase() : t('jNoType')}</span>
+        <span>${m.cat === 'immanent' ? t('jImmanent') : t('jTranscendent')}</span>
+        <span>PWR ${m.puiss}</span>
+        ${eff ? `<span class="joute-move-eff ${eff.cls}">${eff.txt}</span>` : ''}
+        ${m.src ? `<span style="color:#66ddaa">${t(m.prov === 'capture' ? 'takenFrom' : 'inheritedFrom')} ${m.src.nom}</span>` : ''}
+        <span class="joute-move-pp">PP ${m.pp}/${m.ppMax}</span>
+      </span>`;
+    b.addEventListener('click', () => jTour(i));
+    host.appendChild(b);
+  });
+}
+
+// L'ordinateur vise le meilleur dégât attendu, avec assez de bruit pour ne pas
+// être parfait — et donc pour rester battable de plusieurs façons.
+function jChoixIA() {
+  const dispo = JOUTE.mvAdv.filter(m => m.pp > 0);
+  if (!dispo.length) return null;
+  let best = dispo[0], score = -1;
+  for (const m of dispo) {
+    const d = jDegats(JOUTE.adv, JOUTE.lvlAdv, JOUTE.vous, JOUTE.lvlVous, m, null).degats;
+    const s = d * (0.75 + Math.random() * 0.5);
+    if (s > score) { score = s; best = m; }
+  }
+  return best;
+}
+
+function jFrappe(cote, mv) {
+  const att = cote === 'vous' ? JOUTE.vous : JOUTE.adv;
+  const def = cote === 'vous' ? JOUTE.adv : JOUTE.vous;
+  const lvlA = cote === 'vous' ? JOUTE.lvlVous : JOUTE.lvlAdv;
+  const lvlD = cote === 'vous' ? JOUTE.lvlAdv : JOUTE.lvlVous;
+  const r = jDegats(att, lvlA, def, lvlD, mv, true);
+  mv.pp = Math.max(0, mv.pp - 1);
+
+  jLog(t('jUses').replace('%P', `<b>${att.nom}</b>`).replace('%C', `« ${mv.nom} »`));
+  if (r.note === 'cadre')  jLog(t('jFrameShift').replace('%P', att.nom), 'jl-nul');
+  if (r.note === 'incomm') jLog(t('jIncommLong').replace('%P', def.nom), 'jl-nul');
+  if (r.mult === 0)        jLog(t('jNoHoldLong').replace('%D', def.nom).replace('%A', att.nom), 'jl-nul');
+  else if (r.mult >= 2)    jLog(t('jDecisiveLong'), 'jl-fort');
+  else if (r.mult < 1 && r.note !== 'incomm') jLog(t('jWeakLong'), 'jl-faible');
+
+  if (cote === 'vous') JOUTE.pvAdv -= r.degats; else JOUTE.pvVous -= r.degats;
+  if (r.degats > 0) jLog(t('jDamage').replace('%D', def.nom).replace('%N', r.degats));
+
+  const host = document.getElementById('joute-f-sprite-' + (cote === 'vous' ? 'adv' : 'vous'));
+  if (host && r.degats > 0) { host.classList.add('touche'); setTimeout(() => host.classList.remove('touche'), 600); }
+  jPaintField(false);
+  return (cote === 'vous' ? JOUTE.pvAdv : JOUTE.pvVous) <= 0;
+}
+
+function jTour(iVous) {
+  if (JOUTE.verrou || !JOUTE.enCours) return;
+  JOUTE.verrou = true;
+  jRenderMoves();
+
+  const mV = JOUTE.mvVous[iVous];
+  const mA = jChoixIA();
+  const vV = jStat(JOUTE.vous, JOUTE.lvlVous, ST.VIT);
+  const vA = jStat(JOUTE.adv,  JOUTE.lvlAdv,  ST.VIT);
+  const vousDabord = vV !== vA ? vV > vA : Math.random() < 0.5;
+
+  jLog('— ' + t('jTurn') + ' —', 'jl-tour');
+  const sequence = vousDabord ? ['vous', 'adv'] : ['adv', 'vous'];
+  let i = 0;
+  const suite = () => {
+    if (i >= sequence.length) { JOUTE.verrou = false; jRenderMoves(); return; }
+    const cote = sequence[i++];
+    const mv = cote === 'vous' ? mV : mA;
+    if (!mv) { suite(); return; }
+    const ko = jFrappe(cote, mv);
+    if (ko) { setTimeout(() => jFin(cote === 'vous'), 700); return; }
+    setTimeout(suite, 850);
+  };
+  setTimeout(suite, 250);
+}
+
+function jFin(gagne) {
+  JOUTE.enCours = false;
+  JOUTE.verrou = true;
+  jRenderMoves();
+  const perdant = gagne ? JOUTE.adv : JOUTE.vous;
+  jLog(t('jAbandoned').replace('%P', `<b>${perdant.nom}</b>`), gagne ? 'jl-fort' : 'jl-faible');
+
+  const end = document.getElementById('joute-end');
+  end.innerHTML = '';
+  end.classList.add('on');
+  const bouton = (label, fn, prim) => {
+    const b = document.createElement('button');
+    b.className = 'joute-mode-btn' + (prim ? ' primary' : '');
+    b.textContent = label;
+    b.addEventListener('click', fn);
+    end.appendChild(b);
+  };
+
+  if (JOUTE.mode === 'arene' && gagne && JOUTE.manche < 5) {
+    jLog(t('jArenaNext').replace('%N', JOUTE.manche + 1), 'jl-tour');
+    bouton(t('jNextRound'), () => {
+      JOUTE.manche++;
+      JOUTE.adv = JOUTE.arene[JOUTE.manche - 1];
+      JOUTE.lvlAdv = lvlMaxOf(JOUTE.adv);
+      const garde = JOUTE.pvVous;
+      const soin = Math.round(jPV(JOUTE.vous, JOUTE.lvlVous) * 0.3);
+      jStart('arene');
+      // On repart avec ce qui restait, plus un tiers de souffle.
+      JOUTE.pvVous = Math.min(jPV(JOUTE.vous, JOUTE.lvlVous), Math.max(1, garde) + soin);
+      jPaintField(false);
+      jLog(t('jArenaHeal').replace('%N', soin), 'jl-tour');
+    }, true);
+  } else if (JOUTE.mode === 'arene' && gagne) {
+    jLog(t('jArenaWon').replace('%P', JOUTE.vous.nom), 'jl-fort');
+  }
+  bouton(t('jAgain'), () => jStart(JOUTE.mode === 'arene' ? 'duel' : JOUTE.mode));
+  bouton(t('jBackSetup'), () => { JOUTE.manche = 0; jouteSetupPhase(); jRefreshSetup(); });
+}
+
+// ── Câblage ─────────────────────────────────────────────────────────────────
+function jApplyLangJoute() {
+  document.getElementById('joute-title').textContent = '⚔ ' + t('jTitle');
+  document.getElementById('joute-back').textContent = t('back');
+  document.getElementById('joute-lbl-vous').textContent = t('jYou');
+  document.getElementById('joute-lbl-adv').textContent = t('jFoe');
+  document.getElementById('joute-go').textContent = t('jFight');
+  document.getElementById('joute-random').textContent = t('jRandom');
+  document.getElementById('joute-arene').textContent = t('jArena');
+  document.getElementById('joute-search').placeholder = t('search');
+  document.querySelectorAll('.joute-open-btn').forEach(b => {
+    if (b.id === 'joute-open-desk') b.textContent = '⚔ ' + t('jTitle');
+  });
+}
+
+document.getElementById('joute-open-desk').addEventListener('click', openJoute);
+document.getElementById('joute-open-mob').addEventListener('click', openJoute);
+document.getElementById('joute-back').addEventListener('click', closeJoute);
+document.getElementById('joute-go').addEventListener('click', () => { JOUTE.manche = 0; jStart('duel'); });
+document.getElementById('joute-arene').addEventListener('click', jStartArene);
+document.getElementById('joute-random').addEventListener('click', () => {
+  const pool = PHILOMON.filter(p => !JOUTE.vous || p.id !== JOUTE.vous.id);
+  JOUTE.adv = pool[Math.floor(Math.random() * pool.length)];
+  JOUTE.lvlAdv = lvlMaxOf(JOUTE.adv);
+  JOUTE.cote = 'vous';
+  jRefreshSetup();
+});
+document.querySelectorAll('.joute-slot').forEach(s =>
+  s.addEventListener('click', ev => {
+    if (ev.target.closest('.joute-lvlpick')) return;   // le curseur n'est pas un choix de camp
+    JOUTE.cote = s.dataset.cote;
+    jRefreshSetup();
+  }));
+document.getElementById('joute-search').addEventListener('input', ev => {
+  const q = ev.target.value.toLowerCase();
+  document.querySelectorAll('.joute-pick-card').forEach(c => {
+    c.style.display = !q || c.dataset.nom.includes(q) ? '' : 'none';
+  });
+});
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'Escape' && jouteOuverte()) closeJoute();
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
